@@ -14,6 +14,8 @@ public class adminMenuController {
 		
 		RootLayoutPanel rp = RootLayoutPanel.get();
 		rp.add(mainViewAdmin);
+		
+		//Jeg tester git!!!!!! - Aleksander
 	}
 	
 }
