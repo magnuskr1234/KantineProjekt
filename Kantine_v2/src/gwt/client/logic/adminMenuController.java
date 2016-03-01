@@ -15,7 +15,7 @@ public class adminMenuController {
 		RootLayoutPanel rp = RootLayoutPanel.get();
 		rp.add(mainViewAdmin);
 		
-		//Jeg tester git!!!!!! - AleXander
+		//Jeg tester git!!!!!! - AleXander - Jeg skal ikke indtaste kode når jeg pusher og puller :-P 
 	}
 	
 }
