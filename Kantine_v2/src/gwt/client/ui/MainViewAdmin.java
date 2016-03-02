@@ -35,12 +35,20 @@ public class MainViewAdmin extends Composite {
 		contentPanel.showWidget(adminMenu);
 	}
 	
+	public void adminMenu(){
+		contentPanel.showWidget(adminMenu);
+	}
+	
 	public void createUser() {
 		contentPanel.showWidget(createUser);
 	}
 	
 	public adminMenu getadminMenu() {
 		return adminMenu;
+	}
+	
+	public CreateUser getcreateUser(){
+		return createUser;
 	}
 
 

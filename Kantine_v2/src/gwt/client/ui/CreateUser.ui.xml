@@ -14,7 +14,7 @@
 			<g:TextBox/>
 			<g:HorizontalPanel>
 				<g:Button>Opret</g:Button>
-				<g:Button ui:field="button" text="Annuller">Anuller</g:Button>
+				<g:Button ui:field="btnCancel" text="Annuller">Anuller</g:Button>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>
 	</g:HTMLPanel>

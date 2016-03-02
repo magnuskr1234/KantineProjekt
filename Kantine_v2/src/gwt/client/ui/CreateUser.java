@@ -12,7 +12,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 public class CreateUser extends Composite {
 
 	private static CreateUserUiBinder uiBinder = GWT.create(CreateUserUiBinder.class);
-	@UiField Button button;
+	@UiField Button btnCancel;
 
 	interface CreateUserUiBinder extends UiBinder<Widget, CreateUser> {
 	}
@@ -23,8 +23,8 @@ public class CreateUser extends Composite {
 		
 		//Prøve med slettet ssh nøgle
 	}
-
-	@UiHandler("button")
-	void onButtonClick(ClickEvent event) {
+	
+	public Button getBtnCancel(){
+		return btnCancel;
 	}
 }

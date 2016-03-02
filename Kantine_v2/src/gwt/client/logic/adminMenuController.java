@@ -21,6 +21,10 @@ public class adminMenuController {
 		
 		adminMenu = mainViewAdmin.getadminMenu();
 		
+		createUserView = mainViewAdmin.getcreateUser();
+		
+		createUserView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
+		
 		
 		adminMenu.getBtnCreateUser().addClickHandler(new CreateUserHandler());
 		
@@ -35,6 +39,16 @@ public class adminMenuController {
 				mainViewAdmin.createUser();
 			}
 			
+		}
+
+	}
+	
+	private class ReturnMainViewHandler implements ClickHandler{
+		@Override
+		public void onClick(ClickEvent event){
+			if (event.getSource() == createUserView.getBtnCancel()){
+				mainViewAdmin.adminMenu();
+			}
 		}
 	}
 	
