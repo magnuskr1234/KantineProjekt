@@ -3317,3 +3317,791 @@ Rebinding gwt.client.ui.CreateUser_CreateUserUiBinderImpl_designTime145690189659
       Compiling...
          Compilation completed in 0.00 seconds
       Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2740 cached/archived units.  Used 2740 / 2743 units from cache.
+Compiling...
+   Compilation completed in 0.01 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903344848.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903344848.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903344848_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903345110.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903345110.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903345110_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903650729.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903650729.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903650729_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903655266.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903655266.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903655266_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903773311.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903773311.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903773311_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903778711.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903778711.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903778711_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903791629.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903791629.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903791629_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903935477.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903935477.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903935477_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903935513.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903935513.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903935513_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903936014.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903936014.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903936014_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903942911.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903942911.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456903942911_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2743 cached/archived units.  Used 2743 / 2744 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904059282.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904059282.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904059282_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904059451.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904059451.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904059451_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904071006.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904071006.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904071006_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904080605.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904080605.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904080605_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904084234.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904084234.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904084234_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904105771.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904105771.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904105771_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904108190.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904108190.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904108190_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904128024.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904128024.Template
+         Generating method body for html1()
+         Generating method body for html2()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904128024_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904129291.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904129291.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904129291_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904138434.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904138434.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904138434_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904246271.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904246271.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904246271_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904264222.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904264222.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904264222_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904276146.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904276146.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904276146_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904281766.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904281766.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904281766_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904456657.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904456657.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456904456657_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456904481433.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456904481433.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456904481433_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456904481467.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456904481467.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456904481467_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456904481978.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456904481978.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456904481978_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2743 cached/archived units.  Used 2743 / 2744 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904775969.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904775969.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904775969_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904776204.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904776204.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904776204_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904794186.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904794186.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904794186_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904822665.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904822665.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904822665_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904847119.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904847119.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456904847119_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units

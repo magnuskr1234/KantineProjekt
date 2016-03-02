@@ -5,7 +5,7 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Grid width="100%" height="100%">
+		<g:Grid width="100%" height="100%" styleName="center">
 			<g:row>
 				<g:customCell>
 					<g:Button ui:field="createUser">Opret bruger</g:Button>

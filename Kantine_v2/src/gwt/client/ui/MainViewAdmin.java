@@ -15,11 +15,12 @@ import com.google.gwt.event.dom.client.ClickEvent;
 public class MainViewAdmin extends Composite {
 
 	private static MainViewAdminUiBinder uiBinder = GWT.create(MainViewAdminUiBinder.class);
-	@UiField HorizontalPanel adminHeader;
 	@UiField DeckLayoutPanel contentPanel;
+	@UiField DeckLayoutPanel adminHeader;
 	
 	private adminMenu adminMenu;
 	private CreateUser createUser;
+	private AdminHeaderView adminHeaderView;
 
 	interface MainViewAdminUiBinder extends UiBinder<Widget, MainViewAdmin> {
 	}
@@ -28,11 +29,14 @@ public class MainViewAdmin extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		adminMenu = new adminMenu();
 		createUser = new CreateUser();
+		adminHeaderView = new AdminHeaderView();
 		contentPanel.add(adminMenu);
 		contentPanel.add(createUser);
+		adminHeader.add(adminHeaderView);
 		
 		
 		contentPanel.showWidget(adminMenu);
+		adminHeader.showWidget(adminHeaderView);
 	}
 	
 	public void adminMenu(){
