@@ -5,5 +5,17 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
+		<g:VerticalPanel height="198px" width="142px">
+			<g:Label text="Brugernavn:"/>
+			<g:TextBox/>
+			<g:Label text="Adgangskode"/>
+			<g:TextBox/>
+			<g:Label text="Saldo"/>
+			<g:TextBox/>
+			<g:HorizontalPanel>
+				<g:Button>Opret</g:Button>
+				<g:Button ui:field="button" text="Annuller">Anuller</g:Button>
+			</g:HorizontalPanel>
+		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

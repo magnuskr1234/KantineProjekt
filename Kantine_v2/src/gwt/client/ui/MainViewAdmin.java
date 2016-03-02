@@ -19,6 +19,7 @@ public class MainViewAdmin extends Composite {
 	@UiField DeckLayoutPanel contentPanel;
 	
 	private adminMenu adminMenu;
+	private CreateUser createUser;
 
 	interface MainViewAdminUiBinder extends UiBinder<Widget, MainViewAdmin> {
 	}
@@ -26,10 +27,20 @@ public class MainViewAdmin extends Composite {
 	public MainViewAdmin() {
 		initWidget(uiBinder.createAndBindUi(this));
 		adminMenu = new adminMenu();
+		createUser = new CreateUser();
 		contentPanel.add(adminMenu);
+		contentPanel.add(createUser);
 		
 		
 		contentPanel.showWidget(adminMenu);
+	}
+	
+	public void createUser() {
+		contentPanel.showWidget(createUser);
+	}
+	
+	public adminMenu getadminMenu() {
+		return adminMenu;
 	}
 
 

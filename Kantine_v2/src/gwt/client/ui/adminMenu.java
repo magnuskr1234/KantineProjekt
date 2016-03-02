@@ -25,14 +25,8 @@ public class adminMenu extends Composite {
 	public adminMenu() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-
-	@UiHandler("deleteItem")
-	void onDeleteItemClick(ClickEvent event) {
-	}
-	@UiHandler("createUser")
-	void onCreateUserClick(ClickEvent event) {
-	}
-	@UiHandler("createItem")
-	void onCreateItemClick(ClickEvent event) {
+	
+	public Button getBtnCreateUser() {
+		return createUser;
 	}
 }
