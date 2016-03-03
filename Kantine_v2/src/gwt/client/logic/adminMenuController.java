@@ -20,7 +20,7 @@ public class adminMenuController {
 		RootLayoutPanel rp = RootLayoutPanel.get();
 		rp.add(mainViewAdmin);
 		
-		adminMenu = mainViewAdmin.getadminMenu(); //Hvorfor skal den være her?
+		adminMenu = mainViewAdmin.getadminMenu(); //Hvorfor skal den være her? fordi
 		
 		createUserView = mainViewAdmin.getcreateUser();
 		
