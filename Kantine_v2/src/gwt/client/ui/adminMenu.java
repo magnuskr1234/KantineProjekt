@@ -29,4 +29,8 @@ public class adminMenu extends Composite {
 	public Button getBtnCreateUser() {
 		return createUser;
 	}
+	
+	public Button getBtnCreateItem() {
+		return createItem;
+	}
 }

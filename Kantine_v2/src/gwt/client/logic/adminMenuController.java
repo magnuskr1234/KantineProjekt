@@ -12,6 +12,7 @@ public class adminMenuController {
 	private MainViewAdmin mainViewAdmin;
 	private adminMenu adminMenu;
 	private CreateUser createUserView;
+	private CreateItemView createItemView;
 	
 	public adminMenuController(){
 		mainViewAdmin = new MainViewAdmin();
@@ -19,16 +20,17 @@ public class adminMenuController {
 		RootLayoutPanel rp = RootLayoutPanel.get();
 		rp.add(mainViewAdmin);
 		
-		adminMenu = mainViewAdmin.getadminMenu();
+		adminMenu = mainViewAdmin.getadminMenu(); //Hvorfor skal den være her?
 		
 		createUserView = mainViewAdmin.getcreateUser();
 		
 		createUserView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
 		
+		adminMenu.getBtnCreateItem().addClickHandler(new CreateItemViewHandler());
+		
 		
 		adminMenu.getBtnCreateUser().addClickHandler(new CreateUserHandler());
 		
-		//Jeg tester git!!!!!! - AleXander - Jeg skal ikke indtaste kode når jeg pusher og puller :-P 
 	}
 	
 	private class CreateUserHandler implements ClickHandler{
@@ -48,6 +50,16 @@ public class adminMenuController {
 		public void onClick(ClickEvent event){
 			if (event.getSource() == createUserView.getBtnCancel()){
 				mainViewAdmin.changeWidget(adminMenu);
+			}
+		}
+	}
+	
+	private class CreateItemViewHandler implements ClickHandler{
+		
+		@Override
+		public void onClick(ClickEvent event){
+			if (event.getSource() == adminMenu.getBtnCreateItem()){
+				mainViewAdmin.changeWidget(createItemView);
 			}
 		}
 	}
