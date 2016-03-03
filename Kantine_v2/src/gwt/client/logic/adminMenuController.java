@@ -47,7 +47,7 @@ public class adminMenuController {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == createUserView.getBtnCancel()){
-				mainViewAdmin.adminMenu();
+				mainViewAdmin.changeWidget(adminMenu);
 			}
 		}
 	}
