@@ -32,11 +32,14 @@ public class MainViewAdmin extends Composite {
 		adminHeaderView = new AdminHeaderView();
 		contentPanel.add(adminMenu);
 		contentPanel.add(createUser);
-		adminHeader.add(adminHeaderView);
+		adminHeader.add(adminHeaderView);		
 		
-		
-		contentPanel.showWidget(adminMenu);
 		adminHeader.showWidget(adminHeaderView);
+		contentPanel.showWidget(adminMenu);
+	}
+	
+	public void changeWidget(Widget w){
+		contentPanel.showWidget(w);
 	}
 	
 	public void adminMenu(){

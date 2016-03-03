@@ -4362,3 +4362,911 @@ Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456906059419_
       Compiling...
          Compilation completed in 0.00 seconds
       Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2737 units from cache.
+Compiling...
+   Compilation completed in 5.72 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2737 units from cache.
+Compiling...
+   Compilation completed in 5.83 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2744 units from cache.
+Compiling...
+   Compilation completed in 0.05 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922092828.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922092828.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922092828_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922093358.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922093358.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922093358_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922157541.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922157541.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922157541_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922164544.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922164544.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922164544_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922216744.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922216744.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922216744_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin.MainViewAdminUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922220153.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922220153.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.MainViewAdmin_MainViewAdminUiBinderImpl_designTime1456922220153_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2744 cached/archived units.  Used 2744 / 2744 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.CreateUser.CreateUserUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.CreateUser_CreateUserUiBinderImpl_designTime1456922967586.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.CreateUser_CreateUserUiBinderImpl_designTime1456922967586.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.CreateUser_CreateUserUiBinderImpl_designTime1456922967586_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.CreateUser.CreateUserUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.CreateUser_CreateUserUiBinderImpl_designTime1456922967918.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.CreateUser_CreateUserUiBinderImpl_designTime1456922967918.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.CreateUser_CreateUserUiBinderImpl_designTime1456922967918_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2744 cached/archived units.  Used 2744 / 2744 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456923574105.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456923574105.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456923574105_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456923574361.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456923574361.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456923574361_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2744 cached/archived units.  Used 2744 / 2744 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456926444810.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456926444810.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456926444810_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu.adminMenuUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456926445081.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456926445081.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+         Generating method body for html6()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.adminMenu_adminMenuUiBinderImpl_designTime1456926445081_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2745 units from cache.
+Compiling...
+   Compilation completed in 3.09 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUsersView.ShowUsersViewUiBinder
+   Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+      [ERROR] <c:SimplePager ui:field='pager'> missing required attribute(s): location: <c:SimplePager ui:field='pager'> (:30)
+[ERROR] Deferred binding failed for 'gwt.client.ui.ShowUsersView.ShowUsersViewUiBinder'; expect subsequent failures
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2745 cached/archived units.  Used 2745 / 2745 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUsersView.ShowUsersViewUiBinder
+   Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+      [ERROR] <c:SimplePager ui:field='pager'> missing required attribute(s): location: <c:SimplePager ui:field='pager'> (:27)
+[ERROR] Deferred binding failed for 'gwt.client.ui.ShowUsersView.ShowUsersViewUiBinder'; expect subsequent failures
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2745 cached/archived units.  Used 2745 / 2745 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456927709685.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456927709685.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456927709685_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView.AdminHeaderViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456927709952.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456927709952.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.AdminHeaderView_AdminHeaderViewUiBinderImpl_designTime1456927709952_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2744 cached/archived units.  Used 2744 / 2745 units from cache.
+Compiling...
+   Compilation completed in 0.01 seconds
+Invalid Unit: gwt.client.logic.adminMenuController
+Invalid units found: 1
+Compiling...
+   Compilation completed in 0.01 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUsersView.ShowUsersViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUsersView_ShowUsersViewUiBinderImpl_designTime1456927943484.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.ShowUsersView_ShowUsersViewUiBinderImpl_designTime1456927943484.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUsersView_ShowUsersViewUiBinderImpl_designTime1456927943484_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUsersView.ShowUsersViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUsersView_ShowUsersViewUiBinderImpl_designTime1456927943656.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.ShowUsersView_ShowUsersViewUiBinderImpl_designTime1456927943656.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUsersView_ShowUsersViewUiBinderImpl_designTime1456927943656_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2742 cached/archived units.  Used 2742 / 2745 units from cache.
+Compiling...
+   Compilation completed in 0.01 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.LoginView.LoginViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.LoginView_LoginViewUiBinderImpl_designTime1456932012866.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.LoginView_LoginViewUiBinderImpl_designTime1456932012866.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.LoginView_LoginViewUiBinderImpl_designTime1456932012866_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.LoginView.LoginViewUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.LoginView_LoginViewUiBinderImpl_designTime1456932013084.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.LoginView_LoginViewUiBinderImpl_designTime1456932013084.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.LoginView_LoginViewUiBinderImpl_designTime1456932013084_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2737 units from cache.
+Compiling...
+   Compilation completed in 5.92 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2737 units from cache.
+Compiling...
+   Compilation completed in 5.58 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2737 units from cache.
+Compiling...
+   Compilation completed in 6.07 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2737 units from cache.
+Compiling...
+   Compilation completed in 6.18 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2737 units from cache.
+Compiling...
+   Compilation completed in 5.94 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2737 units from cache.
+Compiling...
+   Compilation completed in 6.10 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2737 units from cache.
+Compiling...
+   Compilation completed in 5.87 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+   Unexpected entry in classpath; /Users/aleksanderkristiansen/git/KantineProjekt/Kantine_v2/test is neither a directory nor an archive (.jar or .zip)
+   Unexpected entry in classpath; /Kantine_v2/test-classes is neither a directory nor an archive (.jar or .zip)
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
