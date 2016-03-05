@@ -5,6 +5,8 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+
+
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.DeckPanel;
@@ -17,10 +19,12 @@ public class MainViewAdmin extends Composite {
 	private static MainViewAdminUiBinder uiBinder = GWT.create(MainViewAdminUiBinder.class);
 	@UiField DeckLayoutPanel contentPanel;
 	@UiField DeckLayoutPanel adminHeader;
+
 	
 	private adminMenu adminMenu;
 	private CreateUser createUser;
 	private AdminHeaderView adminHeaderView;
+	private LoginView loginView;
 
 	interface MainViewAdminUiBinder extends UiBinder<Widget, MainViewAdmin> {
 	}
@@ -30,12 +34,18 @@ public class MainViewAdmin extends Composite {
 		adminMenu = new adminMenu();
 		createUser = new CreateUser();
 		adminHeaderView = new AdminHeaderView();
+	   loginView = new LoginView();
+	   
 		contentPanel.add(adminMenu);
 		contentPanel.add(createUser);
 		adminHeader.add(adminHeaderView);		
+		contentPanel.add(loginView);
+		
+		
+		
 		
 		adminHeader.showWidget(adminHeaderView);
-		contentPanel.showWidget(adminMenu);
+		contentPanel.showWidget(loginView);
 	}
 	
 	public void changeWidget(Widget w){
@@ -50,5 +60,16 @@ public class MainViewAdmin extends Composite {
 		return createUser;
 	}
 
+	public LoginView getLoginView() {
+	    return loginView;
+	  }
 
+	  public void loginOk(String user) {
+		 	
+		  }
+
+		  // login has been cancelled - update pages
+		  public void loginCancel() {
+		  
+		  }
 }
