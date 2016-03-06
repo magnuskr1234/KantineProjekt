@@ -60,8 +60,8 @@ public class ShowUserList extends Composite {
     userTable.getFlexCellFormatter().setWidth(0, 0, "25px");
     userTable.getFlexCellFormatter().setWidth(0, 1, "200px");
     userTable.getFlexCellFormatter().setWidth(0, 2, "25px");
-    userTable.getFlexCellFormatter().setWidth(0, 3, "25px");
-    userTable.getFlexCellFormatter().setWidth(0, 4, "25px");
+    userTable.getFlexCellFormatter().setWidth(0, 3, "100px");
+    userTable.getFlexCellFormatter().setWidth(0, 4, "100px");
 
 
     // set headers in flextable
@@ -79,7 +79,7 @@ public class ShowUserList extends Composite {
     userTable.setText(1, 2, "200" );
     
     int i = 0;
-    Button edit = new Button("Ret");
+    Button edit = new Button("Opdater saldo");
     edit.getElement().setId("editButton");
     userTable.setWidget(i+1, 3, edit);
     Button delete = new Button("Slet bruger");

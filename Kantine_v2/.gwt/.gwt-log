@@ -9422,3 +9422,39 @@ Rebinding gwt.client.ui.ShowUserList_ShowUserListUiBinderImpl_designTime14572742
       Compiling...
          Compilation completed in 0,00 seconds
       Removing invalidated units
+Rebinding gwt.client.ui.ShowUserList.ShowUserListUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0,01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUserList_ShowUserListUiBinderImpl_designTime1457274759071.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.ShowUserList_ShowUserListUiBinderImpl_designTime1457274759071.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0,00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUserList_ShowUserListUiBinderImpl_designTime1457274759071_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0,00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUserList.ShowUserListUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0,01 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUserList_ShowUserListUiBinderImpl_designTime1457274763728.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface gwt.client.ui.ShowUserList_ShowUserListUiBinderImpl_designTime1457274763728.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0,00 seconds
+      Removing invalidated units
+Rebinding gwt.client.ui.ShowUserList_ShowUserListUiBinderImpl_designTime1457274763728_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0,00 seconds
+      Removing invalidated units
