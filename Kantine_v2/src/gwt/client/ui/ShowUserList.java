@@ -78,7 +78,12 @@ public class ShowUserList extends Composite {
     userTable.setText(1, 1, "Magnus");
     userTable.setText(1, 2, "200" );
     
-    int i = 0;
+    userTable.setText(2, 0, "0" );
+    userTable.setText(2, 1, "Alexander med flere");
+    userTable.setText(2, 2, "1" );
+    
+    
+    for (int i=0; i < 2; i++){
     Button edit = new Button("Opdater saldo");
     edit.getElement().setId("editButton");
     userTable.setWidget(i+1, 3, edit);
@@ -89,6 +94,7 @@ public class ShowUserList extends Composite {
     // add edit and delete buttons to row
     edit.addClickHandler(editHandler);
     delete.addClickHandler(deleteHandler);
+    }
 	}
 	
 	 private class DeleteHandler implements ClickHandler {
