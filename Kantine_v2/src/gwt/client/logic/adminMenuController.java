@@ -157,6 +157,7 @@ public class adminMenuController {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == adminMenu.getBtnShowUsers()){
+				
 				mainViewAdmin.changeWidget(showUserListView);
 			}			
 		}

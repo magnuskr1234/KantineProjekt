@@ -70,7 +70,8 @@ public class MainViewAdmin extends Composite {
 		contentPanel.add(loginView);
 		
 		// Initially show login view
-		contentPanel.showWidget(loginView);			
+		adminHeader.showWidget(adminHeaderView);
+		contentPanel.showWidget(adminMenu);			
 	
 	}
 	
