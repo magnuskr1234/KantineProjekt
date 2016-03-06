@@ -12,7 +12,9 @@ public class AdminHeaderView extends Composite {
 
 	private static AdminHeaderViewUiBinder uiBinder = GWT.create(AdminHeaderViewUiBinder.class);
 	@UiField Label userNameLabel;
-	@UiField Button btnLogOut;
+	@UiField Button btnMainMenu;
+	@UiField Button btnLogout;
+	
 
 	interface AdminHeaderViewUiBinder extends UiBinder<Widget, AdminHeaderView> {
 	}
@@ -21,4 +23,11 @@ public class AdminHeaderView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
+	public Button getBtnMainMenu() {
+		return btnMainMenu;
+	}
+	
+	public Button getBtnLogout(){
+		return btnLogout;
+	}
 }

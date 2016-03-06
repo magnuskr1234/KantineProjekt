@@ -33,4 +33,20 @@ public class adminMenu extends Composite {
 	public Button getBtnCreateItem() {
 		return createItem;
 	}
+
+	public Button getBtnDeleteItem() {
+		return deleteItem;
+	}
+
+	public Button getBtnDeleteUser() {
+		return deleteUser;
+	}
+
+	public Button getBtnStatistic() {
+		return statistic;
+	}
+
+	public Button getBtnShowUsers() {
+		return showUsers;
+	}
 }

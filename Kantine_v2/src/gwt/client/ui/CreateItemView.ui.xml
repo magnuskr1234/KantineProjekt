@@ -4,6 +4,16 @@
 	<ui:style>
 	
 	</ui:style>
-	<g:HTMLPanel>
+		<g:HTMLPanel>
+		<g:VerticalPanel height="198px" width="142px">
+			<g:Label text="Varenavn:"/>
+			<g:TextBox/>
+			<g:Label text="Pris"/>
+			<g:TextBox/>
+			<g:HorizontalPanel>
+				<g:Button>Opret</g:Button>
+				<g:Button ui:field="btnCancel" text="Annuller">Anuller</g:Button>
+			</g:HorizontalPanel>
+		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
