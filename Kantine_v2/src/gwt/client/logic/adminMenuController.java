@@ -113,6 +113,8 @@ public class adminMenuController {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == adminMenu.getBtnDeleteItem()){
+				
+				deleteItemView.pop();
 				mainViewAdmin.changeWidget(deleteItemView);
 			}			
 		}
@@ -124,7 +126,8 @@ public class adminMenuController {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == adminMenu.getBtnDeleteUser()){
-				mainViewAdmin.changeWidget(deleteUserView);
+				showUserListView.pop();
+				mainViewAdmin.changeWidget(showUserListView);
 			}			
 		}
 	}

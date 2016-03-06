@@ -19,15 +19,16 @@
 			</g:row>
 			<g:row>
 				<g:customCell>
-					<g:Button ui:field="deleteUser">Slet bruger</g:Button>
+					<g:Button ui:field="statistic">Statistik</g:Button>
 				</g:customCell>
 				<g:customCell>
-					<g:Button ui:field="statistic">Statistik</g:Button>
+					<g:Button ui:field="deleteUser">Slet bruger</g:Button>
 				</g:customCell>
 				<g:customCell>
 					<g:Button ui:field="showUsers">Vis brugere</g:Button>
 				</g:customCell>
 			</g:row>
+			<g:row/>
 		</g:Grid>
 	</g:HTMLPanel>
 </ui:UiBinder> 

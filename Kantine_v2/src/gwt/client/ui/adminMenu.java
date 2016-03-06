@@ -12,10 +12,10 @@ import com.google.gwt.event.dom.client.ClickEvent;
 public class adminMenu extends Composite {
 
 	private static adminMenuUiBinder uiBinder = GWT.create(adminMenuUiBinder.class);
-	@UiField Button deleteItem;
 	@UiField Button createItem;
 	@UiField Button createUser;
 	@UiField Button deleteUser;
+	@UiField Button deleteItem;
 	@UiField Button statistic;
 	@UiField Button showUsers;
 
