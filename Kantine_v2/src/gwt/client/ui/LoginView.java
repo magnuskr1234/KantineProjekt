@@ -11,7 +11,11 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
-
+/**
+ * UiBinder der opbygger layout til login 
+ * @author magnusrasmussen
+ *
+ */
 public class LoginView extends Composite {
 
 	private static LoginViewUiBinder uiBinder = GWT.create(LoginViewUiBinder.class);
@@ -25,7 +29,9 @@ public class LoginView extends Composite {
 	interface LoginViewUiBinder extends UiBinder<Widget, LoginView> {
 	}
 
-	
+	/**
+	 * Login constructor
+	 */
 	public LoginView() {
 		initWidget(uiBinder.createAndBindUi(this));
 		lblLoginError.setVisible(false);

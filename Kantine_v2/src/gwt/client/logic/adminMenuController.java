@@ -7,9 +7,12 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 import gwt.client.ui.*;
 
-
-
-
+/**
+ * Pagecontroller til at styre hvilken side som aktuelt bliver vist for administratoren, ved at tilføje clickhandlers
+ * som sørger for at skifte til det rette panel, gennem mainViewAdmin. 
+ * @author magnusrasmussen
+ *
+ */
 public class adminMenuController {
 
 	// References for views
@@ -66,6 +69,7 @@ public class adminMenuController {
 		adminMenu.getBtnShowUsers().addClickHandler(new ShowUserListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
 		
+		// Add adminHeaderView Handlers
 		adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
 		adminHeaderView.getBtnMainMenu().addClickHandler(new ReturnMainViewHandler());
 		
@@ -75,11 +79,6 @@ public class adminMenuController {
 		//Add createItemView handler
 		createItemView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
 		
-		
-		
-		
-
-	
 		RootLayoutPanel rp = RootLayoutPanel.get();
 		rp.add(mainViewAdmin);
 	}
@@ -197,7 +196,5 @@ public class adminMenuController {
 		        mainViewAdmin.loginCancel();
 		      }
 		    }
-		  }
-	
-	
+		  }	
 }

@@ -26,7 +26,7 @@ public class Kantine_v2 implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		// TODO Auto-generated method stub
+		// Her burde oprettes en anden form for controller, da adminMenuController ikke skal håndtere userMenu 
 		new adminMenuController();
 		
 		
