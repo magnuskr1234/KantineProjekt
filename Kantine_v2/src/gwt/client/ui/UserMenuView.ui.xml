@@ -11,7 +11,7 @@
 					<g:Button text="Vand"/>
 				</g:customCell>
 				<g:customCell>
-					<g:Button text="Kaffe"/>
+					<g:Button text="Kaffe" ui:field="button"/>
 				</g:customCell>
 			</g:row>
 			<g:row>
