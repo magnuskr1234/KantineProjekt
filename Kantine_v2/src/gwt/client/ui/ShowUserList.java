@@ -14,7 +14,11 @@ import com.google.gwt.user.client.ui.Widget;
 
 import java.util.List;
 
-
+/**
+ * Flextable bliver oprettet her og der bliver lavet en liste af alle brugere i systemet fra databasen. 
+ * @author magnusrasmussen
+ *
+ */
 public class ShowUserList extends Composite {
 
 	private static ShowUserListUiBinder uiBinder = GWT.create(ShowUserListUiBinder.class);
@@ -50,7 +54,9 @@ public class ShowUserList extends Composite {
 		  public Button getControllerDeleteBtn() {
 		    return controllerDeleteBtn;
 		  }
-
+	/**
+	 * Flextable bliver tilføjet rækker samt værdier. 
+	 */
 	public void pop(){
     // remove table data
     userTable.removeAllRows();
@@ -82,7 +88,7 @@ public class ShowUserList extends Composite {
     userTable.setText(2, 1, "Alexander med flere");
     userTable.setText(2, 2, "1" );
     
-    
+    // Knapper til at slette bruger og opdatere saldo blive tilføjet til hver række. 
     for (int i=0; i < 2; i++){
     Button edit = new Button("Opdater saldo");
     edit.getElement().setId("editButton");
@@ -97,6 +103,7 @@ public class ShowUserList extends Composite {
     }
 	}
 	
+	// Handler til at håndtere et tryk på knappen "Slet bruger"
 	 private class DeleteHandler implements ClickHandler {
 		    public void onClick(ClickEvent event) {
 		      // save event row index
@@ -108,7 +115,7 @@ public class ShowUserList extends Composite {
 		    	Window.alert("Bruger slettet");
 		    }
 		  } 
-	 
+	 // Handler til at håndtere et tryk på knappen "Opdater saldo" 
 	 private class EditHandler implements ClickHandler {
 		    public void onClick(ClickEvent event) {
 		      // get rowindex where event happened

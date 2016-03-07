@@ -14,6 +14,11 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
+/**
+ * Her bliver de forskellige content view tilføjet til decklayoutpanel for content og header. 
+ * @author magnusrasmussen
+ *
+ */
 public class MainViewAdmin extends Composite {
 
 	private static MainViewAdminUiBinder uiBinder = GWT.create(MainViewAdminUiBinder.class);
