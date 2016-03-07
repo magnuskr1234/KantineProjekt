@@ -14,11 +14,47 @@ public class UserView extends Composite {
 	@UiField DeckLayoutPanel contentPanel;
 	@UiField DeckLayoutPanel basket;
 
+	//Content Views
+	private UserMenuView userMenuView;
+	private BasketView basketView;
+	
+	//Header Views
+	
+	
+
 	interface UserViewUiBinder extends UiBinder<Widget, UserView> {
 	}
 
 	public UserView() {
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		//Make content view
+		userMenuView = new UserMenuView();
+		basketView = new BasketView();
+		
+		
+		//add contentviews to decklayout panel
+		contentPanel.add(userMenuView);
+		basket.add(basketView);
+		
+		// Initially show menu view
+		contentPanel.showWidget(userMenuView);
+		basket.showWidget(basketView);
+		
+	}
+	
+	// Show content widget
+	public void changeWidget(Widget w){
+		contentPanel.showWidget(w);
+	}
+	
+	// Get views
+	public UserMenuView getUserMenuView(){
+		return userMenuView;
+	}
+	
+	public BasketView getBasketView(){
+		return basketView;
 	}
 
 }

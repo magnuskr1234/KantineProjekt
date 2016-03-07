@@ -36,6 +36,7 @@ public class MainViewAdmin extends Composite {
 	private LoginView loginView;
 	private ShowUserList showUserList;
 	private StatisticView statistic;
+	private UserView userView;
 	
 	// Header views
 	private AdminHeaderView adminHeaderView;
@@ -55,6 +56,8 @@ public class MainViewAdmin extends Composite {
 		editPerson = new EditPersonView();
 		showUserList = new ShowUserList();
 		statistic = new StatisticView();
+		userView = new UserView();
+		
 		
 		// Header & Login 
 		adminHeaderView = new AdminHeaderView();
@@ -69,6 +72,7 @@ public class MainViewAdmin extends Composite {
 		contentPanel.add(editPerson);
 		contentPanel.add(showUserList);
 		contentPanel.add(statistic);
+		contentPanel.add(userView);
 	
 		// Add Header & login 
 		adminHeader.add(adminHeaderView);		
@@ -76,7 +80,7 @@ public class MainViewAdmin extends Composite {
 		
 		// Initially show login view
 		adminHeader.showWidget(adminHeaderView);
-		contentPanel.showWidget(adminMenu);			
+		contentPanel.showWidget(userView);
 	
 	}
 	
