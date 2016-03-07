@@ -5,7 +5,7 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel>
+		<g:VerticalPanel styleName="basket">
 			<g:TextBox text="banan...... 5kr"/>
 			<g:HorizontalPanel width="100%">
 				<g:Button ui:field="btnBuy" text="Køb"/>

@@ -62,3 +62,7 @@ margin-right: 20px;
     left: 0;
     z-index: -100;
 }
+.basket {
+background: white;
+min-height: 400px;
+}
