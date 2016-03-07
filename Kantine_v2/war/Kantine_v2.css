@@ -41,3 +41,6 @@ margin: 0px 40px 0px 40px;
     font-size: 200%;
     background: #009688 !important;
    }
+.float {
+	float: right;
+}

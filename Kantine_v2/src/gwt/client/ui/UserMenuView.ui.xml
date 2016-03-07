@@ -5,5 +5,23 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
+		<g:Grid width="100%" height="100%">
+			<g:row>
+				<g:customCell>
+					<g:Button text="Vand"/>
+				</g:customCell>
+				<g:customCell>
+					<g:Button text="Kaffe"/>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:Button text="Kød"/>
+				</g:customCell>
+				<g:customCell>
+					<g:Button text="Brød"/>
+				</g:customCell>
+			</g:row>
+		</g:Grid>
 	</g:HTMLPanel>
 </ui:UiBinder> 
