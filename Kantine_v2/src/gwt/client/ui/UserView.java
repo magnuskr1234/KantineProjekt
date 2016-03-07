@@ -38,6 +38,7 @@ public class UserView extends Composite {
 		basket.add(basketView);
 		
 		// Initially show menu view
+		basketView.pop();
 		contentPanel.showWidget(userMenuView);
 		basket.showWidget(basketView);
 		

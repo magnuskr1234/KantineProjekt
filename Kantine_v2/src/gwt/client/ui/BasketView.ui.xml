@@ -5,11 +5,11 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel styleName="basket">
-			<g:TextBox text="banan...... 5kr"/>
-			<g:HorizontalPanel width="100%">
-				<g:Button ui:field="btnBuy" text="Køb"/>
-				<g:Button ui:field="btnCancel" text="Annuller"/>
+		<g:VerticalPanel height="300px" styleName="basket">
+			<g:FlexTable ui:field="basketTable"/>
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE">
+				<g:Button styleName="btn">Køb</g:Button>
+				<g:Button styleName="btn">Annuler</g:Button>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
