@@ -29,7 +29,7 @@ public class Kantine_v2 implements EntryPoint {
 		// Her burde oprettes en anden form for controller, da adminMenuController ikke skal håndtere userMenu 
 		new adminMenuController();
 		
-		
+		//test hej fra kevin
 	}
 		
 }
