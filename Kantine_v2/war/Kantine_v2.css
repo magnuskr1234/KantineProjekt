@@ -63,11 +63,12 @@ margin-right: 20px;
     z-index: -100;
 }
 .basket {
-background: red;
+background: white;
 min-height: 400px;
-border-style: dotted;
+border-style: solid;
 border-width: 1px;
 margin-top: 50px;
+margin-bottom: 50px;
 }
 .usermenu {
 background: white;
