@@ -17,6 +17,7 @@ public class UserView extends Composite {
 	//Content Views
 	private UserMenuView userMenuView;
 	private BasketView basketView;
+	private UserHistoryView userHistoryView;
 	
 	//Header Views
 	
@@ -31,11 +32,13 @@ public class UserView extends Composite {
 		//Make content view
 		userMenuView = new UserMenuView();
 		basketView = new BasketView();
+		userHistoryView = new UserHistoryView();
 		
 		
 		//add contentviews to decklayout panel
 		contentPanel.add(userMenuView);
 		basket.add(basketView);
+		contentPanel.add(userHistoryView);
 		
 		// Initially show menu view
 		basketView.pop();
@@ -47,6 +50,14 @@ public class UserView extends Composite {
 	// Show content widget
 	public void changeWidget(Widget w){
 		contentPanel.showWidget(w);
+	}
+	
+	public void showHistoryView(){
+		contentPanel.showWidget(userHistoryView);
+	}
+	
+	public void showMenuView(){
+		contentPanel.showWidget(userMenuView);
 	}
 	
 	// Get views

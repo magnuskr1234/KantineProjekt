@@ -15,6 +15,7 @@ import gwt.client.admin.ui.ShowUserListView;
 import gwt.client.admin.ui.StatisticView;
 import gwt.client.admin.ui.AdminMenuView;
 import gwt.client.ui.*;
+import gwt.client.user.ui.UserHeaderView;
 import gwt.client.user.ui.UserMenuView;
 import gwt.client.user.ui.UserView;
 
@@ -50,6 +51,7 @@ public class Controller {
 	// Referencer til user views
 	private UserMenuView userMenuView;
 	private UserView userView;
+	private UserHeaderView userHeaderView;
 	 
 	// Hardcoded login details for user
 		private final String userId = "Peter";
@@ -77,13 +79,19 @@ public class Controller {
 		showUserListView = mainView.getshowUserList();
 		statistic = mainView.getstatistic();
 		
+		
 		//Referncer til subview for user
 		userMenuView = mainView.getuserMenu();
 		userView = mainView.getUserView();
+		userHeaderView = mainView.getuserHeaderView();
 		
 		//Add loginview handlers
 		loginView.getBtnOk().addClickHandler(new LoginHandler());
 		loginView.getBtnCancel().addClickHandler(new LoginHandler());	
+		
+		//Add logoutview handlers
+		adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
+		userHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
 	    
 	    //Add adminMenuView Handlers
 	    adminMenu.getBtnCreateItem().addClickHandler(new CreateItemViewHandler());		
@@ -95,8 +103,13 @@ public class Controller {
 		
 		//Tilføj user menu handlers
 		userMenuView.getBuyBtn().addClickHandler(new BuyHandler());
+		
+		//Add userHeader handlers
+		userHeaderView.getBtnHistory().addClickHandler(new HistoryHandler());
+		userHeaderView.getBtnMainMenu().addClickHandler(new UserReturnToMenuHandler());
+		
 		// Add adminHeaderView Handlers
-		adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
+		
 		adminHeaderView.getBtnMainMenu().addClickHandler(new ReturnMainViewHandler());
 		
 		//Add createUserView handler		
@@ -104,6 +117,8 @@ public class Controller {
 		
 		//Add createItemView handler
 		createItemView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
+		
+		
 		
 		// Vis admin menu til at starte med
 		mainView.showLogin();
@@ -141,9 +156,8 @@ public class Controller {
 		        } else if (loginView.getUserId().equals(userId) && loginView.getUserPw().equals(userPw)){
 		            mainView.loginOk(loginView.getUserId());
 			          loginView.resetError();
-			          loginView.clearfields();		
-			          //mainView.showUserMenu();
-			          //mainView.showUserHeader();
+			          loginView.clearfields();
+			          mainView.showUserHeader();
 			          mainView.showUserView();
 		        } else
 		          loginView.setError();
@@ -160,7 +174,7 @@ public class Controller {
 		
 		@Override
 		public void onClick(ClickEvent event){
-			if (event.getSource() == adminHeaderView.getBtnLogout()){
+			if (event.getSource() == adminHeaderView.getBtnLogout() || event.getSource() == userHeaderView.getBtnLogout() ){
 				mainView.showLogin();
 				mainView.showLoginHeader();
 				
@@ -246,6 +260,27 @@ public class Controller {
 			if (event.getSource() == adminMenu.getBtnStatistic()){
 				mainView.changeWidget(statistic);
 			}			
+		}
+	}
+	
+	//Show history handler
+	private class HistoryHandler implements ClickHandler{
+		
+		@Override
+		public void onClick(ClickEvent event){
+			if (event.getSource() == userHeaderView.getBtnHistory()){
+				mainView.getUserView().showHistoryView();
+			}
+		}
+	}
+	
+	private class UserReturnToMenuHandler implements ClickHandler{
+		
+		@Override
+		public void onClick(ClickEvent event){
+			if (event.getSource() == userHeaderView.getBtnMainMenu()){
+				mainView.getUserView().showMenuView();
+			}
 		}
 	}
 	

@@ -8,6 +8,7 @@
 		<g:HorizontalPanel width="100%" height="80px" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE" styleName="header">
 			<g:Button ui:field="btnMainMenu">Hovedemenu</g:Button>
 			<g:Label text="Brugermenu" ui:field="userNameLabel"/>
+			<g:Button ui:field="btnHistory" text="Historie"/>
 			<g:Button ui:field="btnLogout" text="Log ud"/>
 		</g:HorizontalPanel>
 	</g:HTMLPanel>
