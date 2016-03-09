@@ -97,13 +97,7 @@ public class MainView extends Composite {
 		headerPanel.add(adminHeaderView);		
 		headerPanel.add(userHeaderView);
 		headerPanel.add(loginHeaderView);
-		contentPanel.add(loginView);
-		
-		
-		// Initially show login view
-		headerPanel.showWidget(loginHeaderView);
-		contentPanel.showWidget(loginView);
-	
+		contentPanel.add(loginView);	
 	}
 	
 	// Show content widget

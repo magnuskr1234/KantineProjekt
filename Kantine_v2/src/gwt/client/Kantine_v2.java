@@ -1,6 +1,6 @@
 package gwt.client;
 
-import gwt.client.logic.AdminMenuController;
+import gwt.client.logic.Controller;
 import gwt.client.logic.Controller;
 import gwt.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;

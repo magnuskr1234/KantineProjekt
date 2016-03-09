@@ -12,7 +12,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 public class UserMenuView extends Composite {
 
 	private static UserMenuViewUiBinder uiBinder = GWT.create(UserMenuViewUiBinder.class);
-	@UiField Button button;
+	@UiField Button historyBtn;
+	@UiField Button buyBtn;
 
 	interface UserMenuViewUiBinder extends UiBinder<Widget, UserMenuView> {
 	}
@@ -21,7 +22,13 @@ public class UserMenuView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	@UiHandler("button")
-	void onButtonClick(ClickEvent event) {
+	public Button getHistoryBtn() {
+		return historyBtn;
 	}
+
+	public Button getBuyBtn() {
+		return buyBtn;
+	}
+
+
 }

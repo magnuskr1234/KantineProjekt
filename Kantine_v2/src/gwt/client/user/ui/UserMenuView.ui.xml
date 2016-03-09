@@ -8,10 +8,10 @@
 		<g:Grid width="90%" height="90%" styleName="usermenu">
 			<g:row>
 				<g:customCell>
-					<g:Button text="Køb"/>
+					<g:Button text="Køb" ui:field="buyBtn"/>
 				</g:customCell>
 				<g:customCell>
-					<g:Button text="Historik" ui:field="button"/>
+					<g:Button text="Historik" ui:field="historyBtn"/>
 				</g:customCell>
 			</g:row>
 		</g:Grid>
