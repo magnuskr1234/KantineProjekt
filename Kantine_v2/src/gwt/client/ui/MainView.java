@@ -163,6 +163,11 @@ public class MainView extends Composite {
 		return userHeaderView;
 	}
 	
+	// Show User View
+	public void showUserView(){
+		contentPanel.showWidget(userView);
+	}
+	
 	// Show Create Item
 	public void showCreateItem(){
 		changeWidget(createItem);
@@ -195,11 +200,6 @@ public class MainView extends Composite {
 	// Show User Menu
 	public void showUserMenu(){
 		changeWidget(userMenu);
-	}
-	
-	// Show User view
-	public void showUserView(){
-		changeWidget(userView);
 	}
 	
 	// Show statistic

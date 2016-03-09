@@ -142,8 +142,9 @@ public class Controller {
 		            mainView.loginOk(loginView.getUserId());
 			          loginView.resetError();
 			          loginView.clearfields();		
-			          mainView.showUserMenu();
-			          mainView.showUserHeader();
+			          //mainView.showUserMenu();
+			          //mainView.showUserHeader();
+			          mainView.showUserView();
 		        } else
 		          loginView.setError();
 		      else if (event.getSource() == loginView.getBtnCancel()) {
