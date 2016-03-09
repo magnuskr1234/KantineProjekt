@@ -5,14 +5,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-public class StatisticView extends Composite {
+public class LoginHeaderView extends Composite {
 
-	private static StatisticViewUiBinder uiBinder = GWT.create(StatisticViewUiBinder.class);
+	private static LoginHeaderViewUiBinder uiBinder = GWT.create(LoginHeaderViewUiBinder.class);
 
-	interface StatisticViewUiBinder extends UiBinder<Widget, StatisticView> {
+	interface LoginHeaderViewUiBinder extends UiBinder<Widget, LoginHeaderView> {
 	}
 
-	public StatisticView() {
+	public LoginHeaderView() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 

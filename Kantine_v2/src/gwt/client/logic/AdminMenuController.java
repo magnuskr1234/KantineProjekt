@@ -5,6 +5,15 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
+import gwt.client.admin.ui.AdminHeaderView;
+import gwt.client.admin.ui.CreateItemView;
+import gwt.client.admin.ui.CreateUserView;
+import gwt.client.admin.ui.DeleteItemView;
+import gwt.client.admin.ui.DeleteUserView;
+import gwt.client.admin.ui.EditPersonView;
+import gwt.client.admin.ui.ShowUserListView;
+import gwt.client.admin.ui.StatisticView;
+import gwt.client.admin.ui.AdminMenuView;
 import gwt.client.ui.*;
 
 /**
@@ -13,37 +22,32 @@ import gwt.client.ui.*;
  * @author magnusrasmussen
  *
  */
-public class adminMenuController {
+public class AdminMenuController {
 
 	// References for views
-	private MainViewAdmin mainViewAdmin;
+	private MainView mainViewAdmin;
 	
-	private adminMenu adminMenu;
+	private AdminMenuView adminMenu;
 	private AdminHeaderView adminHeaderView;
 	
-	private CreateUser createUserView;
+	private CreateUserView createUserView;
 	private CreateItemView createItemView;
 	
 	private DeleteItemView deleteItemView;
 	private DeleteUserView deleteUserView;
 	
 	private EditPersonView editPersonView;
-	private LoginView loginView;
 	
-	private ShowUserList showUserListView;
+	
+	private ShowUserListView showUserListView;
 	
 	private StatisticView statistic;
-	
-	
-	// Hardcoded login details
-	 private final String userId = "Peter";
-	 private final String userPw = "1234";
 	 
 	 
-	public adminMenuController(){
+	public AdminMenuController(){
 		
 		//Instantiate pagecontroller
-		mainViewAdmin = new MainViewAdmin();
+		mainViewAdmin = new MainView();
 		
 		//Get references to subviews
 		adminHeaderView = mainViewAdmin.getadminHeaderView();
@@ -53,13 +57,11 @@ public class adminMenuController {
 		deleteItemView = mainViewAdmin.getdeleteItem();
 		deleteUserView = mainViewAdmin.getdeleteUserView();
 		editPersonView = mainViewAdmin.geteditPerson();
-		loginView = mainViewAdmin.getLoginView();
+		
 		showUserListView = mainViewAdmin.getshowUserList();
 		statistic = mainViewAdmin.getstatistic();
 		
-		//Add loginview handlers
-		loginView.getBtnOk().addClickHandler(new LoginHandler());
-	    loginView.getBtnCancel().addClickHandler(new LoginHandler());
+
 	    
 	    //Add adminMenuView Handlers
 	    adminMenu.getBtnCreateItem().addClickHandler(new CreateItemViewHandler());		
@@ -79,8 +81,11 @@ public class adminMenuController {
 		//Add createItemView handler
 		createItemView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
 		
+		mainViewAdmin.showAdminMenu();
+		mainViewAdmin.showAdminHeader();
+		
 		RootLayoutPanel rp = RootLayoutPanel.get();
-		rp.add(mainViewAdmin);
+		rp.add(mainViewAdmin); 
 	}
 	
 	// Logout handler
@@ -89,7 +94,7 @@ public class adminMenuController {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == adminHeaderView.getBtnLogout()){
-				mainViewAdmin.changeWidget(loginView);
+				mainViewAdmin.getLoginView();
 				
 			}	
 		}
@@ -176,25 +181,5 @@ public class adminMenuController {
 		}
 	}
 	
-	// Login handler
-	  private class LoginHandler implements ClickHandler {
 
-		    @Override
-		    public void onClick(ClickEvent event) {
-		      if (event.getSource() == loginView.getBtnOk())
-		        if (loginView.getUserId().equals(userId) && loginView.getUserPw().equals(userPw)) {
-		          mainViewAdmin.loginOk(loginView.getUserId());
-		          loginView.resetError();
-		          loginView.clearfields();		
-		          mainViewAdmin.showAdminMenu();
-		          mainViewAdmin.showAdminHeader();
-		        } else
-		          loginView.setError();
-		      else if (event.getSource() == loginView.getBtnCancel()) {
-		        loginView.resetError();
-		        loginView.clearfields();
-		        mainViewAdmin.loginCancel();
-		      }
-		    }
-		  }	
 }

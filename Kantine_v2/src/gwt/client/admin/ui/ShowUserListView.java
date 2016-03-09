@@ -1,4 +1,4 @@
-package gwt.client.ui;
+package gwt.client.admin.ui;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -19,12 +19,12 @@ import java.util.List;
  * @author magnusrasmussen
  *
  */
-public class ShowUserList extends Composite {
+public class ShowUserListView extends Composite {
 
 	private static ShowUserListUiBinder uiBinder = GWT.create(ShowUserListUiBinder.class);
 
 	@UiField FlexTable userTable;
-	interface ShowUserListUiBinder extends UiBinder<Widget, ShowUserList> {
+	interface ShowUserListUiBinder extends UiBinder<Widget, ShowUserListView> {
 	}
 
 	
@@ -36,7 +36,7 @@ public class ShowUserList extends Composite {
 	  private EditHandler editHandler;
 	  private DeleteHandler deleteHandler;
 	 
-	public ShowUserList() {
+	public ShowUserListView() {
 		initWidget(uiBinder.createAndBindUi(this));
 	    // row event handlers
 	    editHandler = new EditHandler();

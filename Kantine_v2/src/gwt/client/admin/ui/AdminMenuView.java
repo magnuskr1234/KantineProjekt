@@ -1,4 +1,4 @@
-package gwt.client.ui;
+package gwt.client.admin.ui;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
-public class adminMenu extends Composite {
+public class AdminMenuView extends Composite {
 
 	private static adminMenuUiBinder uiBinder = GWT.create(adminMenuUiBinder.class);
 	@UiField Button createItem;
@@ -19,10 +19,10 @@ public class adminMenu extends Composite {
 	@UiField Button statistic;
 	@UiField Button showUsers;
 
-	interface adminMenuUiBinder extends UiBinder<Widget, adminMenu> {
+	interface adminMenuUiBinder extends UiBinder<Widget, AdminMenuView> {
 	}
 
-	public adminMenu() {
+	public AdminMenuView() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	

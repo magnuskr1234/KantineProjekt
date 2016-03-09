@@ -6,6 +6,18 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import gwt.client.admin.ui.AdminHeaderView;
+import gwt.client.admin.ui.CreateItemView;
+import gwt.client.admin.ui.CreateUserView;
+import gwt.client.admin.ui.DeleteItemView;
+import gwt.client.admin.ui.DeleteUserView;
+import gwt.client.admin.ui.EditPersonView;
+import gwt.client.admin.ui.ShowUserListView;
+import gwt.client.admin.ui.StatisticView;
+import gwt.client.admin.ui.AdminMenuView;
+import gwt.client.user.ui.UserHeaderView;
+import gwt.client.user.ui.UserMenuView;
+import gwt.client.user.ui.UserView;
 
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -19,49 +31,55 @@ import com.google.gwt.event.dom.client.ClickEvent;
  * @author magnusrasmussen
  *
  */
-public class MainViewAdmin extends Composite {
+public class MainView extends Composite {
 
-	private static MainViewAdminUiBinder uiBinder = GWT.create(MainViewAdminUiBinder.class);
+	private static MainViewnUiBinder uiBinder = GWT.create(MainViewnUiBinder.class);
 	//Layout panel
 	@UiField DeckLayoutPanel contentPanel;
-	@UiField DeckLayoutPanel adminHeader;
+	@UiField DeckLayoutPanel headerPanel;
 
 	// Content views
-	private adminMenu adminMenu;
+	private AdminMenuView adminMenu;
 	private CreateItemView createItem;
-	private CreateUser createUser;
+	private CreateUserView createUser;
 	private DeleteItemView deleteItem;
 	private DeleteUserView deleteUser;
 	private EditPersonView editPerson;
 	private LoginView loginView;
-	private ShowUserList showUserList;
+	private ShowUserListView showUserList;
 	private StatisticView statistic;
+	private UserMenuView userMenu;
 	private UserView userView;
 	
 	// Header views
 	private AdminHeaderView adminHeaderView;
+	private LoginHeaderView loginHeaderView;
+	private UserHeaderView userHeaderView;
 
-	interface MainViewAdminUiBinder extends UiBinder<Widget, MainViewAdmin> {
+	interface MainViewnUiBinder extends UiBinder<Widget, MainView> {
 	}
 
-	public MainViewAdmin() {
+	public MainView() {
 		initWidget(uiBinder.createAndBindUi(this));	
 		
 		//Make content view
-		adminMenu = new adminMenu();
+		adminMenu = new AdminMenuView();
 		createItem = new CreateItemView();
-		createUser = new CreateUser();
+		createUser = new CreateUserView();
 		deleteItem = new DeleteItemView();
 		deleteUser = new DeleteUserView();
 		editPerson = new EditPersonView();
-		showUserList = new ShowUserList();
+		showUserList = new ShowUserListView();
 		statistic = new StatisticView();
+		userMenu = new UserMenuView();
 		userView = new UserView();
 		
 		
 		// Header & Login 
 		adminHeaderView = new AdminHeaderView();
+		userHeaderView = new UserHeaderView();
 		loginView = new LoginView();
+		loginHeaderView = new LoginHeaderView();
 	   
 		//add contentviews to decklayout panel
 		contentPanel.add(adminMenu);
@@ -72,15 +90,19 @@ public class MainViewAdmin extends Composite {
 		contentPanel.add(editPerson);
 		contentPanel.add(showUserList);
 		contentPanel.add(statistic);
+		contentPanel.add(userMenu);
 		contentPanel.add(userView);
 	
 		// Add Header & login 
-		adminHeader.add(adminHeaderView);		
+		headerPanel.add(adminHeaderView);		
+		headerPanel.add(userHeaderView);
+		headerPanel.add(loginHeaderView);
 		contentPanel.add(loginView);
 		
+		
 		// Initially show login view
-		adminHeader.showWidget(adminHeaderView);
-		contentPanel.showWidget(userView);
+		headerPanel.showWidget(loginHeaderView);
+		contentPanel.showWidget(loginView);
 	
 	}
 	
@@ -90,7 +112,7 @@ public class MainViewAdmin extends Composite {
 	}
 	
 	// Get view
-	public adminMenu getadminMenu() {
+	public AdminMenuView getadminMenu() {
 		return adminMenu;
 	}
 	
@@ -98,7 +120,7 @@ public class MainViewAdmin extends Composite {
 		return createItem;
 	}
 	
-	public CreateUser getcreateUser(){
+	public CreateUserView getcreateUser(){
 		return createUser;
 	}
 	
@@ -113,7 +135,7 @@ public class MainViewAdmin extends Composite {
 		return editPerson;
 	}
 	
-	public ShowUserList getshowUserList(){
+	public ShowUserListView getshowUserList(){
 		return showUserList;
 	}
 	
@@ -121,12 +143,30 @@ public class MainViewAdmin extends Composite {
 		return statistic;
 	}
 	
+	public UserMenuView getuserMenu(){
+		return userMenu;
+	}
+	
+	public UserView getUserView(){
+		return userView;
+	}
+	
 	public LoginView getLoginView() {
 	    return loginView;
 	  }
 	
+	
+	// Headers
 	public AdminHeaderView getadminHeaderView(){
 		return adminHeaderView;
+	}
+	
+	public LoginHeaderView getloginHeaderView(){
+		return loginHeaderView;
+	}
+	
+	public UserHeaderView getuserHeaderView(){
+		return userHeaderView;
 	}
 	
 	// Show Create Item
@@ -158,6 +198,16 @@ public class MainViewAdmin extends Composite {
 		changeWidget(showUserList);
 	}
 	
+	// Show User Menu
+	public void showUserMenu(){
+		changeWidget(userMenu);
+	}
+	
+	// Show User view
+	public void showUserView(){
+		changeWidget(userView);
+	}
+	
 	// Show statistic
 	public void showStatistic(){
 		changeWidget(statistic);
@@ -170,12 +220,23 @@ public class MainViewAdmin extends Composite {
 	
 	//Show admin Header
 	public void showAdminHeader(){
-		adminHeader.showWidget(adminHeaderView);
+		headerPanel.showWidget(adminHeaderView);
+	}
+	
+	//Show login header
+	public void showLoginHeader(){
+		headerPanel.showWidget(loginHeaderView);
+	}
+	
+	//Show user header
+	public void showUserHeader(){
+		headerPanel.showWidget(userHeaderView);
 	}
 
 	//Login 
-	public void adminLogin(){
+	public void showLogin(){
 		changeWidget(loginView);
+		headerPanel.showWidget(loginHeaderView);
 		
 	}
 	

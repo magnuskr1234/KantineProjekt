@@ -1,6 +1,7 @@
 package gwt.client;
 
-import gwt.client.logic.adminMenuController;
+import gwt.client.logic.AdminMenuController;
+import gwt.client.logic.Controller;
 import gwt.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -27,7 +28,7 @@ public class Kantine_v2 implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 		// Her burde oprettes en anden form for controller, da adminMenuController ikke skal håndtere userMenu 
-		new adminMenuController();
+		new Controller();
 		
 		//test hej fra kevin
 	}

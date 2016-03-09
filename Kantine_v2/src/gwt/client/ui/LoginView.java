@@ -72,10 +72,5 @@ public class LoginView extends Composite {
 	public Button getBtnCancel() {
 		return btnCancel;
 	}
-	@UiHandler("btnOk")
-	void onBtnOkClick(ClickEvent event) {
-	}
-	@UiHandler("btnCancel")
-	void onBtnCancelClick(ClickEvent event) {
-	}
+
 }
