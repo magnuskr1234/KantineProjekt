@@ -1,5 +1,7 @@
 package gwt.client.logic;
 
+import java.util.ArrayList;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
@@ -18,6 +20,7 @@ import gwt.client.ui.*;
 import gwt.client.user.ui.UserHeaderView;
 import gwt.client.user.ui.UserMenuView;
 import gwt.client.user.ui.UserView;
+import gwt.shared.ItemDTO;
 
 /**
  * Pagecontroller til at styre hvilken side som aktuelt bliver vist for administratoren, ved at tilføje clickhandlers
@@ -102,7 +105,7 @@ public class Controller {
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
 		
 		//Tilføj user menu handlers
-		userMenuView.getBuyBtn().addClickHandler(new BuyHandler());
+		userView.getUserMenuView().getKaffeBtn().addClickHandler(new AddKaffeToBasketHandler());
 		
 		//Add userHeader handlers
 		userHeaderView.getBtnHistory().addClickHandler(new HistoryHandler());
@@ -127,17 +130,6 @@ public class Controller {
 		
 		RootLayoutPanel rp = RootLayoutPanel.get();
 		rp.add(mainView); 
-	}
-	
-	//Køb handler
-	private class BuyHandler implements ClickHandler{
-		
-		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == userMenuView.getBuyBtn()){
-				mainView.changeWidget(userView);
-			}			
-		}
 	}
 	
 	// Login handler
@@ -273,7 +265,7 @@ public class Controller {
 			}
 		}
 	}
-	
+	//Back to menu handler
 	private class UserReturnToMenuHandler implements ClickHandler{
 		
 		@Override
@@ -283,6 +275,23 @@ public class Controller {
 			}
 		}
 	}
+	
+	//Add to basket
+	
+	private class AddKaffeToBasketHandler implements ClickHandler{
+		@Override
+		public void onClick(ClickEvent event){
+			if (event.getSource() == userView.getUserMenuView().getKaffeBtn()){
+				mainView.getUserView().AddItemToBasket(new ItemDTO("Kaffe", 20));
+				mainView.getUserView().showBasketWidget();
+				//mainView.getUserView().showHistoryView();
+				//Window.alert("Hej");
+			}
+		}
+
+
+	}
+
 	
 
 }

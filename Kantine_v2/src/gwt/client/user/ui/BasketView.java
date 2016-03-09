@@ -1,5 +1,7 @@
 package gwt.client.user.ui;
 
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -11,6 +13,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
+import gwt.server.dal.ItemDAO;
+import gwt.shared.ItemDTO;
 
 public class BasketView extends Composite {
 
@@ -27,6 +31,9 @@ public class BasketView extends Composite {
 	 // Handlers
 	  private EditHandler editHandler;
 	  private DeleteHandler deleteHandler;
+	  
+	// reference to DTO 
+	  
 	  
 	public BasketView() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -48,7 +55,7 @@ public class BasketView extends Composite {
 		    return controllerDeleteBtn;
 		  }
 
-	public void pop(){
+	public void pop(List<ItemDTO> pList){
   // remove table data
   basketTable.removeAllRows();
       
@@ -71,13 +78,11 @@ public class BasketView extends Composite {
   basketTable.getRowFormatter().addStyleName(0,"FlexTable-Header");
   
   
-  basketTable.setText(1, 0, "Kød" );
-  basketTable.setText(1, 1, "1");
-  basketTable.setText(1, 2, "25" );
-  
-  basketTable.setText(2, 0, "Banan" );
-  basketTable.setText(2, 1, "2");
-  basketTable.setText(2, 2, "5" );
+  for (int i=0; i < pList.size(); i++) {
+	  basketTable.setText(i+1, 0, "" + pList.get(i).getName());
+	  basketTable.setText(i+1, 1, "1");
+      basketTable.setText(i+1, 2, "" + pList.get(i).getPrice());
+    }
   
   
   for (int i=0; i < 2; i++){
@@ -118,6 +123,7 @@ public class BasketView extends Composite {
 		     // controllerEditBtn.fireEvent(new ClickEvent() {}); 
 		    	Window.alert("En ekstra tilføjet");
 		    }
-		  }
+		    
+	 }
 
 }

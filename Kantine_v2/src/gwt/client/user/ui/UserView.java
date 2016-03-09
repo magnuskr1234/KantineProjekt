@@ -1,11 +1,17 @@
 package gwt.client.user.ui;
 
+import java.util.ArrayList;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+
+import gwt.server.dal.ItemDAO;
+import gwt.shared.ItemDTO;
+
 import com.google.gwt.user.client.ui.DockPanel;
 
 public class UserView extends Composite {
@@ -18,6 +24,12 @@ public class UserView extends Composite {
 	private UserMenuView userMenuView;
 	private BasketView basketView;
 	private UserHistoryView userHistoryView;
+	ArrayList<ItemDTO> basketList = new ArrayList<ItemDTO>();
+	
+	public void AddItemToBasket(ItemDTO item){
+		basketList.add(item);
+	}
+	
 	
 	//Header Views
 	
@@ -27,6 +39,11 @@ public class UserView extends Composite {
 	}
 
 	public UserView() {
+		
+		basketList.add(new ItemDTO("Kaffe", 20));
+		basketList.add(new ItemDTO("Kaffe", 20));
+		basketList.add(new ItemDTO("Banan", 30));
+		basketList.add(new ItemDTO("Sodavand", 40));
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		//Make content view
@@ -40,10 +57,14 @@ public class UserView extends Composite {
 		basket.add(basketView);
 		contentPanel.add(userHistoryView);
 		
+		
+		
+
+		
 		// Initially show menu view
-		basketView.pop();
+		
 		contentPanel.showWidget(userMenuView);
-		basket.showWidget(basketView);
+		showBasketWidget();
 		
 	}
 	
@@ -60,6 +81,11 @@ public class UserView extends Composite {
 		contentPanel.showWidget(userMenuView);
 	}
 	
+	public void showBasketWidget(){
+		basketView.pop(basketList);
+		basket.showWidget(basketView);
+	}
+	
 	// Get views
 	public UserMenuView getUserMenuView(){
 		return userMenuView;
@@ -68,5 +94,7 @@ public class UserView extends Composite {
 	public BasketView getBasketView(){
 		return basketView;
 	}
+	
+
 
 }
