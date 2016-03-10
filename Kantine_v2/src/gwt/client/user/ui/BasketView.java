@@ -81,7 +81,7 @@ public class BasketView extends Composite {
   for (int i=0; i < pList.size(); i++) {
 	  basketTable.setText(i+1, 0, "" + pList.get(i).getName());
 	  basketTable.setText(i+1, 1, Integer.toString(pList.get(i).getCount()));
-      basketTable.setText(i+1, 2, "" + pList.get(i).getPrice());
+      basketTable.setText(i+1, 2, "" + (pList.get(i).getPrice() * pList.get(i).getCount()));
    
       Button edit = new Button("Tilføj");
       edit.getElement().setId("editButton");
