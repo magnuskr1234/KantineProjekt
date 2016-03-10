@@ -97,6 +97,7 @@ border-width: 1px;
 }
 .loginContainer {
 	background-color: #0f796b;
+	box-shadow: 0px 5px 8px #b6b6b6;
 }
 .loginBtn {
 	background-color: #159588;
@@ -112,6 +113,7 @@ border-width: 1px;
 .loginBtn:HOVER{
 	background-color: #199e90;
 }
+
 .whiteText {
 	color: white;
 	font-size: 2 em;

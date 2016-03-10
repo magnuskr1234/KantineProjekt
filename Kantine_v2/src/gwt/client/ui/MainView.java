@@ -34,9 +34,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 public class MainView extends Composite {
 
 	private static MainViewnUiBinder uiBinder = GWT.create(MainViewnUiBinder.class);
-	//Layout panel
-	@UiField DeckLayoutPanel contentPanel;
 	@UiField DeckLayoutPanel headerPanel;
+	@UiField DeckLayoutPanel contentPanel;
 
 	// Content views
 	private AdminMenuView adminMenu;

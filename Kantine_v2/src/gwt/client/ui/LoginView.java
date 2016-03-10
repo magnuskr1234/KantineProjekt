@@ -35,6 +35,8 @@ public class LoginView extends Composite {
 	public LoginView() {
 		initWidget(uiBinder.createAndBindUi(this));
 		lblLoginError.setVisible(false);
+		txtUid.getElement().setPropertyString("placeholder", "Brugernavn");
+		txtPw.getElement().setPropertyString("placeholder", "Adgangskode");
 	}
 	
 	

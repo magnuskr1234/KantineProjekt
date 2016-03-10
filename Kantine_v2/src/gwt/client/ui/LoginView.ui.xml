@@ -9,12 +9,8 @@
 		<g:VerticalPanel spacing="2" styleName="loginContainer"
 			width="300px" height="300px" horizontalAlignment="ALIGN_CENTER"
 			verticalAlignment="ALIGN_MIDDLE">
-			<g:Label text="Brugernavn" width="210px" horizontalAlignment="ALIGN_LEFT"
-				styleName="whiteText" />
 			<g:TextBox alignment="LEFT" ui:field="txtUid" height="25px" 
 				width="200px" />
-			<g:Label text="Adgangskode" width="210px"
-				horizontalAlignment="ALIGN_LEFT" styleName="whiteText" />
 			<g:PasswordTextBox alignment="LEFT" ui:field="txtPw"
 				height="25px" width="200px" />
 			<g:Cell height="">
