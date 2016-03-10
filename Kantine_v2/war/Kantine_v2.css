@@ -89,12 +89,28 @@ border-width: 1px;
   background: #3498db;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
-  
-  
 }
 
 .btn:hover {
   background: #3cb0fd;
   text-decoration: none;
+}
+.loginContainer {
+	background-color: #0f796b;
+}
+.loginBtn {
+	background-color: #159588;
+	border: none;
+  	box-shadow: 0px 5px 8px #0d675b;
+	
+	color: white;
+	font-size: 16px; 
+	font-weight: bold;
+	font-family: Myriad Pro;
+}
+.whiteText {
+	color: white;
+	font-size: 2 em;
+	font-family: Myriad Pro;
 }
 

@@ -4,21 +4,20 @@
 	<ui:style>
 	
 	</ui:style>
-	<g:HTMLPanel>
-		<g:VerticalPanel spacing="2" styleName="login">
-			<g:Label text="Brugernavn:"/>
-			<g:TextBox alignment="LEFT" ui:field="txtUid" height="8px" width="100px"/>
-			<g:Label text="Kodeord:"/>
-			<g:PasswordTextBox alignment="LEFT" ui:field="txtPw" height="8px" width="100px"/>
+	<g:HTMLPanel width="300px" height="300px">
+		<g:VerticalPanel spacing="2" styleName="loginContainer" width="300px" height="300px" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
+			<g:Label text="Brugernavn" width="210px" horizontalAlignment="ALIGN_LEFT" styleName="whiteText"/>
+			<g:TextBox alignment="LEFT" ui:field="txtUid" height="25px" width="200px"/>
+			<g:Label text="Adgangskode" width="210px" horizontalAlignment="ALIGN_LEFT" styleName="whiteText"/>
+			<g:PasswordTextBox alignment="LEFT" ui:field="txtPw" height="25px" width="200px"/>
 			<g:Cell height="">
 				<g:HorizontalPanel spacing="5" width="100px" height="" horizontalAlignment="ALIGN_CENTER">
 				<g:Cell height="">
-					<g:Button text="Ok" ui:field="btnOk" height="" width=""/>
+					<g:Button text="Log ind" ui:field="btnOk" height="35px" width="210px" styleName="loginBtn"/>
 				</g:Cell>
-				<g:Button text="Fortryd" ui:field="btnCancel"/>
 			</g:HorizontalPanel>
 			</g:Cell>
-			<g:Label text="Brugernavn eller kodeord forkert" width="100px" ui:field="lblLoginError" styleName="login-error"/>
+			<g:Label text="Brugernavn eller adgangskode er indtastet forkert" width="193px" ui:field="lblLoginError" styleName="whiteText"/>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

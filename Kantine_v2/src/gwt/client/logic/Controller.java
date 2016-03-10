@@ -90,7 +90,6 @@ public class Controller {
 		
 		//Add loginview handlers
 		loginView.getBtnOk().addClickHandler(new LoginHandler());
-		loginView.getBtnCancel().addClickHandler(new LoginHandler());	
 		
 		//Add logoutview handlers
 		adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
@@ -154,11 +153,6 @@ public class Controller {
 			          mainView.showUserView();
 		        } else
 		          loginView.setError();
-		      else if (event.getSource() == loginView.getBtnCancel()) {
-		        loginView.resetError();
-		        loginView.clearfields();
-		        mainView.loginCancel();
-		      }
 		    }
 		  }	
 	

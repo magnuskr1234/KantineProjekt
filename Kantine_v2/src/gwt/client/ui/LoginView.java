@@ -22,12 +22,12 @@ public class LoginView extends Composite {
 	@UiField TextBox txtUid;
 	@UiField TextBox txtPw;
 	@UiField Button btnOk;
-	@UiField Button btnCancel;
 	@UiField Label lblLoginError;
 	
 
 	interface LoginViewUiBinder extends UiBinder<Widget, LoginView> {
 	}
+	
 
 	/**
 	 * Login constructor
@@ -68,9 +68,10 @@ public class LoginView extends Composite {
 	public Button getBtnOk() {
 		return btnOk;
 	}
-	
-	public Button getBtnCancel() {
-		return btnCancel;
+
+	@UiHandler("btnOk")
+	void onBtnOkClick(ClickEvent event) {
 	}
 
+	
 }
