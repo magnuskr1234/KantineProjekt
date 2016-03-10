@@ -4,7 +4,7 @@ public class ItemDTO {
 	
 	private String name;
 	private double price;
-	private int count = 10;
+	private int count = 1;
 	
 	public ItemDTO(String name, double price) 
 	{

@@ -35,7 +35,7 @@ public class UserView extends Composite {
 			if(itemname.getName().equals(item.getName()))
 			{
 				addItem = false;
-				item.setCount(item.getCount()+1);
+				itemname.setCount(itemname.getCount()+1);
 				
 			}
 		}
