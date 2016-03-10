@@ -40,10 +40,6 @@ public class UserView extends Composite {
 
 	public UserView() {
 		
-		basketList.add(new ItemDTO("Kaffe", 20));
-		basketList.add(new ItemDTO("Kaffe", 20));
-		basketList.add(new ItemDTO("Banan", 30));
-		basketList.add(new ItemDTO("Sodavand", 40));
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		//Make content view

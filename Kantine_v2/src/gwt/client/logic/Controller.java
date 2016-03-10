@@ -106,6 +106,7 @@ public class Controller {
 		
 		//Tilføj user menu handlers
 		userView.getUserMenuView().getKaffeBtn().addClickHandler(new AddKaffeToBasketHandler());
+		userView.getUserMenuView().getBananBtn().addClickHandler(new AddBananToBasketHandler());
 		
 		//Add userHeader handlers
 		userHeaderView.getBtnHistory().addClickHandler(new HistoryHandler());
@@ -291,6 +292,22 @@ public class Controller {
 
 
 	}
+	
+	private class AddBananToBasketHandler implements ClickHandler{
+		@Override
+		public void onClick(ClickEvent event){
+			if (event.getSource() == userView.getUserMenuView().getBananBtn()){
+				mainView.getUserView().AddItemToBasket(new ItemDTO("Banan", 10));
+				mainView.getUserView().showBasketWidget();
+				//mainView.getUserView().showHistoryView();
+				//Window.alert("Hej");
+			}
+		}
+
+
+	}
+	
+	
 
 	
 

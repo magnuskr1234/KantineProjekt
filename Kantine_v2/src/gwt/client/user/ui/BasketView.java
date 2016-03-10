@@ -82,10 +82,22 @@ public class BasketView extends Composite {
 	  basketTable.setText(i+1, 0, "" + pList.get(i).getName());
 	  basketTable.setText(i+1, 1, "1");
       basketTable.setText(i+1, 2, "" + pList.get(i).getPrice());
+   
+      Button edit = new Button("Tilføj");
+      edit.getElement().setId("editButton");
+      basketTable.setWidget(i+1, 3, edit);
+      Button delete = new Button("Fjern");
+      delete.getElement().setId("editButton");
+      basketTable.setWidget(i+1, 4, delete);
+
+      // add edit and delete buttons to row
+      edit.addClickHandler(editHandler);
+      delete.addClickHandler(deleteHandler);
+      
     }
   
   
-  for (int i=0; i < 2; i++){
+ /* for (int i=0; i < 2; i++){
   Button edit = new Button("Tilføj");
   edit.getElement().setId("editButton");
   basketTable.setWidget(i+1, 3, edit);
@@ -96,7 +108,7 @@ public class BasketView extends Composite {
   // add edit and delete buttons to row
   edit.addClickHandler(editHandler);
   delete.addClickHandler(deleteHandler);
-  }
+  }*/
 	}
 	
 	 private class DeleteHandler implements ClickHandler {
