@@ -26,8 +26,24 @@ public class UserView extends Composite {
 	private UserHistoryView userHistoryView;
 	ArrayList<ItemDTO> basketList = new ArrayList<ItemDTO>();
 	
-	public void AddItemToBasket(ItemDTO item){
-		basketList.add(item);
+	public void AddItemToBasket(ItemDTO item){	
+		
+		boolean addItem = true;
+		
+		for (ItemDTO itemname : basketList)
+		{	
+			if(itemname.getName().equals(item.getName()))
+			{
+				addItem = false;
+				item.setCount(item.getCount()+1);
+				
+			}
+		}
+		
+		if (addItem){
+			basketList.add(item);
+		}
+		
 	}
 	
 	

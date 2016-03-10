@@ -300,7 +300,6 @@ public class Controller {
 				mainView.getUserView().AddItemToBasket(new ItemDTO("Banan", 10));
 				mainView.getUserView().showBasketWidget();
 				//mainView.getUserView().showHistoryView();
-				//Window.alert("Hej");
 			}
 		}
 
