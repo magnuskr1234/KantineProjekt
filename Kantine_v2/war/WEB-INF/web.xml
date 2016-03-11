@@ -6,6 +6,15 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
+    <servlet>
+    <servlet-name>PersonServiceServlet</servlet-name>
+    <servlet-class>gwt.server.PersonServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>PersonServiceServlet</servlet-name>
+    <url-pattern>/gwt/personservice</url-pattern>
+  </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>

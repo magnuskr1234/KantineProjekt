@@ -2,11 +2,14 @@ package gwt.client.logic;
 
 import java.util.ArrayList;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
+import gwt.client.service.PersonService;
+import gwt.client.service.PersonServiceAsync;
 import gwt.client.ui.*;
 import gwt.client.ui.admin.AdminHeaderView;
 import gwt.client.ui.admin.AdminMenuView;
@@ -21,6 +24,8 @@ import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
 import gwt.shared.ItemDTO;
+
+import gwt.shared.PersonDTO;
 
 /**
  * Pagecontroller til at styre hvilken side som aktuelt bliver vist for administratoren, ved at tilføje clickhandlers
@@ -55,6 +60,12 @@ public class Controller {
 	private UserMenuView userMenuView;
 	private UserView userView;
 	private UserHeaderView userHeaderView;
+	
+	// Service 
+	private PersonServiceAsync personDAO = GWT.create(PersonService.class);
+
+	 //reference to data transfer object
+	 private PersonDTO personDTO;
 	 
 	// Hardcoded login details for user
 		private final String userId = "Peter";
