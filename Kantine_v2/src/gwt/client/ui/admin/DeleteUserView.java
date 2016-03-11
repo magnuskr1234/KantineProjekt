@@ -1,4 +1,4 @@
-package gwt.client.admin.ui;
+package gwt.client.ui.admin;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

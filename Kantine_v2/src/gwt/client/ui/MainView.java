@@ -6,18 +6,18 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-import gwt.client.admin.ui.AdminHeaderView;
-import gwt.client.admin.ui.CreateItemView;
-import gwt.client.admin.ui.CreateUserView;
-import gwt.client.admin.ui.DeleteItemView;
-import gwt.client.admin.ui.DeleteUserView;
-import gwt.client.admin.ui.EditPersonView;
-import gwt.client.admin.ui.ShowUserListView;
-import gwt.client.admin.ui.StatisticView;
-import gwt.client.admin.ui.AdminMenuView;
-import gwt.client.user.ui.UserHeaderView;
-import gwt.client.user.ui.UserMenuView;
-import gwt.client.user.ui.UserView;
+import gwt.client.ui.admin.AdminHeaderView;
+import gwt.client.ui.admin.AdminMenuView;
+import gwt.client.ui.admin.CreateItemView;
+import gwt.client.ui.admin.CreateUserView;
+import gwt.client.ui.admin.DeleteItemView;
+import gwt.client.ui.admin.DeleteUserView;
+import gwt.client.ui.admin.EditPersonView;
+import gwt.client.ui.admin.ShowUserListView;
+import gwt.client.ui.admin.StatisticView;
+import gwt.client.ui.user.UserHeaderView;
+import gwt.client.ui.user.UserMenuView;
+import gwt.client.ui.user.UserView;
 
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -58,6 +58,9 @@ public class MainView extends Composite {
 	interface MainViewnUiBinder extends UiBinder<Widget, MainView> {
 	}
 
+	/**
+	 * Mainview samler samtlige paneler.
+	 */
 	public MainView() {
 		initWidget(uiBinder.createAndBindUi(this));	
 		

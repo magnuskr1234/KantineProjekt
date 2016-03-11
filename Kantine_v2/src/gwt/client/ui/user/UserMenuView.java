@@ -1,4 +1,4 @@
-package gwt.client.admin.ui;
+package gwt.client.ui.user;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -9,19 +9,24 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
-public class CreateUserView extends Composite {
+public class UserMenuView extends Composite {
 
-	private static CreateUserUiBinder uiBinder = GWT.create(CreateUserUiBinder.class);
-	@UiField Button btnCancel;
+	private static UserMenuViewUiBinder uiBinder = GWT.create(UserMenuViewUiBinder.class);
+	@UiField Button btnKaffe;
+	@UiField Button btnBanan;
 
-	interface CreateUserUiBinder extends UiBinder<Widget, CreateUserView> {
+	interface UserMenuViewUiBinder extends UiBinder<Widget, UserMenuView> {
 	}
 
-	public CreateUserView() {
+	public UserMenuView() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-	
-	public Button getBtnCancel(){
-		return btnCancel;
+
+	public Button getKaffeBtn() {
+		return btnKaffe;
+	}
+
+	public Button getBananBtn() {
+		return btnBanan;
 	}
 }

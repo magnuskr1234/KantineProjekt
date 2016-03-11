@@ -1,4 +1,4 @@
-package gwt.client.user.ui;
+package gwt.client.ui.user;
 
 import java.util.ArrayList;
 
