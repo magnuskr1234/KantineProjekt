@@ -15,7 +15,7 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	private static int id = 0;
 	  // data store
 		private List<PersonDTO> pList;
