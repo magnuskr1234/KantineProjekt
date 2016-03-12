@@ -14,6 +14,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import gwt.shared.ItemDTO;
+import gwt.shared.PersonDTO;
 
 public class BasketView extends Composite {
 
@@ -30,6 +31,9 @@ public class BasketView extends Composite {
 	 // Handlers
 	  private EditHandler editHandler;
 	  private DeleteHandler deleteHandler;
+	  
+	  // row where event happened
+	  private int eventRowIndex;
 	  
 	// reference to DTO 
 	  
@@ -54,6 +58,18 @@ public class BasketView extends Composite {
 		    return controllerDeleteBtn;
 		  }
 
+		  
+		  // delete row where delete-event happened
+		  public void deleteEventRow() {
+		    basketTable.removeRow(eventRowIndex);
+		  }
+		  
+		  // update data in row where edit-event happened 
+		  public void updateRow(PersonDTO personDTO) {
+			 basketTable.setText(eventRowIndex, 1, personDTO.getName());
+			 basketTable.setText(eventRowIndex, 2, "" + personDTO.getPassword()); 
+		  }
+		  
 	public void pop(List<ItemDTO> pList){
   // remove table data
   basketTable.removeAllRows();
@@ -96,7 +112,7 @@ public class BasketView extends Composite {
     }
   
   
- /* for (int i=0; i < 2; i++){
+  for (int i=0; i < 2; i++){
   Button edit = new Button("Tilføj");
   edit.getElement().setId("editButton");
   basketTable.setWidget(i+1, 3, edit);
@@ -107,17 +123,17 @@ public class BasketView extends Composite {
   // add edit and delete buttons to row
   edit.addClickHandler(editHandler);
   delete.addClickHandler(deleteHandler);
-  }*/
+  }
 	}
 	
 	 private class DeleteHandler implements ClickHandler {
 		    public void onClick(ClickEvent event) {
 		      // save event row index
-		      //eventRowIndex = t.getCellForEvent(event).getRowIndex();
+		    	eventRowIndex = basketTable.getCellForEvent(event).getRowIndex();
 		      // save person id
 		     // personId = Integer.parseInt(t.getText(eventRowIndex, 0));
 		      // fire controller delete button event
-		      //controllerDeleteBtn.fireEvent(new ClickEvent() {});
+		      controllerDeleteBtn.fireEvent(new ClickEvent() {});
 		    	Window.alert("Vare slettet");
 		    }
 		  } 
@@ -125,13 +141,13 @@ public class BasketView extends Composite {
 	 private class EditHandler implements ClickHandler {
 		    public void onClick(ClickEvent event) {
 		      // get rowindex where event happened
-		    //  eventRowIndex = t.getCellForEvent(event).getRowIndex();    
+		     eventRowIndex = basketTable.getCellForEvent(event).getRowIndex();    
 		      // populate personDTO
 		    //  personDTO.setId(Integer.parseInt(t.getText(eventRowIndex, 0)));
 		    //  personDTO.setName(t.getText(eventRowIndex, 1));
 		    //  personDTO.setAge(Integer.parseInt(t.getText(eventRowIndex, 2))); 
 		      // fire controller edit button event
-		     // controllerEditBtn.fireEvent(new ClickEvent() {}); 
+		      controllerEditBtn.fireEvent(new ClickEvent() {}); 
 		    	Window.alert("En ekstra tilføjet");
 		    }
 		    

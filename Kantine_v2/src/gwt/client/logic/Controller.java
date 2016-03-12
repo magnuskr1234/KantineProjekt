@@ -114,9 +114,9 @@ public class Controller {
 		adminMenu.getBtnShowUsers().addClickHandler(new ShowUserListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
 		
-		//Tilføj user menu handlers
+		/*Tilføj user menu handlers
 		userView.getUserMenuView().getKaffeBtn().addClickHandler(new AddKaffeToBasketHandler());
-		userView.getUserMenuView().getBananBtn().addClickHandler(new AddBananToBasketHandler());
+		userView.getUserMenuView().getBananBtn().addClickHandler(new AddBananToBasketHandler());*/
 		
 		//Add userHeader handlers
 		userHeaderView.getBtnHistory().addClickHandler(new HistoryHandler());
@@ -210,7 +210,7 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == adminMenu.getBtnDeleteUser()){
-				showUserListView.pop();
+			//	showUserListView.pop();
 				mainView.changeWidget(showUserListView);
 			}			
 		}
@@ -244,7 +244,7 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == adminMenu.getBtnShowUsers()){
-				showUserListView.pop();
+				//showUserListView.pop();
 				mainView.changeWidget(showUserListView);
 			}			
 		}
@@ -284,7 +284,7 @@ public class Controller {
 	
 	//Add to basket
 	
-	private class AddKaffeToBasketHandler implements ClickHandler{
+	/*private class AddKaffeToBasketHandler implements ClickHandler{
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == userView.getUserMenuView().getKaffeBtn()){
@@ -296,9 +296,9 @@ public class Controller {
 		}
 
 
-	}
+	}*/
 	
-	private class AddBananToBasketHandler implements ClickHandler{
+	/*private class AddBananToBasketHandler implements ClickHandler{
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == userView.getUserMenuView().getBananBtn()){
@@ -309,7 +309,7 @@ public class Controller {
 		}
 
 
-	}
+	}*/
 	
 	
 

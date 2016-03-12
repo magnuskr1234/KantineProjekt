@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
+import gwt.shared.PersonDTO;
 
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class ShowUserListView extends Composite {
 	/**
 	 * Flextable bliver tilføjet rækker samt værdier. 
 	 */
-	public void pop(){
+	public void pop(List<PersonDTO> pList){
     // remove table data
     userTable.removeAllRows();
         
@@ -87,6 +88,12 @@ public class ShowUserListView extends Composite {
     userTable.setText(2, 0, "0" );
     userTable.setText(2, 1, "Alexander med flere");
     userTable.setText(2, 2, "1" );
+    
+    for (int i=0; i < pList.size(); i++) {
+    	userTable.setText(i+1, 0, "" + pList.get(i).getId());
+    	userTable.setText(i+1, 1, pList.get(i).getName());
+    	userTable.setText(i+1, 2, "" + pList.get(i).getPassword());
+      }
     
     // Knapper til at slette bruger og opdatere saldo blive tilføjet til hver række. 
     for (int i=0; i < 2; i++){
@@ -129,4 +136,6 @@ public class ShowUserListView extends Composite {
 		    	Window.alert("Opdatering af saldo");
 		    }
 		  }
+	 
+	 
 }

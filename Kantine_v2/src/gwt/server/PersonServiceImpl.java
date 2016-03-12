@@ -20,9 +20,12 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	  // data store
 		private List<PersonDTO> pList;
 		
-	  public PersonServiceImpl() throws RuntimeException{
+	  public PersonServiceImpl() throws Exception{
 	    // instantiate new java object on server
 	    pList = new ArrayList<PersonDTO>();
+	    
+		// Indset start data
+		savePerson(new PersonDTO("Magnus", 1234));
 	  }
 
 	  

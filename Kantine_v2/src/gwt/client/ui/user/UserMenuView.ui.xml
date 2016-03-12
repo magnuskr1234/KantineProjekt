@@ -5,15 +5,8 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Grid width="90%" height="90%" styleName="usermenu">
-			<g:row>
-				<g:customCell>
-					<g:Button text="Banan" ui:field="btnBanan"/>
-				</g:customCell>
-				<g:customCell>
-					<g:Button text="Kaffe" ui:field="btnKaffe"/>
-				</g:customCell>
-			</g:row>
-		</g:Grid>
+		<g:VerticalPanel>
+			<g:FlexTable ui:field="storeItems"/>
+		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
