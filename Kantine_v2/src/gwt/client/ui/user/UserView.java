@@ -9,7 +9,6 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-import gwt.server.dal.ItemDAO;
 import gwt.shared.ItemDTO;
 
 import com.google.gwt.user.client.ui.DockPanel;

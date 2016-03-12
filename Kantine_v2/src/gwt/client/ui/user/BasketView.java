@@ -13,7 +13,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
-import gwt.server.dal.ItemDAO;
 import gwt.shared.ItemDTO;
 
 public class BasketView extends Composite {

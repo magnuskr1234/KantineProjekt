@@ -1,3 +1,5 @@
+package gwt.server;
+
 import java.util.List;
 
 import gwt.shared.PersonDTO;
