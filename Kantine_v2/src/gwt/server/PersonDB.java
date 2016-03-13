@@ -35,25 +35,25 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
 			// create query that add a person to kartotek
 			savePersonStmt = 
-					connection.prepareStatement( "INSERT INTO person " + 
-							"( navn, alder ) " + 
+					connection.prepareStatement( "INSERT INTO customers " + 
+							"( navn, password ) " + 
 							"VALUES ( ?, ? )" );
 
 			// create query that updates a person
 			updatePersonStmt = connection.prepareStatement( 
-					"UPDATE person SET navn = ?, alder = ?  WHERE id = ?" );
+					"UPDATE customers SET name = ?, password = ?  WHERE id = ?" );
 
 			// create query that get all persons in kartotek
 			getPersonsStmt = connection.prepareStatement( 
-					"SELECT * FROM person "); 
+					"SELECT * FROM customers "); 
 
 			// create query that gets size of kartotek
 			getSizeStmt = connection.prepareStatement( 
-					"SELECT COUNT(*) FROM person ");
+					"SELECT COUNT(*) FROM customers ");
 
 			// create query that deletes a person in kartotek
 			deletePersonStmt = connection.prepareStatement( 
-					"DELETE FROM person WHERE id =  ? ");
+					"DELETE FROM customers WHERE id =  ? ");
 
 
 		} 
