@@ -1,4 +1,7 @@
 package gwt.client.ui.admin;
+import gwt.client.service.PersonService;
+import gwt.server.PersonDB;
+import gwt.server.PersonServiceImpl;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -6,10 +9,12 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
+
 
 import gwt.shared.PersonDTO;
 
@@ -23,7 +28,10 @@ import java.util.List;
 public class ShowUserListView extends Composite {
 
 	private static ShowUserListUiBinder uiBinder = GWT.create(ShowUserListUiBinder.class);
-
+	
+	
+	
+	
 	@UiField FlexTable userTable;
 	interface ShowUserListUiBinder extends UiBinder<Widget, ShowUserListView> {
 	}
@@ -37,7 +45,7 @@ public class ShowUserListView extends Composite {
 	  private EditHandler editHandler;
 	  private DeleteHandler deleteHandler;
 	 
-	public ShowUserListView() {
+	public ShowUserListView(){
 		initWidget(uiBinder.createAndBindUi(this));
 	    // row event handlers
 	    editHandler = new EditHandler();
@@ -46,6 +54,20 @@ public class ShowUserListView extends Composite {
 	    // buttons for controller event handling
 	    controllerEditBtn = new Button();
 	    controllerDeleteBtn = new Button();
+	    
+	    PersonDTO person = new PersonDTO();
+	    
+	    person.setName("Test");
+	    person.setPassword("test");
+	    
+	   
+	    
+	  /*  try {
+			db.savePerson(person) ;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 	}
 	
 	  public Button getControllerEditBtn() {
@@ -57,11 +79,16 @@ public class ShowUserListView extends Composite {
 		  }
 	/**
 	 * Flextable bliver tilføjet rækker samt værdier. 
+	 * @throws Exception 
 	 */
-	public void pop(List<PersonDTO> pList){
+		  
+
+		  
+	public void pop() throws Exception{
     // remove table data
     userTable.removeAllRows();
-        
+    //     db = new PersonDB();
+	
 	
     // adjust column widths
     userTable.getFlexCellFormatter().setWidth(0, 0, "25px");
@@ -81,19 +108,19 @@ public class ShowUserListView extends Composite {
     userTable.getRowFormatter().addStyleName(0,"FlexTable-Header");
     
     
-    userTable.setText(1, 0, "0" );
+  /*  userTable.setText(1, 0, "0" );
     userTable.setText(1, 1, "Magnus");
     userTable.setText(1, 2, "200" );
     
     userTable.setText(2, 0, "0" );
     userTable.setText(2, 1, "Alexander med flere");
-    userTable.setText(2, 2, "1" );
+    userTable.setText(2, 2, "1" );*/
     
-    for (int i=0; i < pList.size(); i++) {
-    	userTable.setText(i+1, 0, "" + pList.get(i).getId());
-    	userTable.setText(i+1, 1, pList.get(i).getName());
-    	userTable.setText(i+1, 2, "" + pList.get(i).getPassword());
-      }
+  /*  for (int i=0; i < db.getPersons().size(); i++) {
+    	userTable.setText(i+1, 0, "" + i);
+    	userTable.setText(i+1, 1, db.getPersons().get(i).getName());
+    	userTable.setText(i+1, 2, "" + db.getPersons().get(i).getPassword());
+      }*/
     
     // Knapper til at slette bruger og opdatere saldo blive tilføjet til hver række. 
     for (int i=0; i < 2; i++){

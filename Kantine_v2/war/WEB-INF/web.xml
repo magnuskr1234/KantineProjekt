@@ -13,7 +13,7 @@
   
   <servlet-mapping>
     <servlet-name>PersonServiceServlet</servlet-name>
-    <url-pattern>/gwt/personservice</url-pattern>
+    <url-pattern>/kantine_v2/personservice</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->

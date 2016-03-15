@@ -1,11 +1,14 @@
 package gwt.client.logic;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import com.gargoylesoftware.htmlunit.javascript.host.Console;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 import gwt.client.service.PersonService;
@@ -23,9 +26,12 @@ import gwt.client.ui.admin.StatisticView;
 import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
+import gwt.server.PersonDB;
+import gwt.server.PersonServiceImpl;
 import gwt.shared.ItemDTO;
 
 import gwt.shared.PersonDTO;
+
 
 /**
  * Pagecontroller til at styre hvilken side som aktuelt bliver vist for administratoren, ved at tilføje clickhandlers
@@ -64,6 +70,9 @@ public class Controller {
 	// Service 
 	private PersonServiceAsync personDAO = GWT.create(PersonService.class);
 
+	// 
+	
+	
 	 //reference to data transfer object
 	 private PersonDTO personDTO;
 	 
@@ -76,6 +85,11 @@ public class Controller {
 		private final String adminPw = "1234";
 	 
 	public Controller(){
+		
+		
+		
+		
+		
 		
 		//Instantiate pagecontroller
 		mainView = new MainView();
@@ -161,6 +175,7 @@ public class Controller {
 			          loginView.resetError();
 			          loginView.clearfields();
 			          mainView.showUserHeader();
+			          userMenuView.populateData(null);
 			          mainView.showUserView();
 		        } else
 		          loginView.setError();
@@ -186,10 +201,16 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == adminMenu.getBtnCreateUser()){
+				
 				mainView.changeWidget(createUserView);
-			}			
+				
+			
+			}	
 		}
 	}
+	
+
+
 	
 	// Delete item handler
 	private class DeleteItemHandler implements ClickHandler{
@@ -244,8 +265,31 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == adminMenu.getBtnShowUsers()){
-				//showUserListView.pop();
+
+				
+				personDAO.getSize(new AsyncCallback<Integer>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+						Window.alert(caught +" hej");
+					}
+
+					@Override
+					public void onSuccess(Integer result) {
+						Window.alert(result + "");
+						
+					}
+				});
+				
+				/*try {
+					showUserListView.pop();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}*/
 				mainView.changeWidget(showUserListView);
+			
 			}			
 		}
 	}
@@ -312,6 +356,7 @@ public class Controller {
 	}*/
 	
 	
+
 
 	
 

@@ -3,10 +3,13 @@ package gwt.server;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
 
 import gwt.client.service.PersonService;
 import gwt.shared.PersonDTO;
@@ -15,11 +18,12 @@ import gwt.shared.DALException;
 
 public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
-	private static final String URL = "jdbc:mysql://52.37.223.129:3306/kantinen";
+	private static final String URL = "jdbc:mysql://52.58.62.183:3306/kantinen";
+
 	private static final String USERNAME = "dummy";
 	private static final String PASSWORD = "gruppe3";
 
-	private Connection connection = null; // manages connection
+	private static Connection connection = null; // manages connection
 
 	private PreparedStatement savePersonStmt = null;
 	private PreparedStatement updatePersonStmt = null;
@@ -32,11 +36,10 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 		{
 			connection = 
 					DriverManager.getConnection( URL, USERNAME, PASSWORD );
-
 			// create query that add a person to kartotek
 			savePersonStmt = 
 					connection.prepareStatement( "INSERT INTO customers " + 
-							"( navn, password ) " + 
+							"( name, password ) " + 
 							"VALUES ( ?, ? )" );
 
 			// create query that updates a person
@@ -61,12 +64,49 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 		{
 			throw new DALException("Kan ikke oprette forbindelse til database");
 		}
+		
 	}
+	
+	/**
+	 * Method used to close the database connection
+	 */
+	private static void close() {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+}
 
 	@Override
 	public void savePerson(PersonDTO p) throws Exception {
 		// TODO Auto-generated method stub
+		ResultSet resultSet = null;
+		//Try catch som laver en efterspørgsel til databasen. Hvis det mislykkes udskrives der en fejlbesked (catch)
+		try{
+			//Et prepared statement som består af et SQL statement
+			PreparedStatement createUser = connection.prepareStatement("insert into customers (name,password) values (?,?)");
+			
 		
+			//Det første spørgsmåltegn i det ovenstående SQL statement
+			createUser.setString(1,  p.getName());
+			createUser.setString(2, p.getPassword());
+			
+			//Efterspørgslen til databasen eksekvers og resultatet indlæses i et ResultSet
+			createUser.executeUpdate();
+			// Om brugeren eksisterer i databasen oprettes et objekt af User ud fra ResultSet
+			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally {
+			try{
+				resultSet.close();
+			} catch (SQLException ex){
+				ex.printStackTrace();
+				close();
+			}
+		} 
+
 	}
 
 	@Override
@@ -74,11 +114,44 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void test(){
+		System.out.println("test");
+	}
 
-	@Override
 	public List<PersonDTO> getPersons() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet resultSet = null;
+		PersonDTO user = null;
+		ArrayList<PersonDTO> list = new ArrayList<PersonDTO>();
+		
+		
+		//Try catch som laver en efterspørgsel til databasen. Hvis det mislykkes udskrives der en fejlbesked (catch)
+		try{
+			//Et prepared statement som består af et SQL statement
+			PreparedStatement getUser = connection.prepareStatement("SELECT *  FROM customers");
+			
+			//Det første spørgsmåltegn i det ovenstående SQL statement
+			//getUser.setString(1,  user);
+			
+			//Efterspørgslen til databasen eksekvers og resultatet indlæses i et ResultSet
+			resultSet = getUser.executeQuery();
+			
+			// Om brugeren eksisterer i databasen oprettes et objekt af User ud fra ResultSet
+			
+			while (resultSet.next()){
+				user = new PersonDTO(resultSet.getString("name"), resultSet.getString("password"));
+				list.add(user);	
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally {
+			try{
+				resultSet.close();
+			} catch (SQLException ex){
+				ex.printStackTrace();
+				close();
+			}
+		} return list;
 	}
 
 	@Override
@@ -89,7 +162,8 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
 	@Override
 	public int getSize() throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int i = 7;
+		return i;
 	}
 	}

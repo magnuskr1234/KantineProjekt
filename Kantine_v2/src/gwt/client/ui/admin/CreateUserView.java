@@ -13,6 +13,7 @@ public class CreateUserView extends Composite {
 
 	private static CreateUserUiBinder uiBinder = GWT.create(CreateUserUiBinder.class);
 	@UiField Button btnCancel;
+	@UiField Button createUserBtn;
 
 	interface CreateUserUiBinder extends UiBinder<Widget, CreateUserView> {
 	}
@@ -23,5 +24,9 @@ public class CreateUserView extends Composite {
 	
 	public Button getBtnCancel(){
 		return btnCancel;
+	}
+	
+	public Button getCreateUserBtn(){
+		return createUserBtn;
 	}
 }

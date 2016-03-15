@@ -4,10 +4,12 @@ package gwt.server;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import gwt.client.service.PersonService;
 import gwt.shared.PersonDTO;
+import gwt.server.*;
 
 public class PersonServiceImpl extends RemoteServiceServlet implements PersonService {
 
@@ -17,15 +19,17 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	 */
 	//private static final long serialVersionUID = 1L;
 	private static int id = 0;
+	PersonDB db = new PersonDB();
 	  // data store
 		private List<PersonDTO> pList;
 		
+		@SuppressWarnings("serial")
 	  public PersonServiceImpl() throws Exception{
 	    // instantiate new java object on server
 	    pList = new ArrayList<PersonDTO>();
 	    
 		// Indset start data
-		savePerson(new PersonDTO("Magnus", 1234));
+		savePerson(new PersonDTO("Magnus", "1234"));
 	  }
 
 	  
@@ -33,19 +37,19 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	    this.pList = pList;
 	  }*/
 	 
-	  public List<PersonDTO> getPerson() throws Exception {
+	  public List<PersonDTO> getPerson() throws RuntimeException {
 	    return pList;
 	  }
 
 	@Override
-	public void savePerson(PersonDTO p) throws Exception {
+	public void savePerson(PersonDTO p) throws RuntimeException {
 		// TODO Auto-generated method stub
 		p.setId(id++);
 		pList.add(p);
 	}
 
 	@Override
-	public void updatePerson(PersonDTO p) throws Exception {
+	public void updatePerson(PersonDTO p) throws RuntimeException {
 		// TODO Auto-generated method stub
 		for (int i=0; i<pList.size();i++)
 			if (pList.get(i).getId() == p.getId())	
@@ -53,13 +57,21 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	}
 
 	@Override
-	public List<PersonDTO> getPersons() throws Exception {
+	public List<PersonDTO> getPersons() throws RuntimeException {
 		// TODO Auto-generated method stub
+		
+	/*	try {
+			db.getPersons();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		Window.alert("23:15");
 		return null;
 	}
 
 	@Override
-	public void deletePerson(int id) throws Exception {
+	public void deletePerson(int id) throws RuntimeException {
 		// TODO Auto-generated method stub
 		// find object with id and remove it
 		for (int i=0; i<pList.size();i++)
@@ -71,6 +83,8 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	@Override
 	public int getSize() throws Exception {
 		// TODO Auto-generated method stub
-		return pList.size();
+		int i = db.getPersons().size();
+		//int i = 4*4;
+		return i;
 	}
 	}

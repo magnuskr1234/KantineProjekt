@@ -90,6 +90,12 @@ public class UserMenuView extends Composite {
 	    // set headers in flextable
 		  storeItems.setText(0, 0, "Navn");
 		  storeItems.setText(0, 1, "Pris");
+		  
+		  storeItems.setText(1, 0, "Banan");
+		  storeItems.setText(1, 1, "5");
+		  Button delete = new Button("Tilføj");
+		  controllerAddToBasketBtn.getElement().setId("addButton");
+	      storeItems.setWidget(1, 3, controllerAddToBasketBtn);
 	 
 	    
 	    // style table
@@ -106,7 +112,7 @@ public class UserMenuView extends Composite {
 	     
 	      Button delete = new Button("Tilføj");
 	      addToBasket.getElement().setId("addButton");
-	      storeItems.setWidget(i+1, 4, addToBasket);
+	      storeItems.setWidget(i+1, 3, addToBasket);
 
 	      // add edit and delete buttons to row
 	      addToBasket.addClickHandler(AddToBasketHandler);

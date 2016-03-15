@@ -20,9 +20,9 @@ public interface PersonService extends RemoteService {
 	// otherwise only generic server exceptions will be send back
 	// in the onFailure call back method
 	
-	public void savePerson(PersonDTO p) throws Exception;
-	public void updatePerson(PersonDTO p) throws Exception;
-	public List<PersonDTO> getPersons() throws Exception;
-	public void deletePerson(int id) throws Exception; 
-	public int getSize() throws Exception;
+	void savePerson(PersonDTO p) throws Exception;
+	void updatePerson(PersonDTO p) throws Exception;
+	List<PersonDTO> getPersons() throws Exception;
+	void deletePerson(int id) throws Exception; 
+	int getSize() throws Exception;
 }

@@ -17,7 +17,5 @@ public interface PersonServiceAsync {
 	void deletePerson(int index, AsyncCallback<Void> callback);
 
 	void getSize(AsyncCallback<Integer> callback);
-	
-	
 
 }
