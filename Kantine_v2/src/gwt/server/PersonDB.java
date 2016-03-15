@@ -39,8 +39,8 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 			// create query that add a person to kartotek
 			savePersonStmt = 
 					connection.prepareStatement( "INSERT INTO customers " + 
-							"( name, password, saldo ) " + 
-							"VALUES ( ?, ?, ? )" );
+							"( name, password, admin, saldo ) " + 
+							"VALUES ( ?, ?, ?, ? )" );
 
 			// create query that updates a person
 			updatePersonStmt = connection.prepareStatement( 
@@ -86,7 +86,8 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 		try {
 			savePersonStmt.setString(2, p.getName());
 			savePersonStmt.setString(3, p.getPassword());
-			savePersonStmt.setInt(4, p.getSaldo());
+			savePersonStmt.setInt(4, p.getAdminStatus());
+			savePersonStmt.setDouble(5, p.getSaldo());
 
 			savePersonStmt.executeUpdate();
 		} catch (SQLException e) {
@@ -124,7 +125,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 			// Om brugeren eksisterer i databasen oprettes et objekt af User ud fra ResultSet
 			
 			while (resultSet.next()){
-				user = new PersonDTO(resultSet.getString("name"), resultSet.getString("password"), resultSet.getInt("saldo"));
+				user = new PersonDTO(resultSet.getString("name"), resultSet.getString("password"), resultSet.getInt("adminStatus"), resultSet.getDouble("saldo"));
 				list.add(user);	
 			}
 		} catch (SQLException e){

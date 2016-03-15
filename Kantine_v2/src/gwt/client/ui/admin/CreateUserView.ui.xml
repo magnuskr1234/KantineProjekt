@@ -10,6 +10,7 @@
 			<g:TextBox ui:field="txtName"/>
 			<g:Label text="Adgangskode"/>
 			<g:TextBox ui:field="txtPassword"/>
+			<g:CheckBox text="Administrator" ui:field="radioAdmin"/>
 			<g:Label text="Saldo"/>
 			<g:TextBox ui:field="txtSaldo"/>
 			<g:HorizontalPanel>

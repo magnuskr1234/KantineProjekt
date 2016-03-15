@@ -209,7 +209,7 @@ public class Controller {
 		        //personDAO.savePerson(new PersonDTO(addPersonView.getpDTO().getName(), addPersonView.getpDTO().getAge()));
 		        // replace personDAO call with an RPC
 		   if(event.getSource() == createUserView.getCreateUserBtn() || createUserView.validate()){
-			 personDAO.savePerson(new PersonDTO(createUserView.getpDTO().getName(), createUserView.getpDTO().getPassword(), createUserView.getpDTO().getSaldo()), new AsyncCallback<Void>() {
+			 personDAO.savePerson(new PersonDTO(createUserView.getpDTO().getName(), createUserView.getpDTO().getPassword(), createUserView.getpDTO().getAdminStatus(), createUserView.getpDTO().getSaldo()), new AsyncCallback<Void>() {
 		       
 			 
 				 	@Override

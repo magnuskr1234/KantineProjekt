@@ -17,8 +17,7 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	/**
 	 * 
 	 */
-	//private static final long serialVersionUID = 1L;
-	private static int id = 0;
+	
 	PersonDB db = new PersonDB();
 	  // data store
 		private List<PersonDTO> pList;
@@ -44,6 +43,13 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	@Override
 	public void savePerson(PersonDTO p) throws RuntimeException {
 		// TODO Auto-generated method stub
+	
+		try {
+			db.savePerson(p);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		pList.add(p);
 	}
 

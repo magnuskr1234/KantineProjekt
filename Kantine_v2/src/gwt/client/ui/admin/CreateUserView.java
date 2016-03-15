@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.CheckBox;
 
 public class CreateUserView extends Composite {
 
@@ -23,8 +24,11 @@ public class CreateUserView extends Composite {
 	@UiField TextBox txtName;
 	@UiField TextBox txtPassword;
 	@UiField TextBox txtSaldo;
+	@UiField CheckBox radioAdmin;
 
 	PersonDTO pDTO;
+	
+	int adminConvert;
 	
 	interface CreateUserUiBinder extends UiBinder<Widget, CreateUserView> {
 	}
@@ -53,6 +57,8 @@ public class CreateUserView extends Composite {
 			// update DTO object
 			pDTO.setName(txtName.getText());
 			pDTO.setPassword(txtSaldo.getText());
+			// 1 = true and 0 = false
+			pDTO.setAdminStatus(adminConvert = (radioAdmin.getValue()) ? 1 : 0);
 			pDTO.setSaldo(Integer.parseInt(txtSaldo.getText()));
 			
 			// clear fields
