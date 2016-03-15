@@ -39,4 +39,24 @@ public class FieldVerifier {
 		}
 		return name.length() > 3;
 	}
+	  public static boolean isValidSaldo(String saldo) {
+		    int saldoNumber;
+
+		    // check if saldo field is empty (not allowed)
+		    if (saldo.isEmpty()) {
+		      return false;
+		    }
+
+		    // check if saldo field contains a number
+		    try {
+		      // try to convert to a number
+		      saldoNumber = Integer.parseInt(saldo);
+		    } catch (NumberFormatException e) {
+		      // invalid number
+		    	
+		    }
+		      return false;
+		    }
+	  
 }
+

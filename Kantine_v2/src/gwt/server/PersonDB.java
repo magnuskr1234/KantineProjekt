@@ -39,8 +39,8 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 			// create query that add a person to kartotek
 			savePersonStmt = 
 					connection.prepareStatement( "INSERT INTO customers " + 
-							"( name, password ) " + 
-							"VALUES ( ?, ? )" );
+							"( name, password, saldo ) " + 
+							"VALUES ( ?, ?, ? )" );
 
 			// create query that updates a person
 			updatePersonStmt = connection.prepareStatement( 
@@ -80,33 +80,18 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
 	@Override
 	public void savePerson(PersonDTO p) throws Exception {
-		// TODO Auto-generated method stub
-		ResultSet resultSet = null;
-		//Try catch som laver en efterspørgsel til databasen. Hvis det mislykkes udskrives der en fejlbesked (catch)
-		try{
-			//Et prepared statement som består af et SQL statement
-			PreparedStatement createUser = connection.prepareStatement("insert into customers (name,password) values (?,?)");
-			
-		
-			//Det første spørgsmåltegn i det ovenstående SQL statement
-			createUser.setString(1,  p.getName());
-			createUser.setString(2, p.getPassword());
-			
-			//Efterspørgslen til databasen eksekvers og resultatet indlæses i et ResultSet
-			createUser.executeUpdate();
-			// Om brugeren eksisterer i databasen oprettes et objekt af User ud fra ResultSet
-			
-		} catch (SQLException e){
-			e.printStackTrace();
-		} finally {
-			try{
-				resultSet.close();
-			} catch (SQLException ex){
-				ex.printStackTrace();
-				close();
-			}
-		} 
+		// simulate server error
+		// throw new RuntimeException(" \"savePerson\" fejlede");
 
+		try {
+			savePersonStmt.setString(2, p.getName());
+			savePersonStmt.setString(3, p.getPassword());
+			savePersonStmt.setInt(4, p.getSaldo());
+
+			savePersonStmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new DALException(" \"savePerson\" fejlede");
+		} 
 	}
 
 	@Override
@@ -139,7 +124,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 			// Om brugeren eksisterer i databasen oprettes et objekt af User ud fra ResultSet
 			
 			while (resultSet.next()){
-				user = new PersonDTO(resultSet.getString("name"), resultSet.getString("password"));
+				user = new PersonDTO(resultSet.getString("name"), resultSet.getString("password"), resultSet.getInt("saldo"));
 				list.add(user);	
 			}
 		} catch (SQLException e){

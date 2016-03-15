@@ -29,7 +29,7 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	    pList = new ArrayList<PersonDTO>();
 	    
 		// Indset start data
-		savePerson(new PersonDTO("Magnus", "1234"));
+		
 	  }
 
 	  
@@ -44,7 +44,6 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	@Override
 	public void savePerson(PersonDTO p) throws RuntimeException {
 		// TODO Auto-generated method stub
-		p.setId(id++);
 		pList.add(p);
 	}
 
@@ -59,14 +58,14 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	@Override
 	public List<PersonDTO> getPersons() throws RuntimeException {
 		// TODO Auto-generated method stub
-		
-	/*	try {
+	
+		try {
 			db.getPersons();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-		Window.alert("23:15");
+		}
+	
 		return null;
 	}
 

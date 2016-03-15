@@ -7,11 +7,11 @@
 	<g:HTMLPanel>
 		<g:VerticalPanel height="198px" width="142px">
 			<g:Label text="Brugernavn:"/>
-			<g:TextBox/>
+			<g:TextBox ui:field="txtName"/>
 			<g:Label text="Adgangskode"/>
-			<g:TextBox/>
+			<g:TextBox ui:field="txtPassword"/>
 			<g:Label text="Saldo"/>
-			<g:TextBox/>
+			<g:TextBox ui:field="txtSaldo"/>
 			<g:HorizontalPanel>
 				<g:Button ui:field="createUserBtn">Opret</g:Button>
 				<g:Button ui:field="btnCancel" text="Annuller">Anuller</g:Button>

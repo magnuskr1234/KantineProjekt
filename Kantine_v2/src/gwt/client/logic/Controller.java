@@ -128,6 +128,8 @@ public class Controller {
 		adminMenu.getBtnShowUsers().addClickHandler(new ShowUserListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
 		
+		
+		
 		/*Tilføj user menu handlers
 		userView.getUserMenuView().getKaffeBtn().addClickHandler(new AddKaffeToBasketHandler());
 		userView.getUserMenuView().getBananBtn().addClickHandler(new AddBananToBasketHandler());*/
@@ -140,7 +142,8 @@ public class Controller {
 		
 		adminHeaderView.getBtnMainMenu().addClickHandler(new ReturnMainViewHandler());
 		
-		//Add createUserView handler		
+		//Add createUserView handler	
+		createUserView.getCreateUserBtn().addClickHandler(new CreateUserHandler());
 		createUserView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
 		
 		//Add createItemView handler
@@ -201,11 +204,28 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == adminMenu.getBtnCreateUser()){
-				
 				mainView.changeWidget(createUserView);
-				
+			}
+		        //personDAO.savePerson(new PersonDTO(addPersonView.getpDTO().getName(), addPersonView.getpDTO().getAge()));
+		        // replace personDAO call with an RPC
+		   if(event.getSource() == createUserView.getCreateUserBtn() || createUserView.validate()){
+			 personDAO.savePerson(new PersonDTO(createUserView.getpDTO().getName(), createUserView.getpDTO().getPassword(), createUserView.getpDTO().getSaldo()), new AsyncCallback<Void>() {
+		       
+			 
+				 	@Override
+		          public void onFailure(Throwable caught) {
+		            Window.alert("Serverfejl :" + caught.getMessage());
+		          }
+
+		          @Override
+		          public void onSuccess(Void result) {
+		            Window.alert("Person gemt");
+		          }  
+			 
+		        });    
+		      }	
 			
-			}	
+				
 		}
 	}
 	

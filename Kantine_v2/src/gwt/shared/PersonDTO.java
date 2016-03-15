@@ -13,27 +13,23 @@ public class PersonDTO implements Serializable {
 	private int id;
 	private String name;
 	private String password;
+	private int saldo;
 	
 	// default constructor - must be defined
 	public PersonDTO() {
 		name = "udefineret";
 		password = "999";
+		saldo = 1234;
 		
 	}
 	
-	public PersonDTO(String name, String password) {
+	public PersonDTO(String name, String password, int saldo) {
 		super();
 		this.name = name;
 		this.password = password;
+		this.saldo = saldo;
 	}
 	
-	public PersonDTO(int id, String name, String password) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.password = password;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -56,6 +52,14 @@ public class PersonDTO implements Serializable {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public int getSaldo(){
+		return saldo;
+	}
+	
+	public void setSaldo(int saldo){
+		this.saldo = saldo;
 	}
 
   @Override
