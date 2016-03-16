@@ -206,12 +206,11 @@ public class Controller {
 			if (event.getSource() == adminMenu.getBtnCreateUser()){
 				mainView.changeWidget(createUserView);
 			}
-		        //personDAO.savePerson(new PersonDTO(addPersonView.getpDTO().getName(), addPersonView.getpDTO().getAge()));
 		        // replace personDAO call with an RPC
 		   if(event.getSource() == createUserView.getCreateUserBtn()){
 			   if (createUserView.validate()){
 				   
-				   personDAO.savePerson(new PersonDTO(createUserView.name, createUserView.password, createUserView.adminConvert, createUserView.saldo), new AsyncCallback<Void>() {
+				   personDAO.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName(), createUserView.getCurrentPerson().getPassword(), createUserView.getCurrentPerson().getAdminStatus(), createUserView.getCurrentPerson().getSaldo()), new AsyncCallback<Void>() {
 				       
 						 
 					 	@Override

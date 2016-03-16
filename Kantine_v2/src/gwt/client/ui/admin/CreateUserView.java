@@ -28,11 +28,6 @@ public class CreateUserView extends Composite {
 	@UiField CheckBox radioAdmin;
 
 	public PersonDTO pDTO;
-	public String name = null;
-	public String password = null;
-	public double saldo = 0;
-	
-	public int adminConvert;
 	
 	interface CreateUserUiBinder extends UiBinder<Widget, CreateUserView> {
 	}
@@ -59,13 +54,15 @@ public class CreateUserView extends Composite {
 			txtName.setStyleName("textBox");
 			txtSaldo.setStyleName("textBox");
 			
+
+			
 			// update DTO object
-			name = txtName.getText();
-			password = txtPassword.getText();
+			
+			pDTO.setName(txtName.getText());
+			pDTO.setPassword(txtPassword.getText());
+			pDTO.setSaldo(Double.parseDouble(txtSaldo.getText()));
 			// 1 = true and 0 = false
-			adminConvert = (radioAdmin.getValue()) ? 1 : 0;
-			saldo = Double.parseDouble(txtSaldo.getText()); // txtSaldo.getText();
-			//pDTO.setSaldo(Integer.parseInt(txtSaldo.getText()));
+			pDTO.setAdminStatus((radioAdmin.getValue()) ? 1 : 0);
 			
 			// clear fields
 			txtName.setText("");
@@ -89,7 +86,7 @@ public class CreateUserView extends Composite {
 	}
 
 	// return data entered 
-	/*public String getName() {
-		return name;
-	}*/
+	public PersonDTO getCurrentPerson() {
+		return pDTO;
+	}
 }
