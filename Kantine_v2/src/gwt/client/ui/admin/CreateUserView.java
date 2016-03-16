@@ -10,6 +10,7 @@ import gwt.shared.PersonDTO;
 import gwt.shared.FieldVerifier;
 
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -26,9 +27,12 @@ public class CreateUserView extends Composite {
 	@UiField TextBox txtSaldo;
 	@UiField CheckBox radioAdmin;
 
-	PersonDTO pDTO;
+	public PersonDTO pDTO;
+	public String name = null;
+	public String password = null;
+	public double saldo = 0;
 	
-	int adminConvert;
+	public int adminConvert;
 	
 	interface CreateUserUiBinder extends UiBinder<Widget, CreateUserView> {
 	}
@@ -51,15 +55,17 @@ public class CreateUserView extends Composite {
 	public boolean validate() {
 		// check if all fields are valid
 		if (FieldVerifier.isValidName(txtName.getText()) && FieldVerifier.isValidSaldo(txtSaldo.getText())) {
+			
 			txtName.setStyleName("textBox");
 			txtSaldo.setStyleName("textBox");
-
+			
 			// update DTO object
-			pDTO.setName(txtName.getText());
-			pDTO.setPassword(txtSaldo.getText());
+			name = txtName.getText();
+			password = txtPassword.getText();
 			// 1 = true and 0 = false
-			pDTO.setAdminStatus(adminConvert = (radioAdmin.getValue()) ? 1 : 0);
-			pDTO.setSaldo(Integer.parseInt(txtSaldo.getText()));
+			adminConvert = (radioAdmin.getValue()) ? 1 : 0;
+			saldo = Double.parseDouble(txtSaldo.getText()); // txtSaldo.getText();
+			//pDTO.setSaldo(Integer.parseInt(txtSaldo.getText()));
 			
 			// clear fields
 			txtName.setText("");
@@ -83,7 +89,7 @@ public class CreateUserView extends Composite {
 	}
 
 	// return data entered 
-	public PersonDTO getpDTO() {
-		return pDTO;
-	}
+	/*public String getName() {
+		return name;
+	}*/
 }

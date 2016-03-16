@@ -208,21 +208,26 @@ public class Controller {
 			}
 		        //personDAO.savePerson(new PersonDTO(addPersonView.getpDTO().getName(), addPersonView.getpDTO().getAge()));
 		        // replace personDAO call with an RPC
-		   if(event.getSource() == createUserView.getCreateUserBtn() || createUserView.validate()){
-			 personDAO.savePerson(new PersonDTO(createUserView.getpDTO().getName(), createUserView.getpDTO().getPassword(), createUserView.getpDTO().getAdminStatus(), createUserView.getpDTO().getSaldo()), new AsyncCallback<Void>() {
-		       
-			 
-				 	@Override
-		          public void onFailure(Throwable caught) {
-		            Window.alert("Serverfejl :" + caught.getMessage());
-		          }
+		   if(event.getSource() == createUserView.getCreateUserBtn()){
+			   if (createUserView.validate()){
+				   
+				   personDAO.savePerson(new PersonDTO(createUserView.name, createUserView.password, createUserView.adminConvert, createUserView.saldo), new AsyncCallback<Void>() {
+				       
+						 
+					 	@Override
+			          public void onFailure(Throwable caught) {
+			            Window.alert("Serverfejl :" + caught.getMessage());
+			          }
 
-		          @Override
-		          public void onSuccess(Void result) {
-		            Window.alert("Person gemt");
-		          }  
-			 
-		        });    
+			          @Override
+			          public void onSuccess(Void result) {
+			            Window.alert("Person gemt");
+			          }  
+				 
+			        });
+				   
+			   }
+			    
 		      }	
 			
 				

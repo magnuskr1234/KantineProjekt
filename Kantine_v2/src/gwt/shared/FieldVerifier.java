@@ -37,15 +37,28 @@ public class FieldVerifier {
 		if (name == null) {
 			return false;
 		}
-		return name.length() > 3;
+		
+		else if (name.length() < 3){
+			return false;
+		}
+		else{
+			return true;
+		}
+		//return name.length() > 3;
 	}
 	  public static boolean isValidSaldo(String saldo) {
-		    int saldoNumber;
+		    //int saldoNumber;
 
 		    // check if saldo field is empty (not allowed)
 		    if (saldo.isEmpty()) {
 		      return false;
 		    }
+		    else{
+		    	return true;
+		    	}
+		    }
+		    
+		    /*
 
 		    // check if saldo field contains a number
 		    try {
@@ -56,7 +69,7 @@ public class FieldVerifier {
 		    	
 		    }
 		      return false;
-		    }
+		    }*/
 	  
 }
 

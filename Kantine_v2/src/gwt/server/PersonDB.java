@@ -38,9 +38,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 					DriverManager.getConnection( URL, USERNAME, PASSWORD );
 			// create query that add a person to kartotek
 			savePersonStmt = 
-					connection.prepareStatement( "INSERT INTO customers " + 
-							"( name, password, admin, saldo ) " + 
-							"VALUES ( ?, ?, ?, ? )" );
+					connection.prepareStatement( "INSERT INTO customers ( name, password, admin, saldo ) VALUES ( ?, ?, ?, ? )" );
 
 			// create query that updates a person
 			updatePersonStmt = connection.prepareStatement( 
@@ -84,10 +82,10 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 		// throw new RuntimeException(" \"savePerson\" fejlede");
 
 		try {
-			savePersonStmt.setString(2, p.getName());
-			savePersonStmt.setString(3, p.getPassword());
-			savePersonStmt.setInt(4, p.getAdminStatus());
-			savePersonStmt.setDouble(5, p.getSaldo());
+			savePersonStmt.setString(1, p.getName());
+			savePersonStmt.setString(2, p.getPassword());
+			savePersonStmt.setInt(3, p.getAdminStatus());
+			savePersonStmt.setDouble(4, p.getSaldo());
 
 			savePersonStmt.executeUpdate();
 		} catch (SQLException e) {
@@ -125,7 +123,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 			// Om brugeren eksisterer i databasen oprettes et objekt af User ud fra ResultSet
 			
 			while (resultSet.next()){
-				user = new PersonDTO(resultSet.getString("name"), resultSet.getString("password"), resultSet.getInt("adminStatus"), resultSet.getDouble("saldo"));
+				user = new PersonDTO(resultSet.getString("name"), resultSet.getString("password"), resultSet.getInt("admin"), resultSet.getDouble("saldo"));
 				list.add(user);	
 			}
 		} catch (SQLException e){
