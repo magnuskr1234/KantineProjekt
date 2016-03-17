@@ -165,22 +165,44 @@ public class Controller {
 		    @Override
 		    public void onClick(ClickEvent event) {
 		      if (event.getSource() == loginView.getBtnOk())
-		        if (loginView.getUserId().equals(adminId) && loginView.getUserPw().equals(adminPw)) {
-		          mainView.loginOk(loginView.getUserId());
-		          loginView.resetError();
-		          loginView.clearfields();		
-		          mainView.showAdminHeader();
-		          mainView.showAdminMenu();	          
-		          
-		        } else if (loginView.getUserId().equals(userId) && loginView.getUserPw().equals(userPw)){
-		            mainView.loginOk(loginView.getUserId());
-			          loginView.resetError();
-			          loginView.clearfields();
-			          mainView.showUserHeader();
-			          userMenuView.populateData(null);
-			          mainView.showUserView();
-		        } else
-		          loginView.setError();
+		    	  
+		    	  personDAO.getPersons((new AsyncCallback<List<PersonDTO>>() {
+			          @Override
+			          public void onFailure(Throwable caught) {
+			            Window.alert("Serverfejl :" + caught.getMessage());
+			          }
+			          @Override
+			          public void onSuccess(List<PersonDTO> result) {
+			        	  for (PersonDTO person : result){
+			        		  
+			        	 	  if (loginView.getUserId().equals(person.getName()) && loginView.getUserPw().equals(person.getPassword()))
+			      		       {
+			        	 		  
+			        	 		  if (person.getAdminStatus()==1){
+			      		          mainView.loginOk(loginView.getUserId());
+			      		          loginView.resetError();
+			      		          loginView.clearfields();		
+			      		          mainView.showAdminHeader();
+			      		          mainView.showAdminMenu();}
+			      		          
+			      		          else if (person.getAdminStatus()==0){
+			      		        	  mainView.loginOk(loginView.getUserId());
+			        	 		  loginView.resetError();
+			        	 		  loginView.clearfields();
+			        	 		  mainView.showUserHeader();
+			        	 		  mainView.showUserMenu();}
+			        	 		  mainView.showUserView();
+			      		       } else
+			      		          loginView.setError(); 
+			        		  
+			        	  }
+			         }       
+			        }));
+		    	  
+		    	  
+		    	//  for PersonDTO person : personDAO.getPersons(callback);
+		    	  
+		   
 		    }
 		  }	
 	
