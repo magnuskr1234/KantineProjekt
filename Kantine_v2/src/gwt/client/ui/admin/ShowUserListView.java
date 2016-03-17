@@ -97,7 +97,7 @@ public class ShowUserListView extends Composite {
 		  	  
 		  public void pop(List<PersonDTO> pList) {
     // remove table data
-   // userTable.removeAllRows();
+    userTable.removeAllRows();
         
 	
 	
@@ -133,7 +133,7 @@ public class ShowUserListView extends Composite {
     edit.getElement().setId("editButton");
     userTable.setWidget(i+1, 3, edit);
     Button delete = new Button("Slet bruger");
-    delete.getElement().setId("editButton");
+    delete.getElement().setId("deleteButton");
     userTable.setWidget(i+1, 4, delete);
 
     // add edit and delete buttons to row
@@ -145,7 +145,6 @@ public class ShowUserListView extends Composite {
 	
 	// Handler til at håndtere et tryk på knappen "Slet bruger"
 	 private class DeleteHandler implements ClickHandler {
-		    @Override
 			public void onClick(ClickEvent event) {
 		      // save event row index
 		      eventRowIndex = userTable.getCellForEvent(event).getRowIndex();
@@ -154,7 +153,6 @@ public class ShowUserListView extends Composite {
 		      // save person id
 		      personId = Integer.parseInt(userTable.getText(eventRowIndex, 0));
 		      
-		      Window.alert("" + personId);
 		      // fire controller delete button event
 		      	controllerDeleteBtn.fireEvent(new ClickEvent() {});
 		    	
@@ -162,7 +160,6 @@ public class ShowUserListView extends Composite {
 		  } 
 	 // Handler til at håndtere et tryk på knappen "Opdater saldo" 
 	 private class EditHandler implements ClickHandler {
-		    @Override
 			public void onClick(ClickEvent event) {
 		      // get rowindex where event happened
 		    //  eventRowIndex = t.getCellForEvent(event).getRowIndex();    

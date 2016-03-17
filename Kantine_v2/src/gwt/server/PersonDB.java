@@ -8,10 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 
 import gwt.client.service.PersonService;
+import gwt.client.ui.admin.ShowUserListView;
 import gwt.shared.PersonDTO;
 import gwt.shared.DALException;
 
@@ -30,6 +32,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 	private PreparedStatement getSizeStmt = null;
 	private PreparedStatement deletePersonStmt = null;
 
+	ShowUserListView su;
 	PersonServiceImpl ps;
 	public PersonDB() throws Exception {
 		try 
@@ -144,9 +147,13 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
 	@Override
 	public void deletePerson(int id) throws Exception {
+	
+		
+	
+		
 		try {
 			deletePersonStmt.setInt(1, id);
-
+		
 			deletePersonStmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DALException(" \"deletePerson\" fejlede");

@@ -73,6 +73,7 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 		// find object with id and remove it
 		//for (int i=0; i<getSize();i++)
 		//	if (db.getPersons().get(i).getId() == id)	
+
 				db.deletePerson(id);
 		
 	}

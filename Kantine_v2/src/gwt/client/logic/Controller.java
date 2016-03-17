@@ -151,7 +151,7 @@ public class Controller {
 		//Add createItemView handler
 		createItemView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
 		
-		
+		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
 		
 		// Vis admin menu til at starte med
 		mainView.showLogin();
@@ -259,23 +259,9 @@ public class Controller {
 			if (event.getSource() == adminMenu.getBtnDeleteUser()){
 			//	showUserListView.pop();
 				mainView.changeWidget(showUserListView);
-				int personId = showUserListView.getPersonId();
-				
-				if(event.getSource() == showUserListView.getControllerDeleteBtn())
-				 personDAO.deletePerson(personId, new AsyncCallback<Void>() {
-			          @Override
-			          public void onFailure(Throwable caught) {
-			            Window.alert("Serverfejl :" + caught.getMessage());
-			          }
-
-			          @Override
-			          public void onSuccess(Void result) {
-			            Window.alert("Person slettet");
-			          }
-			        });
-			        // update view
-			        mainView.changeWidget(showUserListView);    
-			}			
+			   }
+			
+		
 		}
 	}
 	
@@ -306,10 +292,30 @@ public class Controller {
 		
 		@Override
 		public void onClick(ClickEvent event){
+			int personId = showUserListView.getPersonId();
+
+			if(event.getSource() == showUserListView.getControllerDeleteBtn())
+				 personDAO.deletePerson(personId, new AsyncCallback<Void>() {
+			          @Override
+			          public void onFailure(Throwable caught) {
+			            Window.alert("Serverfejl :" + caught.getMessage());
+			          }
+
+			          @Override
+			          public void onSuccess(Void result) {
+			  			
+			        	  mainView.changeWidget(showUserListView);
+			            Window.alert("Person slettet");
+			            
+			            
+			          }
+			        });
+			
 			if (event.getSource() == adminMenu.getBtnShowUsers()){
 				List<PersonDTO> result = new ArrayList<PersonDTO>();
 					
-					
+				
+				
 				 personDAO.getPersons(new AsyncCallback<List<PersonDTO>>() {
 			          @Override
 			          public void onFailure(Throwable caught) {
@@ -321,15 +327,13 @@ public class Controller {
 			        	      			          }       
 			        });
 			
-				/*try {
-					showUserListView.pop();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
-				mainView.changeWidget(showUserListView);
+				 
+					
+				
+				
 			
 			}			
+			mainView.changeWidget(showUserListView);
 		}
 	}
 	
