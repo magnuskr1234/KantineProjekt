@@ -90,9 +90,6 @@ public class Controller {
 		
 		
 		
-		
-		
-		
 		//Instantiate pagecontroller
 		mainView = new MainView();
 		
