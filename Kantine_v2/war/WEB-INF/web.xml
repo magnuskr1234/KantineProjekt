@@ -6,7 +6,7 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
-    <servlet>
+  <servlet>
     <servlet-name>PersonServiceServlet</servlet-name>
     <servlet-class>gwt.server.PersonDB</servlet-class>
   </servlet>
@@ -14,6 +14,16 @@
   <servlet-mapping>
     <servlet-name>PersonServiceServlet</servlet-name>
     <url-pattern>/kantine_v2/personservice</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ItemServiceServlet</servlet-name>
+    <servlet-class>gwt.server.ItemDB</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ItemServiceServlet</servlet-name>
+    <url-pattern>/kantine_v2/itemservice</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->

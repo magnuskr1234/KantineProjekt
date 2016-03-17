@@ -15,6 +15,8 @@ import gwt.client.ui.admin.DeleteUserView;
 import gwt.client.ui.admin.EditPersonView;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
+import gwt.client.ui.login.LoginHeaderView;
+import gwt.client.ui.login.LoginView;
 import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;

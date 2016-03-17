@@ -11,6 +11,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
+import gwt.client.service.ItemService;
+import gwt.client.service.ItemServiceAsync;
 import gwt.client.service.PersonService;
 import gwt.client.service.PersonServiceAsync;
 import gwt.client.ui.*;
@@ -23,11 +25,12 @@ import gwt.client.ui.admin.DeleteUserView;
 import gwt.client.ui.admin.EditPersonView;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
+import gwt.client.ui.login.LoginHeaderView;
+import gwt.client.ui.login.LoginView;
 import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
 import gwt.server.PersonDB;
-import gwt.server.PersonServiceImpl;
 import gwt.shared.ItemDTO;
 
 import gwt.shared.PersonDTO;
@@ -69,6 +72,7 @@ public class Controller {
 	
 	// Service 
 	private PersonServiceAsync personDAO = GWT.create(PersonService.class);
+	private ItemServiceAsync itemDAO = GWT.create(ItemService.class);
 
 	// 
 	
@@ -147,6 +151,7 @@ public class Controller {
 		
 		//Add createItemView handler
 		createItemView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
+		createItemView.getcreateItemBtn().addClickHandler(new CreateItemHandler());
 		
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
 		
@@ -166,6 +171,7 @@ public class Controller {
 		    public void onClick(ClickEvent event) {
 		      if (event.getSource() == loginView.getBtnOk())
 		    	  
+		    	  
 		    	  personDAO.getPersons((new AsyncCallback<List<PersonDTO>>() {
 			          @Override
 			          public void onFailure(Throwable caught) {
@@ -181,12 +187,14 @@ public class Controller {
 			        	 		  if (person.getAdminStatus()==1){
 			      		          mainView.loginOk(loginView.getUserId());
 			      		          loginView.resetError();
-			      		          loginView.clearfields();		
+			      		          loginView.clearfields();	
+			      		        mainView.showAdminMenu();
 			      		          mainView.showAdminHeader();
-			      		          mainView.showAdminMenu();}
+			      		          
+			      		          }
 			      		          
 			      		          else if (person.getAdminStatus()==0){
-			      		        	  mainView.loginOk(loginView.getUserId());
+			      		          mainView.loginOk(loginView.getUserId());
 			        	 		  loginView.resetError();
 			        	 		  loginView.clearfields();
 			        	 		  mainView.showUserHeader();
@@ -232,6 +240,42 @@ public class Controller {
 			   if (createUserView.validate()){
 				   
 				   personDAO.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName(), createUserView.getCurrentPerson().getPassword(), createUserView.getCurrentPerson().getAdminStatus(), createUserView.getCurrentPerson().getSaldo()), new AsyncCallback<Void>() {
+				       
+						 
+					 	@Override
+			          public void onFailure(Throwable caught) {
+			            Window.alert("Serverfejl :" + caught.getMessage());
+			          }
+
+			          @Override
+			          public void onSuccess(Void result) {
+			            Window.alert("Person gemt");
+			          }  
+				 
+			        });
+				   
+			   }
+			    
+		      }	
+			
+				
+		}
+	}
+	
+
+	// Item user Handler
+	private class CreateItemHandler implements ClickHandler{
+		
+		@Override
+		public void onClick(ClickEvent event){
+			if (event.getSource() == createItemView.getcreateItemBtn()){
+				mainView.changeWidget(createItemView);
+			}
+		        // replace personDAO call with an RPC
+		   if(event.getSource() == createItemView.getcreateItemBtn()){
+			   if (createItemView.validate()){
+				   
+				   itemDAO.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(), createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
 				       
 						 
 					 	@Override

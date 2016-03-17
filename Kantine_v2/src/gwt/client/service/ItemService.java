@@ -5,14 +5,14 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-import gwt.shared.PersonDTO;
+import gwt.shared.ItemDTO;
 
 
 
 
 
-@RemoteServiceRelativePath("personservice")
-public interface PersonService extends RemoteService {
+@RemoteServiceRelativePath("itemservice")
+public interface ItemService extends RemoteService {
 	//void setPerson(PersonDTO pDTO) throws Exception;
 	//  PersonDTO getPerson() throws Exception;
 	// note: announcing exception makes it possible to communicate 
@@ -20,8 +20,8 @@ public interface PersonService extends RemoteService {
 	// otherwise only generic server exceptions will be send back
 	// in the onFailure call back method
 	
-	public void savePerson(PersonDTO p) throws Exception;
-	public void updatePerson(PersonDTO p) throws Exception;
-	public  List<PersonDTO> getPersons() throws Exception;
-	public void deletePerson(int id) throws Exception; 
+	public void saveItem(ItemDTO p) throws Exception;
+	public void updateItem(ItemDTO p) throws Exception;
+	public  List<ItemDTO> getItems() throws Exception;
+	public void deleteItem(int id) throws Exception;
 }

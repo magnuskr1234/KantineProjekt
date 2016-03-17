@@ -1,10 +1,16 @@
 package gwt.shared;
 
-public class ItemDTO {
+import java.io.Serializable;
+
+public class ItemDTO implements Serializable {
 	
 	private String name;
 	private double price;
 	private int count = 1;
+	
+	public ItemDTO(){
+		
+	}
 	
 	public ItemDTO(String name, double price) 
 	{

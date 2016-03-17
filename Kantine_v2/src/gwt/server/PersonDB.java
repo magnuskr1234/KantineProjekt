@@ -33,7 +33,6 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 	private PreparedStatement deletePersonStmt = null;
 
 	ShowUserListView su;
-	PersonServiceImpl ps;
 	public PersonDB() throws Exception {
 		try 
 		{
@@ -158,12 +157,5 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 		} catch (SQLException e) {
 			throw new DALException(" \"deletePerson\" fejlede");
 		} 
-	}
-
-	@Override
-	public int getSize() throws Exception {
-		
-		int i = 7;
-		return i;
 	}
 	}

@@ -10,9 +10,6 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
-
-import gwt.server.PersonDB;
-import gwt.server.PersonServiceImpl;
 import gwt.shared.PersonDTO;
 
 import java.util.List;

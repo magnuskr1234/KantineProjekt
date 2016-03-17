@@ -7,11 +7,11 @@
 		<g:HTMLPanel>
 		<g:VerticalPanel height="198px" width="142px" horizontalAlignment="ALIGN_LEFT" verticalAlignment="ALIGN_TOP" spacing="20">
 			<g:Label text="Varenavn:"/>
-			<g:TextBox/>
+			<g:TextBox ui:field="txtName"/>
 			<g:Label text="Pris"/>
-			<g:TextBox/>
+			<g:TextBox ui:field="txtPrice"/>
 			<g:HorizontalPanel>
-				<g:Button>Opret</g:Button>
+				<g:Button ui:field="createItemBtn" text="Opret">Opret</g:Button>
 				<g:Button ui:field="btnCancel" text="Annuller">Anuller</g:Button>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>

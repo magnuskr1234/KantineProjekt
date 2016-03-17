@@ -15,7 +15,4 @@ public interface PersonServiceAsync {
 	void getPersons(AsyncCallback<List<PersonDTO>> callback);
 
 	void deletePerson(int index, AsyncCallback<Void> callback);
-
-	void getSize(AsyncCallback<Integer> callback);
-
 }
