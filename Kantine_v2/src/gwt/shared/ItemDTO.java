@@ -7,6 +7,7 @@ public class ItemDTO implements Serializable {
 	private String name;
 	private double price;
 	private int count = 1;
+	private int id;
 	
 	public ItemDTO(){
 		
@@ -17,6 +18,23 @@ public class ItemDTO implements Serializable {
 		this.name = name;
 		this.price = price;
 		
+	}
+	
+	public ItemDTO(int id, String name, double price) 
+	{
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	
+	}
+	
+	public int getId() {
+		
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getName()

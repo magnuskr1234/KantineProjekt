@@ -23,6 +23,7 @@ import gwt.client.ui.admin.CreateUserView;
 import gwt.client.ui.admin.DeleteItemView;
 import gwt.client.ui.admin.DeleteUserView;
 import gwt.client.ui.admin.EditPersonView;
+import gwt.client.ui.admin.ShowItemListView;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
 import gwt.client.ui.login.LoginHeaderView;
@@ -62,6 +63,7 @@ public class Controller {
 	
 	
 	private ShowUserListView showUserListView;
+	private ShowItemListView showItemListView;
 	
 	private StatisticView statistic;
 	
@@ -108,6 +110,7 @@ public class Controller {
 		loginHeaderView = mainView.getloginHeaderView();
 		loginView = mainView.getLoginView();
 		showUserListView = mainView.getshowUserList();
+		showItemListView = mainView.getshowItemList();
 		statistic = mainView.getstatistic();
 		
 		
@@ -126,7 +129,6 @@ public class Controller {
 	    //Add adminMenuView Handlers
 	    adminMenu.getBtnCreateItem().addClickHandler(new CreateItemViewHandler());		
 		adminMenu.getBtnCreateUser().addClickHandler(new CreateUserHandler());
-		adminMenu.getBtnDeleteItem().addClickHandler(new DeleteItemHandler());
 		adminMenu.getBtnDeleteUser().addClickHandler(new DeleteUserHandler());
 		adminMenu.getBtnShowUsers().addClickHandler(new ShowUserListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
@@ -154,6 +156,8 @@ public class Controller {
 		createItemView.getcreateItemBtn().addClickHandler(new CreateItemHandler());
 		
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
+		
+		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
 		
 		// Vis admin menu til at starte med
 		mainView.showLogin();
@@ -302,7 +306,7 @@ public class Controller {
 
 	
 	// Delete item handler
-	private class DeleteItemHandler implements ClickHandler{
+	/*private class DeleteItemHandler implements ClickHandler{
 		
 		@Override
 		public void onClick(ClickEvent event){
@@ -312,7 +316,7 @@ public class Controller {
 				mainView.changeWidget(deleteItemView);
 			}			
 		}
-	}
+	}*/
 	
 	// Delete user view
 	private class DeleteUserHandler implements ClickHandler{
@@ -397,6 +401,57 @@ public class Controller {
 			
 			}			
 			mainView.changeWidget(showUserListView);
+		}
+	}
+	
+	
+	
+	private class ShowItemListHandler implements ClickHandler{
+		
+		@Override
+		public void onClick(ClickEvent event){
+			int itemId = showItemListView.getItemId();
+
+			if(event.getSource() == showItemListView.getControllerDeleteBtn())
+				 itemDAO.deleteItem(itemId, new AsyncCallback<Void>() {
+			          @Override
+			          public void onFailure(Throwable caught) {
+			            Window.alert("Serverfejl :" + caught.getMessage());
+			          }
+
+			          @Override
+			          public void onSuccess(Void result) {
+			  			
+			        	  mainView.changeWidget(showItemListView);
+			            Window.alert("Person slettet");
+			            
+			            
+			          }
+			        });
+			
+			if (event.getSource() == adminMenu.getBtnShowItems()){
+				List<ItemDTO> result = new ArrayList<ItemDTO>();
+					
+				
+				
+				 itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
+			          @Override
+			          public void onFailure(Throwable caught) {
+			            Window.alert("Serverfejl :" + caught.getMessage());
+			          }
+			          @Override
+			          public void onSuccess(List<ItemDTO> result) {
+			        	  showItemListView.pop(result);
+			        	      			          }       
+			        });
+			
+				 
+					
+				
+				
+			
+			}			
+			mainView.changeWidget(showItemListView);
 		}
 	}
 	
