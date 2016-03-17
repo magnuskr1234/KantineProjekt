@@ -19,7 +19,6 @@ import gwt.shared.DALException;
 public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
 	private static final String URL = "jdbc:mysql://52.58.62.183:3306/kantinen";
-
 	private static final String USERNAME = "dummy";
 	private static final String PASSWORD = "gruppe3";
 
@@ -31,6 +30,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 	private PreparedStatement getSizeStmt = null;
 	private PreparedStatement deletePersonStmt = null;
 
+	PersonServiceImpl ps;
 	public PersonDB() throws Exception {
 		try 
 		{
@@ -103,45 +103,54 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 		System.out.println("test");
 	}
 
+	
 	public List<PersonDTO> getPersons() throws Exception {
+		List< PersonDTO > results = null;
 		ResultSet resultSet = null;
-		PersonDTO user = null;
-		ArrayList<PersonDTO> list = new ArrayList<PersonDTO>();
 		
-		
-		//Try catch som laver en efterspørgsel til databasen. Hvis det mislykkes udskrives der en fejlbesked (catch)
-		try{
-			//Et prepared statement som består af et SQL statement
-			PreparedStatement getUser = connection.prepareStatement("SELECT *  FROM customers");
-			
-			//Det første spørgsmåltegn i det ovenstående SQL statement
-			//getUser.setString(1,  user);
-			
-			//Efterspørgslen til databasen eksekvers og resultatet indlæses i et ResultSet
-			resultSet = getUser.executeQuery();
-			
-			// Om brugeren eksisterer i databasen oprettes et objekt af User ud fra ResultSet
-			
-			while (resultSet.next()){
-				user = new PersonDTO(resultSet.getString("name"), resultSet.getString("password"), resultSet.getInt("admin"), resultSet.getDouble("saldo"));
-				list.add(user);	
-			}
-		} catch (SQLException e){
-			e.printStackTrace();
-		} finally {
-			try{
+		try 
+		{
+			resultSet = getPersonsStmt.executeQuery(); 
+			results = new ArrayList< PersonDTO >();
+
+			while ( resultSet.next() )
+			{
+				results.add( new PersonDTO(
+						resultSet.getInt("id"),
+						resultSet.getString( "name" ),
+						resultSet.getString( "password" ),
+						resultSet.getInt( "admin" ),
+						resultSet.getDouble("saldo")));
+			} 
+		} 
+		catch ( SQLException sqlException )
+		{
+			throw new DALException(" \"getPersons\" fejlede");
+		} 
+		finally
+		{
+			try 
+			{
 				resultSet.close();
-			} catch (SQLException ex){
-				ex.printStackTrace();
+			} 
+			catch ( SQLException sqlException )
+			{
+				sqlException.printStackTrace();         
 				close();
-			}
-		} return list;
+			} 
+		}
+		return results; 
 	}
 
 	@Override
 	public void deletePerson(int id) throws Exception {
-		// TODO Auto-generated method stub
-		
+		try {
+			deletePersonStmt.setInt(1, id);
+
+			deletePersonStmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new DALException(" \"deletePerson\" fejlede");
+		} 
 	}
 
 	@Override

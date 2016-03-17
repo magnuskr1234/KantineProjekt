@@ -76,6 +76,8 @@ public class Controller {
 	 //reference to data transfer object
 	 private PersonDTO personDTO;
 	 
+	 
+	 
 	// Hardcoded login details for user
 		private final String userId = "Peter";
 		private final String userPw = "1234";
@@ -257,6 +259,22 @@ public class Controller {
 			if (event.getSource() == adminMenu.getBtnDeleteUser()){
 			//	showUserListView.pop();
 				mainView.changeWidget(showUserListView);
+				int personId = showUserListView.getPersonId();
+				
+				if(event.getSource() == showUserListView.getControllerDeleteBtn())
+				 personDAO.deletePerson(personId, new AsyncCallback<Void>() {
+			          @Override
+			          public void onFailure(Throwable caught) {
+			            Window.alert("Serverfejl :" + caught.getMessage());
+			          }
+
+			          @Override
+			          public void onSuccess(Void result) {
+			            Window.alert("Person slettet");
+			          }
+			        });
+			        // update view
+			        mainView.changeWidget(showUserListView);    
 			}			
 		}
 	}
@@ -289,23 +307,20 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event){
 			if (event.getSource() == adminMenu.getBtnShowUsers()){
-
-				
-				personDAO.getSize(new AsyncCallback<Integer>() {
-
-					@Override
-					public void onFailure(Throwable caught) {
-						// TODO Auto-generated method stub
-						Window.alert(caught +" hej");
-					}
-
-					@Override
-					public void onSuccess(Integer result) {
-						Window.alert(result + "");
-						
-					}
-				});
-				
+				List<PersonDTO> result = new ArrayList<PersonDTO>();
+					
+					
+				 personDAO.getPersons(new AsyncCallback<List<PersonDTO>>() {
+			          @Override
+			          public void onFailure(Throwable caught) {
+			            Window.alert("Serverfejl :" + caught.getMessage());
+			          }
+			          @Override
+			          public void onSuccess(List<PersonDTO> result) {
+			        	  showUserListView.pop(result);
+			        	      			          }       
+			        });
+			
 				/*try {
 					showUserListView.pop();
 				} catch (Exception e) {

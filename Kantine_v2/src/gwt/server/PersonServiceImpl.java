@@ -19,16 +19,16 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	 */
 	
 	PersonDB db = new PersonDB();
-	  // data store
-		private List<PersonDTO> pList;
-		
-		@SuppressWarnings("serial")
-	  public PersonServiceImpl() throws Exception{
+	  
+	// data store		
+	public List<PersonDTO> pList;
+
+	 public PersonServiceImpl() throws Exception{
 	    // instantiate new java object on server
-	    pList = new ArrayList<PersonDTO>();
+		pList = new ArrayList<PersonDTO>();
 	    
 		// Indset start data
-		
+	    
 	  }
 
 	  
@@ -62,34 +62,28 @@ public class PersonServiceImpl extends RemoteServiceServlet implements PersonSer
 	}
 
 	@Override
-	public List<PersonDTO> getPersons() throws RuntimeException {
-		// TODO Auto-generated method stub
-	
-		try {
-			db.getPersons();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-		return null;
+	public List<PersonDTO> getPersons() throws Exception {
+		return db.getPersons();
+		
 	}
 
 	@Override
-	public void deletePerson(int id) throws RuntimeException {
+	public void deletePerson(int id) throws Exception {
 		// TODO Auto-generated method stub
 		// find object with id and remove it
-		for (int i=0; i<pList.size();i++)
-			if (pList.get(i).getId() == id)	
-				pList.remove(i);
+		//for (int i=0; i<getSize();i++)
+		//	if (db.getPersons().get(i).getId() == id)	
+				db.deletePerson(id);
 		
 	}
 
 	@Override
 	public int getSize() throws Exception {
 		// TODO Auto-generated method stub
-		int i = db.getPersons().size();
+		//int i = db.getPersons().size();
 		//int i = 4*4;
+	//	db.getPersons().
+		int i = 3;
 		return i;
 	}
 	}
