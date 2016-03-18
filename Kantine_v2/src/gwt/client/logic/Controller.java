@@ -357,11 +357,13 @@ public class Controller {
 
 					@Override
 					public void onSuccess(Void result) {
-
-						mainView.changeWidget(showUserListView);
+						showUserListView.deleteEventRow();
+					//	mainView.changeWidget(showUserListView);
 						Window.alert("Person slettet");
 
 					}
+					
+				
 				});
 
 			if (event.getSource() == adminMenu.getBtnShowUsers()) {

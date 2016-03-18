@@ -8,7 +8,7 @@
 
   </ui:style>
 	<g:HTMLPanel>
-		<g:ScrollPanel width="100%" height="100%" >
+		<g:ScrollPanel width="100%" height="80%" >
 			<g:FlexTable ui:field="userTable" styleName="FlexTable" width="100%" height="100%" />
 		</g:ScrollPanel>
 	</g:HTMLPanel>

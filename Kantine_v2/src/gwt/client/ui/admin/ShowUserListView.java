@@ -85,6 +85,16 @@ public class ShowUserListView extends Composite {
 		return personDTO;
 	}
 
+	 // delete row where delete-event happened
+	  public void deleteEventRow() {
+	    userTable.removeRow(eventRowIndex);
+	  }
+	  
+	  // update data in row where edit-event happened 
+	  public void updateRow(PersonDTO personDTO) {
+	    userTable.setText(eventRowIndex, 1, personDTO.getName());
+	    userTable.setText(eventRowIndex, 2, "" + personDTO.getSaldo()); 
+	  }
 	/**
 	 * Flextable bliver tilføjet rækker samt værdier.
 	 * 
@@ -119,7 +129,7 @@ public class ShowUserListView extends Composite {
 
 		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
 		// hver række.pList.size()
-		for (int i = 0; i < pList.size(); i++) {
+		for (int i = 0; i < 41; i++) {
 			Button edit = new Button("Opdater saldo");
 			edit.getElement().setId("editButton");
 			userTable.setWidget(i + 1, 3, edit);
