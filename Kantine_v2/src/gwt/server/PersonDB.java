@@ -44,7 +44,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
 			// create query that updates a person
 			updatePersonStmt = connection.prepareStatement( 
-					"UPDATE customers SET name = ?, password = ?  WHERE id = ?" );
+					"UPDATE customers set saldo = ?  WHERE id = ?" );
 
 			// create query that get all persons in kartotek
 			getPersonsStmt = connection.prepareStatement( 
@@ -97,8 +97,16 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
 	@Override
 	public void updatePerson(PersonDTO p) throws Exception {
-		// TODO Auto-generated method stub
 		
+		try {		
+			updatePersonStmt.setDouble(1, p.getSaldo());
+			updatePersonStmt.setInt(2, p.getId());
+			
+
+			updatePersonStmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new DALException(" \"updatePerson\" fejlede");
+		} 
 	}
 	
 	public void test(){

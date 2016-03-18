@@ -40,6 +40,11 @@ public class ShowUserListView extends Composite {
 
 	// id of person where event happened
 	public int personId;
+	public double saldoUpdate;
+	
+	public double getSaldoUpdate(){
+		return saldoUpdate;
+	}
 
 	public int getPersonId() {
 		return personId;
@@ -129,7 +134,7 @@ public class ShowUserListView extends Composite {
 
 		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
 		// hver række.pList.size()
-		for (int i = 0; i < 41; i++) {
+		for (int i = 0; i < pList.size(); i++) {
 			Button edit = new Button("Opdater saldo");
 			edit.getElement().setId("editButton");
 			userTable.setWidget(i + 1, 3, edit);
@@ -141,8 +146,11 @@ public class ShowUserListView extends Composite {
 			edit.addClickHandler(editHandler);
 			delete.addClickHandler(deleteHandler);
 		}
+		
+		
 	}
 
+	
 	// Handler til at håndtere et tryk på knappen "Slet bruger"
 	private class DeleteHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
@@ -163,14 +171,17 @@ public class ShowUserListView extends Composite {
 	private class EditHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 			// get rowindex where event happened
-			// eventRowIndex = t.getCellForEvent(event).getRowIndex();
+				eventRowIndex = userTable.getCellForEvent(event).getRowIndex();
 			// populate personDTO
-			// personDTO.setId(Integer.parseInt(t.getText(eventRowIndex, 0)));
+			 personDTO.setId(Integer.parseInt(userTable.getText(eventRowIndex, 0)));
 			// personDTO.setName(t.getText(eventRowIndex, 1));
-			// personDTO.setAge(Integer.parseInt(t.getText(eventRowIndex, 2)));
+			 personDTO.setSaldo(Double.parseDouble(userTable.getText(eventRowIndex, 2)));
+				
+				saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 2));
 			// fire controller edit button event
-			// controllerEditBtn.fireEvent(new ClickEvent() {});
-			Window.alert("Opdatering af saldo");
+				controllerEditBtn.fireEvent(new ClickEvent() {});
+			
+			
 		}
 	}
 
