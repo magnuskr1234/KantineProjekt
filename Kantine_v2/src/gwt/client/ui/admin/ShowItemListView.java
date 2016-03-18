@@ -99,7 +99,7 @@ public class ShowItemListView extends Composite {
 
 		// set headers in flextable
 		itemTable.setText(0, 0, "Id");
-		itemTable.setText(0, 1, "Brugernavn");
+		itemTable.setText(0, 1, "Navn");
 		itemTable.setText(0, 2, "Saldo");
 
 		// style table
@@ -115,10 +115,10 @@ public class ShowItemListView extends Composite {
 		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
 		// hver række.
 		for (int i = 0; i < pList.size(); i++) {
-			Button edit = new Button("Opdater saldo");
+			Button edit = new Button("Opdater pris");
 			edit.getElement().setId("editButton");
 			itemTable.setWidget(i + 1, 3, edit);
-			Button delete = new Button("Slet bruger");
+			Button delete = new Button("Slet vare");
 			delete.getElement().setId("deleteButton");
 			itemTable.setWidget(i + 1, 4, delete);
 
@@ -155,7 +155,7 @@ public class ShowItemListView extends Composite {
 			// personDTO.setAge(Integer.parseInt(t.getText(eventRowIndex, 2)));
 			// fire controller edit button event
 			// controllerEditBtn.fireEvent(new ClickEvent() {});
-			Window.alert("Opdatering af saldo");
+			Window.alert("Opdatering af pris");
 		}
 	}
 

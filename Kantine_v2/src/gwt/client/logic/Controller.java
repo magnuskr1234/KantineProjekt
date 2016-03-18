@@ -131,6 +131,7 @@ public class Controller {
 		adminMenu.getBtnCreateUser().addClickHandler(new CreateUserHandler());
 		adminMenu.getBtnDeleteUser().addClickHandler(new DeleteUserHandler());
 		adminMenu.getBtnShowUsers().addClickHandler(new ShowUserListHandler());
+		adminMenu.getBtnShowItems().addClickHandler(new ShowItemListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
 		
 		
@@ -354,103 +355,89 @@ public class Controller {
 		}
 	}
 	
-	//Show user list handler
-	private class ShowUserListHandler implements ClickHandler{
-		
+	// Show user list handler
+	private class ShowUserListHandler implements ClickHandler {
+
 		@Override
-		public void onClick(ClickEvent event){
+		public void onClick(ClickEvent event) {
 			int personId = showUserListView.getPersonId();
 
-			if(event.getSource() == showUserListView.getControllerDeleteBtn())
-				 personDAO.deletePerson(personId, new AsyncCallback<Void>() {
-			          @Override
-			          public void onFailure(Throwable caught) {
-			            Window.alert("Serverfejl :" + caught.getMessage());
-			          }
+			if (event.getSource() == showUserListView.getControllerDeleteBtn())
+				personDAO.deletePerson(personId, new AsyncCallback<Void>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+					}
 
-			          @Override
-			          public void onSuccess(Void result) {
-			  			
-			        	  mainView.changeWidget(showUserListView);
-			            Window.alert("Person slettet");
-			            
-			            
-			          }
-			        });
-			
-			if (event.getSource() == adminMenu.getBtnShowUsers()){
+					@Override
+					public void onSuccess(Void result) {
+
+						mainView.changeWidget(showUserListView);
+						Window.alert("Person slettet");
+
+					}
+				});
+
+			if (event.getSource() == adminMenu.getBtnShowUsers()) {
 				List<PersonDTO> result = new ArrayList<PersonDTO>();
-					
-				
-				
-				 personDAO.getPersons(new AsyncCallback<List<PersonDTO>>() {
-			          @Override
-			          public void onFailure(Throwable caught) {
-			            Window.alert("Serverfejl :" + caught.getMessage());
-			          }
-			          @Override
-			          public void onSuccess(List<PersonDTO> result) {
-			        	  showUserListView.pop(result);
-			        	      			          }       
-			        });
-			
-				 
-					
-				
-				
-			
-			}			
+
+				personDAO.getPersons(new AsyncCallback<List<PersonDTO>>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(List<PersonDTO> result) {
+						showUserListView.pop(result);
+					}
+				});
+
+			}
 			mainView.changeWidget(showUserListView);
 		}
 	}
 	
 	
 	
-	private class ShowItemListHandler implements ClickHandler{
-		
+	private class ShowItemListHandler implements ClickHandler {
+
 		@Override
-		public void onClick(ClickEvent event){
+		public void onClick(ClickEvent event) {
 			int itemId = showItemListView.getItemId();
 
-			if(event.getSource() == showItemListView.getControllerDeleteBtn())
-				 itemDAO.deleteItem(itemId, new AsyncCallback<Void>() {
-			          @Override
-			          public void onFailure(Throwable caught) {
-			            Window.alert("Serverfejl :" + caught.getMessage());
-			          }
+			if (event.getSource() == showItemListView.getControllerDeleteBtn())
+				itemDAO.deleteItem(itemId, new AsyncCallback<Void>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+					}
 
-			          @Override
-			          public void onSuccess(Void result) {
-			  			
-			        	  mainView.changeWidget(showItemListView);
-			            Window.alert("Person slettet");
-			            
-			            
-			          }
-			        });
-			
-			if (event.getSource() == adminMenu.getBtnShowItems()){
+					@Override
+					public void onSuccess(Void result) {
+
+						mainView.changeWidget(showItemListView);
+						Window.alert("vare slettet");
+
+					}
+				});
+
+			if (event.getSource() == adminMenu.getBtnShowItems()) {
 				List<ItemDTO> result = new ArrayList<ItemDTO>();
-					
-				
-				
-				 itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
-			          @Override
-			          public void onFailure(Throwable caught) {
-			            Window.alert("Serverfejl :" + caught.getMessage());
-			          }
-			          @Override
-			          public void onSuccess(List<ItemDTO> result) {
-			        	  showItemListView.pop(result);
-			        	      			          }       
-			        });
-			
-				 
-					
-				
-				
-			
-			}			
+
+				itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(List<ItemDTO> result) {
+						showItemListView.pop(result);
+					}
+				});
+
+			}
 			mainView.changeWidget(showItemListView);
 		}
 	}

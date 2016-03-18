@@ -101,7 +101,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			results = new ArrayList<ItemDTO>();
 
 			while (resultSet.next()) {
-				results.add(new ItemDTO(resultSet.getString("title"), resultSet.getDouble("price")));
+				results.add(new ItemDTO(resultSet.getInt("id"), resultSet.getString("title"), resultSet.getDouble("price")));
 			}
 		} catch (SQLException sqlException) {
 			throw new DALException(" \"getPersons\" fejlede");
