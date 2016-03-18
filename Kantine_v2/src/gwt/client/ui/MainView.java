@@ -176,6 +176,8 @@ public class MainView extends Composite {
 	}
 	
 	// Show User View
+	
+	
 	public void showUserView(){
 		contentPanel.showWidget(userView);
 	}

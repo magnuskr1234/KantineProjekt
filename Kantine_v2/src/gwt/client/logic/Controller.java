@@ -198,7 +198,23 @@ public class Controller {
 									loginView.resetError();
 									loginView.clearfields();
 									mainView.showUserHeader();
-									mainView.showUserMenu();
+									mainView.showUserView();
+									itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
+										@Override
+										public void onFailure(Throwable caught) {
+											Window.alert("Serverfejl :" + caught.getMessage());
+										}
+
+										@Override
+										public void onSuccess(List<ItemDTO> result){
+											mainView.getUserView().showMenuView(result);
+										
+										
+										}
+										}
+										
+											);
+									
 								}
 							} else
 								loginView.setError();
@@ -456,7 +472,19 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == userHeaderView.getBtnMainMenu()) {
-				mainView.getUserView().showMenuView();
+				
+				itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(List<ItemDTO> result) {
+						mainView.getUserView().showMenuView(result);
+					}
+				});
+				
 			}
 		}
 	}

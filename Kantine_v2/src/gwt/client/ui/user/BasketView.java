@@ -1,5 +1,6 @@
 package gwt.client.ui.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -29,11 +30,13 @@ public class BasketView extends Composite {
 	 private Button controllerDeleteBtn;
 	 
 	 // Handlers
-	  private EditHandler editHandler;
+	  private AddHandler addHandler;
 	  private DeleteHandler deleteHandler;
 	  
 	  // row where event happened
 	  private int eventRowIndex;
+	  
+	  private ArrayList<ItemDTO> pList;
 	  
 	// reference to DTO 
 	  
@@ -42,12 +45,17 @@ public class BasketView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 
 	    // row event handlers
-	    editHandler = new EditHandler();
+	    addHandler = new AddHandler();
 	    deleteHandler = new DeleteHandler();
 	    
 	    // buttons for controller event handling
 	    controllerEditBtn = new Button();
 	    controllerDeleteBtn = new Button();
+	    
+	    pList = new ArrayList<ItemDTO>();
+	    pList.add(new ItemDTO("baan", 3456));
+	    
+	    
 	}
 	
 	  public Button getControllerEditBtn() {
@@ -70,7 +78,13 @@ public class BasketView extends Composite {
 			 basketTable.setText(eventRowIndex, 2, "" + personDTO.getPassword()); 
 		  }
 		  
-	public void pop(List<ItemDTO> pList){
+	public void addItemToBasket(ItemDTO item){
+		pList.add(item);
+		pList.add(new ItemDTO("bla", 3456));
+		pop();
+	}
+		  
+	public void pop(){
   // remove table data
   basketTable.removeAllRows();
       
@@ -99,31 +113,17 @@ public class BasketView extends Composite {
       basketTable.setText(i+1, 2, "" + (pList.get(i).getPrice() * pList.get(i).getCount()));
    
       Button edit = new Button("Tilføj");
-      edit.getElement().setId("editButton");
+      edit.getElement().setId("addButton");
       basketTable.setWidget(i+1, 3, edit);
       Button delete = new Button("Fjern");
-      delete.getElement().setId("editButton");
+      delete.getElement().setId("deleteButton");
       basketTable.setWidget(i+1, 4, delete);
 
       // add edit and delete buttons to row
-      edit.addClickHandler(editHandler);
+      edit.addClickHandler(addHandler);
       delete.addClickHandler(deleteHandler);
       
     }
-  
-  
-  for (int i=0; i < 2; i++){
-  Button edit = new Button("Tilføj");
-  edit.getElement().setId("editButton");
-  basketTable.setWidget(i+1, 3, edit);
-  Button delete = new Button("Fjern");
-  delete.getElement().setId("editButton");
-  basketTable.setWidget(i+1, 4, delete);
-
-  // add edit and delete buttons to row
-  edit.addClickHandler(editHandler);
-  delete.addClickHandler(deleteHandler);
-  }
 	}
 	
 	 private class DeleteHandler implements ClickHandler {
@@ -138,7 +138,7 @@ public class BasketView extends Composite {
 		    }
 		  } 
 	 
-	 private class EditHandler implements ClickHandler {
+	 private class AddHandler implements ClickHandler {
 		    public void onClick(ClickEvent event) {
 		      // get rowindex where event happened
 		     eventRowIndex = basketTable.getCellForEvent(event).getRowIndex();    

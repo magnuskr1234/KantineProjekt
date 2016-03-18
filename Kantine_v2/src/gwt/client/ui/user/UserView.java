@@ -1,6 +1,7 @@
 package gwt.client.ui.user;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -73,9 +74,9 @@ public class UserView extends Composite {
 
 		
 		// Initially show menu view
-		
 		contentPanel.showWidget(userMenuView);
 		showBasketWidget();
+		
 		
 	}
 	
@@ -88,12 +89,13 @@ public class UserView extends Composite {
 		contentPanel.showWidget(userHistoryView);
 	}
 	
-	public void showMenuView(){
+	public void showMenuView(List<ItemDTO> pList){
+		userMenuView.pop(pList);
 		contentPanel.showWidget(userMenuView);
 	}
 	
 	public void showBasketWidget(){
-		basketView.pop(basketList);
+		basketView.pop();
 		basket.showWidget(basketView);
 	}
 	
