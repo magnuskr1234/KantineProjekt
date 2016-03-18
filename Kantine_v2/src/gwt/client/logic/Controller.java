@@ -123,7 +123,6 @@ public class Controller {
 		// Add adminMenuView Handlers
 		adminMenu.getBtnCreateItem().addClickHandler(new CreateItemViewHandler());
 		adminMenu.getBtnCreateUser().addClickHandler(new CreateUserHandler());
-		adminMenu.getBtnDeleteUser().addClickHandler(new DeleteUserHandler());
 		adminMenu.getBtnShowUsers().addClickHandler(new ShowUserListHandler());
 		adminMenu.getBtnShowItems().addClickHandler(new ShowItemListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
@@ -147,23 +146,68 @@ public class Controller {
 		// Add createUserView handler
 		createUserView.getCreateUserBtn().addClickHandler(new CreateUserHandler());
 		createUserView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
+		
+		// Add update saldo handler
+		editPersonView.getBtnCancel().addClickHandler(new UpdateSaldoHandler());
+		editPersonView.getBtnConfirm().addClickHandler(new UpdateSaldoHandler());
 
 		// Add createItemView handler
 		createItemView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
 		createItemView.getcreateItemBtn().addClickHandler(new CreateItemHandler());
 
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
+		showUserListView.getControllerEditBtn().addClickHandler(new UpdateSaldoHandler());
 
 		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
 
 		// Vis admin menu til at starte med
-		mainView.showLogin();
-		mainView.showLoginHeader();
+		mainView.showAdminHeader();
+		mainView.showAdminMenu();
 
 		RootLayoutPanel rp = RootLayoutPanel.get();
 		rp.add(mainView);
 	}
 
+	/**
+	 * Denne klasse håndterer knapperne til opdatering af saldo
+	 * @author magnusrasmussen
+	 *		
+	 */
+	private class UpdateSaldoHandler implements ClickHandler {
+		double saldoNew;
+		@Override
+		public void onClick(ClickEvent event) {
+			if(event.getSource() == showUserListView.getControllerEditBtn()){
+				
+			mainView.showEditPerson();
+			}
+			
+			if(event.getSource() == editPersonView.getBtnCancel())
+				mainView.changeWidget(showUserListView);
+			
+			else if(event.getSource() == editPersonView.getBtnConfirm())
+				
+				if(editPersonView.validate())
+					personDAO.updatePerson(personDTO, new AsyncCallback<Void>(){
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+						
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+						Window.alert("Saldo opdateret!");
+						
+					}
+				
+					
+				});
+			mainView.changeWidget(showUserListView);
+		}
+		
+	}
 	// Login handler
 	private class LoginHandler implements ClickHandler {
 

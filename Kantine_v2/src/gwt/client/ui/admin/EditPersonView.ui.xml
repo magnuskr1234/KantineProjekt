@@ -6,20 +6,21 @@
   
 
   <ui:style>
-    .scrollable {
-      height: 400px;
-      width: 250px;
-      border: 1px solid #ccc;
-      text-align: left;
-    }
-    
-    .contactFormCell {
-      padding-left: 20px;
-    }
+ 
   </ui:style>
 
-  <g:HTMLPanel>
-   
-
-  </g:HTMLPanel>
+	<g:HTMLPanel ui:field="addPersonView">
+		<g:VerticalPanel height="150px">
+			<g:HorizontalPanel>
+				<g:Cell verticalAlignment="ALIGN_MIDDLE">
+					<g:Label text="Indtast optankningsbeløb:" width="168px"/>
+				</g:Cell>
+			<g:TextBox ui:field="txtSaldo" height="8px"/>
+		</g:HorizontalPanel>
+			<g:HorizontalPanel>
+				<g:Button text="Bekræft" styleName="#okButton" ui:field="btnConfirm" />
+				<g:Button text="Annuller" styleName="#okButton" ui:field="btnCancel" />
+			</g:HorizontalPanel>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
 </ui:UiBinder>
