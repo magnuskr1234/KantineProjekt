@@ -36,10 +36,11 @@ import gwt.shared.ItemDTO;
 
 import gwt.shared.PersonDTO;
 
-
 /**
- * Pagecontroller til at styre hvilken side som aktuelt bliver vist for administratoren, ved at tilføje clickhandlers
- * som sørger for at skifte til det rette panel, gennem mainViewAdmin. 
+ * Pagecontroller til at styre hvilken side som aktuelt bliver vist for
+ * administratoren, ved at tilføje clickhandlers som sørger for at skifte til
+ * det rette panel, gennem mainViewAdmin.
+ * 
  * @author magnusrasmussen
  *
  */
@@ -49,59 +50,53 @@ public class Controller {
 	private MainView mainView;
 	private LoginView loginView;
 	private LoginHeaderView loginHeaderView;
-	
+
 	private AdminMenuView adminMenu;
 	private AdminHeaderView adminHeaderView;
-	
+
 	private CreateUserView createUserView;
 	private CreateItemView createItemView;
-	
+
 	private DeleteItemView deleteItemView;
 	private DeleteUserView deleteUserView;
-	
+
 	private EditPersonView editPersonView;
-	
-	
+
 	private ShowUserListView showUserListView;
 	private ShowItemListView showItemListView;
-	
+
 	private StatisticView statistic;
-	
+
 	// Referencer til user views
 	private UserMenuView userMenuView;
 	private UserView userView;
 	private UserHeaderView userHeaderView;
-	
-	// Service 
+
+	// Service
 	private PersonServiceAsync personDAO = GWT.create(PersonService.class);
 	private ItemServiceAsync itemDAO = GWT.create(ItemService.class);
 
-	// 
-	
-	
-	 //reference to data transfer object
-	 private PersonDTO personDTO;
-	 
-	 
-	 
+	//
+
+	// reference to data transfer object
+	private PersonDTO personDTO;
+
 	// Hardcoded login details for user
-		private final String userId = "Peter";
-		private final String userPw = "1234";
-		
-		// Hardcoded login for admin
-		private final String adminId = "Hans";
-		private final String adminPw = "1234";
-	 
-	public Controller(){
-		
-		
-		
-		//Instantiate pagecontroller
+	private final String userId = "Peter";
+	private final String userPw = "1234";
+
+	// Hardcoded login for admin
+	private final String adminId = "Hans";
+	private final String adminPw = "1234";
+
+	public Controller() {
+
+		// Instantiate pagecontroller
 		mainView = new MainView();
-		
-		//Get references to subviews for admin
+
+		// Get references to subviews for admin
 		adminHeaderView = mainView.getadminHeaderView();
-		adminMenu = mainView.getadminMenu(); 
+		adminMenu = mainView.getadminMenu();
 		createItemView = mainView.getcreateItem();
 		createUserView = mainView.getcreateUser();
 		deleteItemView = mainView.getdeleteItem();
@@ -112,249 +107,240 @@ public class Controller {
 		showUserListView = mainView.getshowUserList();
 		showItemListView = mainView.getshowItemList();
 		statistic = mainView.getstatistic();
-		
-		
-		//Referncer til subview for user
+
+		// Referncer til subview for user
 		userMenuView = mainView.getuserMenu();
 		userView = mainView.getUserView();
 		userHeaderView = mainView.getuserHeaderView();
-		
-		//Add loginview handlers
+
+		// Add loginview handlers
 		loginView.getBtnOk().addClickHandler(new LoginHandler());
-		
-		//Add logoutview handlers
+
+		// Add logoutview handlers
 		adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
 		userHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
-	    
-	    //Add adminMenuView Handlers
-	    adminMenu.getBtnCreateItem().addClickHandler(new CreateItemViewHandler());		
+
+		// Add adminMenuView Handlers
+		adminMenu.getBtnCreateItem().addClickHandler(new CreateItemViewHandler());
 		adminMenu.getBtnCreateUser().addClickHandler(new CreateUserHandler());
 		adminMenu.getBtnDeleteUser().addClickHandler(new DeleteUserHandler());
 		adminMenu.getBtnShowUsers().addClickHandler(new ShowUserListHandler());
 		adminMenu.getBtnShowItems().addClickHandler(new ShowItemListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
-		
-		
-		
-		/*Tilføj user menu handlers
-		userView.getUserMenuView().getKaffeBtn().addClickHandler(new AddKaffeToBasketHandler());
-		userView.getUserMenuView().getBananBtn().addClickHandler(new AddBananToBasketHandler());*/
-		
-		//Add userHeader handlers
+
+		/*
+		 * Tilføj user menu handlers
+		 * userView.getUserMenuView().getKaffeBtn().addClickHandler(new
+		 * AddKaffeToBasketHandler());
+		 * userView.getUserMenuView().getBananBtn().addClickHandler(new
+		 * AddBananToBasketHandler());
+		 */
+
+		// Add userHeader handlers
 		userHeaderView.getBtnHistory().addClickHandler(new HistoryHandler());
 		userHeaderView.getBtnMainMenu().addClickHandler(new UserReturnToMenuHandler());
-		
+
 		// Add adminHeaderView Handlers
-		
+
 		adminHeaderView.getBtnMainMenu().addClickHandler(new ReturnMainViewHandler());
-		
-		//Add createUserView handler	
+
+		// Add createUserView handler
 		createUserView.getCreateUserBtn().addClickHandler(new CreateUserHandler());
 		createUserView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
-		
-		//Add createItemView handler
+
+		// Add createItemView handler
 		createItemView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
 		createItemView.getcreateItemBtn().addClickHandler(new CreateItemHandler());
-		
+
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
-		
+
 		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
-		
+
 		// Vis admin menu til at starte med
 		mainView.showLogin();
 		mainView.showLoginHeader();
-		
-		
-		RootLayoutPanel rp = RootLayoutPanel.get();
-		rp.add(mainView); 
-	}
-	
-	// Login handler
-	  private class LoginHandler implements ClickHandler {
 
-		    @Override
-		    public void onClick(ClickEvent event) {
-		      if (event.getSource() == loginView.getBtnOk())
-		    	  
-		    	  
-		    	  personDAO.getPersons((new AsyncCallback<List<PersonDTO>>() {
-			          @Override
-			          public void onFailure(Throwable caught) {
-			            Window.alert("Serverfejl :" + caught.getMessage());
-			          }
-			          @Override
-			          public void onSuccess(List<PersonDTO> result) {
-			        	  for (PersonDTO person : result){
-			        		  
-			        	 	  if (loginView.getUserId().equals(person.getName()) && loginView.getUserPw().equals(person.getPassword()))
-			      		       {
-			        	 		  
-			        	 		  if (person.getAdminStatus()==1){
-			      		          mainView.loginOk(loginView.getUserId());
-			      		          loginView.resetError();
-			      		          loginView.clearfields();	
-			      		        mainView.showAdminMenu();
-			      		          mainView.showAdminHeader();
-			      		          
-			      		          }
-			      		          
-			      		          else if (person.getAdminStatus()==0){
-			      		          mainView.loginOk(loginView.getUserId());
-			        	 		  loginView.resetError();
-			        	 		  loginView.clearfields();
-			        	 		  mainView.showUserHeader();
-			        	 		  mainView.showUserMenu();}
-			        	 		  mainView.showUserView();
-			      		       } else
-			      		          loginView.setError(); 
-			        		  
-			        	  }
-			         }       
-			        }));
-		    	  
-		    	  
-		    	//  for PersonDTO person : personDAO.getPersons(callback);
-		    	  
-		   
-		    }
-		  }	
-	
-	// Logout handler
-	private class LogoutHandler implements ClickHandler{
-		
+		RootLayoutPanel rp = RootLayoutPanel.get();
+		rp.add(mainView);
+	}
+
+	// Login handler
+	private class LoginHandler implements ClickHandler {
+
 		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == adminHeaderView.getBtnLogout() || event.getSource() == userHeaderView.getBtnLogout() ){
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == loginView.getBtnOk())
+
+				personDAO.getPersons((new AsyncCallback<List<PersonDTO>>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(List<PersonDTO> result) {
+						for (PersonDTO person : result) {
+
+							if (loginView.getUserId().equals(person.getName())
+									&& loginView.getUserPw().equals(person.getPassword())) {
+
+								if (person.getAdminStatus() == 1) {
+									mainView.loginOk(loginView.getUserId());
+									loginView.resetError();
+									loginView.clearfields();
+									mainView.showAdminMenu();
+									mainView.showAdminHeader();
+
+								}
+
+								else if (person.getAdminStatus() == 0) {
+									mainView.loginOk(loginView.getUserId());
+									loginView.resetError();
+									loginView.clearfields();
+									mainView.showUserHeader();
+									mainView.showUserMenu();
+								}
+							} else
+								loginView.setError();
+
+						}
+					}
+				}));
+
+			// for PersonDTO person : personDAO.getPersons(callback);
+
+		}
+	}
+
+	// Logout handler
+	private class LogoutHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == adminHeaderView.getBtnLogout()
+					|| event.getSource() == userHeaderView.getBtnLogout()) {
 				mainView.showLogin();
 				mainView.showLoginHeader();
-				
-			}	
+
+			}
 		}
 	}
-	
+
 	// Create user Handler
-	private class CreateUserHandler implements ClickHandler{
-		
+	private class CreateUserHandler implements ClickHandler {
+
 		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == adminMenu.getBtnCreateUser()){
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == adminMenu.getBtnCreateUser()) {
 				mainView.changeWidget(createUserView);
 			}
-		        // replace personDAO call with an RPC
-		   if(event.getSource() == createUserView.getCreateUserBtn()){
-			   if (createUserView.validate()){
-				   
-				   personDAO.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName(), createUserView.getCurrentPerson().getPassword(), createUserView.getCurrentPerson().getAdminStatus(), createUserView.getCurrentPerson().getSaldo()), new AsyncCallback<Void>() {
-				       
-						 
-					 	@Override
-			          public void onFailure(Throwable caught) {
-			            Window.alert("Serverfejl :" + caught.getMessage());
-			          }
+			// replace personDAO call with an RPC
+			if (event.getSource() == createUserView.getCreateUserBtn()) {
+				if (createUserView.validate()) {
 
-			          @Override
-			          public void onSuccess(Void result) {
-			            Window.alert("Person gemt");
-			          }  
-				 
-			        });
-				   
-			   }
-			    
-		      }	
-			
-				
+					personDAO.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName(),
+							createUserView.getCurrentPerson().getPassword(),
+							createUserView.getCurrentPerson().getAdminStatus(),
+							createUserView.getCurrentPerson().getSaldo()), new AsyncCallback<Void>() {
+
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert("Serverfejl :" + caught.getMessage());
+								}
+
+								@Override
+								public void onSuccess(Void result) {
+									Window.alert("Person gemt");
+								}
+
+							});
+
+				}
+
+			}
+
 		}
 	}
-	
 
 	// Item user Handler
-	private class CreateItemHandler implements ClickHandler{
-		
+	private class CreateItemHandler implements ClickHandler {
+
 		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == createItemView.getcreateItemBtn()){
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == createItemView.getcreateItemBtn()) {
 				mainView.changeWidget(createItemView);
 			}
-		        // replace personDAO call with an RPC
-		   if(event.getSource() == createItemView.getcreateItemBtn()){
-			   if (createItemView.validate()){
-				   
-				   itemDAO.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(), createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
-				       
-						 
-					 	@Override
-			          public void onFailure(Throwable caught) {
-			            Window.alert("Serverfejl :" + caught.getMessage());
-			          }
+			// replace personDAO call with an RPC
+			if (event.getSource() == createItemView.getcreateItemBtn()) {
+				if (createItemView.validate()) {
 
-			          @Override
-			          public void onSuccess(Void result) {
-			            Window.alert("Person gemt");
-			          }  
-				 
-			        });
-				   
-			   }
-			    
-		      }	
-			
-				
+					itemDAO.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(),
+							createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
+
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert("Serverfejl :" + caught.getMessage());
+								}
+
+								@Override
+								public void onSuccess(Void result) {
+									Window.alert("Person gemt");
+								}
+
+							});
+
+				}
+
+			}
+
 		}
 	}
-	
 
-
-	
 	// Delete item handler
-	/*private class DeleteItemHandler implements ClickHandler{
-		
-		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == adminMenu.getBtnDeleteItem()){
-				
-				deleteItemView.pop();
-				mainView.changeWidget(deleteItemView);
-			}			
-		}
-	}*/
-	
+	/*
+	 * private class DeleteItemHandler implements ClickHandler{
+	 * 
+	 * @Override public void onClick(ClickEvent event){ if (event.getSource() ==
+	 * adminMenu.getBtnDeleteItem()){
+	 * 
+	 * deleteItemView.pop(); mainView.changeWidget(deleteItemView); } } }
+	 */
+
 	// Delete user view
-	private class DeleteUserHandler implements ClickHandler{
-		
+	private class DeleteUserHandler implements ClickHandler {
+
 		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == adminMenu.getBtnDeleteUser()){
-			//	showUserListView.pop();
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == adminMenu.getBtnDeleteUser()) {
+				// showUserListView.pop();
 				mainView.changeWidget(showUserListView);
-			   }
-			
-		
+			}
+
 		}
 	}
-	
+
 	// Return to menu handler
-	private class ReturnMainViewHandler implements ClickHandler{
+	private class ReturnMainViewHandler implements ClickHandler {
 		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == createUserView.getBtnCancel() || event.getSource() == createItemView.getBtnCancel() || 
-					event.getSource() == adminHeaderView.getBtnMainMenu()){
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == createUserView.getBtnCancel() || event.getSource() == createItemView.getBtnCancel()
+					|| event.getSource() == adminHeaderView.getBtnMainMenu()) {
 				mainView.changeWidget(adminMenu);
 			}
 		}
 	}
-	
+
 	// Create item handler
-	private class CreateItemViewHandler implements ClickHandler{
-		
+	private class CreateItemViewHandler implements ClickHandler {
+
 		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == adminMenu.getBtnCreateItem()){
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == adminMenu.getBtnCreateItem()) {
 				mainView.changeWidget(createItemView);
 			}
 		}
 	}
-	
+
 	// Show user list handler
 	private class ShowUserListHandler implements ClickHandler {
 
@@ -397,9 +383,7 @@ public class Controller {
 			mainView.changeWidget(showUserListView);
 		}
 	}
-	
-	
-	
+
 	private class ShowItemListHandler implements ClickHandler {
 
 		@Override
@@ -441,71 +425,66 @@ public class Controller {
 			mainView.changeWidget(showItemListView);
 		}
 	}
-	
-	//Show statistics handler
-	private class StatisticsHandler implements ClickHandler{
-		
+
+	// Show statistics handler
+	private class StatisticsHandler implements ClickHandler {
+
 		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == adminMenu.getBtnStatistic()){
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == adminMenu.getBtnStatistic()) {
 				mainView.changeWidget(statistic);
-			}			
+			}
 		}
 	}
-	
-	//Show history handler
-	private class HistoryHandler implements ClickHandler{
-		
+
+	// Show history handler
+	private class HistoryHandler implements ClickHandler {
+
 		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == userHeaderView.getBtnHistory()){
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == userHeaderView.getBtnHistory()) {
 				mainView.getUserView().showHistoryView();
 			}
 		}
 	}
-	//Back to menu handler
-	private class UserReturnToMenuHandler implements ClickHandler{
-		
+
+	// Back to menu handler
+	private class UserReturnToMenuHandler implements ClickHandler {
+
 		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == userHeaderView.getBtnMainMenu()){
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == userHeaderView.getBtnMainMenu()) {
 				mainView.getUserView().showMenuView();
 			}
 		}
 	}
-	
-	//Add to basket
-	
-	/*private class AddKaffeToBasketHandler implements ClickHandler{
-		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == userView.getUserMenuView().getKaffeBtn()){
-				mainView.getUserView().AddItemToBasket(new ItemDTO("Kaffe", 20));
-				mainView.getUserView().showBasketWidget();
-				//mainView.getUserView().showHistoryView();
-				//Window.alert("Hej");
-			}
-		}
 
+	// Add to basket
 
-	}*/
-	
-	/*private class AddBananToBasketHandler implements ClickHandler{
-		@Override
-		public void onClick(ClickEvent event){
-			if (event.getSource() == userView.getUserMenuView().getBananBtn()){
-				mainView.getUserView().AddItemToBasket(new ItemDTO("Banan", 10));
-				mainView.getUserView().showBasketWidget();
-				//mainView.getUserView().showHistoryView();
-			}
-		}
+	/*
+	 * private class AddKaffeToBasketHandler implements ClickHandler{
+	 * 
+	 * @Override public void onClick(ClickEvent event){ if (event.getSource() ==
+	 * userView.getUserMenuView().getKaffeBtn()){
+	 * mainView.getUserView().AddItemToBasket(new ItemDTO("Kaffe", 20));
+	 * mainView.getUserView().showBasketWidget();
+	 * //mainView.getUserView().showHistoryView(); //Window.alert("Hej"); } }
+	 * 
+	 * 
+	 * }
+	 */
 
-
-	}*/
-	
-	
-
-
-	
+	/*
+	 * private class AddBananToBasketHandler implements ClickHandler{
+	 * 
+	 * @Override public void onClick(ClickEvent event){ if (event.getSource() ==
+	 * userView.getUserMenuView().getBananBtn()){
+	 * mainView.getUserView().AddItemToBasket(new ItemDTO("Banan", 10));
+	 * mainView.getUserView().showBasketWidget();
+	 * //mainView.getUserView().showHistoryView(); } }
+	 * 
+	 * 
+	 * }
+	 */
 
 }
