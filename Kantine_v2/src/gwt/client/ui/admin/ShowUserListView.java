@@ -118,7 +118,7 @@ public class ShowUserListView extends Composite {
 		}
 
 		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
-		// hver række.
+		// hver række.pList.size()
 		for (int i = 0; i < pList.size(); i++) {
 			Button edit = new Button("Opdater saldo");
 			edit.getElement().setId("editButton");

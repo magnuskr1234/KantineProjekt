@@ -33,6 +33,20 @@ h1 {
   margin: 15px 6px 6px;
 }
 
+/* flextable styles */
+.FlexTable {
+	border-top: thin solid #444444;
+	border-left: thin solid #444444;
+	border-right: thin solid #111111;
+	border-bottom: thin solid #111111;
+	table-layout: fixed;
+	width: 400px; 
+}
+
+.FlexTable-Header {
+	font-weight: bold;
+}
+
 .margin {
 margin: 0px 40px 0px 40px;
 }
