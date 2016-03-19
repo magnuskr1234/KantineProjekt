@@ -173,9 +173,9 @@ public class Controller {
 			if(event.getSource() == editPersonView.getBtnConfirm()){	
 				
 				personDTO = editPersonView.getpersonDTO();
-			      Window.alert("hej");
+			      
 
-				if (editPersonView.validate()){
+				if (editPersonView.validate(showUserListView)){
 				// editPersonView.txtSaldo.setStyleName("textBox");
 			      
 			   //    getsaldo = Double.parseDouble(editPersonView.txtSaldo.getText());
@@ -186,7 +186,7 @@ public class Controller {
 			       
 			      //personDTO.setId(56); 
 			      //personDTO.setSaldo(getsaldo);
-			      Window.alert("hej");
+			     
 			      
 					personupdate.updatePerson(personDTO, new AsyncCallback<Void>(){
 
@@ -197,8 +197,10 @@ public class Controller {
 
 					@Override
 					public void onSuccess(Void result) {
-						Window.alert("Saldo opdateret!");					
+						Window.alert("Saldo opdateret!");	
+						
 					}				
+					
 				}); 
 				}
 			}
@@ -208,7 +210,9 @@ public class Controller {
 			if(event.getSource() == showUserListView.getControllerEditBtn()){
 				mainView.changeWidget(editPersonView);
 			}
+			
 		}
+		
 		
 	}
 	// Login handler

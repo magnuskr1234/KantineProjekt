@@ -7,11 +7,12 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.shared.PersonDTO;
 import gwt.shared.FieldVerifier;
-
+import gwt.client.ui.admin.*;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Label;
 
 public class EditPersonView extends Composite {
 
@@ -21,22 +22,20 @@ public class EditPersonView extends Composite {
 	@UiField Button btnCancel;
 
 	
-	PersonDTO pDTO;
+	PersonDTO pDTO = new PersonDTO();
 	
 	interface EditPersonViewUiBinder extends UiBinder<Widget, EditPersonView> {
 	}
 
 	public EditPersonView() {
 		initWidget(uiBinder.createAndBindUi(this));
-	
+		
 	}
 	
 	  public void setpersonDTO (PersonDTO pDTO) {
 		    this.pDTO =  pDTO;
 		    // update text boxes
-		    pDTO.getId();
-		    pDTO.getName();
-		    txtSaldo.setText("" + pDTO.getSaldo());
+		   
 		  }
 		  
 		  // return data entered 
@@ -58,20 +57,23 @@ public class EditPersonView extends Composite {
 
 
 	
-	 public boolean validate() {
+	 public boolean validate(ShowUserListView su) {
 		    // check if all fields are valid
 		 if (FieldVerifier.isValidSaldo(txtSaldo.getText())){
-		   // double getsaldo;
+			
+			 
+		    double getsaldo;
 		      txtSaldo.setStyleName("textBox");
-		     // getsaldo = Double.parseDouble(txtSaldo.getText());
+		      getsaldo = Double.parseDouble(txtSaldo.getText());
 		       
 		      // update DTO object
-		    Window.alert("1");
-		     //  getsaldo += ShowUserListView.saldoUpdate;
-		      pDTO.setId(56); 
-		      Window.alert("2");
-		      pDTO.setSaldo(Double.parseDouble(txtSaldo.getText()));
-		      Window.alert("3");
+		      
+		     
+		       getsaldo += ShowUserListView.saldoUpdate;
+		      pDTO.setId(su.getPersonId());
+		     
+		      pDTO.setSaldo(getsaldo);
+		     
 		      return true;
 		 }
 		 

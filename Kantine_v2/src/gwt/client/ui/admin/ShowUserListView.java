@@ -183,7 +183,12 @@ public class ShowUserListView extends Composite {
 			 personDTO.setId(Integer.parseInt(userTable.getText(eventRowIndex, 0)));
 			 personDTO.setName(userTable.getText(eventRowIndex, 1));
 			 personDTO.setSaldo(Double.parseDouble(userTable.getText(eventRowIndex, 2))); 
-			// saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 2));
+			 
+			// save person id
+			setPersonId( Integer.parseInt(userTable.getText(eventRowIndex, 0)));
+			
+				
+			 saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 2));
 			// fire controller edit button event
 			controllerEditBtn.fireEvent(new ClickEvent() {});
 			
