@@ -171,10 +171,11 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {		
 			if(event.getSource() == editPersonView.getBtnConfirm()){	
-				if(editPersonView.validate())
-				personDTO = editPersonView.getpersonDTO();
 				
-					Window.alert("tillykke du er noget så langt");
+				personDTO = editPersonView.getpersonDTO();
+				Window.alert("hej");
+				// det her lort virker ikke; editPersonView.validate();			
+					
 					personDAO.updatePerson(personDTO, new AsyncCallback<Void>(){
 
 					@Override

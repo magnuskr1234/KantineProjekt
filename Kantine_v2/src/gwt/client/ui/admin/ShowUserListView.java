@@ -42,9 +42,9 @@ public class ShowUserListView extends Composite {
 
 	// id of person where event happened
 	public int personId;
-	public double saldoUpdate;
+	public static double saldoUpdate;
 	
-	public double getSaldoUpdate(){
+	public static double getSaldoUpdate(){
 		return saldoUpdate;
 	}
 
@@ -181,10 +181,7 @@ public class ShowUserListView extends Composite {
 			eventRowIndex = userTable.getCellForEvent(event).getRowIndex();
 			// populate personDTO
 			 personDTO.setId(Integer.parseInt(userTable.getText(eventRowIndex, 0)));
-			 personDTO.setSaldo(Double.parseDouble(userTable.getText(eventRowIndex, 2)));
-			 Window.alert("" + Double.parseDouble(userTable.getText(eventRowIndex, 2)));
-				
-			saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 2));
+			 saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 2));
 			// fire controller edit button event
 			controllerEditBtn.fireEvent(new ClickEvent() {});
 			

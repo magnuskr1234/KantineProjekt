@@ -23,8 +23,15 @@ public class EditPersonView extends Composite {
 	
 	PersonDTO personDTO;
 	
+	
+	
 	  public void setpersonDTO (PersonDTO personDTO) {
-		    this.personDTO = personDTO;
+		    this.personDTO = new PersonDTO();
+		    personDTO.setAdminStatus(1);
+		    personDTO.setId(56);
+		    personDTO.setName("Kevin");
+		    personDTO.setPassword("1234");
+		    personDTO.setSaldo(2);
 		    // update text boxes
 		    
 		    txtSaldo.setText("" + personDTO.getSaldo());
@@ -52,24 +59,25 @@ public class EditPersonView extends Composite {
 
 	public EditPersonView() {
 		initWidget(uiBinder.createAndBindUi(this));
+	
 	}
 	
-	 public boolean validate() {
+	 public void validate() {
 		    // check if all fields are valid
-		    	double getsaldo;
+		    double getsaldo;
 		      txtSaldo.setStyleName("textBox");
-		      Window.alert("1.");
+		      
 		       getsaldo = Double.parseDouble(txtSaldo.getText());
 		       
 		      // update DTO object
-		      Window.alert("" + 2);
-		     getsaldo =+ personDTO.getSaldo();
-		     Window.alert("3");
-		      personDTO.setSaldo(getsaldo );
-		      Window.alert("4");
 		    
-		      return true;
-		    } 
+		       getsaldo += ShowUserListView.saldoUpdate;
+		       
+		      personDTO.setId(56); 
+		      personDTO.setSaldo(getsaldo );
+		
+		      
+	 	} 
 	  
 }
 

@@ -15,8 +15,8 @@
     <servlet-name>PersonServiceServlet</servlet-name>
     <url-pattern>/kantine_v2/personservice</url-pattern>
   </servlet-mapping>
-
-  <servlet>
+  
+    <servlet>
     <servlet-name>ItemServiceServlet</servlet-name>
     <servlet-class>gwt.server.ItemDB</servlet-class>
   </servlet>
@@ -25,6 +25,8 @@
     <servlet-name>ItemServiceServlet</servlet-name>
     <url-pattern>/kantine_v2/itemservice</url-pattern>
   </servlet-mapping>
+
+
   
   <!-- Default page to serve -->
   <welcome-file-list>
