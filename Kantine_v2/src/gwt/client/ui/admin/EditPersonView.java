@@ -73,12 +73,12 @@ public class EditPersonView extends Composite {
 		      pDTO.setId(su.getPersonId());
 		     
 		      pDTO.setSaldo(getsaldo);
-		     
+		      txtSaldo.setText("");
 		      return true;
 		 }
 		 
 		 if(!FieldVerifier.isValidSaldo(txtSaldo.getText()))
-			 Window.alert("Fieldverifier problem");
+			 txtSaldo.setStyleName("textBox-invalidEntry");
 			 return false;
 		      
 	 	} 

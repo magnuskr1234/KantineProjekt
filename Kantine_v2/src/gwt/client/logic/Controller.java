@@ -198,7 +198,8 @@ public class Controller {
 					@Override
 					public void onSuccess(Void result) {
 						Window.alert("Saldo opdateret!");	
-						
+						adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
+						mainView.showUserList();
 					}				
 					
 				}); 
