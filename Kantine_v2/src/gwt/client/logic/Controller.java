@@ -75,19 +75,12 @@ public class Controller {
 	// Service
 	private PersonServiceAsync personDAO = GWT.create(PersonService.class);
 	private ItemServiceAsync itemDAO = GWT.create(ItemService.class);
-
+	private PersonServiceAsync personupdate = GWT.create(PersonService.class);
 	//
 
 	// reference to data transfer object
 	private PersonDTO personDTO;
 
-	// Hardcoded login details for user
-	private final String userId = "Peter";
-	private final String userPw = "1234";
-
-	// Hardcoded login for admin
-	private final String adminId = "Hans";
-	private final String adminPw = "1234";
 
 	public Controller() {
 
@@ -174,38 +167,53 @@ public class Controller {
 	 *		
 	 */
 	private class UpdateSaldoHandler implements ClickHandler {
-		double saldoNew;
+		
 		@Override
-		public void onClick(ClickEvent event) {
-			if(event.getSource() == showUserListView.getControllerEditBtn()){
+		public void onClick(ClickEvent event) {		
+			if(event.getSource() == editPersonView.getBtnConfirm()){	
 				
-			mainView.showEditPerson();
-			}
-			
-			if(event.getSource() == editPersonView.getBtnCancel())
-				mainView.changeWidget(showUserListView);
-			
-			else if(event.getSource() == editPersonView.getBtnConfirm())
-				
-				if(editPersonView.validate())
-					personDAO.updatePerson(personDTO, new AsyncCallback<Void>(){
+				personDTO = editPersonView.getpersonDTO();
+			      
+
+				if (editPersonView.validate(showUserListView)){
+				// editPersonView.txtSaldo.setStyleName("textBox");
+			      
+			   //    getsaldo = Double.parseDouble(editPersonView.txtSaldo.getText());
+			       
+			      // update DTO object
+			    
+			    //   getsaldo += ShowUserListView.saldoUpdate;
+			       
+			      //personDTO.setId(56); 
+			      //personDTO.setSaldo(getsaldo);
+			     
+			      
+					personupdate.updatePerson(personDTO, new AsyncCallback<Void>(){
 
 					@Override
 					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-						
+						Window.alert("Serverfejl :" + caught.getMessage());						
 					}
 
 					@Override
 					public void onSuccess(Void result) {
-						Window.alert("Saldo opdateret!");
-						
-					}
-				
+						Window.alert("Saldo opdateret!");	
+						adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
+						mainView.showUserList();
+					}				
 					
-				});
-			mainView.changeWidget(showUserListView);
+				}); 
+				}
+			}
+			if(event.getSource() == editPersonView.getBtnCancel()){
+				mainView.changeWidget(showUserListView);
+			}
+			if(event.getSource() == showUserListView.getControllerEditBtn()){
+				mainView.changeWidget(editPersonView);
+			}
+			
 		}
+		
 		
 	}
 	// Login handler

@@ -17,14 +17,15 @@ public class PersonDTO implements Serializable {
 	private double saldo;
 	
 	// default constructor - must be defined
-	public PersonDTO() {
-	/*	name = "udefineret";
-		password = "999";
-		admin = 0; 
-		saldo = 124;*/
-		
+	public PersonDTO() {		
 	}
 	
+	public PersonDTO(int id, String name, double saldo){
+		super();
+		this.id = id;
+		this.name = name;
+		this.saldo = saldo;
+	}
 	public PersonDTO(String name, String password, int admin, double saldo) {
 		super();
 		

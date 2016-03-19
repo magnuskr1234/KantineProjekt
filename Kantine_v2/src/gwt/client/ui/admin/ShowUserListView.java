@@ -10,6 +10,8 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
+import com.sun.java.swing.plaf.windows.resources.windows;
+
 import gwt.shared.PersonDTO;
 
 import java.util.List;
@@ -40,9 +42,9 @@ public class ShowUserListView extends Composite {
 
 	// id of person where event happened
 	public int personId;
-	public double saldoUpdate;
+	public static double saldoUpdate;
 	
-	public double getSaldoUpdate(){
+	public static double getSaldoUpdate(){
 		return saldoUpdate;
 	}
 
@@ -52,6 +54,10 @@ public class ShowUserListView extends Composite {
 
 	public void setPersonId(int personId) {
 		this.personId = personId;
+	}
+	
+	public void setSaldo(double saldo){
+		this.saldoUpdate = saldoUpdate;
 	}
 
 	// Handlers
@@ -170,16 +176,21 @@ public class ShowUserListView extends Composite {
 	// Handler til at håndtere et tryk på knappen "Opdater saldo"
 	private class EditHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
+			
 			// get rowindex where event happened
-				eventRowIndex = userTable.getCellForEvent(event).getRowIndex();
+			eventRowIndex = userTable.getCellForEvent(event).getRowIndex();
 			// populate personDTO
 			 personDTO.setId(Integer.parseInt(userTable.getText(eventRowIndex, 0)));
-			// personDTO.setName(t.getText(eventRowIndex, 1));
-			 personDTO.setSaldo(Double.parseDouble(userTable.getText(eventRowIndex, 2)));
+			 personDTO.setName(userTable.getText(eventRowIndex, 1));
+			 personDTO.setSaldo(Double.parseDouble(userTable.getText(eventRowIndex, 2))); 
+			 
+			// save person id
+			setPersonId( Integer.parseInt(userTable.getText(eventRowIndex, 0)));
+			
 				
-				saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 2));
+			 saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 2));
 			// fire controller edit button event
-				controllerEditBtn.fireEvent(new ClickEvent() {});
+			controllerEditBtn.fireEvent(new ClickEvent() {});
 			
 			
 		}
