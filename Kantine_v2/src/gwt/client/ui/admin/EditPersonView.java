@@ -21,25 +21,27 @@ public class EditPersonView extends Composite {
 	@UiField Button btnCancel;
 
 	
-	PersonDTO personDTO;
+	PersonDTO pDTO;
 	
+	interface EditPersonViewUiBinder extends UiBinder<Widget, EditPersonView> {
+	}
+
+	public EditPersonView() {
+		initWidget(uiBinder.createAndBindUi(this));
 	
+	}
 	
-	  public void setpersonDTO (PersonDTO personDTO) {
-		    this.personDTO = new PersonDTO();
-		    personDTO.setAdminStatus(1);
-		    personDTO.setId(56);
-		    personDTO.setName("Kevin");
-		    personDTO.setPassword("1234");
-		    personDTO.setSaldo(2);
+	  public void setpersonDTO (PersonDTO pDTO) {
+		    this.pDTO =  pDTO;
 		    // update text boxes
-		    
-		    txtSaldo.setText("" + personDTO.getSaldo());
+		    pDTO.getId();
+		    pDTO.getName();
+		    txtSaldo.setText("" + pDTO.getSaldo());
 		  }
 		  
 		  // return data entered 
 		  public PersonDTO getpersonDTO() {
-		    return personDTO;
+		    return pDTO;
 		  }
 	public TextBox getTxtSaldo() {
 		return txtSaldo;
@@ -54,28 +56,28 @@ public class EditPersonView extends Composite {
 		return btnCancel;
 	}
 
-	interface EditPersonViewUiBinder extends UiBinder<Widget, EditPersonView> {
-	}
 
-	public EditPersonView() {
-		initWidget(uiBinder.createAndBindUi(this));
 	
-	}
-	
-	 public void validate() {
+	 public boolean validate() {
 		    // check if all fields are valid
-		    double getsaldo;
+		 if (FieldVerifier.isValidSaldo(txtSaldo.getText())){
+		   // double getsaldo;
 		      txtSaldo.setStyleName("textBox");
-		      
-		       getsaldo = Double.parseDouble(txtSaldo.getText());
+		     // getsaldo = Double.parseDouble(txtSaldo.getText());
 		       
 		      // update DTO object
-		    
-		       getsaldo += ShowUserListView.saldoUpdate;
-		       
-		      personDTO.setId(56); 
-		      personDTO.setSaldo(getsaldo );
-		
+		    Window.alert("1");
+		     //  getsaldo += ShowUserListView.saldoUpdate;
+		      pDTO.setId(56); 
+		      Window.alert("2");
+		      pDTO.setSaldo(Double.parseDouble(txtSaldo.getText()));
+		      Window.alert("3");
+		      return true;
+		 }
+		 
+		 if(!FieldVerifier.isValidSaldo(txtSaldo.getText()))
+			 Window.alert("Fieldverifier problem");
+			 return false;
 		      
 	 	} 
 	  

@@ -181,7 +181,9 @@ public class ShowUserListView extends Composite {
 			eventRowIndex = userTable.getCellForEvent(event).getRowIndex();
 			// populate personDTO
 			 personDTO.setId(Integer.parseInt(userTable.getText(eventRowIndex, 0)));
-			 saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 2));
+			 personDTO.setName(userTable.getText(eventRowIndex, 1));
+			 personDTO.setSaldo(Double.parseDouble(userTable.getText(eventRowIndex, 2))); 
+			// saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 2));
 			// fire controller edit button event
 			controllerEditBtn.fireEvent(new ClickEvent() {});
 			

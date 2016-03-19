@@ -75,7 +75,7 @@ public class Controller {
 	// Service
 	private PersonServiceAsync personDAO = GWT.create(PersonService.class);
 	private ItemServiceAsync itemDAO = GWT.create(ItemService.class);
-
+	private PersonServiceAsync personupdate = GWT.create(PersonService.class);
 	//
 
 	// reference to data transfer object
@@ -173,10 +173,22 @@ public class Controller {
 			if(event.getSource() == editPersonView.getBtnConfirm()){	
 				
 				personDTO = editPersonView.getpersonDTO();
-				Window.alert("hej");
-				// det her lort virker ikke; editPersonView.validate();			
-					
-					personDAO.updatePerson(personDTO, new AsyncCallback<Void>(){
+			      Window.alert("hej");
+
+				if (editPersonView.validate()){
+				// editPersonView.txtSaldo.setStyleName("textBox");
+			      
+			   //    getsaldo = Double.parseDouble(editPersonView.txtSaldo.getText());
+			       
+			      // update DTO object
+			    
+			    //   getsaldo += ShowUserListView.saldoUpdate;
+			       
+			      //personDTO.setId(56); 
+			      //personDTO.setSaldo(getsaldo);
+			      Window.alert("hej");
+			      
+					personupdate.updatePerson(personDTO, new AsyncCallback<Void>(){
 
 					@Override
 					public void onFailure(Throwable caught) {
@@ -188,7 +200,7 @@ public class Controller {
 						Window.alert("Saldo opdateret!");					
 					}				
 				}); 
-				
+				}
 			}
 			if(event.getSource() == editPersonView.getBtnCancel()){
 				mainView.changeWidget(showUserListView);
