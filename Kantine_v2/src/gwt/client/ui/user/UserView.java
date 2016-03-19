@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -24,12 +25,16 @@ public class UserView extends Composite {
 	private UserMenuView userMenuView;
 	private BasketView basketView;
 	private UserHistoryView userHistoryView;
-	ArrayList<ItemDTO> basketList = new ArrayList<ItemDTO>();
+	public ArrayList<ItemDTO> basketList = new ArrayList<ItemDTO>();
 	
-	public void AddItemToBasket(ItemDTO item){	
+	public void AddItemToBasket(){	
+		ItemDTO item = new ItemDTO("banan", 20);
+		//boolean addItem = true;
+		Window.alert("add to basket");
+		basketList.add(item);
+		Window.alert("sådan");
 		
-		boolean addItem = true;
-		
+		/*
 		for (ItemDTO itemname : basketList)
 		{	
 			if(itemname.getName().equals(item.getName()))
@@ -43,8 +48,12 @@ public class UserView extends Composite {
 		if (addItem){
 			basketList.add(item);
 		}
+		*/
+		showBasketWidget();
 		
 	}
+	
+
 	
 	
 	//Header Views
@@ -95,7 +104,7 @@ public class UserView extends Composite {
 	}
 	
 	public void showBasketWidget(){
-		basketView.pop();
+		basketView.pop(basketList);
 		basket.showWidget(basketView);
 	}
 	
@@ -107,6 +116,9 @@ public class UserView extends Composite {
 	public BasketView getBasketView(){
 		return basketView;
 	}
+	
+	
+
 	
 
 

@@ -9,7 +9,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-
+import com.sun.java.swing.plaf.windows.resources.windows;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
@@ -36,8 +36,6 @@ public class BasketView extends Composite {
 	  // row where event happened
 	  private int eventRowIndex;
 	  
-	  private ArrayList<ItemDTO> pList;
-	  
 	// reference to DTO 
 	  
 	  
@@ -50,12 +48,7 @@ public class BasketView extends Composite {
 	    
 	    // buttons for controller event handling
 	    controllerEditBtn = new Button();
-	    controllerDeleteBtn = new Button();
-	    
-	    pList = new ArrayList<ItemDTO>();
-	    pList.add(new ItemDTO("baan", 3456));
-	    
-	    
+	    controllerDeleteBtn = new Button();    
 	}
 	
 	  public Button getControllerEditBtn() {
@@ -78,15 +71,13 @@ public class BasketView extends Composite {
 			 basketTable.setText(eventRowIndex, 2, "" + personDTO.getPassword()); 
 		  }
 		  
-	public void addItemToBasket(ItemDTO item){
-		pList.add(item);
-		pList.add(new ItemDTO("bla", 3456));
-		pop();
-	}
-		  
-	public void pop(){
+	public void pop(List<ItemDTO> basketList){
   // remove table data
   basketTable.removeAllRows();
+  
+  Window.alert("baksetlist er nu" + basketList.size());
+  
+  
       
 	
   // adjust column widths
@@ -107,10 +98,10 @@ public class BasketView extends Composite {
   basketTable.getRowFormatter().addStyleName(0,"FlexTable-Header");
   
   
-  for (int i=0; i < pList.size(); i++) {
-	  basketTable.setText(i+1, 0, "" + pList.get(i).getName());
-	  basketTable.setText(i+1, 1, Integer.toString(pList.get(i).getCount()));
-      basketTable.setText(i+1, 2, "" + (pList.get(i).getPrice() * pList.get(i).getCount()));
+  for (int i=0; i < basketList.size(); i++) {
+	  basketTable.setText(i+1, 0, "" + basketList.get(i).getName());
+	  basketTable.setText(i+1, 1, Integer.toString(basketList.get(i).getCount()));
+      basketTable.setText(i+1, 2, "" + (basketList.get(i).getPrice() * basketList.get(i).getCount()));
    
       Button edit = new Button("Tilføj");
       edit.getElement().setId("addButton");

@@ -1,5 +1,6 @@
 package gwt.client.ui.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -27,6 +28,7 @@ public class UserMenuView extends Composite {
 	// Buttons for events
 	private Button addToBasketBtn;
 	private BasketView basketView;
+	private UserView userView;
 
 	// row where event happened
 	private int eventRowIndex;
@@ -46,6 +48,8 @@ public class UserMenuView extends Composite {
 	private AddToBasketHandler addToBasketHandler;
 
 	private ItemDTO itemDTO;
+	
+	
 
 	public UserMenuView() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -54,21 +58,10 @@ public class UserMenuView extends Composite {
 
 		// buttons for controller event handling
 		addToBasketBtn = new Button();
-
-		itemDTO = new ItemDTO();
-
-		/*
-		 * try { db.savePerson(person) ; } catch (Exception e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
 	}
 
 	public Button getControllerEditBtn() {
 		return addToBasketBtn;
-	}
-
-	public ItemDTO getPersonDTO() {
-		return itemDTO;
 	}
 
 	/**
@@ -123,9 +116,24 @@ public class UserMenuView extends Composite {
 	// Handler til at håndtere et tryk på knappen "Opdater saldo"
 	private class AddToBasketHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
+			Window.alert("gået ind i clickhandler");
 			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
-			basketView.addItemToBasket(new ItemDTO(itemTable.getText(eventRowIndex, 1), Double.parseDouble(itemTable.getText(eventRowIndex, 2))));
-			Window.alert("Tilføjet");
+			Window.alert("" + eventRowIndex);
+			itemDTO = new ItemDTO("apple", 20);
+			Window.alert("Person oprettet");
+			
+			userView.AddItemToBasket();
+			
+			
+			
+			
+			
+	
+			//basketView.addItemToBasket(new ItemDTO(itemTable.getText(eventRowIndex, 1), Double.parseDouble(itemTable.getText(eventRowIndex, 2))));
+			//basketView.getBasketList().add(itemDTO);
+			Window.alert("Person sendt til list");
+			
+			//basketView.pop(basketList);
 		}
 	}
 
