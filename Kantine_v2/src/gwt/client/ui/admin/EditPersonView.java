@@ -10,6 +10,7 @@ import gwt.shared.FieldVerifier;
 
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 
 public class EditPersonView extends Composite {
@@ -20,17 +21,18 @@ public class EditPersonView extends Composite {
 	@UiField Button btnCancel;
 
 	
-	private PersonDTO pDTO;
+	PersonDTO personDTO;
 	
-	  public void setpersonDTO (PersonDTO pDTO) {
-		    this.pDTO = pDTO;
+	  public void setpersonDTO (PersonDTO personDTO) {
+		    this.personDTO = personDTO;
 		    // update text boxes
-		    txtSaldo.setText("" + pDTO.getSaldo());
+		    
+		    txtSaldo.setText("" + personDTO.getSaldo());
 		  }
 		  
 		  // return data entered 
-		  public PersonDTO getpDTO() {
-		    return pDTO;
+		  public PersonDTO getpersonDTO() {
+		    return personDTO;
 		  }
 	public TextBox getTxtSaldo() {
 		return txtSaldo;
@@ -52,17 +54,22 @@ public class EditPersonView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
-	  public boolean validate() {
+	 public boolean validate() {
 		    // check if all fields are valid
-		    if (FieldVerifier.isValidSaldo(txtSaldo.getText())) {
+		    	double getsaldo;
 		      txtSaldo.setStyleName("textBox");
-
+		      Window.alert("1.");
+		       getsaldo = Double.parseDouble(txtSaldo.getText());
+		       
 		      // update DTO object
-		     
-		      pDTO.setSaldo(pDTO.getSaldo() + Double.parseDouble(txtSaldo.getText() ));
-		    }
+		      Window.alert("" + 2);
+		     getsaldo =+ personDTO.getSaldo();
+		     Window.alert("3");
+		      personDTO.setSaldo(getsaldo );
+		      Window.alert("4");
+		    
 		      return true;
-		    }
+		    } 
 	  
 }
 

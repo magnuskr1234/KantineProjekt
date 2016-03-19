@@ -25,6 +25,11 @@ public class PersonDTO implements Serializable {
 		
 	}
 	
+	public PersonDTO(int id, double saldo){
+		super();
+		this.id = id;
+		this.saldo = saldo;
+	}
 	public PersonDTO(String name, String password, int admin, double saldo) {
 		super();
 		

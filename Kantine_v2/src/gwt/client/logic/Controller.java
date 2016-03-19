@@ -81,13 +81,6 @@ public class Controller {
 	// reference to data transfer object
 	private PersonDTO personDTO;
 
-	// Hardcoded login details for user
-	private final String userId = "Peter";
-	private final String userPw = "1234";
-
-	// Hardcoded login for admin
-	private final String adminId = "Hans";
-	private final String adminPw = "1234";
 
 	public Controller() {
 
@@ -174,37 +167,34 @@ public class Controller {
 	 *		
 	 */
 	private class UpdateSaldoHandler implements ClickHandler {
-		double saldoNew;
+		
 		@Override
-		public void onClick(ClickEvent event) {
-			if(event.getSource() == showUserListView.getControllerEditBtn()){
-				
-			mainView.showEditPerson();
-			}
-			
-			if(event.getSource() == editPersonView.getBtnCancel())
-				mainView.changeWidget(showUserListView);
-			
-			else if(event.getSource() == editPersonView.getBtnConfirm())
-				
+		public void onClick(ClickEvent event) {		
+			if(event.getSource() == editPersonView.getBtnConfirm()){	
 				if(editPersonView.validate())
+				personDTO = editPersonView.getpersonDTO();
+				
+					Window.alert("tillykke du er noget så langt");
 					personDAO.updatePerson(personDTO, new AsyncCallback<Void>(){
 
 					@Override
 					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-						
+						Window.alert("Serverfejl :" + caught.getMessage());						
 					}
 
 					@Override
 					public void onSuccess(Void result) {
-						Window.alert("Saldo opdateret!");
-						
-					}
+						Window.alert("Saldo opdateret!");					
+					}				
+				}); 
 				
-					
-				});
-			mainView.changeWidget(showUserListView);
+			}
+			if(event.getSource() == editPersonView.getBtnCancel()){
+				mainView.changeWidget(showUserListView);
+			}
+			if(event.getSource() == showUserListView.getControllerEditBtn()){
+				mainView.changeWidget(editPersonView);
+			}
 		}
 		
 	}
