@@ -25,12 +25,13 @@ public class UserView extends Composite {
 	private UserMenuView userMenuView;
 	private BasketView basketView;
 	private UserHistoryView userHistoryView;
-	public ArrayList<ItemDTO> basketList = new ArrayList<ItemDTO>();
+	private ArrayList<ItemDTO> basketList = new ArrayList<ItemDTO>();
 	
 	public void AddItemToBasket(){	
 		ItemDTO item = new ItemDTO("banan", 20);
 		//boolean addItem = true;
 		Window.alert("add to basket");
+		Window.alert("size of basketList" + basketList.size());
 		basketList.add(item);
 		Window.alert("sådan");
 		

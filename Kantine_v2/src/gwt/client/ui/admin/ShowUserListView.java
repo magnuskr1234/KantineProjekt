@@ -39,6 +39,7 @@ public class ShowUserListView extends Composite {
 
 	// row where event happened
 	private int eventRowIndex;
+	private String AdminStatus = null;
 
 	// id of person where event happened
 	public int personId;
@@ -118,15 +119,19 @@ public class ShowUserListView extends Composite {
 
 		// adjust column widths
 		userTable.getFlexCellFormatter().setWidth(0, 0, "25px");
-		userTable.getFlexCellFormatter().setWidth(0, 1, "200px");
-		userTable.getFlexCellFormatter().setWidth(0, 2, "25px");
-		userTable.getFlexCellFormatter().setWidth(0, 3, "100px");
-		userTable.getFlexCellFormatter().setWidth(0, 4, "100px");
+		userTable.getFlexCellFormatter().setWidth(0, 1, "150px");
+		userTable.getFlexCellFormatter().setWidth(0, 2, "40px");
+		userTable.getFlexCellFormatter().setWidth(0, 3, "25px");
+		userTable.getFlexCellFormatter().setWidth(0, 4, "40px");
+		userTable.getFlexCellFormatter().setWidth(0, 5, "100px");
+		userTable.getFlexCellFormatter().setWidth(0, 6, "100px");
 
 		// set headers in flextable
 		userTable.setText(0, 0, "Id");
 		userTable.setText(0, 1, "Brugernavn");
-		userTable.setText(0, 2, "Saldo");
+		userTable.setText(0, 2, "Adgangskode");
+		userTable.setText(0, 3, "Saldo");
+		userTable.setText(0, 4, "Administrator");
 
 		// style table
 		userTable.addStyleName("FlexTable");
@@ -135,7 +140,16 @@ public class ShowUserListView extends Composite {
 		for (int i = 0; i < pList.size(); i++) {
 			userTable.setText(i + 1, 0, "" + pList.get(i).getId());
 			userTable.setText(i + 1, 1, pList.get(i).getName());
-			userTable.setText(i + 1, 2, "" + pList.get(i).getSaldo());
+			userTable.setText(i + 1, 2, "" + pList.get(i).getPassword());
+			userTable.setText(i + 1, 3, "" + pList.get(i).getSaldo());
+			
+			if (pList.get(i).getAdminStatus() == 1){
+				AdminStatus = "Ja";
+			}else{
+				AdminStatus = "Nej";
+			}
+			
+			userTable.setText(i + 1, 4, AdminStatus); 
 		}
 
 		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
@@ -143,10 +157,10 @@ public class ShowUserListView extends Composite {
 		for (int i = 0; i < pList.size(); i++) {
 			Button edit = new Button("Opdater saldo");
 			edit.getElement().setId("editButton");
-			userTable.setWidget(i + 1, 3, edit);
+			userTable.setWidget(i + 1, 5, edit);
 			Button delete = new Button("Slet bruger");
 			delete.getElement().setId("deleteButton");
-			userTable.setWidget(i + 1, 4, delete);
+			userTable.setWidget(i + 1, 6, delete);
 
 			// add edit and delete buttons to row
 			edit.addClickHandler(editHandler);
