@@ -71,15 +71,15 @@ public class BasketView extends Composite {
 			 basketTable.setText(eventRowIndex, 2, "" + personDTO.getPassword()); 
 		  }
 		  
+		  public void addToList(List<ItemDTO> basketList){
+			  
+			  Window.alert("addtolist - basket og size:" + basketList.size());
+			  basketList.add(new ItemDTO("Test", 20));
+		  }
+		  
 	public void pop(List<ItemDTO> basketList){
   // remove table data
   basketTable.removeAllRows();
-  
-  Window.alert("baksetlist er nu" + basketList.size());
-  
-  
-      
-	
   // adjust column widths
   basketTable.getFlexCellFormatter().setWidth(0, 0, "25px");
   basketTable.getFlexCellFormatter().setWidth(0, 1, "200px");
