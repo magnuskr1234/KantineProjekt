@@ -18,6 +18,7 @@ import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
 import gwt.client.ui.login.LoginHeaderView;
 import gwt.client.ui.login.LoginView;
+import gwt.client.ui.user.BasketView;
 import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
@@ -39,11 +40,13 @@ public class MainView extends Composite {
 	private static MainViewnUiBinder uiBinder = GWT.create(MainViewnUiBinder.class);
 	@UiField DeckLayoutPanel headerPanel;
 	@UiField DeckLayoutPanel contentPanel;
+	
 
 	// Content views
 	private AdminMenuView adminMenu;
 	private CreateItemView createItem;
 	private CreateUserView createUser;
+	
 	private DeleteItemView deleteItem;
 	private DeleteUserView deleteUser;
 	private EditPersonView editPerson;
@@ -72,6 +75,7 @@ public class MainView extends Composite {
 		adminMenu = new AdminMenuView();
 		createItem = new CreateItemView();
 		createUser = new CreateUserView();
+		
 		deleteItem = new DeleteItemView();
 		deleteUser = new DeleteUserView();
 		editPerson = new EditPersonView();
@@ -100,6 +104,7 @@ public class MainView extends Composite {
 		contentPanel.add(statistic);
 		contentPanel.add(userMenu);
 		contentPanel.add(userView);
+		
 	
 		// Add Header & login 
 		headerPanel.add(adminHeaderView);		

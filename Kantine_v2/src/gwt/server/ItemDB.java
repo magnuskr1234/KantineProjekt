@@ -35,19 +35,19 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 	public ItemDB() throws Exception {
 		try {
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			// create query that add a person to kartotek
+			// create query that add an item to database
 			saveItemStmt = connection.prepareStatement("INSERT INTO items ( title, price ) VALUES ( ?, ? )");
 
-			// create query that updates a person
+			// create query that updates an item
 			updateItemStmt = connection.prepareStatement("UPDATE customers SET title = ?, price = ?  WHERE id = ?");
 
-			// create query that get all persons in kartotek
+			// create query that get all items in database
 			getItemsStmt = connection.prepareStatement("SELECT * FROM items ");
 
-			// create query that gets size of kartotek
+			// create query that gets size of database
 			getSizeStmt = connection.prepareStatement("SELECT COUNT(*) FROM items ");
 
-			// create query that deletes a person in kartotek
+			// create query that deletes an item in database
 			deleteItemStmt = connection.prepareStatement("DELETE FROM items WHERE id =  ? ");
 
 		} catch (SQLException sqlException) {
@@ -78,7 +78,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 
 			saveItemStmt.executeUpdate();
 		} catch (SQLException e) {
-			throw new DALException(" \"savePerson\" fejlede");
+			throw new DALException(" \"saveItem\" fejlede");
 		}
 	}
 
@@ -104,7 +104,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 				results.add(new ItemDTO(resultSet.getInt("id"), resultSet.getString("title"), resultSet.getDouble("price")));
 			}
 		} catch (SQLException sqlException) {
-			throw new DALException(" \"getPersons\" fejlede");
+			throw new DALException(" \"getItems\" fejlede");
 		} finally {
 			try {
 				resultSet.close();

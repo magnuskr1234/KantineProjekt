@@ -13,11 +13,15 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
+
+import gwt.client.ui.MainView;
 import gwt.shared.ItemDTO;
 
 public class UserMenuView extends Composite {
 
 	private static UserMenuViewUiBinder uiBinder = GWT.create(UserMenuViewUiBinder.class);
+	
+	
 	
 	@UiField
 	public FlexTable itemTable;
@@ -35,13 +39,22 @@ public class UserMenuView extends Composite {
 
 	// id of person where event happened
 	public int itemId;
+	public String name;
+	
+	public ArrayList<ItemDTO> tempItemList = new ArrayList<ItemDTO>();
 
+	public String getName(){
+		return name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 	public int getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int personId) {
-		this.itemId = personId;
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
 	}
 
 	// Handlers
@@ -58,6 +71,8 @@ public class UserMenuView extends Composite {
 
 		// buttons for controller event handling
 		addToBasketBtn = new Button();
+		
+		itemDTO = new ItemDTO();
 	}
 
 	public Button getControllerEditBtn() {
@@ -105,7 +120,7 @@ public class UserMenuView extends Composite {
 		// hver række.
 		for (int i = 0; i < pList.size(); i++) {
 			Button addToBasketBtn = new Button("Tilføj");
-			addToBasketBtn.getElement().setId("editButton");
+			addToBasketBtn.getElement().setId("editBtn");
 			itemTable.setWidget(i + 1, 3, addToBasketBtn);
 
 			// add edit and delete buttons to row
@@ -113,17 +128,27 @@ public class UserMenuView extends Composite {
 		}
 	}
 
-	// Handler til at håndtere et tryk på knappen "Opdater saldo"
+	// Handler til at håndtere et tryk på knappen "tilføj"
 	private class AddToBasketHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
-			Window.alert("gået ind i clickhandler");
+			
+			basketView = new BasketView();
+		// get rowindex where event happened
 			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
-			Window.alert("" + eventRowIndex);
-			itemDTO = new ItemDTO("apple", 20);
-			Window.alert("Person oprettet");
+						// populate personDTO
+		 itemDTO.setId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
+		 itemDTO.setName(itemTable.getText(eventRowIndex, 1));
+		 itemDTO.setPrice(Double.parseDouble(itemTable.getText(eventRowIndex, 2))); 
+		 
+		 
+						
+		 // save item id
+		 setItemId( Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 			
-			userView.AddItemToBasket();
+			tempItemList.add(itemDTO);
+		
 			
+			Window.alert(	tempItemList.get(0).getName());
 			
 			
 			
@@ -131,9 +156,10 @@ public class UserMenuView extends Composite {
 	
 			//basketView.addItemToBasket(new ItemDTO(itemTable.getText(eventRowIndex, 1), Double.parseDouble(itemTable.getText(eventRowIndex, 2))));
 			//basketView.getBasketList().add(itemDTO);
-			Window.alert("Person sendt til list");
 			
-			//basketView.pop(basketList);
+			
+			basketView.pop(tempItemList);
+			//userView.showBasketWidget();
 		}
 	}
 

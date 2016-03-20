@@ -12,14 +12,6 @@ public class ItemDTO implements Serializable {
 	public ItemDTO(){
 		
 	}
-	
-	public ItemDTO(String name, double price) 
-	{
-		this.name = name;
-		this.price = price;
-		
-	}
-	
 	public ItemDTO(int id, String name, double price) 
 	{
 		this.id = id;
@@ -27,6 +19,14 @@ public class ItemDTO implements Serializable {
 		this.price = price;
 	
 	}
+	public ItemDTO(String name, double price) 
+	{
+		this.name = name;
+		this.price = price;
+		
+	}
+	
+
 	
 	public int getId() {
 		

@@ -3,7 +3,7 @@ package gwt.client.logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gargoylesoftware.htmlunit.javascript.host.Console;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -31,7 +31,7 @@ import gwt.client.ui.login.LoginView;
 import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
-import gwt.server.PersonDB;
+
 import gwt.shared.ItemDTO;
 
 import gwt.shared.PersonDTO;
@@ -148,14 +148,17 @@ public class Controller {
 		createItemView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
 		createItemView.getcreateItemBtn().addClickHandler(new CreateItemHandler());
 
+		// user options handler
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
 		showUserListView.getControllerEditBtn().addClickHandler(new UpdateSaldoHandler());
 
+		
+		// item options handler
 		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
 
 		// Vis admin menu til at starte med
-		mainView.showAdminHeader();
-		mainView.showAdminMenu();
+		mainView.showLoginHeader();
+		mainView.showLogin();
 
 		RootLayoutPanel rp = RootLayoutPanel.get();
 		rp.add(mainView);
@@ -470,8 +473,9 @@ public class Controller {
 					@Override
 					public void onSuccess(Void result) {
 
-						mainView.changeWidget(showItemListView);
+						adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
 						Window.alert("vare slettet");
+						
 
 					}
 				});

@@ -37,7 +37,7 @@ public class BasketView extends Composite {
 	  private int eventRowIndex;
 	  
 	// reference to DTO 
-	  
+	//  private ItemDTO itemDTO;
 	  
 	public BasketView() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -49,6 +49,8 @@ public class BasketView extends Composite {
 	    // buttons for controller event handling
 	    controllerEditBtn = new Button();
 	    controllerDeleteBtn = new Button();    
+	    
+	   // itemDTO = new ItemDTO();
 	}
 	
 	  public Button getControllerEditBtn() {
@@ -77,44 +79,49 @@ public class BasketView extends Composite {
 			  basketList.add(new ItemDTO("Test", 20));
 		  }
 		  
-	public void pop(List<ItemDTO> basketList){
+	public void pop(List<ItemDTO> um){
   // remove table data
-  basketTable.removeAllRows();
+ // basketTable.removeAllRows();
   // adjust column widths
-  basketTable.getFlexCellFormatter().setWidth(0, 0, "25px");
-  basketTable.getFlexCellFormatter().setWidth(0, 1, "200px");
+		Window.alert(""+ um.size());
+  basketTable.getFlexCellFormatter().setWidth(0, 0, "100px");
+ /* basketTable.getFlexCellFormatter().setWidth(0, 1, "200px");
   basketTable.getFlexCellFormatter().setWidth(0, 2, "25px");
   basketTable.getFlexCellFormatter().setWidth(0, 3, "100px");
-  basketTable.getFlexCellFormatter().setWidth(0, 4, "100px");
-
-
+  basketTable.getFlexCellFormatter().setWidth(0, 4, "100px");*/
+ 
+  
   // set headers in flextable
   basketTable.setText(0, 0, "Vare");
-  basketTable.setText(0, 1, "Antal");
-  basketTable.setText(0, 2, "Pris");
+/*  basketTable.setText(0, 1, "Antal");
+  basketTable.setText(0, 2, "Pris");*/
   
   // style table
-  basketTable.addStyleName("FlexTable");
-  basketTable.getRowFormatter().addStyleName(0,"FlexTable-Header");
+  //basketTable.addStyleName("FlexTable");
+ // basketTable.getRowFormatter().addStyleName(0,"FlexTable-Header");
   
-  
-  for (int i=0; i < basketList.size(); i++) {
-	  basketTable.setText(i+1, 0, "" + basketList.get(i).getName());
-	  basketTable.setText(i+1, 1, Integer.toString(basketList.get(i).getCount()));
-      basketTable.setText(i+1, 2, "" + (basketList.get(i).getPrice() * basketList.get(i).getCount()));
+  Window.alert(""+ um.size());
+  for (int i=0; i < um.size(); i++) {
+	  basketTable.setText(i+1, 0, um.get(i).getName());
+	/*  basketTable.setText(i+1, 1, Integer.toString(um.get(i).getCount()));
+      basketTable.setText(i+1, 2, "" + (um.get(i).getPrice() * um.get(i).getCount()));*/
    
-      Button edit = new Button("Tilføj");
+  /*    Button edit = new Button("Tilføj");
       edit.getElement().setId("addButton");
       basketTable.setWidget(i+1, 3, edit);
       Button delete = new Button("Fjern");
       delete.getElement().setId("deleteButton");
-      basketTable.setWidget(i+1, 4, delete);
+      basketTable.setWidget(i+1, 4, delete);*/
 
-      // add edit and delete buttons to row
+    /*  // add edit and delete buttons to row
       edit.addClickHandler(addHandler);
-      delete.addClickHandler(deleteHandler);
+      delete.addClickHandler(deleteHandler);*/
       
     }
+  
+ 
+	  
+  
 	}
 	
 	 private class DeleteHandler implements ClickHandler {

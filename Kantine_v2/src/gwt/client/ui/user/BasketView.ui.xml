@@ -5,8 +5,10 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel height="300px" styleName="basket" horizontalAlignment="ALIGN_LEFT">
-			<g:FlexTable ui:field="basketTable"/>
+		<g:VerticalPanel height="300px" styleName="basket" horizontalAlignment="ALIGN_LEFT" width="204px">
+			<g:ScrollPanel>
+				<g:FlexTable ui:field="basketTable" width="204px" height="100px"/>
+			</g:ScrollPanel>
 			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE">
 				<g:Button styleName="btn">Køb</g:Button>
 				<g:Button styleName="btn">Annuler</g:Button>

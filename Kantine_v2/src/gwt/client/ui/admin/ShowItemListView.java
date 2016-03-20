@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 import gwt.shared.ItemDTO;
+import gwt.shared.PersonDTO;
 
 public class ShowItemListView extends Composite {
 
@@ -33,13 +34,14 @@ public class ShowItemListView extends Composite {
 
 	// id of person where event happened
 	public int itemId;
+	
 
 	public int getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int personId) {
-		this.itemId = personId;
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
 	}
 
 	// Handlers
@@ -74,10 +76,21 @@ public class ShowItemListView extends Composite {
 		return controllerDeleteBtn;
 	}
 
-	public ItemDTO getPersonDTO() {
+	public ItemDTO getItemDTO() {
 		return itemDTO;
 	}
 
+	
+	 // delete row where delete-event happened
+	  public void deleteEventRow() {
+	    itemTable.removeRow(eventRowIndex);
+	  }
+	  
+	  // update data in row where edit-event happened 
+	  public void updateRow(ItemDTO itemDTO) {
+		  itemTable.setText(eventRowIndex, 1, itemDTO.getName());
+		  itemTable.setText(eventRowIndex, 2, "" + itemDTO.getPrice()); 
+	  }
 	/**
 	 * Flextable bliver tilføjet rækker samt værdier.
 	 * 
@@ -133,7 +146,7 @@ public class ShowItemListView extends Composite {
 		public void onClick(ClickEvent event) {
 			// save event row index
 			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
-
+			
 			// save person id
 			itemId = Integer.parseInt(itemTable.getText(eventRowIndex, 0));
 
@@ -148,14 +161,18 @@ public class ShowItemListView extends Composite {
 	private class EditHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 			// get rowindex where event happened
-			// eventRowIndex = t.getCellForEvent(event).getRowIndex();
-			// populate personDTO
-			// personDTO.setId(Integer.parseInt(t.getText(eventRowIndex, 0)));
-			// personDTO.setName(t.getText(eventRowIndex, 1));
-			// personDTO.setAge(Integer.parseInt(t.getText(eventRowIndex, 2)));
-			// fire controller edit button event
-			// controllerEditBtn.fireEvent(new ClickEvent() {});
-			Window.alert("Opdatering af pris");
+			 eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
+			// populate itemDTO
+			 itemDTO.setId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
+			 itemDTO.setName(itemTable.getText(eventRowIndex, 1));
+			 itemDTO.setPrice(Integer.parseInt(itemTable.getText(eventRowIndex, 2)));
+			
+			 // Save item id
+			 setItemId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
+			 
+			 // fire controller edit button event
+			controllerEditBtn.fireEvent(new ClickEvent() {});
+			
 		}
 	}
 
