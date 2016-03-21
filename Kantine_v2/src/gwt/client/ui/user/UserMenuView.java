@@ -41,8 +41,12 @@ public class UserMenuView extends Composite {
 	public int itemId;
 	public String name;
 	
-	public ArrayList<ItemDTO> tempItemList = new ArrayList<ItemDTO>();
+	public List<ItemDTO> tempItemList;
 
+	
+	public Button getAddToBasketBtn() {
+		return addToBasketBtn;
+	}
 	public String getName(){
 		return name;
 	}
@@ -68,13 +72,20 @@ public class UserMenuView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		// row event handlers
 		addToBasketHandler = new AddToBasketHandler();
-
+		tempItemList = new ArrayList<ItemDTO>();
 		// buttons for controller event handling
 		addToBasketBtn = new Button();
-		
 		itemDTO = new ItemDTO();
+		
+		 itemDTO.setId(0);
+		 itemDTO.setName("Test");
+		 itemDTO.setPrice(2); 
+		 tempItemList.add(itemDTO);
+		
+		
 	}
 
+	
 	public Button getControllerEditBtn() {
 		return addToBasketBtn;
 	}
@@ -131,7 +142,8 @@ public class UserMenuView extends Composite {
 	// Handler til at håndtere et tryk på knappen "tilføj"
 	private class AddToBasketHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
-			
+			itemDTO = new ItemDTO();
+
 			basketView = new BasketView();
 		// get rowindex where event happened
 			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
@@ -148,7 +160,7 @@ public class UserMenuView extends Composite {
 			tempItemList.add(itemDTO);
 		
 			
-			Window.alert(	tempItemList.get(0).getName());
+			
 			
 			
 			
@@ -159,7 +171,12 @@ public class UserMenuView extends Composite {
 			
 			
 			basketView.pop(tempItemList);
+			
+			
 			//userView.showBasketWidget();
+			//userView.changeWidget(basketView);
+			addToBasketBtn.fireEvent(new ClickEvent() {
+			});
 		}
 	}
 

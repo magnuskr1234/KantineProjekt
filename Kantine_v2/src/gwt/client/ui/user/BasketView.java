@@ -22,6 +22,7 @@ public class BasketView extends Composite {
 	private static BasketViewUiBinder uiBinder = GWT.create(BasketViewUiBinder.class);
 	@UiField FlexTable basketTable;
 
+	UserMenuView um = new UserMenuView();
 	interface BasketViewUiBinder extends UiBinder<Widget, BasketView> {
 	}
 
@@ -29,13 +30,15 @@ public class BasketView extends Composite {
 	 private Button controllerEditBtn;
 	 private Button controllerDeleteBtn;
 	 
+	 
 	 // Handlers
-	  private AddHandler addHandler;
+	 
 	  private DeleteHandler deleteHandler;
 	  
 	  // row where event happened
 	  private int eventRowIndex;
 	  
+
 	// reference to DTO 
 	//  private ItemDTO itemDTO;
 	  
@@ -43,7 +46,7 @@ public class BasketView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 
 	    // row event handlers
-	    addHandler = new AddHandler();
+	    
 	    deleteHandler = new DeleteHandler();
 	    
 	    // buttons for controller event handling
@@ -81,72 +84,64 @@ public class BasketView extends Composite {
 		  
 	public void pop(List<ItemDTO> um){
   // remove table data
- // basketTable.removeAllRows();
+		basketTable.removeAllRows();
   // adjust column widths
-		Window.alert(""+ um.size());
-  basketTable.getFlexCellFormatter().setWidth(0, 0, "100px");
- /* basketTable.getFlexCellFormatter().setWidth(0, 1, "200px");
+		
+  basketTable.getFlexCellFormatter().setWidth(0, 0, "50px");
+  basketTable.getFlexCellFormatter().setWidth(0, 1, "50px");
   basketTable.getFlexCellFormatter().setWidth(0, 2, "25px");
-  basketTable.getFlexCellFormatter().setWidth(0, 3, "100px");
-  basketTable.getFlexCellFormatter().setWidth(0, 4, "100px");*/
+  basketTable.getFlexCellFormatter().setWidth(0, 3, "50px");
+
  
   
   // set headers in flextable
   basketTable.setText(0, 0, "Vare");
-/*  basketTable.setText(0, 1, "Antal");
-  basketTable.setText(0, 2, "Pris");*/
+  basketTable.setText(0, 1, "Antal");
+  basketTable.setText(0, 2, "Pris");
   
   // style table
-  //basketTable.addStyleName("FlexTable");
- // basketTable.getRowFormatter().addStyleName(0,"FlexTable-Header");
+  basketTable.addStyleName("FlexTable");
+  basketTable.getRowFormatter().addStyleName(0,"FlexTable-Header");
   
-  Window.alert(""+ um.size());
+  
   for (int i=0; i < um.size(); i++) {
+	 
 	  basketTable.setText(i+1, 0, um.get(i).getName());
-	/*  basketTable.setText(i+1, 1, Integer.toString(um.get(i).getCount()));
-      basketTable.setText(i+1, 2, "" + (um.get(i).getPrice() * um.get(i).getCount()));*/
+	  basketTable.setText(i+1, 1, Integer.toString(um.get(i).getCount()));
+      basketTable.setText(i+1, 2, "" + (um.get(i).getPrice() * um.get(i).getCount()));
    
-  /*    Button edit = new Button("Tilføj");
-      edit.getElement().setId("addButton");
-      basketTable.setWidget(i+1, 3, edit);
-      Button delete = new Button("Fjern");
-      delete.getElement().setId("deleteButton");
-      basketTable.setWidget(i+1, 4, delete);*/
 
-    /*  // add edit and delete buttons to row
-      edit.addClickHandler(addHandler);
-      delete.addClickHandler(deleteHandler);*/
+      Button controllerDeleteBtn = new Button("Fjern");
+      controllerDeleteBtn.getElement().setId("deleteBtn");
+      basketTable.setWidget(i+1, 3, controllerDeleteBtn);
+
+      // add edit and delete buttons to row
+      
+      controllerDeleteBtn.addClickHandler(deleteHandler);
       
     }
   
  
+  
 	  
   
 	}
 	
-	 private class DeleteHandler implements ClickHandler {
+	
+	private class DeleteHandler implements ClickHandler {
 		    public void onClick(ClickEvent event) {
+		    	Window.alert("i basket handler");
 		      // save event row index
 		    	eventRowIndex = basketTable.getCellForEvent(event).getRowIndex();
 		      // save person id
 		     // personId = Integer.parseInt(t.getText(eventRowIndex, 0));
 		      // fire controller delete button event
-		      controllerDeleteBtn.fireEvent(new ClickEvent() {});
-		    	Window.alert("Vare slettet");
-		    }
-		  } 
-	 
-	 private class AddHandler implements ClickHandler {
-		    public void onClick(ClickEvent event) {
-		      // get rowindex where event happened
-		     eventRowIndex = basketTable.getCellForEvent(event).getRowIndex();    
-		      // populate personDTO
-		    //  personDTO.setId(Integer.parseInt(t.getText(eventRowIndex, 0)));
-		    //  personDTO.setName(t.getText(eventRowIndex, 1));
-		    //  personDTO.setAge(Integer.parseInt(t.getText(eventRowIndex, 2))); 
-		      // fire controller edit button event
-		      controllerEditBtn.fireEvent(new ClickEvent() {}); 
-		    	Window.alert("En ekstra tilføjet");
+		    	Window.alert("" + eventRowIndex);
+		    	um.tempItemList.remove(eventRowIndex - 1);
+		    	controllerDeleteBtn.fireEvent(new ClickEvent() {
+		    		
+		    	});
+		    	Window.alert("Vare slettet");	
 		    }
 		    
 	 }

@@ -41,9 +41,11 @@ public class MainView extends Composite {
 	@UiField DeckLayoutPanel headerPanel;
 	@UiField DeckLayoutPanel contentPanel;
 	
+	
 
 	// Content views
 	private AdminMenuView adminMenu;
+	private BasketView basket;
 	private CreateItemView createItem;
 	private CreateUserView createUser;
 	
@@ -73,6 +75,7 @@ public class MainView extends Composite {
 		
 		//Make content view
 		adminMenu = new AdminMenuView();
+		basket = new BasketView();
 		createItem = new CreateItemView();
 		createUser = new CreateUserView();
 		
@@ -221,6 +224,11 @@ public class MainView extends Composite {
 		changeWidget(userMenu);
 	}
 	
+	// show basket view
+	public void showBasketView(){
+		changeWidget(basket);
+	}
+	
 	// Show statistic
 	public void showStatistic(){
 		changeWidget(statistic);
@@ -266,4 +274,9 @@ public class MainView extends Composite {
 		  public void loginCancel() {
 		  
 		  }
+
+		public BasketView getBasketView() {
+			// TODO Auto-generated method stub
+			return basket;
+		}
 }

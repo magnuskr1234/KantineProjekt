@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.Widget;
 import gwt.shared.ItemDTO;
 
 import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 public class UserView extends Composite {
 
@@ -25,7 +26,7 @@ public class UserView extends Composite {
 	private UserMenuView userMenuView;
 	private BasketView basketView;
 	private UserHistoryView userHistoryView;
-	private ArrayList<ItemDTO> basketList = new ArrayList<ItemDTO>();
+	//private ArrayList<ItemDTO> basketList = new ArrayList<ItemDTO>();
 	
 	public void AddItemToBasket(){	
 		/*ItemDTO item = new ItemDTO("banan", 20);
@@ -53,7 +54,7 @@ public class UserView extends Composite {
 		
 		Window.alert("AddItemToBasket i userview");
 		
-		basketView.addToList(basketList);
+		//basketView.addToList(basketList);
 		showBasketWidget();
 		
 	}
@@ -89,8 +90,11 @@ public class UserView extends Composite {
 		
 		// Initially show menu view
 		contentPanel.showWidget(userMenuView);
-		showBasketWidget();
+		basketView.pop(userMenuView.tempItemList);
+		basket.showWidget(basketView);
 		
+		
+	
 		
 	}
 	
@@ -109,7 +113,7 @@ public class UserView extends Composite {
 	}
 	
 	public void showBasketWidget(){
-		basketView.pop(basketList);
+		basketView.pop(userMenuView.tempItemList);
 		basket.showWidget(basketView);
 	}
 	

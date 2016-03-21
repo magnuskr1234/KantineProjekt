@@ -28,6 +28,7 @@ import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
 import gwt.client.ui.login.LoginHeaderView;
 import gwt.client.ui.login.LoginView;
+import gwt.client.ui.user.BasketView;
 import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
@@ -53,6 +54,8 @@ public class Controller {
 
 	private AdminMenuView adminMenu;
 	private AdminHeaderView adminHeaderView;
+	
+	private BasketView basketView;
 
 	private CreateUserView createUserView;
 	private CreateItemView createItemView;
@@ -80,16 +83,19 @@ public class Controller {
 
 	// reference to data transfer object
 	private PersonDTO personDTO;
+	private ItemDTO itemDTO;
 
 
 	public Controller() {
 
 		// Instantiate pagecontroller
 		mainView = new MainView();
+		userView = new UserView();
 
 		// Get references to subviews for admin
 		adminHeaderView = mainView.getadminHeaderView();
 		adminMenu = mainView.getadminMenu();
+		
 		createItemView = mainView.getcreateItem();
 		createUserView = mainView.getcreateUser();
 		deleteItemView = mainView.getdeleteItem();
@@ -100,9 +106,12 @@ public class Controller {
 		showUserListView = mainView.getshowUserList();
 		showItemListView = mainView.getshowItemList();
 		statistic = mainView.getstatistic();
+		
+		
 
 		// Referncer til subview for user
-		userMenuView = mainView.getuserMenu();
+		basketView = mainView.getUserView().getBasketView();
+		userMenuView = mainView.getUserView().getUserMenuView();
 		userView = mainView.getUserView();
 		userHeaderView = mainView.getuserHeaderView();
 
@@ -152,6 +161,9 @@ public class Controller {
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
 		showUserListView.getControllerEditBtn().addClickHandler(new UpdateSaldoHandler());
 
+		basketView.getControllerDeleteBtn().addClickHandler(new UpdateBasketHandler());
+		// basket update
+		userMenuView.getAddToBasketBtn().addClickHandler(new UpdateBasketHandler());
 		
 		// item options handler
 		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
@@ -169,6 +181,23 @@ public class Controller {
 	 * @author magnusrasmussen
 	 *		
 	 */
+	
+	private class UpdateBasketHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+			
+			if(event.getSource()== userMenuView.getAddToBasketBtn() 	|| event.getSource() == basketView.getControllerDeleteBtn()){
+				Window.alert("jeg er inde");	
+				userView.showBasketWidget();
+			}
+			
+		}
+		
+		
+		
+	}
+	
 	private class UpdateSaldoHandler implements ClickHandler {
 		
 		@Override
@@ -267,8 +296,7 @@ public class Controller {
 										
 										}
 										}
-										
-											);
+										);
 									
 								}
 							} else
