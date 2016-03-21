@@ -8,6 +8,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.Label;
 
 public class UserHeaderView extends Composite {
 
@@ -15,6 +16,7 @@ public class UserHeaderView extends Composite {
 	@UiField Button btnHistory;
 	@UiField Button btnMainMenu;
 	@UiField Button btnLogout;
+	@UiField Label userNameLabel;
 
 	interface UserHeaderViewUiBinder extends UiBinder<Widget, UserHeaderView> {
 	}
@@ -23,6 +25,10 @@ public class UserHeaderView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
+	
+	public void setUser(String user) {
+		userNameLabel.setText("Velkommen, "+ user);
+	}
 	public Button getBtnMainMenu() {
 		return btnMainMenu;
 	}

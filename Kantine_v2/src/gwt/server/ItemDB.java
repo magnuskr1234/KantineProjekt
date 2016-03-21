@@ -11,6 +11,7 @@ import java.util.List;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
+import gwt.client.logic.Controller;
 import gwt.client.service.ItemService;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.shared.ItemDTO;
@@ -29,6 +30,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 	private PreparedStatement getItemsStmt = null;
 	private PreparedStatement getSizeStmt = null;
 	private PreparedStatement deleteItemStmt = null;
+	private PreparedStatement saveItemToHistoryStmt = null;
 
 	ShowUserListView su;
 
@@ -49,6 +51,9 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 
 			// create query that deletes an item in database
 			deleteItemStmt = connection.prepareStatement("DELETE FROM items WHERE id =  ? ");
+			
+			saveItemToHistoryStmt = connection.prepareStatement("INSERT INTO history (customer_id, item_id) VALUES (?, ?)");
+			
 
 		} catch (SQLException sqlException) {
 			throw new DALException("Kan ikke oprette forbindelse til database");
@@ -64,6 +69,18 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void saveItemToHistory(int c, int i) throws Exception {
+		try {
+			saveItemToHistoryStmt.setInt(1, c);
+			saveItemToHistoryStmt.setInt(2, i);
+
+			saveItemToHistoryStmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new DALException(" \"saveItemToHistory\" fejlede");
 		}
 	}
 

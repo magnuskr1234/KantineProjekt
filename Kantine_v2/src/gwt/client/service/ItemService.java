@@ -24,4 +24,5 @@ public interface ItemService extends RemoteService {
 	public void updateItem(ItemDTO p) throws Exception;
 	public  List<ItemDTO> getItems() throws Exception;
 	public void deleteItem(int id) throws Exception;
+	public void saveItemToHistory (int c, int i) throws Exception;
 }

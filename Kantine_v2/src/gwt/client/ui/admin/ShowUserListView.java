@@ -158,6 +158,7 @@ public class ShowUserListView extends Composite {
 			Button edit = new Button("Opdater saldo");
 			edit.getElement().setId("editButton");
 			userTable.setWidget(i + 1, 5, edit);
+			
 			Button delete = new Button("Slet bruger");
 			delete.getElement().setId("deleteButton");
 			userTable.setWidget(i + 1, 6, delete);

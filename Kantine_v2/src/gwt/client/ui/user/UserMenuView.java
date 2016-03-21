@@ -41,7 +41,7 @@ public class UserMenuView extends Composite {
 	public int itemId;
 	public String name;
 	
-	public List<ItemDTO> tempItemList;
+	public static List<ItemDTO> tempItemList  = new ArrayList<ItemDTO>();
 
 	
 	public Button getAddToBasketBtn() {
@@ -71,16 +71,24 @@ public class UserMenuView extends Composite {
 	public UserMenuView() {
 		initWidget(uiBinder.createAndBindUi(this));
 		// row event handlers
+		
+		
+		
 		addToBasketHandler = new AddToBasketHandler();
-		tempItemList = new ArrayList<ItemDTO>();
+		
 		// buttons for controller event handling
 		addToBasketBtn = new Button();
-		itemDTO = new ItemDTO();
 		
-		 itemDTO.setId(0);
-		 itemDTO.setName("Test");
-		 itemDTO.setPrice(2); 
-		 tempItemList.add(itemDTO);
+		/*itemDTO.setId(1);
+		itemDTO.setName("Lort");
+		itemDTO.setPrice(20);
+		
+		tempItemList.add(itemDTO);
+		
+		itemDTO.setId(2);
+		itemDTO.setName("GWT");
+		itemDTO.setPrice(3);
+		tempItemList.add(itemDTO);*/
 		
 		
 	}
@@ -142,8 +150,8 @@ public class UserMenuView extends Composite {
 	// Handler til at håndtere et tryk på knappen "tilføj"
 	private class AddToBasketHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
+			boolean addItem = true;
 			itemDTO = new ItemDTO();
-
 			basketView = new BasketView();
 		// get rowindex where event happened
 			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
@@ -156,8 +164,22 @@ public class UserMenuView extends Composite {
 						
 		 // save item id
 		 setItemId( Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
+		 
+			for (ItemDTO itemname : tempItemList)
+			{	
+				if(itemname.getName().equals(itemDTO.getName()))
+				{
+					addItem = false;
+					itemname.setCount(itemname.getCount()+1);
+					
+				}
+			}
 			
-			tempItemList.add(itemDTO);
+			if (addItem){
+				tempItemList.add(itemDTO);
+			}
+			
+			
 		
 			
 			
@@ -180,4 +202,7 @@ public class UserMenuView extends Composite {
 		}
 	}
 
+	public void deleteFromList(int i){
+		tempItemList.remove(i);
+	}
 }

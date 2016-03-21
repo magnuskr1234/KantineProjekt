@@ -267,7 +267,7 @@ public class MainView extends Composite {
 	}
 	
 	  public void loginOk(String user) {
-		 	
+		 	userHeaderView.setUser(user);
 		  }
 
 		  // login has been cancelled - update pages

@@ -84,7 +84,8 @@ public class Controller {
 	// reference to data transfer object
 	private PersonDTO personDTO;
 	private ItemDTO itemDTO;
-
+	
+	public int currentPersonId; 
 
 	public Controller() {
 
@@ -162,6 +163,7 @@ public class Controller {
 		showUserListView.getControllerEditBtn().addClickHandler(new UpdateSaldoHandler());
 
 		basketView.getControllerDeleteBtn().addClickHandler(new UpdateBasketHandler());
+		basketView.getBuyBtn().addClickHandler(new BuyHandler());
 		// basket update
 		userMenuView.getAddToBasketBtn().addClickHandler(new UpdateBasketHandler());
 		
@@ -182,14 +184,58 @@ public class Controller {
 	 *		
 	 */
 	
+	private class BuyHandler implements ClickHandler {
+		
+		@Override
+		public void onClick(ClickEvent event) {
+			if(event.getSource() == basketView.getBuyBtn()){
+				
+				for (int i = 0; i < UserMenuView.tempItemList.size(); i++){
+					for(int j=0; j<UserMenuView.tempItemList.get(i).getCount(); j++){
+						
+						itemDAO.saveItemToHistory(currentPersonId, UserMenuView.tempItemList.get(i).getId(), new AsyncCallback<Void> (){
+
+							@Override
+							public void onFailure(Throwable caught) {
+								Window.alert("Det får vi ikke brug for" + caught.getMessage());
+								
+							}
+
+							@Override
+							public void onSuccess(Void result) {
+														
+							}
+							
+						}); 
+						
+						
+						
+						
+					}
+				}
+			}
+			
+			Window.alert("Tak for købet");
+			UserMenuView.tempItemList.clear();
+			userView.showBasketWidget();
+			
+			
+		}
+	
+	}
+
+	
 	private class UpdateBasketHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
 			
-			if(event.getSource()== userMenuView.getAddToBasketBtn() 	|| event.getSource() == basketView.getControllerDeleteBtn()){
-				Window.alert("jeg er inde");	
+			if(event.getSource()== userMenuView.getAddToBasketBtn()){	
 				userView.showBasketWidget();
+			}
+			if( event.getSource() == basketView.getControllerDeleteBtn()){
+					
+				 basketView.deleteEventRow();
 			}
 			
 		}
@@ -274,11 +320,13 @@ public class Controller {
 									loginView.clearfields();
 									mainView.showAdminMenu();
 									mainView.showAdminHeader();
+									
 
 								}
 
 								else if (person.getAdminStatus() == 0) {
-									mainView.loginOk(loginView.getUserId());
+									currentPersonId = person.getId();
+									mainView.loginOk(person.getName());
 									loginView.resetError();
 									loginView.clearfields();
 									mainView.showUserHeader();
@@ -318,6 +366,8 @@ public class Controller {
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == adminHeaderView.getBtnLogout()
 					|| event.getSource() == userHeaderView.getBtnLogout()) {
+				UserMenuView.tempItemList.clear();
+				userView.showBasketWidget();
 				mainView.showLogin();
 				mainView.showLoginHeader();
 
