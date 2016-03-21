@@ -23,6 +23,8 @@ public class EditPersonView extends Composite {
 
 	
 	PersonDTO pDTO = new PersonDTO();
+	double newSaldo;
+	int saldoUserId;
 	
 	interface EditPersonViewUiBinder extends UiBinder<Widget, EditPersonView> {
 	}
@@ -54,6 +56,14 @@ public class EditPersonView extends Composite {
 	public Button getBtnCancel() {
 		return btnCancel;
 	}
+	
+	public double getNewSaldo(){
+		return newSaldo;
+	}
+	
+	public int getSaldoUserId(){
+		return saldoUserId;
+	}
 
 
 	
@@ -69,10 +79,11 @@ public class EditPersonView extends Composite {
 		      // update DTO object
 		      
 		     
-		       getsaldo += ShowUserListView.saldoUpdate;
-		      pDTO.setId(su.getPersonId());
-		     
-		      pDTO.setSaldo(getsaldo);
+		       
+		       
+		       newSaldo = getsaldo += ShowUserListView.saldoUpdate;
+		       
+		       saldoUserId = su.getPersonId();
 		      txtSaldo.setText("");
 		      return true;
 		 }

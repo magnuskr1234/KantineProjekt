@@ -21,7 +21,7 @@ public interface PersonService extends RemoteService {
 	// in the onFailure call back method
 	
 	public void savePerson(PersonDTO p) throws Exception;
-	public void updatePerson(PersonDTO p) throws Exception;
+	public void updatePerson(double saldo, int id) throws Exception;
 	public  List<PersonDTO> getPersons() throws Exception;
 	public void deletePerson(int id) throws Exception; 
 }

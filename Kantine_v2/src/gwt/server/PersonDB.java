@@ -96,11 +96,11 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 	}
 
 	@Override
-	public void updatePerson(PersonDTO p) throws Exception {
+	public void updatePerson(double saldo, int id) throws Exception {
 		
 		try {		
-			updatePersonStmt.setDouble(1, p.getSaldo());
-			updatePersonStmt.setInt(2, p.getId());
+			updatePersonStmt.setDouble(1, saldo);
+			updatePersonStmt.setInt(2, id);
 			
 
 			updatePersonStmt.executeUpdate();

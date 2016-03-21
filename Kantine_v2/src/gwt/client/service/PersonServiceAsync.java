@@ -10,7 +10,7 @@ public interface PersonServiceAsync {
 
 	void savePerson(PersonDTO p, AsyncCallback<Void> callback);
 
-	void updatePerson(PersonDTO p, AsyncCallback<Void> callback);
+	void updatePerson(double saldo, int id, AsyncCallback<Void> callback);
 
 	void getPersons(AsyncCallback<List<PersonDTO>> callback);
 

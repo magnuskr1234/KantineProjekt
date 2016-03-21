@@ -208,7 +208,7 @@ public class Controller {
 										
 										
 										
-										personupdate.updatePerson(personDTO, new AsyncCallback<Void>(){
+										personupdate.updatePerson(basketView.getNewSaldo(), currentPersonId, new AsyncCallback<Void>(){
 
 											@Override
 											public void onFailure(Throwable caught) {
@@ -217,9 +217,10 @@ public class Controller {
 
 											@Override
 											public void onSuccess(Void result) {
-												Window.alert("Saldo opdateret!");	
-												adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
-												mainView.showUserList();
+												
+												Window.alert("nu saldo" + basketView.getNewSaldo() );
+												Window.alert("sum: " + basketView.getSum());
+												basketView.clearSum();
 											}				
 											
 										}); 
@@ -289,7 +290,7 @@ public class Controller {
 			      //personDTO.setSaldo(getsaldo);
 			     
 			      
-					personupdate.updatePerson(personDTO, new AsyncCallback<Void>(){
+					personupdate.updatePerson(editPersonView.getNewSaldo(), editPersonView.getSaldoUserId(), new AsyncCallback<Void>(){
 
 					@Override
 					public void onFailure(Throwable caught) {

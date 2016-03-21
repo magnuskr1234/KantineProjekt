@@ -49,6 +49,10 @@ public class BasketView extends Composite {
 	  
 	  private double currentSaldo;
 	  
+	  private double newSaldo;
+	  
+	  private double sum;
+	  
 	  
 
 	// reference to DTO 
@@ -109,6 +113,20 @@ public class BasketView extends Composite {
 			  return currentSaldo;
 		  }
 		  
+		  public double getNewSaldo(){
+			  return newSaldo;
+		  }
+		  
+		  public double getSum(){
+			  return sum;
+		  }
+		  
+		  public void clearSum(){
+			  sum = 0;
+		  }
+		  
+
+		  
 	public void pop(List<ItemDTO> um){
 		
 		
@@ -120,8 +138,7 @@ public class BasketView extends Composite {
   basketTable.getFlexCellFormatter().setWidth(0, 1, "50px");
   basketTable.getFlexCellFormatter().setWidth(0, 2, "25px");
   basketTable.getFlexCellFormatter().setWidth(0, 3, "50px");
- 
-  double sum = 0;
+  
   for(int i = 0; i < um.size(); i++){
 	  sum += (um.get(i).getPrice()*um.get(i).getCount()); 
   }
@@ -144,11 +161,6 @@ public class BasketView extends Composite {
   basketTable.getRowFormatter().addStyleName(um.size()+2,"FlexTable-Header");
   
   
-
-      
-  
-  
-  
   for (int i=0; i < um.size(); i++) {
 	 
 	  basketTable.setText(i+1, 0, um.get(i).getName());
@@ -169,11 +181,17 @@ public class BasketView extends Composite {
       
     }
   
+  newSaldo = (currentSaldo - sum);
+  
+  
+  
  
   
 	  
   
 	}
+	
+
 	
 	
 	private class DeleteHandler implements ClickHandler {
