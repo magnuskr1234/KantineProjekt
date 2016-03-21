@@ -206,24 +206,6 @@ public class Controller {
 									@Override
 									public void onSuccess(Void result) {
 										
-										
-										
-										personupdate.updatePerson(basketView.getNewSaldo(), currentPersonId, new AsyncCallback<Void>(){
-
-											@Override
-											public void onFailure(Throwable caught) {
-												Window.alert("Serverfejl :" + caught.getMessage());						
-											}
-
-											@Override
-											public void onSuccess(Void result) {
-												
-												Window.alert("nu saldo" + basketView.getNewSaldo() );
-												Window.alert("sum: " + basketView.getSum());
-												basketView.clearSum();
-											}				
-											
-										}); 
 
 									}
 
@@ -231,6 +213,24 @@ public class Controller {
 
 					}
 				}
+				
+				personupdate.updatePerson(basketView.getNewSaldo(), currentPersonId, new AsyncCallback<Void>(){
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());						
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+						
+						Window.alert("nu saldo" + basketView.getNewSaldo() );
+						Window.alert("sum: " + basketView.getSum());
+						basketView.clearSum();
+						
+					}				
+					
+				}); 
 				
 				
 				
