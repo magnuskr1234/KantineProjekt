@@ -110,6 +110,11 @@ public class BasketView extends Composite {
   basketTable.getFlexCellFormatter().setWidth(0, 1, "50px");
   basketTable.getFlexCellFormatter().setWidth(0, 2, "25px");
   basketTable.getFlexCellFormatter().setWidth(0, 3, "50px");
+ 
+  double sum = 0;
+  for(int i = 0; i < um.size(); i++){
+	  sum += (um.get(i).getPrice()*um.get(i).getCount()); 
+  }
 
  
   
@@ -117,10 +122,18 @@ public class BasketView extends Composite {
   basketTable.setText(0, 0, "Vare");
   basketTable.setText(0, 1, "Antal");
   basketTable.setText(0, 2, "Pris");
+  basketTable.setText(um.size()+1, 0, "I alt: ");
+  basketTable.setText(um.size()+1, 2, "" + sum);
   
   // style table
   basketTable.addStyleName("FlexTable");
   basketTable.getRowFormatter().addStyleName(0,"FlexTable-Header");
+  basketTable.getRowFormatter().addStyleName(um.size()+1,"FlexTable-Header");
+  
+  
+
+      
+  
   
   
   for (int i=0; i < um.size(); i++) {
@@ -128,6 +141,7 @@ public class BasketView extends Composite {
 	  basketTable.setText(i+1, 0, um.get(i).getName());
 	  basketTable.setText(i+1, 1, Integer.toString(um.get(i).getCount()));
       basketTable.setText(i+1, 2, "" + (um.get(i).getPrice() * um.get(i).getCount()));
+
    
 
       Button controllerDeleteBtn = new Button("Fjern");
@@ -167,7 +181,6 @@ public class BasketView extends Composite {
 		    	}
 		    	
 		    	*/
-		    	Window.alert("" + UserMenuView.tempItemList.get(eventRowIndexDelete).getId());
 		    	
 		    	UserMenuView.tempItemList.remove(eventRowIndexDelete);
 		    	controllerDeleteBtn.fireEvent(new ClickEvent() {
