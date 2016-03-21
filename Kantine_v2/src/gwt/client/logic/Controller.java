@@ -85,7 +85,8 @@ public class Controller {
 	private PersonDTO personDTO;
 	private ItemDTO itemDTO;
 	
-	public int currentPersonId; 
+	public int currentPersonId;
+	public PersonDTO currentPeron;
 
 	public Controller() {
 
@@ -190,29 +191,51 @@ public class Controller {
 		public void onClick(ClickEvent event) {
 			if(event.getSource() == basketView.getBuyBtn()){
 				
-				for (int i = 0; i < UserMenuView.tempItemList.size(); i++){
-					for(int j=0; j<UserMenuView.tempItemList.get(i).getCount(); j++){
-						
-						itemDAO.saveItemToHistory(currentPersonId, UserMenuView.tempItemList.get(i).getId(), new AsyncCallback<Void> (){
+				for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {
+					for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {
 
-							@Override
-							public void onFailure(Throwable caught) {
-								Window.alert("Det får vi ikke brug for" + caught.getMessage());
-								
-							}
+						itemDAO.saveItemToHistory(currentPersonId, UserMenuView.tempItemList.get(i).getId(),
+								new AsyncCallback<Void>() {
 
-							@Override
-							public void onSuccess(Void result) {
-														
-							}
-							
-						}); 
-						
-						
-						
-						
+									@Override
+									public void onFailure(Throwable caught) {
+										Window.alert("Det får vi ikke brug for" + caught.getMessage());
+
+									}
+
+									@Override
+									public void onSuccess(Void result) {
+										
+										
+										
+										personupdate.updatePerson(personDTO, new AsyncCallback<Void>(){
+
+											@Override
+											public void onFailure(Throwable caught) {
+												Window.alert("Serverfejl :" + caught.getMessage());						
+											}
+
+											@Override
+											public void onSuccess(Void result) {
+												Window.alert("Saldo opdateret!");	
+												adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
+												mainView.showUserList();
+											}				
+											
+										}); 
+
+									}
+
+								});
+
 					}
 				}
+				
+				
+				
+
+				
+				
 			}
 			
 			Window.alert("Tak for købet");
@@ -327,6 +350,7 @@ public class Controller {
 								else if (person.getAdminStatus() == 0) {
 									currentPersonId = person.getId();
 									mainView.loginOk(person.getName());
+									basketView.setCurrentUserSaldo(person.getSaldo());
 									loginView.resetError();
 									loginView.clearfields();
 									mainView.showUserHeader();

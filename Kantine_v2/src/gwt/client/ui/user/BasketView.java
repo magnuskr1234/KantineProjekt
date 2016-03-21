@@ -47,6 +47,8 @@ public class BasketView extends Composite {
 	
 	  private int eventRowIndexDelete;
 	  
+	  private double currentSaldo;
+	  
 	  
 
 	// reference to DTO 
@@ -99,6 +101,14 @@ public class BasketView extends Composite {
 			  basketList.add(new ItemDTO("Test", 20));
 		  }
 		  
+		  public void setCurrentUserSaldo(double saldo){
+			  currentSaldo = saldo;
+		  }
+		  
+		  public double getCurrentUserSaldo(){
+			  return currentSaldo;
+		  }
+		  
 	public void pop(List<ItemDTO> um){
 		
 		
@@ -124,11 +134,14 @@ public class BasketView extends Composite {
   basketTable.setText(0, 2, "Pris");
   basketTable.setText(um.size()+1, 0, "I alt: ");
   basketTable.setText(um.size()+1, 2, "" + sum);
+
+  
   
   // style table
   basketTable.addStyleName("FlexTable");
   basketTable.getRowFormatter().addStyleName(0,"FlexTable-Header");
   basketTable.getRowFormatter().addStyleName(um.size()+1,"FlexTable-Header");
+  basketTable.getRowFormatter().addStyleName(um.size()+2,"FlexTable-Header");
   
   
 
@@ -141,6 +154,8 @@ public class BasketView extends Composite {
 	  basketTable.setText(i+1, 0, um.get(i).getName());
 	  basketTable.setText(i+1, 1, Integer.toString(um.get(i).getCount()));
       basketTable.setText(i+1, 2, "" + (um.get(i).getPrice() * um.get(i).getCount()));
+      basketTable.setText(um.size()+2, 0, "Saldo efter køb: ");
+      basketTable.setText(um.size()+2, 2, "" + (currentSaldo - sum));
 
    
 
