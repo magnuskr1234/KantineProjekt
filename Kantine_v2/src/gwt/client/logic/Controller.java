@@ -171,6 +171,9 @@ public class Controller {
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
 		showUserListView.getControllerEditBtn().addClickHandler(new UpdateSaldoHandler());
 
+		
+		//Basketview buttons
+		basketView.getCancelBtn().addClickHandler(new BuyHandler());
 		basketView.getControllerDeleteBtn().addClickHandler(new UpdateBasketHandler());
 		basketView.getBuyBtn().addClickHandler(new BuyHandler());
 		// basket update
@@ -246,6 +249,12 @@ public class Controller {
 		
 		@Override
 		public void onClick(ClickEvent event) {
+			if(event.getSource() == basketView.getCancelBtn()){
+				basketView.emptyTable();
+				mainView.changeWidget(basketView);
+				
+			}
+			
 			if(event.getSource() == basketView.getBuyBtn()){
 				
 				for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {

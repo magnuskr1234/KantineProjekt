@@ -1,6 +1,6 @@
 package gwt.client.ui.user;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -9,20 +9,20 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import com.sun.java.swing.plaf.windows.resources.windows;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
-import com.google.gwt.uibinder.client.UiHandler;
+
 
 public class BasketView extends Composite {
 
 	private static BasketViewUiBinder uiBinder = GWT.create(BasketViewUiBinder.class);
 	@UiField FlexTable basketTable;
 	@UiField Button buyBtn;
+	@UiField Button cancelBtn;
 
 	
 
@@ -73,6 +73,9 @@ public class BasketView extends Composite {
 	   // itemDTO = new ItemDTO();
 	}
 	
+	public Button getCancelBtn(){
+		return cancelBtn;
+	}
 	
 	public Button getBuyBtn() {
 		return buyBtn;
@@ -93,17 +96,19 @@ public class BasketView extends Composite {
 		    basketTable.removeRow(eventRowIndexDelete+1);
 		  }
 		  
+		  public void emptyTable(){
+			  UserMenuView.tempItemList.clear();
+			  pop( UserMenuView.tempItemList);
+			  
+		  }
+		  
 		  // update data in row where edit-event happened 
 		  public void updateRow(PersonDTO personDTO) {
 			 basketTable.setText(eventRowIndex, 1, personDTO.getName());
 			 basketTable.setText(eventRowIndex, 2, "" + personDTO.getPassword()); 
 		  }
 		  
-		  public void addToList(List<ItemDTO> basketList){
-			  
-			  Window.alert("addtolist - basket og size:" + basketList.size());
-			  basketList.add(new ItemDTO("Test", 20));
-		  }
+	
 		  
 		  public void setCurrentUserSaldo(double saldo){
 			  currentSaldo = saldo;
@@ -172,8 +177,9 @@ public class BasketView extends Composite {
 	  basketTable.setText(i+1, 1, Integer.toString(um.get(i).getCount()));
       basketTable.setText(i+1, 2, Double.toString((um.get(i).getPrice() * um.get(i).getCount())));
      
+     // sum += Double.parseDouble(basketTable.getText(i, 2));
       basketTable.setText(um.size()+1, 0, "I alt: ");
-      basketTable.setText(um.size()+1, 2, "" + getSum());
+     // basketTable.setText(um.size()+1, 2, "" + sum);
       basketTable.setText(um.size()+2, 0, "Saldo efter køb: ");
       basketTable.setText(um.size()+2, 2, "" + (currentSaldo - sum));
    
@@ -189,15 +195,8 @@ public class BasketView extends Composite {
      
     }
 
-
-  		newSaldo = (currentSaldo - sum);
   
-  
-  
- 
-  
-	  
-  
+  		newSaldo = (currentSaldo - sum);  
 	}
 	
 /*	public void calc (double addToSum){
@@ -239,7 +238,7 @@ public class BasketView extends Composite {
 		    
 		    	
 		    	
-		    	Window.alert("Vare slettet");	
+		    	Window.alert("Vare fjernet fra kurv");	
 		    }
 		    
 	 }

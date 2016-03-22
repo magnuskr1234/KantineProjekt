@@ -11,7 +11,7 @@
 			</g:ScrollPanel>
 			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" horizontalAlignment="ALIGN_LEFT">
 				<g:Button styleName="btn" ui:field="buyBtn">Køb</g:Button>
-				<g:Button styleName="btn">Annuler</g:Button>
+				<g:Button styleName="btn" ui:field="cancelBtn">Annuler</g:Button>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
