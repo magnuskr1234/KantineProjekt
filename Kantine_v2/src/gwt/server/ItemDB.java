@@ -75,14 +75,16 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 		}
 	}
 	
-	public List<ItemDTO> getHistoryList() throws Exception {
+	public List<ItemDTO> getHistoryList(int i) throws Exception {
 		List<ItemDTO> results = null;
 		ResultSet resultSet = null;
 
 		try {
+			showHistoryListStmt.setInt(1, i);
 			resultSet = showHistoryListStmt.executeQuery();
 			results = new ArrayList<ItemDTO>();
-
+			
+			
 			while (resultSet.next()) {
 				results.add(new ItemDTO(resultSet.getString("title"), resultSet.getDouble("price"), resultSet.getDate("date_ordered")));
 			}

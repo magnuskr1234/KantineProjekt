@@ -14,7 +14,7 @@ public interface ItemServiceAsync {
 
 	void getItems(AsyncCallback<List<ItemDTO>> callback);
 	
-	void getHistoryList(AsyncCallback<List<ItemDTO>> callback);
+	void getHistoryList(int i, AsyncCallback<List<ItemDTO>> callback);
 
 	void deleteItem(int index, AsyncCallback<Void> callback);
 	

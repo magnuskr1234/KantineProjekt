@@ -21,6 +21,7 @@ import gwt.client.ui.login.LoginHeaderView;
 import gwt.client.ui.login.LoginView;
 import gwt.client.ui.user.BasketView;
 import gwt.client.ui.user.UserHeaderView;
+import gwt.client.ui.user.UserHistoryView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
 
@@ -59,6 +60,7 @@ public class MainView extends Composite {
 	private ShowItemListView showItemList;
 	private StatisticView statistic;
 	private UserMenuView userMenu;
+	private UserHistoryView userHistory;
 	private UserView userView;
 	
 	// Header views
@@ -89,6 +91,7 @@ public class MainView extends Composite {
 		showItemList = new ShowItemListView();
 		statistic = new StatisticView();
 		userMenu = new UserMenuView();
+		userHistory = new UserHistoryView();
 		userView = new UserView();
 		
 		
@@ -110,6 +113,7 @@ public class MainView extends Composite {
 		contentPanel.add(showItemList);
 		contentPanel.add(statistic);
 		contentPanel.add(userMenu);
+		
 		contentPanel.add(userView);
 		
 	
@@ -164,6 +168,7 @@ public class MainView extends Composite {
 	public StatisticView getstatistic(){
 		return statistic;
 	}
+	
 	
 	public UserMenuView getuserMenu(){
 		return userMenu;

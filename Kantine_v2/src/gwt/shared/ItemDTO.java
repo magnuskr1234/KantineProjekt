@@ -9,6 +9,7 @@ public class ItemDTO implements Serializable {
 	private double price;
 	private int count = 1;
 	private int id;
+	private Date date;
 	
 	public ItemDTO(){
 		
@@ -28,10 +29,19 @@ public class ItemDTO implements Serializable {
 	}
 	
 	public ItemDTO(String name, double price, Date date ){
-		
+		this.name = name;
+		this.price = price;
+		this.date = date;
 	}
 	
 
+	public Date getDate(){
+		return date;
+	}
+	
+	public void setDate(Date date){
+		this.date = date;
+	}
 	
 	public int getId() {
 		

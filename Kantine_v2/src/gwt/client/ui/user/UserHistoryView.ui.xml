@@ -5,6 +5,7 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Label text="HISTORIE!!!"/>
+		<g:FlexTable ui:field="historyTable"/>
+		
 	</g:HTMLPanel>
 </ui:UiBinder> 

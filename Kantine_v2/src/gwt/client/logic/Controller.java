@@ -32,6 +32,7 @@ import gwt.client.ui.login.LoginHeaderView;
 import gwt.client.ui.login.LoginView;
 import gwt.client.ui.user.BasketView;
 import gwt.client.ui.user.UserHeaderView;
+import gwt.client.ui.user.UserHistoryView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
 
@@ -72,6 +73,8 @@ public class Controller {
 	private ShowItemListView showItemListView;
 
 	private StatisticView statistic;
+	
+	private UserHistoryView userHistoryView;
 
 	// Referencer til user views
 	private UserMenuView userMenuView;
@@ -112,6 +115,7 @@ public class Controller {
 		showUserListView = mainView.getshowUserList();
 		showItemListView = mainView.getshowItemList();
 		statistic = mainView.getstatistic();
+		userHistoryView = mainView.getUserView().getUserHistoryView();
 		
 		
 
@@ -664,8 +668,27 @@ public class Controller {
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == userHeaderView.getBtnHistory()) {
 				mainView.getUserView().showHistoryView();
+				
+				itemDAO.getHistoryList(currentPersonId, new AsyncCallback<List<ItemDTO>>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Får vi ikke brug for");
+						
+					}
+
+					@Override
+					public void onSuccess(List<ItemDTO> result) {
+						userHistoryView.pop(result);
+						
+						
+					}
+				});
+				
+				mainView.getUserView().showHistoryView();
+				}
 			}
-		}
+		
 	}
 
 	// Back to menu handler

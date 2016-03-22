@@ -28,36 +28,7 @@ public class UserView extends Composite {
 	private UserHistoryView userHistoryView;
 	//private ArrayList<ItemDTO> basketList = new ArrayList<ItemDTO>();
 	
-	public void AddItemToBasket(){	
-		/*ItemDTO item = new ItemDTO("banan", 20);
-		//boolean addItem = true;
-		Window.alert("add to basket");
-		Window.alert("size of basketList" + basketList.size());
-		basketList.add(item);
-		Window.alert("sådan");
-		
-		
-		for (ItemDTO itemname : basketList)
-		{	
-			if(itemname.getName().equals(item.getName()))
-			{
-				addItem = false;
-				itemname.setCount(itemname.getCount()+1);
-				
-			}
-		}
-		
-		if (addItem){
-			basketList.add(item);
-		}
-		*/
-		
-		Window.alert("AddItemToBasket i userview");
-		
-		//basketView.addToList(basketList);
-		showBasketWidget();
-		
-	}
+	
 	
 
 	
@@ -126,6 +97,9 @@ public class UserView extends Composite {
 		return basketView;
 	}
 	
+	public UserHistoryView getUserHistoryView(){
+		return userHistoryView;
+	}
 	
 
 	
