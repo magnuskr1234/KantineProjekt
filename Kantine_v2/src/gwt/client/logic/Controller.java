@@ -29,6 +29,7 @@ import gwt.client.ui.admin.StatisticView;
 import gwt.client.ui.login.LoginHeaderView;
 import gwt.client.ui.login.LoginView;
 import gwt.client.ui.user.BasketView;
+import gwt.client.ui.user.EditItemView;
 import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
@@ -63,6 +64,7 @@ public class Controller {
 	private DeleteItemView deleteItemView;
 	private DeleteUserView deleteUserView;
 
+	private EditItemView editItemView;
 	private EditPersonView editPersonView;
 
 	private ShowUserListView showUserListView;
@@ -102,6 +104,7 @@ public class Controller {
 		createUserView = mainView.getcreateUser();
 		deleteItemView = mainView.getdeleteItem();
 		deleteUserView = mainView.getdeleteUserView();
+		editItemView = mainView.geteditItem();
 		editPersonView = mainView.geteditPerson();
 		loginHeaderView = mainView.getloginHeaderView();
 		loginView = mainView.getLoginView();
@@ -170,7 +173,10 @@ public class Controller {
 		
 		// item options handler
 		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
-
+		
+		//Edit item price handler
+		editItemView.getBtnConfirm().addClickHandler(new UpdateItemPriceHandler());
+		
 		// Vis admin menu til at starte med
 		mainView.showLoginHeader();
 		mainView.showLogin();
@@ -184,6 +190,57 @@ public class Controller {
 	 * @author magnusrasmussen
 	 *		
 	 */
+	
+	private class UpdateItemPriceHandler implements ClickHandler {
+		
+		@Override
+		public void onClick(ClickEvent event) {		
+			if(event.getSource() == editItemView.getBtnConfirm()){	
+				
+				itemDTO = editItemView.getitemDTO();
+			      
+
+				if (editItemView.validate(showItemListView)){
+				// editPersonView.txtSaldo.setStyleName("textBox");
+			      
+			   //    getsaldo = Double.parseDouble(editPersonView.txtSaldo.getText());
+			       
+			      // update DTO object
+			    
+			    //   getsaldo += ShowUserListView.saldoUpdate;
+			       
+			      //personDTO.setId(56); 
+			      //personDTO.setSaldo(getsaldo);
+			     
+			      
+					itemDAO.updateItem(editItemView.getNewPrice(), editItemView.getPriceItemId(), new AsyncCallback<Void>(){
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());						
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+						Window.alert("Pris opdateret!");	
+						adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
+						
+											}				
+					
+				}); 
+				}
+			}
+			if(event.getSource() == editPersonView.getBtnCancel()){
+				mainView.changeWidget(showUserListView);
+			}
+			if(event.getSource() == showUserListView.getControllerEditBtn()){
+				mainView.changeWidget(editPersonView);
+			}
+			
+		}
+		
+		
+	}
 	
 	private class BuyHandler implements ClickHandler {
 		

@@ -21,7 +21,7 @@ public interface ItemService extends RemoteService {
 	// in the onFailure call back method
 	
 	public void saveItem(ItemDTO p) throws Exception;
-	public void updateItem(ItemDTO p) throws Exception;
+	public void updateItem(double price, int id) throws Exception;
 	public  List<ItemDTO> getItems() throws Exception;
 	public void deleteItem(int id) throws Exception;
 	public void saveItemToHistory (int c, int i) throws Exception;

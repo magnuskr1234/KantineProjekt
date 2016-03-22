@@ -1,0 +1,21 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel ui:field="addPersonView">
+		<g:VerticalPanel height="150px">
+			<g:HorizontalPanel>
+				<g:Cell verticalAlignment="ALIGN_MIDDLE">
+					<g:Label text="Indtast ny pris:" width="168px"/>
+				</g:Cell>
+			<g:TextBox ui:field="txtPrice" height="8px"/>
+		</g:HorizontalPanel>
+			<g:HorizontalPanel>
+				<g:Button text="Bekræft" styleName="#okButton" ui:field="btnConfirm" />
+				<g:Button text="Annuller" styleName="#okButton" ui:field="btnCancel" />
+			</g:HorizontalPanel>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

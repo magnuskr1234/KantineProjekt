@@ -19,6 +19,7 @@ import gwt.client.ui.admin.StatisticView;
 import gwt.client.ui.login.LoginHeaderView;
 import gwt.client.ui.login.LoginView;
 import gwt.client.ui.user.BasketView;
+import gwt.client.ui.user.EditItemView;
 import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
@@ -51,6 +52,7 @@ public class MainView extends Composite {
 	
 	private DeleteItemView deleteItem;
 	private DeleteUserView deleteUser;
+	private EditItemView editItem;
 	private EditPersonView editPerson;
 	private LoginView loginView;
 	private ShowUserListView showUserList;
@@ -81,6 +83,7 @@ public class MainView extends Composite {
 		
 		deleteItem = new DeleteItemView();
 		deleteUser = new DeleteUserView();
+		editItem = new EditItemView();
 		editPerson = new EditPersonView();
 		showUserList = new ShowUserListView();
 		showItemList = new ShowItemListView();
@@ -101,6 +104,7 @@ public class MainView extends Composite {
 		contentPanel.add(createUser);	
 		contentPanel.add(deleteItem);
 		contentPanel.add(deleteUser);
+		contentPanel.add(editItem);
 		contentPanel.add(editPerson);
 		contentPanel.add(showUserList);
 		contentPanel.add(showItemList);
@@ -140,6 +144,10 @@ public class MainView extends Composite {
 
 	public DeleteUserView getdeleteUserView(){
 		return deleteUser;
+	}
+	
+	public EditItemView geteditItem(){
+		return editItem;
 	}
 	public EditPersonView geteditPerson(){
 		return editPerson;
@@ -209,6 +217,12 @@ public class MainView extends Composite {
 	public void showDeleteUser(){
 		changeWidget(deleteUser);
 	}
+	
+	// Show edit item
+	public void showEditItem(){
+		changeWidget(editItem);
+	}
+	
 	// Show Edit Person
 	public void showEditPerson(){
 		changeWidget(editPerson);

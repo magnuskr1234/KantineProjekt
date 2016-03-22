@@ -10,7 +10,7 @@ public interface ItemServiceAsync {
 
 	void saveItem(ItemDTO p, AsyncCallback<Void> callback);
 
-	void updateItem(ItemDTO p, AsyncCallback<Void> callback);
+	void updateItem(double saldo, int id, AsyncCallback<Void> callback);
 
 	void getItems(AsyncCallback<List<ItemDTO>> callback);
 
