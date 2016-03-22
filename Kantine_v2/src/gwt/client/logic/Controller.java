@@ -1,7 +1,5 @@
 package gwt.client.logic;
 
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,7 +20,6 @@ import gwt.client.ui.admin.AdminMenuView;
 import gwt.client.ui.admin.CreateItemView;
 import gwt.client.ui.admin.CreateUserView;
 import gwt.client.ui.admin.DeleteItemView;
-import gwt.client.ui.admin.DeleteUserView;
 import gwt.client.ui.admin.EditItemView;
 import gwt.client.ui.admin.EditPersonView;
 import gwt.client.ui.admin.ShowItemListView;
@@ -37,7 +34,6 @@ import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
 
 import gwt.shared.ItemDTO;
-
 import gwt.shared.PersonDTO;
 
 /**
@@ -57,14 +53,13 @@ public class Controller {
 
 	private AdminMenuView adminMenu;
 	private AdminHeaderView adminHeaderView;
-	
+
 	private BasketView basketView;
 
 	private CreateUserView createUserView;
 	private CreateItemView createItemView;
 
 	private DeleteItemView deleteItemView;
-	private DeleteUserView deleteUserView;
 
 	private EditItemView editItemView;
 	private EditPersonView editPersonView;
@@ -73,7 +68,7 @@ public class Controller {
 	private ShowItemListView showItemListView;
 
 	private StatisticView statistic;
-	
+
 	private UserHistoryView userHistoryView;
 
 	// Referencer til user views
@@ -85,12 +80,12 @@ public class Controller {
 	private PersonServiceAsync personDAO = GWT.create(PersonService.class);
 	private ItemServiceAsync itemDAO = GWT.create(ItemService.class);
 	private PersonServiceAsync personupdate = GWT.create(PersonService.class);
-	//
+
 
 	// reference to data transfer object
 	private PersonDTO personDTO;
 	private ItemDTO itemDTO;
-	
+
 	public int currentPersonId;
 	public PersonDTO currentPeron;
 
@@ -103,11 +98,10 @@ public class Controller {
 		// Get references to subviews for admin
 		adminHeaderView = mainView.getadminHeaderView();
 		adminMenu = mainView.getadminMenu();
-		
+
 		createItemView = mainView.getcreateItem();
 		createUserView = mainView.getcreateUser();
 		deleteItemView = mainView.getdeleteItem();
-		deleteUserView = mainView.getdeleteUserView();
 		editItemView = mainView.geteditItem();
 		editPersonView = mainView.geteditPerson();
 		loginHeaderView = mainView.getloginHeaderView();
@@ -116,8 +110,8 @@ public class Controller {
 		showItemListView = mainView.getshowItemList();
 		statistic = mainView.getstatistic();
 		userHistoryView = mainView.getUserView().getUserHistoryView();
-		
-		
+
+
 
 		// Referncer til subview for user
 		basketView = mainView.getUserView().getBasketView();
@@ -152,13 +146,12 @@ public class Controller {
 		userHeaderView.getBtnMainMenu().addClickHandler(new UserReturnToMenuHandler());
 
 		// Add adminHeaderView Handlers
-
 		adminHeaderView.getBtnMainMenu().addClickHandler(new ReturnMainViewHandler());
 
 		// Add createUserView handler
 		createUserView.getCreateUserBtn().addClickHandler(new CreateUserHandler());
 		createUserView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
-		
+
 		// Add update saldo handler
 		editPersonView.getBtnCancel().addClickHandler(new UpdateSaldoHandler());
 		editPersonView.getBtnConfirm().addClickHandler(new UpdateSaldoHandler());
@@ -171,22 +164,23 @@ public class Controller {
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
 		showUserListView.getControllerEditBtn().addClickHandler(new UpdateSaldoHandler());
 
-		
+
 		//Basketview buttons
 		basketView.getCancelBtn().addClickHandler(new BuyHandler());
 		basketView.getControllerDeleteBtn().addClickHandler(new UpdateBasketHandler());
 		basketView.getBuyBtn().addClickHandler(new BuyHandler());
+		
 		// basket update
 		userMenuView.getAddToBasketBtn().addClickHandler(new UpdateBasketHandler());
-		
+
 		// item options handler
 		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
-		
+
 		//Edit item price handler
 		editItemView.getBtnCancel().addClickHandler(new UpdateItemPriceHandler());
 		editItemView.getBtnConfirm().addClickHandler(new UpdateItemPriceHandler());
 		showItemListView.getControllerEditBtn().addClickHandler(new UpdateItemPriceHandler());
-		
+
 		// Vis admin menu til at starte med
 		mainView.showLoginHeader();
 		mainView.showLogin();
@@ -200,86 +194,82 @@ public class Controller {
 	 * @author magnusrasmussen
 	 *		
 	 */
-	
+
 	private class UpdateItemPriceHandler implements ClickHandler {
-		
+
 		@Override
 		public void onClick(ClickEvent event) {		
-			
+
 			if(event.getSource() == editItemView.getBtnCancel()){
 				adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
 			}
-			
+
 			if(event.getSource() == editItemView.getBtnConfirm()){	
-				
+
 				itemDTO = editItemView.getitemDTO();
-			 
-				
+
+
 				if (editItemView.validate(showItemListView)){
-		
-			    
-			      
+					
 					itemDAO.updateItem(editItemView.getNewPrice(), editItemView.getPriceItemId(), new AsyncCallback<Void>(){
 
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());						
-					}
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert("Serverfejl :" + caught.getMessage());						
+						}
 
-					@Override
-					public void onSuccess(Void result) {
-						Window.alert("Pris opdateret!");	
-						adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
-					}				
-					
-				}); 
+						@Override
+						public void onSuccess(Void result) {
+							Window.alert("Pris opdateret!");	
+							adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
+						}				
+
+					}); 
 				}
 			}
-	     
-						if(event.getSource() == showItemListView.getControllerEditBtn()){
-							mainView.changeWidget(editItemView);
-							
-						}
+
+			if(event.getSource() == showItemListView.getControllerEditBtn()){
+				mainView.changeWidget(editItemView);
+
+			}
 		}
-		
-		
+
+
 	}
-	
+
 	private class BuyHandler implements ClickHandler {
-		
+
 		@Override
 		public void onClick(ClickEvent event) {
 			if(event.getSource() == basketView.getCancelBtn()){
 				basketView.emptyTable();
 				mainView.changeWidget(basketView);
-				
+
 			}
-			
+
 			if(event.getSource() == basketView.getBuyBtn()){
-				
+
 				for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {
 					for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {
 
 						itemDAO.saveItemToHistory(currentPersonId, UserMenuView.tempItemList.get(i).getId(),
 								new AsyncCallback<Void>() {
 
-									@Override
-									public void onFailure(Throwable caught) {
-										Window.alert("Det får vi ikke brug for" + caught.getMessage());
+							@Override
+							public void onFailure(Throwable caught) {
+								Window.alert("Det får vi ikke brug for" + caught.getMessage());
 
-									}
+							}
 
-									@Override
-									public void onSuccess(Void result) {
-										
+							@Override
+							public void onSuccess(Void result) {
+							}
 
-									}
-
-								});
+						});
 
 					}
 				}
-				
+
 				personupdate.updatePerson(basketView.getNewSaldo(), currentPersonId, new AsyncCallback<Void>(){
 
 					@Override
@@ -289,91 +279,66 @@ public class Controller {
 
 					@Override
 					public void onSuccess(Void result) {
-						
+
 						Window.alert("nu saldo" + basketView.getNewSaldo() );
 						Window.alert("sum: " + basketView.getSum());
 						basketView.clearSum();
-						
-					}				
-					
-				}); 
-				
-				
-				
 
-				
-				
+					}				
+
+				}); 
 			}
-			
+
 			Window.alert("Tak for købet");
 			UserMenuView.tempItemList.clear();
 			userView.showBasketWidget();
-			
-			
 		}
-	
+
 	}
 
-	
+
 	private class UpdateBasketHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			
-			
-			
 			if(event.getSource()== userMenuView.getAddToBasketBtn()){	
 				userView.showBasketWidget();
 			}
-			if( event.getSource() == basketView.getControllerDeleteBtn()){
-					
-				 basketView.deleteEventRow();
-				 userView.showBasketWidget();
-			}
 			
+			if( event.getSource() == basketView.getControllerDeleteBtn()){
+
+				basketView.deleteEventRow();
+				userView.showBasketWidget();
+			}
+
 		}
-		
-		
-		
 	}
-	
+
 	private class UpdateSaldoHandler implements ClickHandler {
-		
+
 		@Override
 		public void onClick(ClickEvent event) {		
 			if(event.getSource() == editPersonView.getBtnConfirm()){	
-				
-				personDTO = editPersonView.getpersonDTO();
-			      
 
+				personDTO = editPersonView.getpersonDTO();
+				
 				if (editPersonView.validate(showUserListView)){
-				// editPersonView.txtSaldo.setStyleName("textBox");
-			      
-			   //    getsaldo = Double.parseDouble(editPersonView.txtSaldo.getText());
-			       
-			      // update DTO object
-			    
-			    //   getsaldo += ShowUserListView.saldoUpdate;
-			       
-			      //personDTO.setId(56); 
-			      //personDTO.setSaldo(getsaldo);
-			     
-			      
+
 					personupdate.updatePerson(editPersonView.getNewSaldo(), editPersonView.getSaldoUserId(), new AsyncCallback<Void>(){
 
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());						
-					}
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert("Serverfejl :" + caught.getMessage());						
+						}
 
-					@Override
-					public void onSuccess(Void result) {
-						Window.alert("Saldo opdateret!");	
-						adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
-						mainView.showUserList();
-					}				
-					
-				}); 
+						@Override
+						public void onSuccess(Void result) {
+							Window.alert("Saldo opdateret!");	
+							adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
+							mainView.showUserList();
+						}				
+
+					}); 
 				}
 			}
 			if(event.getSource() == editPersonView.getBtnCancel()){
@@ -382,14 +347,11 @@ public class Controller {
 			if(event.getSource() == showUserListView.getControllerEditBtn()){
 				mainView.changeWidget(editPersonView);
 			}
-			
 		}
-		
-		
 	}
+	
 	// Login handler
 	private class LoginHandler implements ClickHandler {
-
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == loginView.getBtnOk())
@@ -413,7 +375,7 @@ public class Controller {
 									loginView.clearfields();
 									mainView.showAdminMenu();
 									mainView.showAdminHeader();
-									
+
 
 								}
 
@@ -434,12 +396,12 @@ public class Controller {
 										@Override
 										public void onSuccess(List<ItemDTO> result){
 											mainView.getUserView().showMenuView(result);
-										
-										
+
+
 										}
-										}
-										);
-									
+									}
+											);
+
 								}
 							} else
 								loginView.setError();
@@ -448,9 +410,6 @@ public class Controller {
 						loginView.clearfields();
 					}
 				}));
-
-			// for PersonDTO person : personDAO.getPersons(callback);
-			
 		}
 	}
 
@@ -466,8 +425,6 @@ public class Controller {
 				userView.showBasketWidget();
 				mainView.showLogin();
 				mainView.showLoginHeader();
-				
-
 			}
 		}
 	}
@@ -481,7 +438,7 @@ public class Controller {
 				mainView.changeWidget(createUserView);
 			}
 			// replace personDAO call with an RPC
-			if (event.getSource() == createUserView.getCreateUserBtn()) {
+			if (event.getSource() == createUserView.getCreateUserBtn())
 				if (createUserView.validate()) {
 
 					personDAO.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName(),
@@ -489,22 +446,18 @@ public class Controller {
 							createUserView.getCurrentPerson().getAdminStatus(),
 							createUserView.getCurrentPerson().getSaldo()), new AsyncCallback<Void>() {
 
-								@Override
-								public void onFailure(Throwable caught) {
-									Window.alert("Serverfejl :" + caught.getMessage());
-								}
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert("Serverfejl :" + caught.getMessage());
+						}
 
-								@Override
-								public void onSuccess(Void result) {
-									Window.alert("Person gemt");
-								}
+						@Override
+						public void onSuccess(Void result) {
+							Window.alert("Person gemt");
+						}
 
-							});
-
-				}
-
+					});
 			}
-
 		}
 	}
 
@@ -514,27 +467,25 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {
 			// replace personDAO call with an RPC
-			if (event.getSource() == createItemView.getcreateItemBtn()) {
+			if (event.getSource() == createItemView.getcreateItemBtn())
 				if (createItemView.validate()) {
 
 					itemDAO.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(),
 							createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
 
-								@Override
-								public void onFailure(Throwable caught) {
-									Window.alert("Serverfejl :" + caught.getMessage());
-								}
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert("Serverfejl :" + caught.getMessage());
+						}
 
-								@Override
-								public void onSuccess(Void result) {
-									Window.alert("Varen blev oprettet");
-								}
+						@Override
+						public void onSuccess(Void result) {
+							Window.alert("Varen blev oprettet");
+						}
 
-							});
+					});
 
-				}
-
-			}
+				}	
 
 		}
 	}
@@ -591,17 +542,13 @@ public class Controller {
 					@Override
 					public void onSuccess(Void result) {
 						showUserListView.deleteEventRow();
-					//	mainView.changeWidget(showUserListView);
+						//	mainView.changeWidget(showUserListView);
 						Window.alert("Person slettet");
 
 					}
-					
-				
 				});
 
 			if (event.getSource() == adminMenu.getBtnShowUsers()) {
-				List<PersonDTO> result = new ArrayList<PersonDTO>();
-
 				personDAO.getPersons(new AsyncCallback<List<PersonDTO>>() {
 					@Override
 					public void onFailure(Throwable caught) {
@@ -637,14 +584,12 @@ public class Controller {
 
 						adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
 						Window.alert("Varen blev slettet");
-						
+
 
 					}
 				});
 
 			if (event.getSource() == adminMenu.getBtnShowItems()) {
-				List<ItemDTO> result = new ArrayList<ItemDTO>();
-
 				itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
 					@Override
 					public void onFailure(Throwable caught) {
@@ -680,27 +625,24 @@ public class Controller {
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == userHeaderView.getBtnHistory()) {
 				mainView.getUserView().showHistoryView();
-				
+
 				itemDAO.getHistoryList(currentPersonId, new AsyncCallback<List<ItemDTO>>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
 						Window.alert("Får vi ikke brug for");
-						
+
 					}
 
 					@Override
 					public void onSuccess(List<ItemDTO> result) {
 						userHistoryView.pop(result);
-						
-						
 					}
 				});
-				
+
 				mainView.getUserView().showHistoryView();
-				}
 			}
-		
+		}
 	}
 
 	// Back to menu handler
@@ -709,7 +651,7 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == userHeaderView.getBtnMainMenu()) {
-				
+
 				itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
 					@Override
 					public void onFailure(Throwable caught) {
@@ -721,39 +663,8 @@ public class Controller {
 						mainView.getUserView().showMenuView(result);
 					}
 				});
-				
+
 			}
 		}
 	}
-	
-	
-
-	// Add to basket
-
-	/*
-	 * private class AddKaffeToBasketHandler implements ClickHandler{
-	 * 
-	 * @Override public void onClick(ClickEvent event){ if (event.getSource() ==
-	 * userView.getUserMenuView().getKaffeBtn()){
-	 * mainView.getUserView().AddItemToBasket(new ItemDTO("Kaffe", 20));
-	 * mainView.getUserView().showBasketWidget();
-	 * //mainView.getUserView().showHistoryView(); //Window.alert("Hej"); } }
-	 * 
-	 * 
-	 * }
-	 */
-
-	/*
-	 * private class AddBananToBasketHandler implements ClickHandler{
-	 * 
-	 * @Override public void onClick(ClickEvent event){ if (event.getSource() ==
-	 * userView.getUserMenuView().getBananBtn()){
-	 * mainView.getUserView().AddItemToBasket(new ItemDTO("Banan", 10));
-	 * mainView.getUserView().showBasketWidget();
-	 * //mainView.getUserView().showHistoryView(); } }
-	 * 
-	 * 
-	 * }
-	 */
-
 }
