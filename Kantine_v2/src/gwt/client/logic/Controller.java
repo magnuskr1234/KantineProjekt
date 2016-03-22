@@ -1,5 +1,6 @@
 package gwt.client.logic;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -175,6 +176,7 @@ public class Controller {
 		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
 		
 		//Edit item price handler
+		editItemView.getBtnCancel().addClickHandler(new UpdateItemPriceHandler());
 		editItemView.getBtnConfirm().addClickHandler(new UpdateItemPriceHandler());
 		showItemListView.getControllerEditBtn().addClickHandler(new UpdateItemPriceHandler());
 		
@@ -196,6 +198,11 @@ public class Controller {
 		
 		@Override
 		public void onClick(ClickEvent event) {		
+			
+			if(event.getSource() == editItemView.getBtnCancel()){
+				adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
+			}
+			
 			if(event.getSource() == editItemView.getBtnConfirm()){	
 				
 				itemDTO = editItemView.getitemDTO();
@@ -221,16 +228,10 @@ public class Controller {
 				}); 
 				}
 			}
-			if(event.getSource() == editPersonView.getBtnCancel()){
-				mainView.changeWidget(showUserListView);
-			}
-			if(event.getSource() == showUserListView.getControllerEditBtn()){
-				mainView.changeWidget(editPersonView);
-			}
-			
-		     
+	     
 						if(event.getSource() == showItemListView.getControllerEditBtn()){
 							mainView.changeWidget(editItemView);
+							
 						}
 		}
 		
@@ -305,6 +306,8 @@ public class Controller {
 
 		@Override
 		public void onClick(ClickEvent event) {
+			
+			
 			
 			if(event.getSource()== userMenuView.getAddToBasketBtn()){	
 				userView.showBasketWidget();
@@ -494,9 +497,6 @@ public class Controller {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			if (event.getSource() == createItemView.getcreateItemBtn()) {
-				mainView.changeWidget(createItemView);
-			}
 			// replace personDAO call with an RPC
 			if (event.getSource() == createItemView.getcreateItemBtn()) {
 				if (createItemView.validate()) {

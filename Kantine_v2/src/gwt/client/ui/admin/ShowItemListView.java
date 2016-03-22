@@ -168,7 +168,7 @@ public class ShowItemListView extends Composite {
 			 itemDTO.setId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 			 itemDTO.setName(itemTable.getText(eventRowIndex, 1));
 			 itemDTO.setPrice(Integer.parseInt(itemTable.getText(eventRowIndex, 2)));
-			
+			 					
 			 // Save item id
 			 setItemId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 			 
