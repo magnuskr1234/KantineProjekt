@@ -289,10 +289,6 @@ public class MainView extends Composite {
 		 	userHeaderView.setUser(user);
 		  }
 
-		  // login has been cancelled - update pages
-		  public void loginCancel() {
-		  
-		  }
 
 		public BasketView getBasketView() {
 			// TODO Auto-generated method stub

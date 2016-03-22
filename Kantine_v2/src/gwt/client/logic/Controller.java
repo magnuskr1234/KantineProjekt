@@ -384,7 +384,7 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == loginView.getBtnOk())
-
+				
 				personDAO.getPersons((new AsyncCallback<List<PersonDTO>>() {
 					@Override
 					public void onFailure(Throwable caught) {
@@ -408,7 +408,7 @@ public class Controller {
 
 								}
 
-								else if (person.getAdminStatus() == 0) {
+								if (person.getAdminStatus() == 0) {
 									currentPersonId = person.getId();
 									mainView.loginOk(person.getName());
 									basketView.setCurrentUserSaldo(person.getSaldo());
@@ -434,8 +434,10 @@ public class Controller {
 								}
 							} else
 								loginView.setError();
+								
 
 						}
+						loginView.clearfields();
 					}
 				}));
 
@@ -452,6 +454,7 @@ public class Controller {
 			if (event.getSource() == adminHeaderView.getBtnLogout()
 					|| event.getSource() == userHeaderView.getBtnLogout()) {
 				UserMenuView.tempItemList.clear();
+				loginView.resetError();
 				userView.showBasketWidget();
 				mainView.showLogin();
 				mainView.showLoginHeader();
