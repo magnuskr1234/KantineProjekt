@@ -128,9 +128,11 @@ public class ShowItemListView extends Composite {
 		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
 		// hver række.
 		for (int i = 0; i < pList.size(); i++) {
+			
 			Button edit = new Button("Opdater pris");
 			edit.getElement().setId("editButton");
 			itemTable.setWidget(i + 1, 3, edit);
+			
 			Button delete = new Button("Slet vare");
 			delete.getElement().setId("deleteButton");
 			itemTable.setWidget(i + 1, 4, delete);

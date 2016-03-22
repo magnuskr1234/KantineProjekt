@@ -199,13 +199,11 @@ public class Controller {
 			if(event.getSource() == editItemView.getBtnConfirm()){	
 				
 				itemDTO = editItemView.getitemDTO();
-			      
-				if(event.getSource() == showItemListView.getControllerEditBtn()){
-					mainView.changeWidget(editItemView);
-				}
+			 
+				
 				if (editItemView.validate(showItemListView)){
 		
-			     
+			    
 			      
 					itemDAO.updateItem(editItemView.getNewPrice(), editItemView.getPriceItemId(), new AsyncCallback<Void>(){
 
@@ -218,8 +216,7 @@ public class Controller {
 					public void onSuccess(Void result) {
 						Window.alert("Pris opdateret!");	
 						adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
-						
-											}				
+					}				
 					
 				}); 
 				}
@@ -231,6 +228,10 @@ public class Controller {
 				mainView.changeWidget(editPersonView);
 			}
 			
+		     
+						if(event.getSource() == showItemListView.getControllerEditBtn()){
+							mainView.changeWidget(editItemView);
+						}
 		}
 		
 		
@@ -311,6 +312,7 @@ public class Controller {
 			if( event.getSource() == basketView.getControllerDeleteBtn()){
 					
 				 basketView.deleteEventRow();
+				 userView.showBasketWidget();
 			}
 			
 		}

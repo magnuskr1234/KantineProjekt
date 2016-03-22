@@ -52,8 +52,8 @@ public class BasketView extends Composite {
 	  private double newSaldo;
 	  
 	  private double sum;
-	  
-	  
+	
+	  private double tempSum;
 
 	// reference to DTO 
 	  ItemDTO itemDTO;
@@ -87,7 +87,7 @@ public class BasketView extends Composite {
 		    return controllerDeleteBtn;
 		  }
 
-		  
+		  																				
 		  // delete row where delete-event happened
 		  public void deleteEventRow() {
 		    basketTable.removeRow(eventRowIndexDelete+1);
@@ -121,6 +121,10 @@ public class BasketView extends Composite {
 			  return sum;
 		  }
 		  
+		  public void setSum(double s){
+			  sum += s;
+		  }
+		  
 		  public void clearSum(){
 			  sum = 0;
 		  }
@@ -139,9 +143,10 @@ public class BasketView extends Composite {
   basketTable.getFlexCellFormatter().setWidth(0, 2, "25px");
   basketTable.getFlexCellFormatter().setWidth(0, 3, "50px");
   
-  for(int i = 0; i < um.size(); i++){
-	  sum += (um.get(i).getPrice()*um.get(i).getCount()); 
-  }
+ /* for(int i = 0; i < um.size(); i++){
+	  for( int j = 0; j<um.get(i).getCount(); j++)
+	  setSum(um.get(i).getPrice()); 
+  }*/
 
  
   
@@ -149,8 +154,7 @@ public class BasketView extends Composite {
   basketTable.setText(0, 0, "Vare");
   basketTable.setText(0, 1, "Antal");
   basketTable.setText(0, 2, "Pris");
-  basketTable.setText(um.size()+1, 0, "I alt: ");
-  basketTable.setText(um.size()+1, 2, "" + sum);
+
 
   
   
@@ -160,15 +164,18 @@ public class BasketView extends Composite {
   basketTable.getRowFormatter().addStyleName(um.size()+1,"FlexTable-Header");
   basketTable.getRowFormatter().addStyleName(um.size()+2,"FlexTable-Header");
   
+
   
   for (int i=0; i < um.size(); i++) {
 	 
 	  basketTable.setText(i+1, 0, um.get(i).getName());
 	  basketTable.setText(i+1, 1, Integer.toString(um.get(i).getCount()));
-      basketTable.setText(i+1, 2, "" + (um.get(i).getPrice() * um.get(i).getCount()));
+      basketTable.setText(i+1, 2, Double.toString((um.get(i).getPrice() * um.get(i).getCount())));
+     
+      basketTable.setText(um.size()+1, 0, "I alt: ");
+      basketTable.setText(um.size()+1, 2, "" + getSum());
       basketTable.setText(um.size()+2, 0, "Saldo efter køb: ");
       basketTable.setText(um.size()+2, 2, "" + (currentSaldo - sum));
-
    
 
       Button controllerDeleteBtn = new Button("Fjern");
@@ -176,12 +183,14 @@ public class BasketView extends Composite {
       basketTable.setWidget(i+1, 3, controllerDeleteBtn);
 
       // add edit and delete buttons to row
-      
+     
       controllerDeleteBtn.addClickHandler(deleteHandler);
       
+     
     }
-  
-  newSaldo = (currentSaldo - sum);
+
+
+  		newSaldo = (currentSaldo - sum);
   
   
   
@@ -191,13 +200,20 @@ public class BasketView extends Composite {
   
 	}
 	
-
+	public void calc (double addToSum){
+		 for (int j = 0; j < basketTable.getRowCount(); j++){
+			  	
+			 tempSum = Double.parseDouble(basketTable.getText(j+2, 2));
+			 
+			 setSum(addToSum);
+		  }
+	}
 	
 	
 	private class DeleteHandler implements ClickHandler {
 		    public void onClick(ClickEvent event) {
 		    	
-		    	
+		    	clearSum();
 		    	eventRowIndexDelete = 0;
 		      // save event row index
 		    	eventRowIndexDelete = basketTable.getCellForEvent(event).getRowIndex() - 1;
@@ -214,12 +230,13 @@ public class BasketView extends Composite {
 		    	}
 		    	
 		    	*/
-		    	
+		    	setSum(-UserMenuView.tempItemList.get(eventRowIndexDelete).getPrice());
+
 		    	UserMenuView.tempItemList.remove(eventRowIndexDelete);
 		    	controllerDeleteBtn.fireEvent(new ClickEvent() {
 		    	
 		    	});
-		    	
+		    
 		    	
 		    	
 		    	Window.alert("Vare slettet");	

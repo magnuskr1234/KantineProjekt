@@ -41,7 +41,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			saveItemStmt = connection.prepareStatement("INSERT INTO items ( title, price ) VALUES ( ?, ? )");
 
 			// create query that updates an item
-			updateItemStmt = connection.prepareStatement("UPDATE customers SET price = ?  WHERE id = ?");
+			updateItemStmt = connection.prepareStatement("UPDATE items SET price = ?  WHERE id = ?");
 
 			// create query that get all items in database
 			getItemsStmt = connection.prepareStatement("SELECT * FROM items ");
