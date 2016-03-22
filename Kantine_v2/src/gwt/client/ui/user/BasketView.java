@@ -200,7 +200,7 @@ public class BasketView extends Composite {
   
 	}
 	
-	public void calc (double addToSum){
+/*	public void calc (double addToSum){
 		 for (int j = 0; j < basketTable.getRowCount(); j++){
 			  	
 			 tempSum = Double.parseDouble(basketTable.getText(j+2, 2));
@@ -209,7 +209,7 @@ public class BasketView extends Composite {
 		  }
 	}
 	
-	
+	*/
 	private class DeleteHandler implements ClickHandler {
 		    public void onClick(ClickEvent event) {
 		    	

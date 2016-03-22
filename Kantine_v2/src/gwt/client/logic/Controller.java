@@ -22,6 +22,7 @@ import gwt.client.ui.admin.CreateItemView;
 import gwt.client.ui.admin.CreateUserView;
 import gwt.client.ui.admin.DeleteItemView;
 import gwt.client.ui.admin.DeleteUserView;
+import gwt.client.ui.admin.EditItemView;
 import gwt.client.ui.admin.EditPersonView;
 import gwt.client.ui.admin.ShowItemListView;
 import gwt.client.ui.admin.ShowUserListView;
@@ -29,7 +30,6 @@ import gwt.client.ui.admin.StatisticView;
 import gwt.client.ui.login.LoginHeaderView;
 import gwt.client.ui.login.LoginView;
 import gwt.client.ui.user.BasketView;
-import gwt.client.ui.user.EditItemView;
 import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
@@ -511,7 +511,7 @@ public class Controller {
 
 								@Override
 								public void onSuccess(Void result) {
-									Window.alert("Person gemt");
+									Window.alert("Varen blev oprettet");
 								}
 
 							});
@@ -534,17 +534,7 @@ public class Controller {
 	 */
 
 	// Delete user view
-	private class DeleteUserHandler implements ClickHandler {
 
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == adminMenu.getBtnDeleteUser()) {
-				// showUserListView.pop();
-				mainView.changeWidget(showUserListView);
-			}
-
-		}
-	}
 
 	// Return to menu handler
 	private class ReturnMainViewHandler implements ClickHandler {
@@ -630,7 +620,7 @@ public class Controller {
 					public void onSuccess(Void result) {
 
 						adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
-						Window.alert("vare slettet");
+						Window.alert("Varen blev slettet");
 						
 
 					}

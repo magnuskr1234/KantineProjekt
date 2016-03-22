@@ -1,12 +1,10 @@
-package gwt.client.ui.user;
+package gwt.client.ui.admin;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-import gwt.client.ui.admin.ShowItemListView;
-import gwt.client.ui.admin.ShowUserListView;
 import gwt.shared.FieldVerifier;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;

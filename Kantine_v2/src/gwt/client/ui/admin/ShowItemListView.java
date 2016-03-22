@@ -113,7 +113,7 @@ public class ShowItemListView extends Composite {
 		// set headers in flextable
 		itemTable.setText(0, 0, "Id");
 		itemTable.setText(0, 1, "Navn");
-		itemTable.setText(0, 2, "Saldo");
+		itemTable.setText(0, 2, "Pris");
 
 		// style table
 		itemTable.addStyleName("FlexTable");
