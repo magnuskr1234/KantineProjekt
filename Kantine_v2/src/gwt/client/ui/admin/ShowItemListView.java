@@ -157,7 +157,7 @@ public class ShowItemListView extends Composite {
 		}
 	}
 
-	// Handler til at håndtere et tryk på knappen "Opdater saldo"
+	// Handler til at håndtere et tryk på knappen "Opdater pris"
 	private class EditHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 			// get rowindex where event happened

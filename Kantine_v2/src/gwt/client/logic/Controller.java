@@ -176,6 +176,7 @@ public class Controller {
 		
 		//Edit item price handler
 		editItemView.getBtnConfirm().addClickHandler(new UpdateItemPriceHandler());
+		showItemListView.getControllerEditBtn().addClickHandler(new UpdateItemPriceHandler());
 		
 		// Vis admin menu til at starte med
 		mainView.showLoginHeader();
@@ -199,18 +200,11 @@ public class Controller {
 				
 				itemDTO = editItemView.getitemDTO();
 			      
-
+				if(event.getSource() == showItemListView.getControllerEditBtn()){
+					mainView.changeWidget(editItemView);
+				}
 				if (editItemView.validate(showItemListView)){
-				// editPersonView.txtSaldo.setStyleName("textBox");
-			      
-			   //    getsaldo = Double.parseDouble(editPersonView.txtSaldo.getText());
-			       
-			      // update DTO object
-			    
-			    //   getsaldo += ShowUserListView.saldoUpdate;
-			       
-			      //personDTO.setId(56); 
-			      //personDTO.setSaldo(getsaldo);
+		
 			     
 			      
 					itemDAO.updateItem(editItemView.getNewPrice(), editItemView.getPriceItemId(), new AsyncCallback<Void>(){
