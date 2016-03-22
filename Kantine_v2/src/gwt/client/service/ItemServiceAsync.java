@@ -13,6 +13,8 @@ public interface ItemServiceAsync {
 	void updateItem(double saldo, int id, AsyncCallback<Void> callback);
 
 	void getItems(AsyncCallback<List<ItemDTO>> callback);
+	
+	void getHistoryList(AsyncCallback<List<ItemDTO>> callback);
 
 	void deleteItem(int index, AsyncCallback<Void> callback);
 	

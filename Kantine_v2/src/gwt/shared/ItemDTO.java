@@ -1,6 +1,7 @@
 package gwt.shared;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class ItemDTO implements Serializable {
 	
@@ -23,6 +24,10 @@ public class ItemDTO implements Serializable {
 	{
 		this.name = name;
 		this.price = price;
+		
+	}
+	
+	public ItemDTO(String name, double price, Date date ){
 		
 	}
 	

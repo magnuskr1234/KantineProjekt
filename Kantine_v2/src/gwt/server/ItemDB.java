@@ -31,6 +31,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 	private PreparedStatement getSizeStmt = null;
 	private PreparedStatement deleteItemStmt = null;
 	private PreparedStatement saveItemToHistoryStmt = null;
+	private PreparedStatement showHistoryListStmt = null;
 
 	ShowUserListView su;
 
@@ -54,6 +55,8 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			
 			saveItemToHistoryStmt = connection.prepareStatement("INSERT INTO history (customer_id, item_id) VALUES (?, ?)");
 			
+			showHistoryListStmt = connection.prepareStatement("select items.title,items.price, history.date_ordered from history inner join customers on customers.id=history.customer_id inner join items on items.id=history.item_id where history.customer_id= ? ");
+			
 
 		} catch (SQLException sqlException) {
 			throw new DALException("Kan ikke oprette forbindelse til database");
@@ -70,6 +73,30 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<ItemDTO> getHistoryList() throws Exception {
+		List<ItemDTO> results = null;
+		ResultSet resultSet = null;
+
+		try {
+			resultSet = showHistoryListStmt.executeQuery();
+			results = new ArrayList<ItemDTO>();
+
+			while (resultSet.next()) {
+				results.add(new ItemDTO(resultSet.getString("title"), resultSet.getDouble("price"), resultSet.getDate("date_ordered")));
+			}
+		} catch (SQLException sqlException) {
+			throw new DALException(" \"getItems\" fejlede");
+		} finally {
+			try {
+				resultSet.close();
+			} catch (SQLException sqlException) {
+				sqlException.printStackTrace();
+				close();
+			}
+		}
+		return results;
 	}
 	
 	@Override
