@@ -381,6 +381,7 @@ public class Controller {
 									currentPersonId = person.getId();
 									mainView.loginOk(person.getName());
 									basketView.setCurrentUserSaldo(person.getSaldo());
+									userMenuView.setcuSaldo(person.getSaldo());
 									loginView.resetError();
 									loginView.clearfields();
 									mainView.showUserHeader();

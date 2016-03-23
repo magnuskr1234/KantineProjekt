@@ -146,12 +146,8 @@ public class BasketView extends Composite {
 		basketTable.getFlexCellFormatter().setWidth(0, 2, "25px");
 		basketTable.getFlexCellFormatter().setWidth(0, 3, "50px");
 
-		/*
-		 * for(int i = 0; i < um.size(); i++){ for( int j = 0;
-		 * j<um.get(i).getCount(); j++) setSum(um.get(i).getPrice()); }
-		 */
-
 		clearSum();
+		
 		// set headers in flextable
 		basketTable.setText(0, 0, "Vare");
 		basketTable.setText(0, 1, "Antal");
@@ -209,6 +205,7 @@ public class BasketView extends Composite {
 			setSum(-UserMenuView.tempItemList.get(eventRowIndexDelete).getPrice());
 
 			UserMenuView.tempItemList.remove(eventRowIndexDelete);
+			UserMenuView.setcuSaldo(+itemDTO.getPrice()*itemDTO.getCount());
 			controllerDeleteBtn.fireEvent(new ClickEvent() {
 
 			});

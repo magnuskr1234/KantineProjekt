@@ -35,6 +35,10 @@ public class UserMenuView extends Composite {
 	public int itemId;
 	public String name;
 
+	private static double cuSaldo;
+	
+
+	
 	// List to hold item objects 
 	public static List<ItemDTO> tempItemList  = new ArrayList<ItemDTO>();
 
@@ -77,7 +81,15 @@ public class UserMenuView extends Composite {
 		// buttons for controller event handling
 		addToBasketBtn = new Button();
 	}
-
+	
+	public static void setcuSaldo(double saldo) {
+		cuSaldo = saldo;
+	}
+	
+	public double getcuSaldo(){
+		return cuSaldo;
+	}
+	
 	//Flextable gets populated with rows and values. 
 	public void pop(List<ItemDTO> pList) {
 		// remove table data
@@ -133,8 +145,9 @@ public class UserMenuView extends Composite {
 			itemDTO.setName(itemTable.getText(eventRowIndex, 1));
 			itemDTO.setPrice(Double.parseDouble(itemTable.getText(eventRowIndex, 2))); 
 			
-			if(basketView.getCurrentUserSaldo() > itemDTO.getPrice()){
-
+			
+			if(cuSaldo >= itemDTO.getPrice()){
+				setcuSaldo(cuSaldo-itemDTO.getPrice());
 			
 		
 			
@@ -158,6 +171,8 @@ public class UserMenuView extends Composite {
 			
 			
 			basketView.pop(tempItemList);
+			
+			
 
 			addToBasketBtn.fireEvent(new ClickEvent() {
 			});
