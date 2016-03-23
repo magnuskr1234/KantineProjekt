@@ -43,6 +43,8 @@ public class BasketView extends Composite {
 	private int eventRowIndexDelete;
 
 	private double currentSaldo;
+	
+	private double saldoCheckValue;
 
 	private double newSaldo;
 
@@ -108,6 +110,15 @@ public class BasketView extends Composite {
 		return currentSaldo;
 	}
 
+	public void setSaldoCheckValue(double saldoCheck){
+		saldoCheckValue += saldoCheck;
+		
+	}
+	
+	public double getSaldoCheckValue(){
+		return saldoCheckValue;
+	}
+	
 	public double getNewSaldo() {
 		return newSaldo;
 	}
@@ -179,15 +190,13 @@ public class BasketView extends Composite {
 		newSaldo = (currentSaldo - sum);
 	}
 
-	/*
-	 * public void calc (double addToSum){ for (int j = 0; j <
-	 * basketTable.getRowCount(); j++){
-	 * 
-	 * tempSum = Double.parseDouble(basketTable.getText(j+2, 2));
-	 * 
-	 * setSum(addToSum); } }
-	 * 
-	 */
+	public double validateSaldo(){
+			Window.alert("" + getCurrentUserSaldo());
+			setSaldoCheckValue(100);
+			Window.alert(""+ getSaldoCheckValue());
+			return saldoCheckValue;
+	}
+	
 	private class DeleteHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 
@@ -195,20 +204,7 @@ public class BasketView extends Composite {
 			eventRowIndexDelete = 0;
 			// save event row index
 			eventRowIndexDelete = basketTable.getCellForEvent(event).getRowIndex() - 1;
-			// save person id
-			// personId = Integer.parseInt(t.getText(eventRowIndex, 0));
-			// fire controller delete button event
-
-			// um.deleteFromList(eventRowIndexDelete);
-
-			/*
-			 * 
-			 * if (UserMenuView.tempItemList.get(eventRowIndexDelete).getCount <
-			 * 1){
-			 * 
-			 * }
-			 * 
-			 */
+		
 			setSum(-UserMenuView.tempItemList.get(eventRowIndexDelete).getPrice());
 
 			UserMenuView.tempItemList.remove(eventRowIndexDelete);

@@ -8,6 +8,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -119,9 +120,12 @@ public class UserMenuView extends Composite {
 	private class AddToBasketHandler implements ClickHandler {
 		@Override
 		public void onClick(ClickEvent event) {
+			
+			
 			boolean addItem = true;
 			itemDTO = new ItemDTO();
 			basketView = new BasketView();
+			
 			
 			// get rowindex where event happened
 			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
@@ -148,16 +152,25 @@ public class UserMenuView extends Composite {
 				tempItemList.add(itemDTO);
 			}
 			
-			//basketView.addItemToBasket(new ItemDTO(itemTable.getText(eventRowIndex, 1), Double.parseDouble(itemTable.getText(eventRowIndex, 2))));
-			//basketView.getBasketList().add(itemDTO);
+			
 			basketView.pop(tempItemList);
 
-
-			//userView.showBasketWidget();
-			//userView.changeWidget(basketView);
 			addToBasketBtn.fireEvent(new ClickEvent() {
 			});
-		}
+			}
+		
+	}
+	
+	public double saldoCheck(){
+		 double saldoCheckValue;
+		
+		saldoCheckValue = basketView.getCurrentUserSaldo();
+		Window.alert(""+saldoCheckValue);
+		return saldoCheckValue;
+	
+		
+		
+		
 	}
 
 	public void deleteFromList(int i){

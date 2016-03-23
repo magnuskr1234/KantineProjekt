@@ -249,7 +249,7 @@ public class Controller {
 
 							@Override
 							public void onFailure(Throwable caught) {
-								Window.alert("Det får vi ikke brug for" + caught.getMessage());
+								Window.alert("Serverfejl - prøv igen senere" + caught.getMessage());
 
 							}
 
@@ -288,8 +288,11 @@ public class Controller {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			if(event.getSource()== userMenuView.getAddToBasketBtn()){	
+			if(event.getSource() == userMenuView.getAddToBasketBtn() && basketView.getSaldoCheckValue() < 411 ){	
+				
 				userView.showBasketWidget();
+			} else{
+				Window.alert("Insuficient funds");
 			}
 			
 			if( event.getSource() == basketView.getControllerDeleteBtn()){
