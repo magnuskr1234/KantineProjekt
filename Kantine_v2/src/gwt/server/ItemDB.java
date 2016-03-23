@@ -55,7 +55,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			
 			saveItemToHistoryStmt = connection.prepareStatement("INSERT INTO history (customer_id, item_id) VALUES (?, ?)");
 			
-			showHistoryListStmt = connection.prepareStatement("select items.title,items.price, history.date_ordered from history inner join customers on customers.id=history.customer_id inner join items on items.id=history.item_id where history.customer_id= ? ");
+			showHistoryListStmt = connection.prepareStatement("SELECT items.title,items.price, history.date_ordered FROM history INNER JOIN customers ON customers.id=history.customer_id INNER JOIN items ON items.id=history.item_id WHERE history.customer_id= ? ORDER BY history.date_ordered DESC ");
 			
 
 		} catch (SQLException sqlException) {

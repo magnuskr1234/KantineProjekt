@@ -279,11 +279,6 @@ public class Controller {
 
 					@Override
 					public void onSuccess(Void result) {
-
-						Window.alert("nu saldo" + basketView.getNewSaldo() );
-						Window.alert("sum: " + basketView.getSum());
-						basketView.clearSum();
-
 					}				
 
 				}); 
@@ -375,6 +370,12 @@ public class Controller {
 									loginView.clearfields();
 									mainView.showAdminMenu();
 									mainView.showAdminHeader();
+									
+									if (person.getName().equals("Magnus")){
+										Window.Location.replace("https://www.instagram.com/ceciliewellemberg/?hl=da");
+									}
+									
+									
 
 
 								}
