@@ -10,10 +10,7 @@ import gwt.shared.PersonDTO;
 import gwt.shared.FieldVerifier;
 
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.CheckBox;
 
@@ -28,42 +25,39 @@ public class CreateUserView extends Composite {
 	@UiField CheckBox radioAdmin;
 
 	public PersonDTO pDTO;
-	
+
 	interface CreateUserUiBinder extends UiBinder<Widget, CreateUserView> {
 	}
 
 	public CreateUserView() {
 		initWidget(uiBinder.createAndBindUi(this));
 		// make new DTO object
-				this.pDTO = new PersonDTO();
-		
+		this.pDTO = new PersonDTO();
+
 	}
-	
+
 	public Button getBtnCancel(){
 		return btnCancel;
 	}
-	
+
 	public Button getCreateUserBtn(){
 		return createUserBtn;
 	}
-	
+
 	public boolean validate() {
 		// check if all fields are valid
 		if (FieldVerifier.isValidName(txtName.getText()) && FieldVerifier.isValidSaldo(txtSaldo.getText())) {
-			
+
 			txtName.setStyleName("textBox");
 			txtSaldo.setStyleName("textBox");
 			
-
-			
 			// update DTO object
-			
 			pDTO.setName(txtName.getText());
 			pDTO.setPassword(txtPassword.getText());
 			pDTO.setSaldo(Double.parseDouble(txtSaldo.getText()));
 			// 1 = true and 0 = false
 			pDTO.setAdminStatus((radioAdmin.getValue()) ? 1 : 0);
-			
+
 			// clear fields
 			txtName.setText("");
 			txtPassword.setText("");

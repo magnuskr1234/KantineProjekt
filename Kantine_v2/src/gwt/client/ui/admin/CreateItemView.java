@@ -10,10 +10,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.shared.FieldVerifier;
 import gwt.shared.ItemDTO;
-import gwt.shared.PersonDTO;
-
-import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
 
 public class CreateItemView extends Composite {
 
@@ -23,39 +19,38 @@ public class CreateItemView extends Composite {
 	@UiField Button createItemBtn;
 	@UiField TextBox txtName;
 	@UiField TextBox txtPrice;
-	
+
 	public ItemDTO iDTO;
 	interface CreateItemViewUiBinder extends UiBinder<Widget, CreateItemView> {
 	}
 
 	public CreateItemView() {
 		initWidget(uiBinder.createAndBindUi(this));
-		
+
 		this.iDTO = new ItemDTO();
 	}
 
 	public Button getBtnCancel(){
 		return btnCancel;
 	}
-	
+
 	public Button getcreateItemBtn(){
 		return createItemBtn;
 	}
-	
+
 	public boolean validate() {
 		// check if all fields are valid
 		if (FieldVerifier.isValidName(txtName.getText())) {
-			
+
 			txtName.setStyleName("textBox");
 			txtPrice.setStyleName("textBox");
-			
 
-			
-			// update DTO object
-			
+
+
+			// update DTO object			
 			iDTO.setName(txtName.getText());
 			iDTO.setPrice(Double.parseDouble(txtPrice.getText()));
-			
+
 			// clear fields
 			txtName.setText("");
 			txtPrice.setText("");

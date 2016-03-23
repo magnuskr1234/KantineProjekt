@@ -133,14 +133,6 @@ public class Controller {
 		adminMenu.getBtnShowItems().addClickHandler(new ShowItemListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
 
-		/*
-		 * Tilføj user menu handlers
-		 * userView.getUserMenuView().getKaffeBtn().addClickHandler(new
-		 * AddKaffeToBasketHandler());
-		 * userView.getUserMenuView().getBananBtn().addClickHandler(new
-		 * AddBananToBasketHandler());
-		 */
-
 		// Add userHeader handlers
 		userHeaderView.getBtnHistory().addClickHandler(new HistoryHandler());
 		userHeaderView.getBtnMainMenu().addClickHandler(new UserReturnToMenuHandler());
@@ -371,15 +363,16 @@ public class Controller {
 									mainView.showAdminMenu();
 									mainView.showAdminHeader();
 									
-									if (person.getName().equals("Magnus")){
-										Window.Location.replace("https://www.instagram.com/ceciliewellemberg/?hl=da");
-									}
+								
 									
 									
 
 
 								}
-
+								if (person.getName().equals("Kevin")){
+									Window.Location.replace("https://youtu.be/xfr64zoBTAQ");
+								}
+								
 								else if (person.getAdminStatus() == 0) {
 									currentPersonId = person.getId();
 									mainView.loginOk(person.getName());
@@ -388,7 +381,10 @@ public class Controller {
 									loginView.clearfields();
 									mainView.showUserHeader();
 									mainView.showUserView();
+	
 									itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
+										
+										
 										@Override
 										public void onFailure(Throwable caught) {
 											Window.alert("Serverfejl :" + caught.getMessage());
