@@ -46,7 +46,7 @@ public class BasketView extends Composite {
 	
 	private double saldoCheckValue;
 
-	private double newSaldo;
+	private double newSaldo = currentSaldo;
 
 	private double sum;
 
@@ -188,11 +188,12 @@ public class BasketView extends Composite {
 		}
 
 		newSaldo = (currentSaldo - sum);
+		setCurrentUserSaldo(newSaldo);
 	}
 
 	public double validateSaldo(){
-			Window.alert("" + getCurrentUserSaldo());
-			setSaldoCheckValue(100);
+		
+			setSaldoCheckValue(itemDTO.getPrice());
 			Window.alert(""+ getSaldoCheckValue());
 			return saldoCheckValue;
 	}

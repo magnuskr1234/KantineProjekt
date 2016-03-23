@@ -288,7 +288,8 @@ public class Controller {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			if(event.getSource() == userMenuView.getAddToBasketBtn() && basketView.getSaldoCheckValue() < 411 ){	
+			//basketView.validateSaldo();
+			if(event.getSource() == userMenuView.getAddToBasketBtn()   ){	
 				
 				userView.showBasketWidget();
 			} else{

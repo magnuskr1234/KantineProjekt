@@ -126,14 +126,18 @@ public class UserMenuView extends Composite {
 			itemDTO = new ItemDTO();
 			basketView = new BasketView();
 			
-			
 			// get rowindex where event happened
 			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
-			
 			// populate personDTO
 			itemDTO.setId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 			itemDTO.setName(itemTable.getText(eventRowIndex, 1));
 			itemDTO.setPrice(Double.parseDouble(itemTable.getText(eventRowIndex, 2))); 
+			
+			if(basketView.getCurrentUserSaldo() > itemDTO.getPrice()){
+
+			
+		
+			
 
 			// save item id
 			setItemId( Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
@@ -157,7 +161,10 @@ public class UserMenuView extends Composite {
 
 			addToBasketBtn.fireEvent(new ClickEvent() {
 			});
+			}else{
+				Window.alert("ikke nok penge");
 			}
+		} 
 		
 	}
 	
