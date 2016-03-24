@@ -58,6 +58,7 @@ public class Controller {
 
 	private CreateUserView createUserView;
 	private CreateItemView createItemView;
+	private StatisticView statisticView;
 
 	private DeleteItemView deleteItemView;
 
@@ -655,6 +656,20 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == adminMenu.getBtnStatistic()) {
+				itemDAO.getStatList(new AsyncCallback<List<ItemDTO>>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Får vi ikke brug for");
+
+					}
+
+					@Override
+					public void onSuccess(List<ItemDTO> result) {
+						Window.alert("Hej");
+						statistic.pop(result);
+					}
+				});
 				mainView.changeWidget(statistic);
 			}
 		}

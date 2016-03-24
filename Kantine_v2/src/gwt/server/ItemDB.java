@@ -32,6 +32,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 	private PreparedStatement deleteItemStmt = null;
 	private PreparedStatement saveItemToHistoryStmt = null;
 	private PreparedStatement showHistoryListStmt = null;
+	private PreparedStatement showStatListStmt = null;
 
 	ShowUserListView su;
 
@@ -57,6 +58,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			
 			showHistoryListStmt = connection.prepareStatement("SELECT items.title,items.price, history.date_ordered FROM history INNER JOIN customers ON customers.id=history.customer_id INNER JOIN items ON items.id=history.item_id WHERE history.customer_id= ? ORDER BY history.date_ordered DESC ");
 			
+			showStatListStmt = connection.prepareStatement("SELECT customers.name, items.title,items.price, history.date_ordered FROM history INNER JOIN customers ON customers.id=history.customer_id INNER JOIN items ON items.id=history.item_id ORDER BY history.date_ordered DESC ");
 
 		} catch (SQLException sqlException) {
 			throw new DALException("Kan ikke oprette forbindelse til database");
@@ -73,6 +75,31 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<ItemDTO> getStatList() throws Exception {
+		List<ItemDTO> results = null;
+		ResultSet resultSet = null;
+
+		try {
+			resultSet = showStatListStmt.executeQuery();
+			results = new ArrayList<ItemDTO>();
+			
+			
+			while (resultSet.next()) {
+				results.add(new ItemDTO(resultSet.getString("name"), resultSet.getString("title"), resultSet.getDouble("price"), resultSet.getDate("date_ordered")));
+			}
+		} catch (SQLException sqlException) {
+			throw new DALException(" \"getItems\" fejlede");
+		} finally {
+			try {
+				resultSet.close();
+			} catch (SQLException sqlException) {
+				sqlException.printStackTrace();
+				close();
+			}
+		}
+		return results;
 	}
 	
 	public List<ItemDTO> getHistoryList(int i) throws Exception {
