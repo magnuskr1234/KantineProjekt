@@ -41,36 +41,36 @@ public class FieldVerifier {
 	
 	
 	public static boolean isValidName(String name) {
-		if (name == null) {
+		if (name.length() < 3){
+			Window.alert("Brugernavnet skal mindst bestå af 3 tegn");
 			return false;
 		}
-		
-		else if (name.length() < 3){
-			return false;
-		}
-		
 		
 		else {
 			
 			return true;
 		}
-		//return name.length() > 3;
 	}
 	
 	public static boolean isValidPassword(String password){
 		if (password == null){
+			Window.alert("Du mangler at indtaste et kodeord");
 			return false;
 		}
 		else if (password.length() < 6){
+			Window.alert("Koden skal mindst bestå af 6 tegn");
 			return false;
 		}
 		else if(password.matches("[A-Za-z0-9 ]*")){
+			Window.alert("Koden skal mindst indholde mindst et special tegn");
 			return false;
 		}
 		else if(password.equals(password.toLowerCase())){
+			Window.alert("Koden skal bestå af mindst et stort bogstav");
 			return false;
 		}
 		else if(password.equals(password.toUpperCase())){
+			Window.alert("Koden skal bestå af mindst et lille bogstav");
 			return false;
 		}
 		
@@ -84,6 +84,7 @@ public class FieldVerifier {
 
 		for (PersonDTO person : result) {
 			if ((name.equals(person.getName()))) {
+				Window.alert(person.getName() + " findes allerede i systemet");
 				return false;
 			}
 		} 
@@ -94,6 +95,7 @@ public class FieldVerifier {
 
 		for (ItemDTO item : result) {
 			if ((name.equals(item.getName()))) {
+				Window.alert(item.getName() + " fines allerede i systemet");
 				return false;
 			}
 		} 
@@ -112,7 +114,8 @@ public class FieldVerifier {
 			      double d = Double.parseDouble(saldo);  
 			    }  
 			    catch(NumberFormatException nfe)  
-			    {  
+			    {
+			    	Window.alert("Saldoen må kun bestå af tal");
 			      return false;  
 			    }  
 			    return true;  

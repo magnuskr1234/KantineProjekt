@@ -45,6 +45,8 @@ public class CreateUserView extends Composite {
 	public Button getCreateUserBtn(){
 		return createUserBtn;
 	}
+	
+	
 
 	public boolean validate(List<PersonDTO>list) {
 		// check if all fields are valid
@@ -69,7 +71,9 @@ public class CreateUserView extends Composite {
 
 			return true;
 		}
-
+		
+		return false;
+/*
 		// update fields error state
 		if (!FieldVerifier.isValidName(txtName.getText())) 
 			txtName.setStyleName("textBox-invalidEntry");
@@ -81,6 +85,8 @@ public class CreateUserView extends Composite {
 			txtSaldo.setStyleName("textBox");
 
 		return false;
+		
+		*/
 	}
 
 	// return data entered 
