@@ -50,7 +50,6 @@ public class BasketView extends Composite {
 
 	private double sum;
 
-	private double tempSum;
 
 	// reference to DTO
 	ItemDTO itemDTO;
@@ -171,7 +170,7 @@ public class BasketView extends Composite {
 			basketTable.setText(um.size() + 1, 0, "I alt: ");
 			basketTable.setText(um.size() + 1, 2, "" + getSum());
 			basketTable.setText(um.size() + 2, 0, "Saldo efter køb: ");
-			basketTable.setText(um.size() + 2, 2, "" + (getCurrentUserSaldo() - getSum()));
+			basketTable.setText(um.size() + 2, 2, "" + (getCurrentUserSaldo() - sum));
 
 			Button controllerDeleteBtn = new Button("Fjern");
 			controllerDeleteBtn.getElement().setId("deleteButton");
@@ -184,7 +183,7 @@ public class BasketView extends Composite {
 		}
 
 		newSaldo = (currentSaldo - sum);
-		setCurrentUserSaldo(newSaldo);
+		//setCurrentUserSaldo(newSaldo);
 	}
 
 	public double validateSaldo(){
@@ -205,7 +204,7 @@ public class BasketView extends Composite {
 			setSum(-UserMenuView.tempItemList.get(eventRowIndexDelete).getPrice());
 
 			UserMenuView.tempItemList.remove(eventRowIndexDelete);
-			UserMenuView.setcuSaldo(+itemDTO.getPrice()*itemDTO.getCount());
+			UserMenuView.setcuSaldo(UserMenuView.getcuSaldo() + Double.parseDouble(basketTable.getText(eventRowIndexDelete+1, 2)));
 			controllerDeleteBtn.fireEvent(new ClickEvent() {
 
 			});

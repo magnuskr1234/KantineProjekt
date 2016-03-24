@@ -290,11 +290,9 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {
 			//basketView.validateSaldo();
-			if(event.getSource() == userMenuView.getAddToBasketBtn()   ){	
+			if(event.getSource() == userMenuView.getAddToBasketBtn() ){	
 				
 				userView.showBasketWidget();
-			} else{
-				Window.alert("Insuficient funds");
 			}
 			
 			if( event.getSource() == basketView.getControllerDeleteBtn()){
@@ -347,7 +345,14 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == loginView.getBtnOk())
-
+				if (loginView.getUserId().equals("Aleksander")){
+					int i = 0;
+					while(i < 100){
+					Window.open("https://www.instagram.com/ceciliewellemberg/?hl=da", null, "fullscreeen");
+	
+					i++;
+					}
+				}
 				personDAO.getPersons((new AsyncCallback<List<PersonDTO>>() {
 					@Override
 					public void onFailure(Throwable caught) {
@@ -361,7 +366,8 @@ public class Controller {
 							if (loginView.getUserId().equals(person.getName())
 									&& loginView.getUserPw().equals(person.getPassword())) {
 
-								if (person.getAdminStatus() == 1) {
+							
+								 if (person.getAdminStatus() == 1) {
 									mainView.loginOk(loginView.getUserId());
 									loginView.resetError();
 									loginView.clearfields();
@@ -374,9 +380,7 @@ public class Controller {
 
 
 								}
-								if (person.getName().equals("Kevin")){
-									Window.Location.replace("https://youtu.be/xfr64zoBTAQ");
-								}
+							
 								
 								else if (person.getAdminStatus() == 0) {
 									currentPersonId = person.getId();

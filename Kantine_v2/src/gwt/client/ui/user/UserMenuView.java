@@ -82,11 +82,11 @@ public class UserMenuView extends Composite {
 		addToBasketBtn = new Button();
 	}
 	
-	public static void setcuSaldo(double saldo) {
-		cuSaldo = saldo;
+	public static void setcuSaldo(double s) {
+		cuSaldo = s;
 	}
 	
-	public double getcuSaldo(){
+	public static double getcuSaldo(){
 		return cuSaldo;
 	}
 	
@@ -146,12 +146,10 @@ public class UserMenuView extends Composite {
 			itemDTO.setPrice(Double.parseDouble(itemTable.getText(eventRowIndex, 2))); 
 			
 			
-			if(cuSaldo >= itemDTO.getPrice()){
-				setcuSaldo(cuSaldo-itemDTO.getPrice());
-			
+		
 		
 			
-
+			if(saldoCheck()){
 			// save item id
 			setItemId( Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 
@@ -176,19 +174,19 @@ public class UserMenuView extends Composite {
 
 			addToBasketBtn.fireEvent(new ClickEvent() {
 			});
-			}else{
-				Window.alert("ikke nok penge");
 			}
-		} 
 		
+		}
 	}
 	
-	public double saldoCheck(){
-		 double saldoCheckValue;
-		
-		saldoCheckValue = basketView.getCurrentUserSaldo();
-		Window.alert(""+saldoCheckValue);
-		return saldoCheckValue;
+	public boolean saldoCheck(){
+	
+		if(cuSaldo >= itemDTO.getPrice()){
+			setcuSaldo(cuSaldo - itemDTO.getPrice());
+			return true;
+		}else{
+			Window.alert("Ikke nok penge");
+		}return false;
 	
 		
 		
