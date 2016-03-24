@@ -1,5 +1,7 @@
 package gwt.client.ui.admin;
 
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -38,9 +40,9 @@ public class CreateItemView extends Composite {
 		return createItemBtn;
 	}
 
-	public boolean validate() {
+	public boolean validate(List<ItemDTO> list) {
 		// check if all fields are valid
-		if (FieldVerifier.isValidName(txtName.getText())) {
+		if (FieldVerifier.isValidName(txtName.getText()) && FieldVerifier.isItemAlreadyThere(list, txtName.getText())) {
 
 			txtName.setStyleName("textBox");
 			txtPrice.setStyleName("textBox");

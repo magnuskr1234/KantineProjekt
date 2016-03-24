@@ -1,5 +1,10 @@
 package gwt.shared;
 
+import java.util.List;
+
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+
 /**
  * <p>
  * FieldVerifier validates that the name the user enters is valid.
@@ -43,35 +48,78 @@ public class FieldVerifier {
 		else if (name.length() < 3){
 			return false;
 		}
-		else{
+		
+		
+		else {
+			
 			return true;
 		}
 		//return name.length() > 3;
 	}
+	
+	public static boolean isValidPassword(String password){
+		if (password == null){
+			return false;
+		}
+		else if (password.length() < 6){
+			return false;
+		}
+		else if(password.matches("[A-Za-z0-9 ]*")){
+			return false;
+		}
+		else if(password.equals(password.toLowerCase())){
+			return false;
+		}
+		else if(password.equals(password.toUpperCase())){
+			return false;
+		}
+		
+		else{
+			return true;
+		}
+		
+	}
+	
+	public static boolean isUserAlreadyThere(List<PersonDTO> result, String name){
+
+		for (PersonDTO person : result) {
+			if ((name.equals(person.getName()))) {
+				return false;
+			}
+		} 
+		return true;
+	}
+	
+	public static boolean isItemAlreadyThere(List<ItemDTO> result, String name){
+
+		for (ItemDTO item : result) {
+			if ((name.equals(item.getName()))) {
+				return false;
+			}
+		} 
+		return true;
+	}
 	  public static boolean isValidSaldo(String saldo) {
-		    //int saldoNumber;
+		    
 
 		    // check if saldo field is empty (not allowed)
 		    if (saldo.isEmpty()) {
 		      return false;
 		    }
 		    else{
-		    	return true;
+			    try  
+			    {  
+			      double d = Double.parseDouble(saldo);  
+			    }  
+			    catch(NumberFormatException nfe)  
+			    {  
+			      return false;  
+			    }  
+			    return true;  
 		    	}
-		    }
 		    
-		    /*
-
-		    // check if saldo field contains a number
-		    try {
-		      // try to convert to a number
-		      saldoNumber = Integer.parseInt(saldo);
-		    } catch (NumberFormatException e) {
-		      // invalid number
-		    	
+		    
 		    }
-		      return false;
-		    }*/
 	  
 }
 

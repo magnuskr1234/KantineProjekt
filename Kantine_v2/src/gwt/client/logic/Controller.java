@@ -441,25 +441,43 @@ public class Controller {
 			}
 			// replace personDAO call with an RPC
 			if (event.getSource() == createUserView.getCreateUserBtn())
-				if (createUserView.validate()) {
+				
+				//start
+				
+				personDAO.getPersons((new AsyncCallback<List<PersonDTO>>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+					}
 
-					personDAO.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName(),
-							createUserView.getCurrentPerson().getPassword(),
-							createUserView.getCurrentPerson().getAdminStatus(),
-							createUserView.getCurrentPerson().getSaldo()), new AsyncCallback<Void>() {
+					@Override
+					public void onSuccess(List<PersonDTO> result) {
+						
+						if (createUserView.validate(result)){
 
-						@Override
-						public void onFailure(Throwable caught) {
-							Window.alert("Serverfejl :" + caught.getMessage());
-						}
+							personDAO.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName(),
+									createUserView.getCurrentPerson().getPassword(),
+									createUserView.getCurrentPerson().getAdminStatus(),
+									createUserView.getCurrentPerson().getSaldo()), new AsyncCallback<Void>() {
 
-						@Override
-						public void onSuccess(Void result) {
-							Window.alert("Person gemt");
-						}
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert("Serverfejl :" + caught.getMessage());
+								}
 
-					});
-			}
+								@Override
+								public void onSuccess(Void result) {
+									Window.alert("Person gemt");
+								}
+
+							});
+					}
+						
+					}
+				}));
+				
+				//Slut
+
 		}
 	}
 
@@ -470,24 +488,46 @@ public class Controller {
 		public void onClick(ClickEvent event) {
 			// replace personDAO call with an RPC
 			if (event.getSource() == createItemView.getcreateItemBtn())
-				if (createItemView.validate()) {
+				
+				//Start
+				
+				itemDAO.getItems((new AsyncCallback<List<ItemDTO>>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+					}
 
-					itemDAO.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(),
-							createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
+					@Override
+					public void onSuccess(List<ItemDTO> result) {
+						if (createItemView.validate(result)) {
+							
 
-						@Override
-						public void onFailure(Throwable caught) {
-							Window.alert("Serverfejl :" + caught.getMessage());
-						}
 
-						@Override
-						public void onSuccess(Void result) {
-							Window.alert("Varen blev oprettet");
-						}
+							itemDAO.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(),
+									createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
 
-					});
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert("Serverfejl :" + caught.getMessage());
+								}
 
-				}	
+								@Override
+								public void onSuccess(Void result) {
+									Window.alert("Varen blev oprettet");
+								}
+
+							});
+
+						}	
+					}
+				}));
+				
+				
+				//Slut
+				
+				
+				
+
 
 		}
 	}

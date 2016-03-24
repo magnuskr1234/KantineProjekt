@@ -1,5 +1,7 @@
 package gwt.client.ui.admin;
 
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
 
 import com.google.gwt.uibinder.client.UiBinder;
@@ -44,9 +46,9 @@ public class CreateUserView extends Composite {
 		return createUserBtn;
 	}
 
-	public boolean validate() {
+	public boolean validate(List<PersonDTO>list) {
 		// check if all fields are valid
-		if (FieldVerifier.isValidName(txtName.getText()) && FieldVerifier.isValidSaldo(txtSaldo.getText())) {
+		if (FieldVerifier.isValidName(txtName.getText()) && FieldVerifier.isUserAlreadyThere(list, txtName.getText()) && FieldVerifier.isValidPassword(txtPassword.getText()) && FieldVerifier.isValidSaldo(txtSaldo.getText())) {
 
 			txtName.setStyleName("textBox");
 			txtSaldo.setStyleName("textBox");
@@ -62,6 +64,8 @@ public class CreateUserView extends Composite {
 			txtName.setText("");
 			txtPassword.setText("");
 			txtSaldo.setText("");
+			
+			
 
 			return true;
 		}
