@@ -54,11 +54,11 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			// create query that deletes an item in database
 			deleteItemStmt = connection.prepareStatement("DELETE FROM items WHERE id =  ? ");
 			
-			saveItemToHistoryStmt = connection.prepareStatement("INSERT INTO history (customer_id, item_id) VALUES (?, ?)");
+			saveItemToHistoryStmt = connection.prepareStatement("INSERT INTO history (customer_id, item_name, item_price) VALUES (?, ?, ?)");
 			
-			showHistoryListStmt = connection.prepareStatement("SELECT items.title,items.price, history.date_ordered FROM history INNER JOIN customers ON customers.id=history.customer_id INNER JOIN items ON items.id=history.item_id WHERE history.customer_id= ? ORDER BY history.date_ordered DESC ");
+			showHistoryListStmt = connection.prepareStatement("SELECT item_name, item_price, date_ordered FROM history WHERE customer_id = ? ORDER BY history.date_ordered DESC");
 			
-			showStatListStmt = connection.prepareStatement("SELECT customers.name, items.title,items.price, history.date_ordered FROM history INNER JOIN customers ON customers.id=history.customer_id INNER JOIN items ON items.id=history.item_id ORDER BY history.date_ordered DESC ");
+			showStatListStmt = connection.prepareStatement("SELECT customers.name, history.item_name, history.item_price, history.date_ordered FROM history INNER JOIN customers ON customers.id=history.customer_id ORDER BY history.date_ordered DESC ");
 
 		} catch (SQLException sqlException) {
 			throw new DALException("Kan ikke oprette forbindelse til database");
@@ -87,7 +87,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			
 			
 			while (resultSet.next()) {
-				results.add(new ItemDTO(resultSet.getString("name"), resultSet.getString("title"), resultSet.getDouble("price"), resultSet.getDate("date_ordered")));
+				results.add(new ItemDTO(resultSet.getString("name"), resultSet.getString("item_name"), resultSet.getDouble("item_price"), resultSet.getDate("date_ordered")));
 			}
 		} catch (SQLException sqlException) {
 			throw new DALException(" \"getItems\" fejlede");
@@ -113,7 +113,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			
 			
 			while (resultSet.next()) {
-				results.add(new ItemDTO(resultSet.getString("title"), resultSet.getDouble("price"), resultSet.getDate("date_ordered")));
+				results.add(new ItemDTO(resultSet.getString("item_name"), resultSet.getDouble("item_price"), resultSet.getDate("date_ordered")));
 			}
 		} catch (SQLException sqlException) {
 			throw new DALException(" \"getItems\" fejlede");
@@ -129,10 +129,11 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 	}
 	
 	@Override
-	public void saveItemToHistory(int c, int i) throws Exception {
+	public void saveItemToHistory(int c, String name, double price) throws Exception {
 		try {
 			saveItemToHistoryStmt.setInt(1, c);
-			saveItemToHistoryStmt.setInt(2, i);
+			saveItemToHistoryStmt.setString(2, name);
+			saveItemToHistoryStmt.setDouble(3, price);
 
 			saveItemToHistoryStmt.executeUpdate();
 		} catch (SQLException e) {

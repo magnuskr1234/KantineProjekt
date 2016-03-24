@@ -245,7 +245,7 @@ public class Controller {
 				for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {
 					for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {
 
-						itemDAO.saveItemToHistory(currentPersonId, UserMenuView.tempItemList.get(i).getId(),
+						itemDAO.saveItemToHistory(currentPersonId, UserMenuView.tempItemList.get(i).getName(), UserMenuView.tempItemList.get(i).getPrice(),
 								new AsyncCallback<Void>() {
 
 							@Override
@@ -666,7 +666,6 @@ public class Controller {
 
 					@Override
 					public void onSuccess(List<ItemDTO> result) {
-						Window.alert("Hej");
 						statistic.pop(result);
 					}
 				});
