@@ -58,7 +58,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			
 			showHistoryListStmt = connection.prepareStatement("SELECT item_name, item_price, date_ordered FROM history WHERE customer_id = ? ORDER BY history.date_ordered DESC");
 			
-			showStatListStmt = connection.prepareStatement("SELECT customers.name, history.item_name, history.item_price, history.date_ordered FROM history INNER JOIN customers ON customers.id=history.customer_id ORDER BY history.date_ordered DESC ");
+			showStatListStmt = connection.prepareStatement("SELECT customers.name, history.item_name, history.item_price, history.date_ordered FROM history LEFT JOIN customers ON customers.id=history.customer_id ORDER BY history.date_ordered DESC ");
 
 		} catch (SQLException sqlException) {
 			throw new DALException("Kan ikke oprette forbindelse til database");
@@ -80,6 +80,8 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 	public List<ItemDTO> getStatList() throws Exception {
 		List<ItemDTO> results = null;
 		ResultSet resultSet = null;
+		String name = null;
+		int nameLength = 0;
 
 		try {
 			resultSet = showStatListStmt.executeQuery();

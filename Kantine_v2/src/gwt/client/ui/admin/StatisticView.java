@@ -21,10 +21,12 @@ public class StatisticView extends Composite {
 
 	public StatisticView() {
 		initWidget(uiBinder.createAndBindUi(this));
+		
 	}
 	
 	// Populate flextable with history for current user
 	public void pop(List<ItemDTO> pList) {
+		
 		// remove table data
 		statTable.removeAllRows();
 
@@ -46,7 +48,12 @@ public class StatisticView extends Composite {
 
 
 		for (int i = 0; i < pList.size(); i++) {
-			statTable.setText(i + 1, 0, pList.get(i).getUser());
+			
+			if (pList.get(i).getUser() != null && !pList.get(i).getUser().isEmpty()){
+				statTable.setText(i + 1, 0, pList.get(i).getUser());
+			}else{
+				statTable.setText(i + 1, 0, "Bruger slettet");
+			}
 			statTable.setText(i + 1, 1, pList.get(i).getName());
 			statTable.setText(i + 1, 2, "" +pList.get(i).getPrice());
 			statTable.setText(i + 1, 3, "" + pList.get(i).getDate());
