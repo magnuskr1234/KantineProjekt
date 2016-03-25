@@ -6,10 +6,12 @@
 	</ui:style>
 	<g:HTMLPanel width="100%" height="100%">
 		<g:HorizontalPanel width="100%" height="65px" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE" styleName="header">
-			<g:Button ui:field="btnLogout" text="Log ud" width="110px" height="65px" styleName="loginBtn"/>
+			<g:Button ui:field="btnLogout" text="Log ud" width="110px" height="65px" styleName="topNavBtn"/>
 			<g:Label text="Brugermenu" ui:field="userNameLabel" styleName="whiteText"/>
-			<g:Button ui:field="btnHistory" text="Historie" height="65px" width="110px" styleName="loginBtn"/>
-			<g:Button ui:field="btnMainMenu" width="110px" height="65px" styleName="loginBtn">Hovedemenu</g:Button>
+			<g:HorizontalPanel horizontalAlignment="ALIGN_RIGHT" verticalAlignment="ALIGN_MIDDLE" width="" height="65px">
+				<g:Button ui:field="btnHistory" text="Historie" height="65px" width="110px" styleName="topNavBtn"/>
+				<g:Button ui:field="btnMainMenu" width="110px" height="65px" styleName="topNavBtn">Hovedemenu</g:Button>
+			</g:HorizontalPanel>
 		</g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
