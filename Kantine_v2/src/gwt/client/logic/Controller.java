@@ -247,7 +247,9 @@ public class Controller {
 			}
 			// Confirm purchase button 
 			if(event.getSource() == basketView.getBuyBtn()){
-
+				
+				if(basketView.getBasketTable().getRowCount() > 3){
+					
 				for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {
 					for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {						
 						// Save to history 
@@ -264,10 +266,9 @@ public class Controller {
 							}
 
 						});
-
+					} 
 					}
-				}
-
+					
 				// Update saldo for person 
 				personServiceCall.updatePerson(basketView.getNewSaldo(), currentPersonId, new AsyncCallback<Void>(){
 
@@ -278,16 +279,19 @@ public class Controller {
 
 					@Override
 					public void onSuccess(Void result) {
+						Window.alert("Tak for købet");
+						UserMenuView.tempItemList.clear();
+						mainView.updateSaldoHeader(basketView.getNewSaldo());
+						mainView.showUserHeader();
+						userView.showBasketWidget();
 					}				
 
 				}); 
+				}else{
+						Window.alert("Tilføj først noget til kurven!");
+				}
 			}
 
-			Window.alert("Tak for købet");
-			UserMenuView.tempItemList.clear();
-			mainView.updateSaldoHeader(basketView.getNewSaldo());
-			mainView.showUserHeader();
-			userView.showBasketWidget();
 		}
 
 	}
