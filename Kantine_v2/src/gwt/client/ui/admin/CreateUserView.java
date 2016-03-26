@@ -67,8 +67,6 @@ public class CreateUserView extends Composite {
 			txtPassword.setText("");
 			txtSaldo.setText("");
 			
-			
-
 			return true;
 		}
 		
@@ -89,6 +87,13 @@ public class CreateUserView extends Composite {
 		*/
 	}
 
+	public void clearFields(){
+		txtName.setText("");
+		txtPassword.setText("");
+		txtSaldo.setText("");
+		radioAdmin.setValue(false);
+	}
+	
 	// return data entered 
 	public PersonDTO getCurrentPerson() {
 		return pDTO;

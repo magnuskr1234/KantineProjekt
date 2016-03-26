@@ -256,4 +256,9 @@ public class MainView extends Composite {
 	public void loginOk(String user) {
 		userHeaderView.setUser(user);
 	}
+	
+	// Set saldo 
+	public void updateSaldoHeader(double saldo){
+		userHeaderView.setSaldo(saldo);
+	}
 }

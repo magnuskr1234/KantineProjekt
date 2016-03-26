@@ -82,4 +82,8 @@ public class EditItemView extends Composite {
 			 return false;
 	 }    
 	 	
+	 
+		public void clearFields(){
+			txtPrice.setText("");
+		}
 }

@@ -15,6 +15,7 @@ public class UserHeaderView extends Composite {
 	@UiField Button btnMainMenu;
 	@UiField Button btnLogout;
 	@UiField Label userNameLabel;
+	@UiField Label saldoLabel;
 
 	interface UserHeaderViewUiBinder extends UiBinder<Widget, UserHeaderView> {
 	}
@@ -23,9 +24,11 @@ public class UserHeaderView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	
+	public void setSaldo(double saldo){
+		saldoLabel.setText("Saldo: " + saldo + " Kr.");
+	}
 	public void setUser(String user) {
-		userNameLabel.setText("Velkommen, "+ user);
+		userNameLabel.setText("Velkommen "+ user);
 	}
 	public Button getBtnMainMenu() {
 		return btnMainMenu;

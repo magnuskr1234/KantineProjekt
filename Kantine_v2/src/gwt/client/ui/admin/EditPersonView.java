@@ -66,6 +66,9 @@ public class EditPersonView extends Composite {
 	}
 
 
+	public void clearFields(){
+		txtSaldo.setText("");
+	}
 	
 	 public boolean validate(ShowUserListView su) {
 		    // check if all fields are valid
@@ -75,11 +78,6 @@ public class EditPersonView extends Composite {
 		    double getsaldo;
 		      txtSaldo.setStyleName("textBox");
 		      getsaldo = Double.parseDouble(txtSaldo.getText());
-		       
-		      // update DTO object
-		      
-		     
-		       
 		       
 		       newSaldo = getsaldo += ShowUserListView.saldoUpdate;
 		       

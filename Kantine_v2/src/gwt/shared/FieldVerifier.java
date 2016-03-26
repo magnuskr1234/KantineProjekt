@@ -103,7 +103,6 @@ public class FieldVerifier {
 	}
 	  public static boolean isValidSaldo(String saldo) {
 		    
-
 		    // check if saldo field is empty (not allowed)
 		    if (saldo.isEmpty()) {
 		      return false;
@@ -115,7 +114,7 @@ public class FieldVerifier {
 			    }  
 			    catch(NumberFormatException nfe)  
 			    {
-			    	Window.alert("Saldoen må kun bestå af tal");
+			    	Window.alert("Indtast venligst kun tal");
 			      return false;  
 			    }  
 			    return true;  

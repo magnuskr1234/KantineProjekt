@@ -6,7 +6,7 @@
 	<g:HTMLPanel width="100%" height="100%">
 		<g:HorizontalPanel width="100%" height="65px" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE" styleName="header">
 			<g:Button ui:field="btnMainMenu" width="100px" height="25px">Hovedemenu</g:Button>
-			<g:Label text="Admin menu header" ui:field="userNameLabel" styleName="whiteText"/>
+			<g:Label text="Admin Menu" ui:field="userNameLabel" styleName="whiteText"/>
 			<g:Button ui:field="btnLogout" text="Log ud" height="25px" width="100px"/>
 		</g:HorizontalPanel>
 	</g:HTMLPanel>

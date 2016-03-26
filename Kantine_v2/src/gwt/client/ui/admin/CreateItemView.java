@@ -46,9 +46,6 @@ public class CreateItemView extends Composite {
 
 			txtName.setStyleName("textBox");
 			txtPrice.setStyleName("textBox");
-
-
-
 			// update DTO object			
 			iDTO.setName(txtName.getText());
 			iDTO.setPrice(Double.parseDouble(txtPrice.getText()));
@@ -73,6 +70,12 @@ public class CreateItemView extends Composite {
 		return false;
 	}
 
+	// Clear fields
+	public void clearFields(){
+		txtName.setText("");
+		txtPrice.setText("");
+	}
+	
 	// return data entered 
 	public ItemDTO getCurrentItem() {
 		return iDTO;

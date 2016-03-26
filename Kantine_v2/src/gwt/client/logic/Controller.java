@@ -192,13 +192,14 @@ public class Controller {
 			
 			// Cancel button click 
 			if(event.getSource() == editItemView.getBtnCancel()){
+				editItemView.clearFields();
 				adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
 			}
 			
 			// Confirm update button
 			if(event.getSource() == editItemView.getBtnConfirm()){	
 
-				itemDTO = editItemView.getitemDTO();
+				//itemDTO = editItemView.getitemDTO();
 
 				if (editItemView.validate(showItemListView)){
 					
@@ -284,6 +285,8 @@ public class Controller {
 
 			Window.alert("Tak for købet");
 			UserMenuView.tempItemList.clear();
+			mainView.updateSaldoHeader(basketView.getNewSaldo());
+			mainView.showUserHeader();
 			userView.showBasketWidget();
 		}
 
@@ -313,7 +316,7 @@ public class Controller {
 		public void onClick(ClickEvent event) {		
 			if(event.getSource() == editPersonView.getBtnConfirm()){	
 
-				personDTO = editPersonView.getpersonDTO();
+				//personDTO = editPersonView.getpersonDTO();
 				
 				if (editPersonView.validate(showUserListView)){
 
@@ -335,6 +338,7 @@ public class Controller {
 				}
 			}
 			if(event.getSource() == editPersonView.getBtnCancel()){
+				editPersonView.clearFields();
 				mainView.changeWidget(showUserListView);
 			}
 			if(event.getSource() == showUserListView.getControllerEditBtn()){
@@ -375,7 +379,7 @@ public class Controller {
 
 							
 								 if (person.getAdminStatus() == 1) {
-									mainView.loginOk(loginView.getUserId());
+									
 									loginView.resetError();
 									loginView.clearfields();
 									mainView.showAdminMenu();
@@ -386,6 +390,7 @@ public class Controller {
 								else if (person.getAdminStatus() == 0) {
 									currentPersonId = person.getId();
 									mainView.loginOk(person.getName());
+									mainView.updateSaldoHeader( person.getSaldo());
 									basketView.setCurrentUserSaldo(person.getSaldo());
 									userMenuView.setcuSaldo(person.getSaldo());
 									loginView.resetError();
@@ -526,6 +531,8 @@ public class Controller {
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == createUserView.getBtnCancel() || event.getSource() == createItemView.getBtnCancel()
 					|| event.getSource() == adminHeaderView.getBtnMainMenu()) {
+				createItemView.clearFields();
+				createUserView.clearFields();
 				mainView.changeWidget(adminMenu);
 			}
 		}
