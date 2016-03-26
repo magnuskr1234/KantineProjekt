@@ -291,9 +291,7 @@ public class Controller {
 						Window.alert("Tilføj først noget til kurven!");
 				}
 			}
-
 		}
-
 	}
 
 	private class UpdateBasketHandler implements ClickHandler {
@@ -671,7 +669,6 @@ public class Controller {
 					@Override
 					public void onFailure(Throwable caught) {
 						Window.alert("Serverfejl" + caught.getMessage());
-
 					}
 
 					@Override

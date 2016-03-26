@@ -8,10 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-import gwt.client.logic.Controller;
 import gwt.client.service.ItemService;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.shared.ItemDTO;
@@ -80,8 +78,6 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 	public List<ItemDTO> getStatList() throws Exception {
 		List<ItemDTO> results = null;
 		ResultSet resultSet = null;
-		String name = null;
-		int nameLength = 0;
 
 		try {
 			resultSet = showStatListStmt.executeQuery();
@@ -145,8 +141,6 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 
 	@Override
 	public void saveItem(ItemDTO p) throws Exception {
-		// simulate server error
-		// throw new RuntimeException(" \"savePerson\" fejlede");
 
 		try {
 			saveItemStmt.setString(1, p.getName());
@@ -170,10 +164,6 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			throw new DALException(" \"updateItem\" fejlede");
 		} 
 
-	}
-
-	public void test() {
-		System.out.println("test");
 	}
 
 	public List<ItemDTO> getItems() throws Exception {
