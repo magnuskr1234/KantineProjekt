@@ -5,6 +5,8 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:FlexTable ui:field="itemTable" styleName="FlexTable" width="400" height="26" />
+		<g:ScrollPanel height="477">
+			<g:FlexTable ui:field="itemTable" styleName="FlexTable" width="100%" height="100%" />
+		</g:ScrollPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

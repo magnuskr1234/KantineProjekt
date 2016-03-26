@@ -29,7 +29,6 @@ public class BasketView extends Composite {
 	}
 
 	// Buttons for events
-	private Button controllerEditBtn;
 	private Button controllerDeleteBtn;
 
 	private UserMenuView um;
@@ -63,7 +62,6 @@ public class BasketView extends Composite {
 		deleteHandler = new DeleteHandler();
 
 		// buttons for controller event handling
-		controllerEditBtn = new Button();
 		controllerDeleteBtn = new Button();
 
 		// itemDTO = new ItemDTO();
@@ -76,9 +74,9 @@ public class BasketView extends Composite {
 	public Button getBuyBtn() {
 		return buyBtn;
 	}
-
-	public Button getControllerEditBtn() {
-		return controllerEditBtn;
+	
+	public FlexTable getBasketTable(){
+		return basketTable;
 	}
 
 	public Button getControllerDeleteBtn() {

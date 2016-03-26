@@ -65,9 +65,8 @@ public class EditItemView extends Composite {
 	}
 	
 	 public boolean validate(ShowItemListView itemList) {
-		    // check if all fields are valid
 		 
-			
+		 // check if all fields are valid			
 		 if (FieldVerifier.isValidSaldo(txtPrice.getText())){
 		    
 		      txtPrice.setStyleName("textBox");
