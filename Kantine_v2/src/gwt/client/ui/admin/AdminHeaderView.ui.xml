@@ -6,8 +6,8 @@
 	<g:HTMLPanel width="100%" height="100%">
 		<g:HorizontalPanel width="100%" height="65px" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE" styleName="header">
 			<g:Button ui:field="btnLogout" text="Log ud" height="65px" width="110px" styleName="topNavBtn"/>
-			<g:Label text="Admin Menu" ui:field="userNameLabel" styleName="whiteText"/>
-			<g:Button ui:field="btnMainMenu" width="110px" height="65px" styleName="topNavBtn">Hovedemenu</g:Button>
+			<g:Label text="Admin Menu" ui:field="userNameLabel" styleName="whiteText" width="150px"/>
+			<g:Button ui:field="btnMainMenu" width="110px" height="65px" styleName="topNavBtn" text="Hovedmenu">Hovedemenu</g:Button>
 		</g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

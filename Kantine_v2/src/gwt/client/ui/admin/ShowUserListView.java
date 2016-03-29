@@ -118,13 +118,13 @@ public class ShowUserListView extends Composite {
 		userTable.removeAllRows();
 
 		// adjust column widths
-		userTable.getFlexCellFormatter().setWidth(0, 0, "25px");
-		userTable.getFlexCellFormatter().setWidth(0, 1, "150px");
-		userTable.getFlexCellFormatter().setWidth(0, 2, "40px");
-		userTable.getFlexCellFormatter().setWidth(0, 3, "25px");
-		userTable.getFlexCellFormatter().setWidth(0, 4, "40px");
-		userTable.getFlexCellFormatter().setWidth(0, 5, "100px");
-		userTable.getFlexCellFormatter().setWidth(0, 6, "100px");
+		userTable.getFlexCellFormatter().setWidth(0, 0, "110px");
+		userTable.getFlexCellFormatter().setWidth(0, 1, "110px");
+		userTable.getFlexCellFormatter().setWidth(0, 2, "110px");
+		userTable.getFlexCellFormatter().setWidth(0, 3, "110px");
+		userTable.getFlexCellFormatter().setWidth(0, 4, "110px");
+		userTable.getFlexCellFormatter().setWidth(0, 5, "110px");
+		userTable.getFlexCellFormatter().setWidth(0, 6, "110px");
 
 		// set headers in flextable
 		userTable.setText(0, 0, "Id");
@@ -155,7 +155,7 @@ public class ShowUserListView extends Composite {
 		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
 		// hver række.pList.size()
 		for (int i = 0; i < pList.size(); i++) {
-			Button edit = new Button("Opdater saldo");
+			Button edit = new Button("Tilføj til saldo");
 			edit.getElement().setId("editButton");
 			userTable.setWidget(i + 1, 5, edit);
 			

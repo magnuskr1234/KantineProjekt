@@ -5,17 +5,17 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel>
-			<g:HorizontalPanel>
-				<g:Label text="Total earnings" ui:field="totearn"/>
+		<g:VerticalPanel width="100%">
+			<g:HorizontalPanel width="100%">
+				<g:Label text="Total earnings" ui:field="totearn" styleName="blackText"/>
 				<g:VerticalPanel>
-					<g:Label text="Top 3 sælgende vare"/>
-					<g:FlexTable ui:field="mostSoldTable"/>
+					<g:Label text="Top 3 sælgende vare" styleName="blackText"/>
+					<g:FlexTable ui:field="mostSoldTable" styleName="blackText"/>
 				</g:VerticalPanel>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>
 		<g:ScrollPanel height="577px">
-			<g:FlexTable ui:field="statTable" width="100%" height="100%"/>
+			<g:FlexTable ui:field="statTable" width="100%" height="100%" styleName="blackText"/>
 		</g:ScrollPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

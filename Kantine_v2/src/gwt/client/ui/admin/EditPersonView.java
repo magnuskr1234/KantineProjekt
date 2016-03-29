@@ -17,10 +17,10 @@ import com.google.gwt.user.client.ui.Label;
 public class EditPersonView extends Composite {
 
 	private static EditPersonViewUiBinder uiBinder = GWT.create(EditPersonViewUiBinder.class);
+	
 	@UiField TextBox txtSaldo;
 	@UiField Button btnConfirm;
 	@UiField Button btnCancel;
-
 	
 	PersonDTO pDTO = new PersonDTO();
 	double newSaldo;
@@ -32,7 +32,6 @@ public class EditPersonView extends Composite {
 	public EditPersonView() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
-
 		txtSaldo.getElement().setPropertyString("placeholder", "Indtast beløb");
 		
 	}

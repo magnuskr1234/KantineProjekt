@@ -33,6 +33,9 @@ public class EditItemView extends Composite {
 	}
 	public EditItemView() {
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		txtPrice.getElement().setPropertyString("placeholder", "Indtast pris");
+		
 	}
 	
 	public void setItemDTO ( ItemDTO iDTO){

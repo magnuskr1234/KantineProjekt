@@ -5,17 +5,18 @@
 	
 	</ui:style>
 	<g:HTMLPanel ui:field="addPersonView">
-		<g:VerticalPanel height="150px">
+	<g:VerticalPanel width="100%" height="100%"
+		horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
+		<g:VerticalPanel height="200px" width="250px" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE" styleName="loginContainer">
+			<g:Image url="ic_shopping_basket_white_48dp_2x.png" width="50px"/>
 			<g:HorizontalPanel>
-				<g:Cell verticalAlignment="ALIGN_MIDDLE">
-					<g:Label text="Indtast ny pris:" width="168px"/>
-				</g:Cell>
-			<g:TextBox ui:field="txtPrice" height="8px"/>
+			<g:TextBox ui:field="txtPrice" height="25px" width="150px"/>
 		</g:HorizontalPanel>
 			<g:HorizontalPanel>
-				<g:Button text="Bekræft" styleName="#okButton" ui:field="btnConfirm" />
-				<g:Button text="Annuller" styleName="#okButton" ui:field="btnCancel" />
+				<g:Button text="Bekræft" styleName="loginBtn" ui:field="btnConfirm" width="100px" height="35px" />
+				<g:Button text="Annuller" styleName="loginBtn" ui:field="btnCancel" height="35px" width="100px" />
 			</g:HorizontalPanel>
+		</g:VerticalPanel>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
