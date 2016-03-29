@@ -17,7 +17,6 @@ public class CreateItemView extends Composite {
 
 	private static CreateItemViewUiBinder uiBinder = GWT.create(CreateItemViewUiBinder.class);
 
-	@UiField Button btnCancel;
 	@UiField Button createItemBtn;
 	@UiField TextBox txtName;
 	@UiField TextBox txtPrice;
@@ -30,10 +29,9 @@ public class CreateItemView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 
 		this.iDTO = new ItemDTO();
-	}
-
-	public Button getBtnCancel(){
-		return btnCancel;
+		
+		txtName.getElement().setPropertyString("placeholder", "Indtast produktnavn");
+		txtPrice.getElement().setPropertyString("placeholder", "Indtast pris");
 	}
 
 	public Button getcreateItemBtn(){

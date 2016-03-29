@@ -34,6 +34,7 @@ public class CreateUserView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		// make new DTO object
 		this.pDTO = new PersonDTO();
+		
 		txtName.getElement().setPropertyString("placeholder", "Indtast brugernavn");
 		txtPassword.getElement().setPropertyString("placeholder", "Indtast adgangskode");
 		txtSaldo.getElement().setPropertyString("placeholder", "Indtast saldo");

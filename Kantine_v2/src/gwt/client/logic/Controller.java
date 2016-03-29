@@ -147,7 +147,6 @@ public class Controller {
 		editPersonView.getBtnConfirm().addClickHandler(new UpdateSaldoHandler());
 
 		// Add createItemView handler
-		createItemView.getBtnCancel().addClickHandler(new ReturnMainViewHandler());
 		createItemView.getcreateItemBtn().addClickHandler(new CreateItemHandler());
 
 		// user options handler
@@ -530,8 +529,7 @@ public class Controller {
 	private class ReturnMainViewHandler implements ClickHandler {
 		@Override
 		public void onClick(ClickEvent event) {
-			if (event.getSource() == createItemView.getBtnCancel()
-					|| event.getSource() == adminHeaderView.getBtnMainMenu()) {
+			if (event.getSource() == adminHeaderView.getBtnMainMenu()) {
 				createItemView.clearFields();
 				createUserView.clearFields();
 				mainView.changeWidget(adminMenu);

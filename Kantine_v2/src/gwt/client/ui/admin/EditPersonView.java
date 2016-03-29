@@ -32,11 +32,15 @@ public class EditPersonView extends Composite {
 	public EditPersonView() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
+
+		txtSaldo.getElement().setPropertyString("placeholder", "Indtast beløb");
+		
 	}
 	
 	  public void setpersonDTO (PersonDTO pDTO) {
 		    this.pDTO =  pDTO;
 		    // update text boxes
+		   
 		   
 		  }
 		  
