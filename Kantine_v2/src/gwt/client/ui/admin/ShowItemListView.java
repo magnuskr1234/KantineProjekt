@@ -104,11 +104,11 @@ public class ShowItemListView extends Composite {
 		itemTable.removeAllRows();
 
 		// adjust column widths
-		itemTable.getFlexCellFormatter().setWidth(0, 0, "25px");
-		itemTable.getFlexCellFormatter().setWidth(0, 1, "200px");
-		itemTable.getFlexCellFormatter().setWidth(0, 2, "25px");
-		itemTable.getFlexCellFormatter().setWidth(0, 3, "100px");
-		itemTable.getFlexCellFormatter().setWidth(0, 4, "100px");
+		itemTable.getFlexCellFormatter().setWidth(0, 0, "110px");
+		itemTable.getFlexCellFormatter().setWidth(0, 1, "110px");
+		itemTable.getFlexCellFormatter().setWidth(0, 2, "110px");
+		itemTable.getFlexCellFormatter().setWidth(0, 3, "110px");
+		itemTable.getFlexCellFormatter().setWidth(0, 4, "110px");
 
 		// set headers in flextable
 		itemTable.setText(0, 0, "Id");

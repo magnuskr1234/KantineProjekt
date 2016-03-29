@@ -39,12 +39,12 @@ public class StatisticView extends Composite {
 		mostSoldTable.removeAllRows();
 
 		// adjust column widths
-		mostSoldTable.getFlexCellFormatter().setWidth(0, 0, "50px");
-		mostSoldTable.getFlexCellFormatter().setWidth(0, 1, "50px");
+		mostSoldTable.getFlexCellFormatter().setWidth(0, 0, "100px");
+		mostSoldTable.getFlexCellFormatter().setWidth(0, 1, "100px");
 
 		// set headers in flextable
 		mostSoldTable.setText(0, 0, "Vare");
-		mostSoldTable.setText(0, 1, "Gange solgt");
+		mostSoldTable.setText(0, 1, "Antal salg");
 
 		// style table
 		mostSoldTable.addStyleName("FlexTable");
@@ -67,8 +67,8 @@ public class StatisticView extends Composite {
 		// adjust column widths
 		statTable.getFlexCellFormatter().setWidth(0, 0, "50px");
 		statTable.getFlexCellFormatter().setWidth(0, 1, "50px");
-		statTable.getFlexCellFormatter().setWidth(0, 2, "25px");
-		statTable.getFlexCellFormatter().setWidth(0, 3, "50px");
+		statTable.getFlexCellFormatter().setWidth(0, 2, "50px");
+		statTable.getFlexCellFormatter().setWidth(0, 3, "50px");	
 
 		// set headers in flextable
 		statTable.setText(0, 0, "Bruger");
