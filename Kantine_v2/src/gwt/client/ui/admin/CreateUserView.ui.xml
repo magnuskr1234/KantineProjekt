@@ -5,18 +5,18 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel height="198px" width="142px">
-			<g:Label text="Brugernavn:"/>
-			<g:TextBox ui:field="txtName"/>
-			<g:Label text="Adgangskode"/>
-			<g:TextBox ui:field="txtPassword"/>
-			<g:CheckBox text="Administrator" ui:field="radioAdmin"/>
-			<g:Label text="Saldo"/>
-			<g:TextBox ui:field="txtSaldo"/>
+		<g:VerticalPanel width="100%" height="100%"
+		horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
+		<g:VerticalPanel height="350px" width="300px" horizontalAlignment="ALIGN_CENTER" styleName="loginContainer" verticalAlignment="ALIGN_MIDDLE">
+			<g:Image url="ic_account_circle_white_48dp_2x.png" width="50px"/>
+			<g:TextBox ui:field="txtName" width="200px" height="25px"/>
+			<g:TextBox ui:field="txtPassword" width="200px" height="25px"/>
+			<g:CheckBox text="Administrator" ui:field="radioAdmin" styleName="whiteText" width="150px"/>
+			<g:TextBox ui:field="txtSaldo" width="200px" height="25px"/>
 			<g:HorizontalPanel>
-				<g:Button ui:field="createUserBtn">Opret</g:Button>
-				<g:Button ui:field="btnCancel" text="Annuller">Anuller</g:Button>
+				<g:Button ui:field="createUserBtn" styleName="loginBtn" width="200px" height="35px">Opret</g:Button>
 			</g:HorizontalPanel>
+		</g:VerticalPanel>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -19,7 +19,6 @@ import com.google.gwt.user.client.ui.CheckBox;
 public class CreateUserView extends Composite {
 
 	private static CreateUserUiBinder uiBinder = GWT.create(CreateUserUiBinder.class);
-	@UiField Button btnCancel;
 	@UiField Button createUserBtn;
 	@UiField TextBox txtName;
 	@UiField TextBox txtPassword;
@@ -35,11 +34,10 @@ public class CreateUserView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		// make new DTO object
 		this.pDTO = new PersonDTO();
-
-	}
-
-	public Button getBtnCancel(){
-		return btnCancel;
+		txtName.getElement().setPropertyString("placeholder", "Indtast brugernavn");
+		txtPassword.getElement().setPropertyString("placeholder", "Indtast adgangskode");
+		txtSaldo.getElement().setPropertyString("placeholder", "Indtast saldo");
+		
 	}
 
 	public Button getCreateUserBtn(){
