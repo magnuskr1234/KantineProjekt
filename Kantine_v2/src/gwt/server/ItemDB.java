@@ -31,6 +31,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 	private PreparedStatement saveItemToHistoryStmt = null;
 	private PreparedStatement showHistoryListStmt = null;
 	private PreparedStatement showStatListStmt = null;
+	private PreparedStatement showMostSoldItemsStmt = null;
 
 	ShowUserListView su;
 
@@ -58,6 +59,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			
 			showStatListStmt = connection.prepareStatement("SELECT customers.name, history.item_name, history.item_price, history.date_ordered FROM history LEFT JOIN customers ON customers.id=history.customer_id ORDER BY history.date_ordered DESC ");
 
+			showMostSoldItemsStmt = connection.prepareCall("SELECT item_name, count(*) AS total from history GROUP BY item_name ORDER BY total DESC");
 		} catch (SQLException sqlException) {
 			throw new DALException("Kan ikke oprette forbindelse til database");
 		}
@@ -73,6 +75,33 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<ItemDTO> getMostSoldItems() throws Exception {
+		List<ItemDTO> results = null;
+		ResultSet resultSet = null;
+		int count = 0;
+
+		try {
+			resultSet = showMostSoldItemsStmt.executeQuery();
+			results = new ArrayList<ItemDTO>();
+			
+			
+			while (resultSet.next() && count < 3) {
+				results.add(new ItemDTO(resultSet.getString("item_name"), resultSet.getInt("total")));
+				count++;
+			}
+		} catch (SQLException sqlException) {
+			throw new DALException(" \"getItems\" fejlede");
+		} finally {
+			try {
+				resultSet.close();
+			} catch (SQLException sqlException) {
+				sqlException.printStackTrace();
+				close();
+			}
+		}
+		return results;
 	}
 	
 	public List<ItemDTO> getStatList() throws Exception {

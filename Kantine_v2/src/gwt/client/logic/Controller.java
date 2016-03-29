@@ -638,6 +638,19 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == adminMenu.getBtnStatistic()) {
+				itemDAO.getMostSoldItems(new AsyncCallback<List<ItemDTO>>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl" + caught.getMessage());
+
+					}
+
+					@Override
+					public void onSuccess(List<ItemDTO> mostSoldList) {
+						statistic.populateMostSoldTable(mostSoldList);
+					}
+				});
 				itemDAO.getStatList(new AsyncCallback<List<ItemDTO>>() {
 
 					@Override
@@ -649,6 +662,7 @@ public class Controller {
 					@Override
 					public void onSuccess(List<ItemDTO> result) {
 						statistic.pop(result);
+						statistic.setTotEarn();
 					}
 				});
 				mainView.changeWidget(statistic);
