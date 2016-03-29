@@ -155,13 +155,13 @@ border-width: 1px;
 .blackText {
 	color: #3b3b3b;
 	font-size: 16px;
-	font-family: Myriad Pro, Arial;
+	font-family: Myriad, Arial;
 }
 .whiteBackground {
 	background-color: white;
 	color: #3b3b3b;
 	font-size: 16px;
-	font-family: Myriad Pro, Arial;
+	font-family: Myriad, Arial;
 	box-shadow: 0px 5px 8px #b6b6b6;
 	text-align: center;
 }

@@ -130,6 +130,7 @@ public class ShowItemListView extends Composite {
 		for (int i = 0; i < pList.size(); i++) {
 			
 			Button edit = new Button("Opdater pris");
+			edit.setStylePrimaryName("topNavBtn");
 			edit.getElement().setId("editButton");
 			itemTable.setWidget(i + 1, 3, edit);
 			
