@@ -45,7 +45,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
 			// create query that get all persons in kartotek
 			getPersonsStmt = connection.prepareStatement( 
-					"SELECT * FROM customers "); 
+					"SELECT * FROM customers ORDER BY name "); 
 
 			// create query that gets size of kartotek
 			getSizeStmt = connection.prepareStatement( 
