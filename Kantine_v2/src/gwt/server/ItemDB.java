@@ -45,7 +45,7 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			updateItemStmt = connection.prepareStatement("UPDATE items SET price = ?  WHERE id = ?");
 
 			// create query that get all items in database
-			getItemsStmt = connection.prepareStatement("SELECT * FROM items ");
+			getItemsStmt = connection.prepareStatement("SELECT * FROM items ORDER BY title ");
 
 			// create query that gets size of database
 			getSizeStmt = connection.prepareStatement("SELECT COUNT(*) FROM items ");
