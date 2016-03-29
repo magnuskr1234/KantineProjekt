@@ -6,7 +6,7 @@ h1 {
   font-size: 2em;
   font-weight: bold;
   color: #777777;
-  margin: 40px 0px 70px;
+  margin: auto;
   text-align: center;
 }
 
@@ -110,14 +110,16 @@ border-width: 1px;
 	box-shadow: 0px 5px 8px #b6b6b6;
 }
 .loginBtn {
-	background-color: #159588;
-	border: none;
   	box-shadow: 0px 5px 8px #0d675b;
 	
 	color: white;
-	font-size: 16px; 
+	margin-right: 10px;
+	margin-left: 10px;
+	border: none;
 	font-weight: bold;
+	font-size: 16px;
 	font-family: Myriad Pro, Arial;
+	background-color: #159588;
 }
 
 .loginBtn:HOVER{
@@ -125,19 +127,20 @@ border-width: 1px;
 }
 
 .whiteText {
-	color: white;
-	font-size: 2 em;
+	color: White;
+	font-size: 16px;
 	font-family: Myriad Pro, Arial;
 }
 .topNavBtn {
 	
 	color: white;
 	margin-right: 5px;
-	margin-left: 5px;
 	border: none;
 	font-weight: bold;
 	font-size: 16px;
 	font-family: Myriad Pro, Arial;
+	text-transform: none;
+	text-align: center;
 	background-color: #00796b;
 }
 .topNavBtn:HOVER {
@@ -145,5 +148,16 @@ border-width: 1px;
 }
 .background {
 		background-color: #f9f9f9;
+}
+.blackText {
+	color: #3b3b3b;
+	margin-top: 10px;
+	font-size: 2;
+	font-family: Myriad Pro, Arial;
+}
+.whiteBackground {
+	background-color: white;
+	border: none;
+	padding: 0px 5px 0px 5px;
 }
 
