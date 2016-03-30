@@ -30,7 +30,7 @@ public class StatisticView extends Composite {
 	}
 	
 	public void setTotEarn(){
-		totearn.setText("Total omsætning: " + sum );
+		totearn.setText("Total omsætning: " + sum + " kr." );
 	}
 	
 	public void populateMostSoldTable(List<ItemDTO> mostSoldList){
@@ -70,11 +70,11 @@ public class StatisticView extends Composite {
 		statTable.getFlexCellFormatter().setWidth(0, 2, "50px");
 		statTable.getFlexCellFormatter().setWidth(0, 3, "50px");	
 
-		// set headers in flextable
-		statTable.setText(0, 0, "Bruger");
-		statTable.setText(0, 1, "Vare");
-		statTable.setText(0, 2, "Pris");
-		statTable.setText(0, 3, "Dato");
+//		// set headers in flextable
+//		statTable.setText(0, 0, "Bruger");
+//		statTable.setText(0, 1, "Vare");
+//		statTable.setText(0, 2, "Pris");
+//		statTable.setText(0, 3, "Dato");
 
 		// style table
 		statTable.addStyleName("FlexTable");
@@ -89,7 +89,7 @@ public class StatisticView extends Composite {
 				statTable.setText(i + 1, 0, "Bruger slettet");
 			}
 			statTable.setText(i + 1, 1, pList.get(i).getName());
-			statTable.setText(i + 1, 2, "" +pList.get(i).getPrice());
+			statTable.setText(i + 1, 2, "" +pList.get(i).getPrice() + " kr.");
 			sum += pList.get(i).getPrice();
 			statTable.setText(i + 1, 3, "" + pList.get(i).getDate());
 		}

@@ -122,16 +122,16 @@ public class ShowUserListView extends Composite {
 		userTable.getFlexCellFormatter().setWidth(0, 1, "110px");
 		userTable.getFlexCellFormatter().setWidth(0, 2, "110px");
 		userTable.getFlexCellFormatter().setWidth(0, 3, "50px");
-		userTable.getFlexCellFormatter().setWidth(0, 4, "75px");
+		userTable.getFlexCellFormatter().setWidth(0, 4, "90px");
 		userTable.getFlexCellFormatter().setWidth(0, 5, "50px");
 		userTable.getFlexCellFormatter().setWidth(0, 6, "50px");
 
-		// set headers in flextable
-		userTable.setText(0, 0, "Id");
-		userTable.setText(0, 1, "Brugernavn");
-		userTable.setText(0, 2, "Adgangskode");
-		userTable.setText(0, 3, "Saldo");
-		userTable.setText(0, 4, "Administrator");
+//		// set headers in flextable
+//		userTable.setText(0, 0, "Id");
+//		userTable.setText(0, 1, "Brugernavn");
+//		userTable.setText(0, 2, "Adgangskode");
+//		userTable.setText(0, 3, "Saldo");
+//		userTable.setText(0, 4, "Administrator");
 
 		// style table
 		userTable.addStyleName("FlexTable");

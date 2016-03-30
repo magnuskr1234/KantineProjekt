@@ -171,4 +171,9 @@ border-width: 1px;
 	font-family: Myriad Pro, Arial;
 	text-decoration: underline;
 }
+.blackText_Bold {
+	color: black;
+	font-size: 18px;
+	font-family: Myriad Pro, Arial;
+}
 
