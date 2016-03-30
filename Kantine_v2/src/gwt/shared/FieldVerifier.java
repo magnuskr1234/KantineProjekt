@@ -1,12 +1,6 @@
 package gwt.shared;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.*;
-
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
