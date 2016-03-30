@@ -279,6 +279,7 @@ public class Controller {
 					public void onSuccess(Void result) {
 						Window.alert("Tak for købet");
 						UserMenuView.tempItemList.clear();
+						basketView.setCurrentUserSaldo(basketView.getNewSaldo());
 						mainView.updateSaldoHeader(basketView.getNewSaldo());
 						mainView.showUserHeader();
 						userView.showBasketWidget();

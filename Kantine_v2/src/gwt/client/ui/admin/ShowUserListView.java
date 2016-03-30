@@ -118,13 +118,13 @@ public class ShowUserListView extends Composite {
 		userTable.removeAllRows();
 
 		// adjust column widths
-		userTable.getFlexCellFormatter().setWidth(0, 0, "110px");
+		userTable.getFlexCellFormatter().setWidth(0, 0, "50px");
 		userTable.getFlexCellFormatter().setWidth(0, 1, "110px");
 		userTable.getFlexCellFormatter().setWidth(0, 2, "110px");
-		userTable.getFlexCellFormatter().setWidth(0, 3, "110px");
-		userTable.getFlexCellFormatter().setWidth(0, 4, "110px");
-		userTable.getFlexCellFormatter().setWidth(0, 5, "110px");
-		userTable.getFlexCellFormatter().setWidth(0, 6, "110px");
+		userTable.getFlexCellFormatter().setWidth(0, 3, "50px");
+		userTable.getFlexCellFormatter().setWidth(0, 4, "75px");
+		userTable.getFlexCellFormatter().setWidth(0, 5, "50px");
+		userTable.getFlexCellFormatter().setWidth(0, 6, "50px");
 
 		// set headers in flextable
 		userTable.setText(0, 0, "Id");

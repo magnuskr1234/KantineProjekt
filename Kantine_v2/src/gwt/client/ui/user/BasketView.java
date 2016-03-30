@@ -42,10 +42,8 @@ public class BasketView extends Composite {
 	private int eventRowIndexDelete;
 
 	private double currentSaldo;
-	
-	private double saldoCheckValue;
 
-	private double newSaldo = currentSaldo;
+	private double newSaldo;
 
 	private double sum;
 
@@ -101,21 +99,15 @@ public class BasketView extends Composite {
 	}
 
 	public void setCurrentUserSaldo(double saldo) {
-		currentSaldo = saldo;
+		this.currentSaldo = saldo;
 	}
 	public double getCurrentUserSaldo() {
 		return currentSaldo;
 	}
-
-	public void setSaldoCheckValue(double saldoCheck){
-		saldoCheckValue += saldoCheck;
-		
-	}
 	
-	public double getSaldoCheckValue(){
-		return saldoCheckValue;
+	public void setNewSaldo(double newSaldo){
+		this.newSaldo = newSaldo;
 	}
-	
 	public double getNewSaldo() {
 		return newSaldo;
 	}
@@ -180,17 +172,11 @@ public class BasketView extends Composite {
 
 		}
 
-		newSaldo = (currentSaldo - sum);
+		setNewSaldo(currentSaldo - sum);
 		//setCurrentUserSaldo(newSaldo);
 	}
-
-	public double validateSaldo(){
-		
-			setSaldoCheckValue(itemDTO.getPrice());
-			Window.alert(""+ getSaldoCheckValue());
-			return saldoCheckValue;
-	}
 	
+	// Handler for delete item from basket
 	private class DeleteHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 
