@@ -1,6 +1,12 @@
 package gwt.shared;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.*;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -31,97 +37,115 @@ public class FieldVerifier {
 	 * Verifies that the specified name is valid for our service.
 	 * 
 	 * In this example, we only require that the name is at least four
-	 * characters. In your application, you can use more complex checks to ensure
-	 * that usernames, passwords, email addresses, URLs, and other fields have the
-	 * proper syntax.
+	 * characters. In your application, you can use more complex checks to
+	 * ensure that usernames, passwords, email addresses, URLs, and other fields
+	 * have the proper syntax.
 	 * 
-	 * @param name the name to validate
+	 * @param name
+	 *            the name to validate
 	 * @return true if valid, false if invalid
 	 */
-	
-	
+
 	public static boolean isValidName(String name) {
-		if (name.length() < 3){
+		if (name.length() < 3) {
 			Window.alert("Brugernavnet skal mindst bestå af 3 tegn");
 			return false;
 		}
-		
+
 		else {
-			
+
 			return true;
 		}
 	}
-	
-	public static boolean isValidPassword(String password){
-		if (password == null){
+
+	public static boolean isValidEmail(String email) {
+
+		if (!email.contains("@") && (email.length() < 3)) {
+			Window.alert("Indtast venligst en emailadresse");
+			return false;
+		}
+
+		else {
+			String parts[] = email.split("@");
+
+			if (!(parts[0].length() > 1) && !(parts[1].length() > 1)) {
+
+				return false;
+			} else {
+				if (!parts[1].contains(".")) {
+					return false;
+				}
+
+				else {
+					return true;
+				}
+			}
+
+		}
+
+	}
+
+	public static boolean isValidPassword(String password) {
+		if (password == null) {
 			Window.alert("Du mangler at indtaste et kodeord");
 			return false;
-		}
-		else if (password.length() < 6){
+		} else if (password.length() < 6) {
 			Window.alert("Koden skal mindst bestå af 6 tegn");
 			return false;
-		}
-		else if(password.matches("[A-Za-z0-9 ]*")){
+		} else if (password.matches("[A-Za-z0-9 ]*")) {
 			Window.alert("Koden skal mindst indholde mindst et special tegn");
 			return false;
-		}
-		else if(password.equals(password.toLowerCase())){
+		} else if (password.equals(password.toLowerCase())) {
 			Window.alert("Koden skal bestå af mindst et stort bogstav");
 			return false;
-		}
-		else if(password.equals(password.toUpperCase())){
+		} else if (password.equals(password.toUpperCase())) {
 			Window.alert("Koden skal bestå af mindst et lille bogstav");
 			return false;
 		}
-		
-		else{
+
+		else {
 			return true;
 		}
-		
+
 	}
-	
-	public static boolean isUserAlreadyThere(List<PersonDTO> result, String name){
+
+	public static boolean isUserAlreadyThere(List<PersonDTO> result, String name) {
 
 		for (PersonDTO person : result) {
 			if ((name.equals(person.getName()))) {
 				Window.alert(person.getName() + " findes allerede i systemet");
 				return false;
 			}
-		} 
+		}
 		return true;
 	}
-	
-	public static boolean isItemAlreadyThere(List<ItemDTO> result, String name){
+
+	public static boolean isItemAlreadyThere(List<ItemDTO> result, String name) {
 
 		for (ItemDTO item : result) {
 			if ((name.equals(item.getName()))) {
 				Window.alert(item.getName() + " fines allerede i systemet");
 				return false;
 			}
-		} 
+		}
 		return true;
 	}
-	  public static boolean isValidSaldo(String saldo) {
-		    
-		    // check if saldo field is empty (not allowed)
-		    if (saldo.isEmpty()) {
-		      return false;
-		    }
-		    else{
-			    try  
-			    {  
-			      double d = Double.parseDouble(saldo);  
-			    }  
-			    catch(NumberFormatException nfe)  
-			    {
-			    	Window.alert("Indtast venligst kun tal");
-			      return false;  
-			    }  
-			    return true;  
-		    	}
-		    
-		    
-		    }
-	  
-}
 
+	public static boolean isValidSaldo(String saldo) {
+
+		// check if saldo field is empty (not allowed)
+		if (saldo.isEmpty()) {
+			return false;
+		} else {
+			try {
+				double d = Double.parseDouble(saldo);
+			} catch (NumberFormatException nfe) {
+				Window.alert("Indtast venligst kun tal");
+				return false;
+			}
+			return true;
+		}
+
+	}
+
+}

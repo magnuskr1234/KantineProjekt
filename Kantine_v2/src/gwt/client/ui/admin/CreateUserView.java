@@ -49,7 +49,7 @@ public class CreateUserView extends Composite {
 
 	public boolean validate(List<PersonDTO>list) {
 		// check if all fields are valid
-		if (FieldVerifier.isValidName(txtName.getText()) && FieldVerifier.isUserAlreadyThere(list, txtName.getText()) && FieldVerifier.isValidPassword(txtPassword.getText()) && FieldVerifier.isValidSaldo(txtSaldo.getText())) {
+		if (FieldVerifier.isValidEmail(txtName.getText()) && FieldVerifier.isUserAlreadyThere(list, txtName.getText()) && FieldVerifier.isValidPassword(txtPassword.getText()) && FieldVerifier.isValidSaldo(txtSaldo.getText())) {
 
 			txtName.setStyleName("textBox");
 			txtSaldo.setStyleName("textBox");
