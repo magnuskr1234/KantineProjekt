@@ -636,6 +636,7 @@ public class Controller {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == adminMenu.getBtnStatistic()) {
+				statistic.clearStatSum();
 				itemDAO.getMostSoldItems(new AsyncCallback<List<ItemDTO>>() {
 
 					@Override

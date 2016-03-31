@@ -33,6 +33,10 @@ public class StatisticView extends Composite {
 		totearn.setText("Total omsætning: " + sum + " kr." );
 	}
 	
+	public void clearStatSum(){
+		sum = 0;
+	}
+	
 	public void populateMostSoldTable(List<ItemDTO> mostSoldList){
 		
 		// remove table data
