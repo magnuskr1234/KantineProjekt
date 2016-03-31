@@ -35,7 +35,7 @@ public class CreateUserView extends Composite {
 		// make new DTO object
 		this.pDTO = new PersonDTO();
 		
-		txtName.getElement().setPropertyString("placeholder", "Indtast brugernavn");
+		txtName.getElement().setPropertyString("placeholder", "Indtast email");
 		txtPassword.getElement().setPropertyString("placeholder", "Indtast adgangskode");
 		txtSaldo.getElement().setPropertyString("placeholder", "Indtast saldo");
 		

@@ -166,10 +166,9 @@ public class BasketView extends Composite {
 			controllerDeleteBtn.getElement().setId("deleteButton");
 			basketTable.setWidget(i + 1, 3, controllerDeleteBtn);
 
-			// add edit and delete buttons to row
-
+			
+			// add delete buttons to row
 			controllerDeleteBtn.addClickHandler(deleteHandler);
-
 		}
 
 		setNewSaldo(currentSaldo - sum);

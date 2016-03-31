@@ -118,27 +118,34 @@ public class FieldVerifier {
 
 		for (ItemDTO item : result) {
 			if ((name.equals(item.getName()))) {
-				Window.alert(item.getName() + " fines allerede i systemet");
+				Window.alert(item.getName() + " findes allerede i systemet");
 				return false;
 			}
 		}
 		return true;
 	}
 
-	public static boolean isValidSaldo(String saldo) {
-
+	public static boolean isValidSaldo(String number) {
+		double numberConvert;
 		// check if saldo field is empty (not allowed)
-		if (saldo.isEmpty()) {
+		if (number.isEmpty()) {
 			return false;
-		} else {
-			try {
-				double d = Double.parseDouble(saldo);
-			} catch (NumberFormatException nfe) {
-				Window.alert("Indtast venligst kun tal");
-				return false;
-			}
+		} 
+		
+		   // check if age field contains a number
+	    try {
+	      // try to convert to a number
+	    	numberConvert = Double.parseDouble(number);
+	    } catch (NumberFormatException e) {
+	      // invalid number
+	      return false;
+	    }
+	    
+	    if(numberConvert < 1)
+	    	return false;
+	    else
 			return true;
-		}
+		
 
 	}
 
