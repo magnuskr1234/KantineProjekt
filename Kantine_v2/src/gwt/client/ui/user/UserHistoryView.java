@@ -33,10 +33,6 @@ public class UserHistoryView extends Composite {
 		historyTable.getFlexCellFormatter().setWidth(0, 1, "25px");
 		historyTable.getFlexCellFormatter().setWidth(0, 2, "50px");
 
-		// set headers in flextable
-		historyTable.setText(0, 0, "Navn");
-		historyTable.setText(0, 1, "Pris");
-		historyTable.setText(0, 2, "Dato");
 
 		// style table
 		historyTable.addStyleName("FlexTable");
