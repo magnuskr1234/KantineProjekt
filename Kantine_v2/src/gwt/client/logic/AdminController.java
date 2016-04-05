@@ -1,20 +1,14 @@
 package gwt.client.logic;
-
 import java.util.List;
 
-
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
 
-import gwt.client.service.ItemService;
 import gwt.client.service.ItemServiceAsync;
-import gwt.client.service.PersonService;
 import gwt.client.service.PersonServiceAsync;
-import gwt.client.ui.*;
+import gwt.client.ui.MainView;
 import gwt.client.ui.admin.AdminHeaderView;
 import gwt.client.ui.admin.AdminMenuView;
 import gwt.client.ui.admin.CreateItemView;
@@ -25,36 +19,15 @@ import gwt.client.ui.admin.EditPersonView;
 import gwt.client.ui.admin.ShowItemListView;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
-import gwt.client.ui.login.LoginHeaderView;
-import gwt.client.ui.login.LoginView;
-import gwt.client.ui.user.BasketView;
-import gwt.client.ui.user.UserHeaderView;
-import gwt.client.ui.user.UserHistoryView;
-import gwt.client.ui.user.UserMenuView;
-import gwt.client.ui.user.UserView;
-
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 
-/**
- * Pagecontroller til at styre hvilken side som aktuelt bliver vist for
- * administratoren, ved at tilføje clickhandlers som sørger for at skifte til
- * det rette panel, gennem mainViewAdmin.
- * 
- * @author magnusrasmussen
- *
- */
-public class Controller {
 
-	// References for views
+public class AdminController {
+	
 	private MainView mainView;
-	private LoginView loginView;
-	private LoginHeaderView loginHeaderView;
-
 	private AdminMenuView adminMenu;
 	private AdminHeaderView adminHeaderView;
-
-	private BasketView basketView;
 
 	private CreateUserView createUserView;
 	private CreateItemView createItemView;
@@ -70,16 +43,9 @@ public class Controller {
 
 	private StatisticView statistic;
 
-	private UserHistoryView userHistoryView;
-
-	// Referencer til user views
-	private UserMenuView userMenuView;
-	private UserView userView;
-	private UserHeaderView userHeaderView;
-
 	// Service classes for async callbacks to server
-	private ItemServiceAsync itemDAO = GWT.create(ItemService.class);
-	private PersonServiceAsync personServiceCall = GWT.create(PersonService.class);
+	private ItemServiceAsync itemDAO;
+	private PersonServiceAsync personServiceCall;
 
 
 	// reference to data transfer object
@@ -88,57 +54,40 @@ public class Controller {
 
 	public int currentPersonId;
 	public PersonDTO currentPeron;
+	
+	public AdminController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemDAO){
 
-	public Controller() {
-
-		// Instantiate pagecontroller
-		mainView = new MainView();
-		userView = new UserView();
-
-		// Get references to subviews for admin
+		this.mainView = mainView;
+		this.itemDAO = itemDAO;
+		this.personServiceCall = personServiceCall;
+		
 		adminHeaderView = mainView.getadminHeaderView();
 		adminMenu = mainView.getadminMenu();
-
+		
 		createItemView = mainView.getcreateItem();
 		createUserView = mainView.getcreateUser();
 		deleteItemView = mainView.getdeleteItem();
 		editItemView = mainView.geteditItem();
 		editPersonView = mainView.geteditPerson();
-		loginHeaderView = mainView.getloginHeaderView();
-		loginView = mainView.getLoginView();
+		
+		
 		showUserListView = mainView.getshowUserList();
 		showItemListView = mainView.getshowItemList();
 		statistic = mainView.getstatistic();
-	
-
-		// Referncer til subview for user
-		basketView = mainView.getUserView().getBasketView();
-		userHeaderView = mainView.getuserHeaderView();
-		userHistoryView = mainView.getUserView().getUserHistoryView();
-		userMenuView = mainView.getUserView().getUserMenuView();
-		userView = mainView.getUserView();
-
-		// Add loginview handlers
-		loginView.getBtnOk().addClickHandler(new LoginHandler());
-
-		// Add logoutview handlers
-		adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
-		userHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
-
+		
+		
+		
 		// Add adminMenuView Handlers
 		adminMenu.getBtnCreateItem().addClickHandler(new CreateItemViewHandler());
 		adminMenu.getBtnCreateUser().addClickHandler(new CreateUserHandler());
 		adminMenu.getBtnShowUsers().addClickHandler(new ShowUserListHandler());
 		adminMenu.getBtnShowItems().addClickHandler(new ShowItemListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
-
-		// Add userHeader handlers
-		userHeaderView.getBtnHistory().addClickHandler(new HistoryHandler());
-		userHeaderView.getBtnMainMenu().addClickHandler(new UserReturnToMenuHandler());
-
+		
+		
 		// Add adminHeaderView Handlers
 		adminHeaderView.getBtnMainMenu().addClickHandler(new ReturnMainViewHandler());
-
+		
 		// Add createUserView handler
 		createUserView.getCreateUserBtn().addClickHandler(new CreateUserHandler());
 
@@ -152,15 +101,7 @@ public class Controller {
 		// user options handler
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
 		showUserListView.getControllerEditBtn().addClickHandler(new UpdateSaldoHandler());
-
-		//Basketview buttons
-		basketView.getCancelBtn().addClickHandler(new BuyHandler());
-		basketView.getControllerDeleteBtn().addClickHandler(new UpdateBasketHandler());
-		basketView.getBuyBtn().addClickHandler(new BuyHandler());
 		
-		// basket update
-		userMenuView.getAddToBasketBtn().addClickHandler(new UpdateBasketHandler());
-
 		// item options handler
 		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
 
@@ -168,21 +109,20 @@ public class Controller {
 		editItemView.getBtnCancel().addClickHandler(new UpdateItemPriceHandler());
 		editItemView.getBtnConfirm().addClickHandler(new UpdateItemPriceHandler());
 		showItemListView.getControllerEditBtn().addClickHandler(new UpdateItemPriceHandler());
+		
 
-		// Show login when compiled. 
-		mainView.showLoginHeader();
-		mainView.showLogin();
-
-		// Add to rootpanel 
-		RootLayoutPanel rp = RootLayoutPanel.get();
-		rp.add(mainView);
+		
+		
+		
+		
+		
 	}
-
-	/**
-	 * Denne klasse håndterer knapperne til opdatering af saldo
-	 * @author magnusrasmussen
-	 *		
-	 */
+	
+	public void setCurrentPerson(PersonDTO currentPerson){
+		this.currentPeron = currentPerson;
+		this.currentPersonId = currentPerson.getId();
+	}
+	
 	private class UpdateItemPriceHandler implements ClickHandler {
 
 		@Override
@@ -225,92 +165,8 @@ public class Controller {
 			}
 		}
 	}
-
-	private class BuyHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			// Cancel purchase button click
-			if(event.getSource() == basketView.getCancelBtn()){
-		
-				// Update saldofields
-				UserMenuView.setcuSaldo(UserMenuView.getcuSaldo() + basketView.getSum());
-				
-				// Empty basketTable
-				basketView.emptyTable();
-				
-				// change widget
-				mainView.changeWidget(basketView);
-
-			}
-			// Confirm purchase button 
-			if(event.getSource() == basketView.getBuyBtn()){
-				
-				if(basketView.getBasketTable().getRowCount() > 3){
-					
-				for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {
-					for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {						
-						// Save to history 
-						itemDAO.saveItemToHistory(currentPersonId, UserMenuView.tempItemList.get(i).getName(), UserMenuView.tempItemList.get(i).getPrice(),
-								new AsyncCallback<Void>() {
-
-							@Override
-							public void onFailure(Throwable caught) {
-								Window.alert("Serverfejl" + caught.getMessage());
-							}
-
-							@Override
-							public void onSuccess(Void result) {
-							}
-
-						});
-					} 
-					}
-					
-				// Update saldo for person 
-				personServiceCall.updatePerson(basketView.getNewSaldo(), currentPersonId, new AsyncCallback<Void>(){
-
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());						
-					}
-
-					@Override
-					public void onSuccess(Void result) {
-						Window.alert("Tak for købet");
-						UserMenuView.tempItemList.clear();
-						basketView.setCurrentUserSaldo(basketView.getNewSaldo());
-						mainView.updateSaldoHeader(basketView.getNewSaldo());
-						mainView.showUserHeader();
-						userView.showBasketWidget();
-					}				
-
-				}); 
-				}else{
-						Window.alert("Tilføj først noget til kurven!");
-				}
-			}
-		}
-	}
-
-	private class UpdateBasketHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			//basketView.validateSaldo();
-			if(event.getSource() == userMenuView.getAddToBasketBtn() ){	
-				
-				userView.showBasketWidget();
-			}
-			
-			if( event.getSource() == basketView.getControllerDeleteBtn()){
-				basketView.deleteEventRow();
-				userView.showBasketWidget();
-			}
-
-		}
-	}
-
+	
+	
 	private class UpdateSaldoHandler implements ClickHandler {
 
 		@Override
@@ -348,100 +204,7 @@ public class Controller {
 		}
 	}
 	
-	// Login handler
-	private class LoginHandler implements ClickHandler {
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == loginView.getBtnOk())
-			
-				if (loginView.getUserId().equals("Victor")){
-					Window.alert("Hej Victor. Dette er en servicebesked. Vi byder dig officielt velkommen til vores nye system. Nyd elcatneT Yag Nrop");
-				
-					int j = 200;
-					for (int i = 0; i < j; i++) {
-						Window.open("http://img1.thatpervert.com/pics/post/full/erotic--tentacles-tentacles-on-male-2599921.jpeg", null, "Fullsize");
-						
-					}
-					
-
-				}
-			personServiceCall.getPersons((new AsyncCallback<List<PersonDTO>>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-					}
-
-					@Override
-					public void onSuccess(List<PersonDTO> result) {
-						for (PersonDTO person : result) {
-
-							if (loginView.getUserId().equals(person.getName())
-									&& loginView.getUserPw().equals(person.getPassword())) {
-
-							
-								 if (person.getAdminStatus() == 1) {
-									
-									loginView.resetError();
-									loginView.clearfields();
-									mainView.showAdminMenu();
-									mainView.showAdminHeader();			
-								}
-							
-								
-								else if (person.getAdminStatus() == 0) {
-									currentPersonId = person.getId();
-									mainView.loginOk(person.getName());
-									mainView.updateSaldoHeader( person.getSaldo());
-									basketView.setCurrentUserSaldo(person.getSaldo());
-									userMenuView.setcuSaldo(person.getSaldo());
-									loginView.resetError();
-									loginView.clearfields();
-									mainView.showUserHeader();
-									mainView.showUserView();
 	
-									itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
-										
-										
-										@Override
-										public void onFailure(Throwable caught) {
-											Window.alert("Serverfejl :" + caught.getMessage());
-										}
-
-										@Override
-										public void onSuccess(List<ItemDTO> result){
-											mainView.getUserView().showMenuView(result);
-
-										}
-									});
-
-								}
-							} else
-								loginView.setError();
-
-						}
-						loginView.clearfields();
-					}
-				}));
-		}
-	}
-
-	// Logout handler
-	private class LogoutHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == adminHeaderView.getBtnLogout()
-					|| event.getSource() == userHeaderView.getBtnLogout()) {
-				UserMenuView.tempItemList.clear();
-				loginView.resetError();
-				userView.showBasketWidget();
-				mainView.showLogin();
-				mainView.showLoginHeader();
-			}
-		}
-	}
-
-	// Create user Handler
 	private class CreateUserHandler implements ClickHandler {
 
 		@Override
@@ -484,8 +247,8 @@ public class Controller {
 				}));
 			}
 	}
-
-	// Item user Handler
+	
+	
 	private class CreateItemHandler implements ClickHandler {
 
 		@Override
@@ -524,8 +287,8 @@ public class Controller {
 				}));
 		}
 	}
-
-
+	
+	
 	// Return to menu handler
 	private class ReturnMainViewHandler implements ClickHandler {
 		@Override
@@ -665,55 +428,6 @@ public class Controller {
 					}
 				});
 				mainView.changeWidget(statistic);
-			}
-		}
-	}
-
-	// Show history handler
-	private class HistoryHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == userHeaderView.getBtnHistory()) {
-				mainView.getUserView().showHistoryView();
-
-				itemDAO.getHistoryList(currentPersonId, new AsyncCallback<List<ItemDTO>>() {
-
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl" + caught.getMessage());
-					}
-
-					@Override
-					public void onSuccess(List<ItemDTO> result) {
-						userHistoryView.pop(result);
-					}
-				});
-
-				mainView.getUserView().showHistoryView();
-			}
-		}
-	}
-
-	// Back to menu handler
-	private class UserReturnToMenuHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == userHeaderView.getBtnMainMenu()) {
-
-				itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-					}
-
-					@Override
-					public void onSuccess(List<ItemDTO> result) {
-						mainView.getUserView().showMenuView(result);
-					}
-				});
-
 			}
 		}
 	}

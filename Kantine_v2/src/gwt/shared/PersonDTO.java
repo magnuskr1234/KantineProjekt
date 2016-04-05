@@ -6,9 +6,9 @@ import java.io.Serializable;
  * @author magnusrasmussen
  *
  */
+@SuppressWarnings("serial")
 public class PersonDTO implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
 	
 	private int id;
 	private String name;
@@ -53,8 +53,6 @@ public class PersonDTO implements Serializable {
 		this.id = id;
 	}
 
-	
-	
 	public String getName() {
 		return name;
 	}
