@@ -19,7 +19,6 @@ import gwt.client.ui.admin.EditPersonView;
 import gwt.client.ui.admin.ShowItemListView;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
-import gwt.client.ui.user.UserMenuView;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 
@@ -29,7 +28,7 @@ import gwt.shared.PersonDTO;
  *
  */
 public class AdminController {
-	
+
 	private AdminView adminView;
 	private MainView mainView;
 	private AdminMenuView adminMenu;
@@ -46,7 +45,7 @@ public class AdminController {
 	private ShowItemListView showItemListView;
 
 	// Service classes for async callbacks to server
-	private ItemServiceAsync itemDAO;
+	private ItemServiceAsync itemServiceCall;
 	private PersonServiceAsync personServiceCall;
 
 
@@ -56,29 +55,26 @@ public class AdminController {
 
 	public int currentPersonId;
 	public PersonDTO currentPeron;
-	
-	public AdminController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemDAO){
-		
+
+	public AdminController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemServiceCall){
+
 		this.mainView = mainView;
 		this.adminView = mainView.getAdminView();
-		this.itemDAO = itemDAO;
+		this.itemServiceCall = itemServiceCall;
 		this.personServiceCall = personServiceCall;
-		
+
 		adminHeaderView = adminView.getadminHeaderView();
 		adminMenu = adminView.getadminMenu();
-		
+
 		createItemView = adminView.getcreateItem();
 		createUserView = adminView.getcreateUser();
 		editItemView = adminView.geteditItem();
 		editPersonView = adminView.geteditPerson();
-		
-		
+
 		showUserListView = adminView.getshowUserList();
 		showItemListView = adminView.getshowItemList();
 		statisticView = adminView.getstatistic();
-		
-		
-		
+
 		// Add adminMenuView Handlers
 		adminMenu.getBtnCreateItem().addClickHandler(new CreateItemViewHandler());
 		adminMenu.getBtnCreateUser().addClickHandler(new CreateUserHandler());
@@ -86,11 +82,10 @@ public class AdminController {
 		adminMenu.getBtnShowItems().addClickHandler(new ShowItemListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
 		
-		
 		// Add adminHeaderView Handlers
 		adminHeaderView.getBtnMainMenu().addClickHandler(new ReturnMainViewHandler());
-	 	adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
-		
+		adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
+
 		// Add createUserView handler
 		createUserView.getCreateUserBtn().addClickHandler(new CreateUserHandler());
 
@@ -101,58 +96,50 @@ public class AdminController {
 		// Add createItemView handler
 		createItemView.getcreateItemBtn().addClickHandler(new CreateItemHandler());
 
-		// user options handler
+		//Add user options handler
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
 		showUserListView.getControllerEditBtn().addClickHandler(new UpdateSaldoHandler());
-		
-		// item options handler
+
+		// Add item options handler
 		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
 
 		//Edit item price handler
 		editItemView.getBtnCancel().addClickHandler(new UpdateItemPriceHandler());
 		editItemView.getBtnConfirm().addClickHandler(new UpdateItemPriceHandler());
 		showItemListView.getControllerEditBtn().addClickHandler(new UpdateItemPriceHandler());
-		
-
-		
-		
-		
-		
-		
 	}
-	
+
+	// Set current person
 	public void setCurrentPerson(PersonDTO currentPerson){
 		this.currentPeron = currentPerson;
 		this.currentPersonId = currentPerson.getId();
 	}
+	
 	// Logout handler
 	private class LogoutHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
-		mainView.changeView(mainView.getLoginView());
+			mainView.changeView(mainView.getLoginView());
 		}
 	}
-	
+
 	private class UpdateItemPriceHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {		
-			
+
 			// Cancel button click 
 			if(event.getSource() == editItemView.getBtnCancel()){
 				editItemView.clearFields();
 				adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
 			}
-			
+
 			// Confirm update button
 			if(event.getSource() == editItemView.getBtnConfirm()){	
-
-				//itemDTO = editItemView.getitemDTO();
-
 				if (editItemView.validate(showItemListView)){
-					
-					itemDAO.updateItem(editItemView.getNewPrice(), editItemView.getPriceItemId(), new AsyncCallback<Void>(){
+
+					itemServiceCall.updateItem(editItemView.getNewPrice(), editItemView.getPriceItemId(), new AsyncCallback<Void>(){
 
 						@Override
 						public void onFailure(Throwable caught) {
@@ -168,7 +155,7 @@ public class AdminController {
 					}); 
 				}
 			}
-			
+
 			// Edit item price button
 			if(event.getSource() == showItemListView.getControllerEditBtn()){
 				adminView.changeWidget(editItemView);
@@ -176,16 +163,14 @@ public class AdminController {
 			}
 		}
 	}
-	
-	
+
+
 	private class UpdateSaldoHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {		
 			if(event.getSource() == editPersonView.getBtnConfirm()){	
-
-				
-				
+			
 				if (editPersonView.validate(showUserListView)){
 
 					personServiceCall.updatePerson(editPersonView.getNewSaldo(), editPersonView.getSaldoUserId(), new AsyncCallback<Void>(){
@@ -214,8 +199,8 @@ public class AdminController {
 			}
 		}
 	}
-	
-	
+
+
 	private class CreateUserHandler implements ClickHandler {
 
 		@Override
@@ -233,7 +218,7 @@ public class AdminController {
 
 					@Override
 					public void onSuccess(List<PersonDTO> result) {
-						
+
 						if (createUserView.validate(result)){
 
 							personServiceCall.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName(),
@@ -252,23 +237,22 @@ public class AdminController {
 								}
 
 							});
-					}
-						
+						}
+
 					}
 				}));
-			}
+		}
 	}
-	
-	
+
+
 	private class CreateItemHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			
 			if (event.getSource() == createItemView.getcreateItemBtn())
-				
-		
-				itemDAO.getItems((new AsyncCallback<List<ItemDTO>>() {
+
+
+				itemServiceCall.getItems((new AsyncCallback<List<ItemDTO>>() {
 					@Override
 					public void onFailure(Throwable caught) {
 						Window.alert("Serverfejl :" + caught.getMessage());
@@ -277,7 +261,7 @@ public class AdminController {
 					@Override
 					public void onSuccess(List<ItemDTO> result) {
 						if (createItemView.validate(result)) {
-							itemDAO.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(),
+							itemServiceCall.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(),
 									createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
 
 								@Override
@@ -297,8 +281,6 @@ public class AdminController {
 				}));
 		}
 	}
-	
-	
 	// Return to menu handler
 	private class ReturnMainViewHandler implements ClickHandler {
 		@Override
@@ -313,7 +295,7 @@ public class AdminController {
 
 	// Create item handler
 	private class CreateItemViewHandler implements ClickHandler {
-		
+
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == adminMenu.getBtnCreateItem()) {
@@ -331,19 +313,19 @@ public class AdminController {
 
 			if (event.getSource() == showUserListView.getControllerDeleteBtn())
 				if(Window.confirm("Er du sikker på at du vil slette brugeren?"))
-				personServiceCall.deletePerson(personId, new AsyncCallback<Void>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-					}
+					personServiceCall.deletePerson(personId, new AsyncCallback<Void>() {
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert("Serverfejl :" + caught.getMessage());
+						}
 
-					@Override
-					public void onSuccess(Void result) {
-						showUserListView.deleteEventRow();
-						Window.alert("Person slettet");
+						@Override
+						public void onSuccess(Void result) {
+							showUserListView.deleteEventRow();
+							Window.alert("Person slettet");
 
-					}
-				});
+						}
+					});
 
 			if (event.getSource() == adminMenu.getBtnShowUsers()) {
 				personServiceCall.getPersons(new AsyncCallback<List<PersonDTO>>() {
@@ -371,24 +353,24 @@ public class AdminController {
 
 			if (event.getSource() == showItemListView.getControllerDeleteBtn())
 				if(Window.confirm("Er du sikker på at du vil slette varen?"))
-				itemDAO.deleteItem(itemId, new AsyncCallback<Void>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-					}
+					itemServiceCall.deleteItem(itemId, new AsyncCallback<Void>() {
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert("Serverfejl :" + caught.getMessage());
+						}
 
-					@Override
-					public void onSuccess(Void result) {
+						@Override
+						public void onSuccess(Void result) {
 
-						adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
-						Window.alert("Varen blev slettet");
+							adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
+							Window.alert("Varen blev slettet");
 
 
-					}
-				});
+						}
+					});
 
 			if (event.getSource() == adminMenu.getBtnShowItems()) {
-				itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
+				itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
 					@Override
 					public void onFailure(Throwable caught) {
 						Window.alert("Serverfejl :" + caught.getMessage());
@@ -412,7 +394,7 @@ public class AdminController {
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == adminMenu.getBtnStatistic()) {
 				statisticView.clearStatSum();
-				itemDAO.getMostSoldItems(new AsyncCallback<List<ItemDTO>>() {
+				itemServiceCall.getMostSoldItems(new AsyncCallback<List<ItemDTO>>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
@@ -425,7 +407,7 @@ public class AdminController {
 						statisticView.populateMostSoldTable(mostSoldList);
 					}
 				});
-				itemDAO.getStatList(new AsyncCallback<List<ItemDTO>>() {
+				itemServiceCall.getStatList(new AsyncCallback<List<ItemDTO>>() {
 
 					@Override
 					public void onFailure(Throwable caught) {

@@ -45,8 +45,7 @@ public class CreateUserView extends Composite {
 		return createUserBtn;
 	}
 	
-	
-
+	// Validate data from textboxes
 	public boolean validate(List<PersonDTO>list) {
 		// check if all fields are valid
 		if (FieldVerifier.isValidEmail(txtName.getText()) && FieldVerifier.isUserAlreadyThere(list, txtName.getText()) && FieldVerifier.isValidPassword(txtPassword.getText()) && FieldVerifier.isValidSaldo(txtSaldo.getText())) {

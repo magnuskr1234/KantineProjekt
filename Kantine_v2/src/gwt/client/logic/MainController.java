@@ -7,22 +7,13 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
-
 import gwt.client.service.ItemService;
 import gwt.client.service.ItemServiceAsync;
 import gwt.client.service.PersonService;
 import gwt.client.service.PersonServiceAsync;
 import gwt.client.ui.MainView;
-import gwt.client.ui.admin.AdminHeaderView;
-import gwt.client.ui.admin.AdminMenuView;
-import gwt.client.ui.admin.AdminView;
-import gwt.client.ui.login.LoginHeaderView;
 import gwt.client.ui.login.LoginView;
-import gwt.client.ui.user.BasketView;
-import gwt.client.ui.user.UserHeaderView;
 import gwt.client.ui.user.UserMenuView;
-import gwt.client.ui.user.UserView;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 
@@ -34,21 +25,12 @@ import gwt.shared.PersonDTO;
 public class MainController {
 
 	// References for views
-	//private AdminView adminView;
 	private MainView mainView;
 	private LoginView loginView;
-	private LoginHeaderView loginHeaderView;
-	private UserMenuView userMenuView;
-	//private BasketView basketView;
-	//private AdminMenuView adminMenu;
-	private UserView userView;
-	private UserHeaderView userHeaderView;
-
-	private AdminHeaderView adminHeaderView;
 
 	// Service classes for async callbacks to server
 	private PersonServiceAsync personServiceCall = GWT.create(PersonService.class);
-	private ItemServiceAsync itemDAO = GWT.create(ItemService.class);
+	private ItemServiceAsync itemServiceCall = GWT.create(ItemService.class);
 
 	// reference to data transfer object
 	private PersonDTO personDTO;
@@ -61,47 +43,17 @@ public class MainController {
 	private UserController userController;
 
 	public MainController(MainView mainView) {
-		
+		//Instantiate pagecontroller
 		this.mainView = mainView;
 
+		// Reference
 		loginView = mainView.getLoginView();
-		
+
 		//Add clickhandler for login button
 		loginView.getBtnOk().addClickHandler(new LoginHandler());
-	/*	userView = new UserView();
-		adminView = new AdminView();
-		//loginHeaderView = mainView.getloginHeaderView();
-		loginView = mainView.getLoginView();
-		
-		// Fejl her
-		basketView = userView.getBasketView();
-		Window.alert("-0,5.");
-		userMenuView = userView.getUserMenuView();
-		
-		
-		adminHeaderView = adminView.getadminHeaderView();
-		adminMenu = adminView.getadminMenu();
 
-		userMenuView = userView.getUserMenuView();
-		
-		userHeaderView = userView.getuserHeaderView();
-
-		// Add loginview handlers
-		loginView.getBtnOk().addClickHandler(new LoginHandler());
-		
-		// Add logoutview handlers
-		adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
-		userHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
-
-		Window.alert("0.");
-		// Show login when compiled.
-		mainView.changeView(loginView);
-		mainView.changeView(loginHeaderView);
-	*/
-	
-		adminController = new AdminController(mainView, personServiceCall, itemDAO);
-	
-		userController = new UserController(mainView, personServiceCall, itemDAO);
+		adminController = new AdminController(mainView, personServiceCall, itemServiceCall);	
+		userController = new UserController(mainView, personServiceCall, itemServiceCall);
 
 	}
 
@@ -110,68 +62,59 @@ public class MainController {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == loginView.getBtnOk())
+				personServiceCall.getPerson(loginView.getUserId(), loginView.getUserPw(), new AsyncCallback<PersonDTO>() {
 
-				
-			personServiceCall.getPerson(loginView.getUserId(), loginView.getUserPw(), new AsyncCallback<PersonDTO>() {
-
-				@Override
-				public void onFailure(Throwable caught) {
-					Window.alert("Serverfejl :" + caught.getMessage());
-				}
-
-				@Override
-				public void onSuccess(PersonDTO person) {
-					
-					if(person == null){
-						mainView.getLoginView().setError();
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
 					}
-					else if (person.getAdminStatus() == 1) {
-								adminController.setCurrentPerson(person);
-								loginView.resetError();
-								loginView.clearfields();
-								mainView.changeView(mainView.getAdminView());
-								/*
+
+					@Override
+					public void onSuccess(PersonDTO person) {
+
+						if(person == null){
+							mainView.getLoginView().setError();
+
+						} else if (person.getAdminStatus() == 1) {
+							adminController.setCurrentPerson(person);
+							loginView.resetError();
+							loginView.clearfields();
+							mainView.changeView(mainView.getAdminView());
+							/*
 								adminView.showAdminMenu();
 								adminView.showAdminHeader();
-								*/
-							}
+							 */
+						} else if (person.getAdminStatus() == 0) {
 
-							else if (person.getAdminStatus() == 0) {
-						
-								userController.setCurrentPerson(person);
-								currentPersonId = person.getId();
-								mainView.getUserView().loginOk(person.getName());
-								mainView.getUserView().updateSaldoHeader(person.getSaldo());
-								mainView.getUserView().getBasketView().setCurrentUserSaldo(person.getSaldo());
-								userMenuView.setcuSaldo(person.getSaldo());
-								loginView.resetError();
-								loginView.clearfields();
-								mainView.changeView(mainView.getUserView());
-								
-								// Make RPC call to get all items.
-								itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
+							userController.setCurrentPerson(person);
+							currentPersonId = person.getId();
+							mainView.getUserView().loginOk(person.getName());
+							mainView.getUserView().updateSaldoHeader(person.getSaldo());
+							mainView.getUserView().getBasketView().setCurrentUserSaldo(person.getSaldo());
+							UserMenuView.setcuSaldo(person.getSaldo());
+							loginView.resetError();
+							loginView.clearfields();
+							mainView.changeView(mainView.getUserView());
 
-									@Override
-									public void onFailure(Throwable caught) {
-										Window.alert("Serverfejl :" + caught.getMessage());
-									}
+							// Make RPC call to get all items.
+							itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
 
-									@Override
-									public void onSuccess(List<ItemDTO> result) {
-										//Populate user menu with items from database
-										mainView.getUserView().showMenuView(result);
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert("Serverfejl :" + caught.getMessage());
+								}
 
-									}
-								});
-
-							
-						}					
-					loginView.clearfields();
-				}
-			});
-		
+								@Override
+								public void onSuccess(List<ItemDTO> result) {
+									//Populate user menu with items from database
+									mainView.getUserView().showMenuView(result);
+								}
+							});
+						}	
+						//Clear login fields
+						loginView.clearfields();
+					}
+				});
+		}
 	}
-	}
-
-
 }

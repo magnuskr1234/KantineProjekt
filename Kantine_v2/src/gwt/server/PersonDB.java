@@ -29,7 +29,6 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 	private PreparedStatement updatePersonStmt = null;
 	private PreparedStatement getPersonStmt = null;
 	private PreparedStatement getPersonsStmt = null;
-	private PreparedStatement getSizeStmt = null;
 	private PreparedStatement deletePersonStmt = null;
 
 	public PersonDB() throws Exception {
@@ -52,10 +51,6 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 			// create query that get all persons from table "persons"
 			getPersonsStmt = connection.prepareStatement( 
 					"SELECT * FROM customers ORDER BY name "); 
-
-			// create query that gets size of kartotek
-			getSizeStmt = connection.prepareStatement( 
-					"SELECT COUNT(*) FROM customers ");
 
 			// create query that deletes a person in kartotek
 			deletePersonStmt = connection.prepareStatement( 
@@ -159,9 +154,6 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
 	@Override
 	public void deletePerson(int id) throws Exception {
-	
-		
-	
 		
 		try {
 			deletePersonStmt.setInt(1, id);
