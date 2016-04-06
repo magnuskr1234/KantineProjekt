@@ -92,7 +92,7 @@ public class CreateUserView extends Composite {
 		radioAdmin.setValue(false);
 	}
 	
-	// return data entered 
+	// Return data entered 
 	public PersonDTO getCurrentPerson() {
 		return pDTO;
 	}

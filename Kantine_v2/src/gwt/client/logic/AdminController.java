@@ -65,12 +65,10 @@ public class AdminController {
 
 		adminHeaderView = adminView.getadminHeaderView();
 		adminMenu = adminView.getadminMenu();
-
 		createItemView = adminView.getcreateItem();
 		createUserView = adminView.getcreateUser();
 		editItemView = adminView.geteditItem();
 		editPersonView = adminView.geteditPerson();
-
 		showUserListView = adminView.getshowUserList();
 		showItemListView = adminView.getshowItemList();
 		statisticView = adminView.getstatistic();
@@ -336,7 +334,7 @@ public class AdminController {
 
 					@Override
 					public void onSuccess(List<PersonDTO> result) {
-						showUserListView.pop(result);
+						showUserListView.populateUserList(result);
 					}
 				});
 
@@ -378,7 +376,7 @@ public class AdminController {
 
 					@Override
 					public void onSuccess(List<ItemDTO> result) {
-						showItemListView.pop(result);
+						showItemListView.populateItemList(result);
 					}
 				});
 

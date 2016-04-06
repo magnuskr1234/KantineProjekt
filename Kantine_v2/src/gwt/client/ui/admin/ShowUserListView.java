@@ -5,13 +5,10 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
-import com.sun.java.swing.plaf.windows.resources.windows;
-
 import gwt.shared.PersonDTO;
 
 import java.util.List;
@@ -44,7 +41,7 @@ public class ShowUserListView extends Composite {
 	// id of person where event happened
 	public int personId;
 	public static double saldoUpdate;
-	
+
 	public static double getSaldoUpdate(){
 		return saldoUpdate;
 	}
@@ -56,15 +53,16 @@ public class ShowUserListView extends Composite {
 	public void setPersonId(int personId) {
 		this.personId = personId;
 	}
-	
-	public void setSaldo(double saldo){
-		this.saldoUpdate = saldoUpdate;
-	}
+
+	/*public void setSaldo(double saldo){
+		this.saldoUpdate = saldo;
+	}*/
 
 	// Handlers
 	private EditHandler editHandler;
 	private DeleteHandler deleteHandler;
 
+	// Reference for PersonDTO
 	private PersonDTO personDTO;
 
 	public ShowUserListView() {
@@ -78,11 +76,6 @@ public class ShowUserListView extends Composite {
 		controllerDeleteBtn = new Button();
 
 		personDTO = new PersonDTO();
-
-		/*
-		 * try { db.savePerson(person) ; } catch (Exception e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
 	}
 
 	public Button getControllerEditBtn() {
@@ -97,23 +90,23 @@ public class ShowUserListView extends Composite {
 		return personDTO;
 	}
 
-	 // delete row where delete-event happened
-	  public void deleteEventRow() {
-	    userTable.removeRow(eventRowIndex);
-	  }
-	  
-	  // update data in row where edit-event happened 
-	  public void updateRow(PersonDTO personDTO) {
-	    userTable.setText(eventRowIndex, 1, personDTO.getName());
-	    userTable.setText(eventRowIndex, 2, "" + personDTO.getSaldo()); 
-	  }
+	// delete row where delete-event happened
+	public void deleteEventRow() {
+		userTable.removeRow(eventRowIndex);
+	}
+
+	// update data in row where edit-event happened 
+	public void updateRow(PersonDTO personDTO) {
+		userTable.setText(eventRowIndex, 1, personDTO.getName());
+		userTable.setText(eventRowIndex, 2, "" + personDTO.getSaldo()); 
+	}
 	/**
 	 * Flextable bliver tilføjet rækker samt værdier.
 	 * 
 	 * @throws Exception
 	 */
 
-	public void pop(List<PersonDTO> pList) {
+	public void populateUserList(List<PersonDTO> pList) {
 		// remove table data
 		userTable.removeAllRows();
 
@@ -126,13 +119,6 @@ public class ShowUserListView extends Composite {
 		userTable.getFlexCellFormatter().setWidth(0, 5, "50px");
 		userTable.getFlexCellFormatter().setWidth(0, 6, "50px");
 
-//		// set headers in flextable
-//		userTable.setText(0, 0, "Id");
-//		userTable.setText(0, 1, "Brugernavn");
-//		userTable.setText(0, 2, "Adgangskode");
-//		userTable.setText(0, 3, "Saldo");
-//		userTable.setText(0, 4, "Administrator");
-
 		// style table
 		userTable.addStyleName("FlexTable");
 		userTable.getRowFormatter().addStyleName(0, "FlexTable-Header");
@@ -142,23 +128,23 @@ public class ShowUserListView extends Composite {
 			userTable.setText(i + 1, 1, pList.get(i).getName());
 			userTable.setText(i + 1, 2, "" + pList.get(i).getPassword());
 			userTable.setText(i + 1, 3, "" + pList.get(i).getSaldo());
-			
+
 			if (pList.get(i).getAdminStatus() == 1){
 				AdminStatus = "Ja";
 			}else{
 				AdminStatus = "Nej";
 			}
-			
+
 			userTable.setText(i + 1, 4, AdminStatus); 
 		}
 
 		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
 		// hver række.pList.size()
 		for (int i = 0; i < pList.size(); i++) {
-			Button edit = new Button("Tilføj til saldo");
+			Button edit = new Button("Tank saldo op");
 			edit.getElement().setId("editButton");
 			userTable.setWidget(i + 1, 5, edit);
-			
+
 			Button delete = new Button("Slet bruger");
 			delete.getElement().setId("deleteButton");
 			userTable.setWidget(i + 1, 6, delete);
@@ -167,13 +153,12 @@ public class ShowUserListView extends Composite {
 			edit.addClickHandler(editHandler);
 			delete.addClickHandler(deleteHandler);
 		}
-		
-		
+
 	}
 
-	
-	// Handler til at håndtere et tryk på knappen "Slet bruger"
+	// Handler for deleting a user
 	private class DeleteHandler implements ClickHandler {
+		@Override
 		public void onClick(ClickEvent event) {
 			// save event row index
 			eventRowIndex = userTable.getCellForEvent(event).getRowIndex();
@@ -188,26 +173,25 @@ public class ShowUserListView extends Composite {
 		}
 	}
 
-	// Handler til at håndtere et tryk på knappen "Opdater saldo"
+	// Handler for saldo update
 	private class EditHandler implements ClickHandler {
+		@Override
 		public void onClick(ClickEvent event) {
-			
+
 			// get rowindex where event happened
 			eventRowIndex = userTable.getCellForEvent(event).getRowIndex();
 			// populate personDTO
-			 personDTO.setId(Integer.parseInt(userTable.getText(eventRowIndex, 0)));
-			 personDTO.setName(userTable.getText(eventRowIndex, 1));
-			 personDTO.setSaldo(Double.parseDouble(userTable.getText(eventRowIndex, 3))); 
-			 
+			personDTO.setId(Integer.parseInt(userTable.getText(eventRowIndex, 0)));
+			personDTO.setName(userTable.getText(eventRowIndex, 1));
+			personDTO.setSaldo(Double.parseDouble(userTable.getText(eventRowIndex, 3))); 
+
 			// save person id
 			setPersonId( Integer.parseInt(userTable.getText(eventRowIndex, 0)));
-			
-				
-			 saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 3));
+
+			//Update saldo
+			saldoUpdate = Double.parseDouble(userTable.getText(eventRowIndex, 3));
 			// fire controller edit button event
 			controllerEditBtn.fireEvent(new ClickEvent() {});
-			
-			
 		}
 	}
 

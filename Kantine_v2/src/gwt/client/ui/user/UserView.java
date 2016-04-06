@@ -43,12 +43,12 @@ public class UserView extends Composite {
 		basketView = new BasketView();
 		userHistoryView = new UserHistoryView();
 		
-		//header
+		//User header 
 		userHeaderView = new UserHeaderView();
 
 		//add contentviews to decklayout panel
-		contentPanel.add(userMenuView);
 		basket.add(basketView);
+		contentPanel.add(userMenuView);
 		contentPanel.add(userHistoryView);
 
 		//Header 
@@ -59,8 +59,6 @@ public class UserView extends Composite {
 		headerPanel.showWidget(userHeaderView);
 		basketView.populateBasket(UserMenuView.tempItemList);
 		basket.showWidget(basketView);
-		
-		
 	}
 
 	// Show content widget
@@ -68,21 +66,18 @@ public class UserView extends Composite {
 		contentPanel.showWidget(w);
 	}
 
-
-
-	public void showHistoryView(){
-		contentPanel.showWidget(userHistoryView);
-	}
-
+	// Show user menu and populate with data
 	public void showMenuView(List<ItemDTO> pList){
 		userMenuView.populateUserMenu(pList);
 		contentPanel.showWidget(userMenuView);
 	}
 
+	// Show basket and populate with data
 	public void showBasketWidget(){
 		basketView.populateBasket(UserMenuView.tempItemList);
 		basket.showWidget(basketView);
 	}
+	
 	//Show user header
 		public void showUserHeader(){
 			headerPanel.showWidget(userHeaderView);
@@ -110,10 +105,8 @@ public class UserView extends Composite {
 		userHeaderView.setUser(user);
 	}
 	
-	// Set saldo 
+	// Set saldo for header
 	public void updateSaldoHeader(double saldo){
 		userHeaderView.setSaldo(saldo);
 	}
-
-
 }

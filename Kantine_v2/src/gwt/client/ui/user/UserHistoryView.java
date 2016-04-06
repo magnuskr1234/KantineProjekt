@@ -23,11 +23,10 @@ public class UserHistoryView extends Composite {
 	interface UserHistoryViewUiBinder extends UiBinder<Widget, UserHistoryView> {
 	}
 
-	// contructor
+	// Contructor
 	public UserHistoryView() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-
 
 	// Populate flextable with history for current user
 	public void populateUserHistory(List<ItemDTO> pList) {

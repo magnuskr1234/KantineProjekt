@@ -207,7 +207,7 @@ public class UserController {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == userHeaderView.getBtnHistory()) {
-				userView.showHistoryView();
+				userView.changeWidget(userHistoryView);
 
 				itemServiceCall.getHistoryList(currentPersonId, new AsyncCallback<List<ItemDTO>>() {
 
@@ -223,7 +223,7 @@ public class UserController {
 				});
 
 				// Show updated history view
-				userView.showHistoryView();
+				userView.changeWidget(userHistoryView);
 			}
 		}
 	}

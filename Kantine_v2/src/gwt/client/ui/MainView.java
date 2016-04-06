@@ -11,10 +11,10 @@ import gwt.client.ui.user.UserView;
 
 public class MainView extends Composite{
 	
-	// The main panel in this class
+		// The main panel in this class
 		private DeckLayoutPanel contentPanel;
 		
-		// The three main panels of the applikation
+		// The three main panels of the application
 		private LoginView loginView;
 		private UserView userView;
 		private AdminView adminView;
@@ -28,7 +28,6 @@ public class MainView extends Composite{
 			
 			loginView = new LoginView();
 			contentPanel.add(loginView);
-
 			
 			userView = new UserView();
 			contentPanel.add(userView);

@@ -7,18 +7,16 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 import gwt.shared.ItemDTO;
-import gwt.shared.PersonDTO;
 
 public class ShowItemListView extends Composite {
 
 	private static ShowItemListViewUiBinder uiBinder = GWT.create(ShowItemListViewUiBinder.class);
-	
+
 	@UiField
 	public FlexTable itemTable;
 
@@ -34,7 +32,7 @@ public class ShowItemListView extends Composite {
 
 	// id of person where event happened
 	public int itemId;
-	
+
 
 	public int getItemId() {
 		return itemId;
@@ -61,11 +59,6 @@ public class ShowItemListView extends Composite {
 		controllerDeleteBtn = new Button();
 
 		itemDTO = new ItemDTO();
-
-		/*
-		 * try { db.savePerson(person) ; } catch (Exception e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
 	}
 
 	public Button getControllerEditBtn() {
@@ -80,26 +73,23 @@ public class ShowItemListView extends Composite {
 		return itemDTO;
 	}
 
+	// delete row where delete-event happened
+	public void deleteEventRow() {
+		itemTable.removeRow(eventRowIndex);
+	}
+
+	// update data in row where edit-event happened 
+	public void updateRow(ItemDTO itemDTO) {
+		itemTable.setText(eventRowIndex, 1, itemDTO.getName());
+		itemTable.setText(eventRowIndex, 2, "" + itemDTO.getPrice()); 
+	}
 	
-	 // delete row where delete-event happened
-	  public void deleteEventRow() {
-	    itemTable.removeRow(eventRowIndex);
-	  }
-	  
-	  // update data in row where edit-event happened 
-	  public void updateRow(ItemDTO itemDTO) {
-		  itemTable.setText(eventRowIndex, 1, itemDTO.getName());
-		  itemTable.setText(eventRowIndex, 2, "" + itemDTO.getPrice()); 
-	  }
 	/**
 	 * Flextable bliver tilføjet rækker samt værdier.
 	 * 
 	 * @throws Exception
 	 */
-	
-
-
-	public void pop(List<ItemDTO> pList) {
+	public void populateItemList(List<ItemDTO> pList) {
 		// remove table data
 		itemTable.removeAllRows();
 
@@ -128,11 +118,11 @@ public class ShowItemListView extends Composite {
 		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
 		// hver række.
 		for (int i = 0; i < pList.size(); i++) {
-			
+
 			Button edit = new Button("Opdater pris");
 			edit.getElement().setId("editButton");
 			itemTable.setWidget(i + 1, 3, edit);
-			
+
 			Button delete = new Button("Slet vare");
 			delete.getElement().setId("deleteButton");
 			itemTable.setWidget(i + 1, 4, delete);
@@ -145,10 +135,11 @@ public class ShowItemListView extends Composite {
 
 	// Handler til at håndtere et tryk på knappen "Slet bruger"
 	private class DeleteHandler implements ClickHandler {
+		@Override
 		public void onClick(ClickEvent event) {
 			// save event row index
 			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
-			
+
 			// save person id
 			itemId = Integer.parseInt(itemTable.getText(eventRowIndex, 0));
 
@@ -161,20 +152,21 @@ public class ShowItemListView extends Composite {
 
 	// Handler til at håndtere et tryk på knappen "Opdater pris"
 	private class EditHandler implements ClickHandler {
+		@Override
 		public void onClick(ClickEvent event) {
 			// get rowindex where event happened
-			 eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
+			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
 			// populate itemDTO
-			 itemDTO.setId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
-			 itemDTO.setName(itemTable.getText(eventRowIndex, 1));
-			 itemDTO.setPrice(Integer.parseInt(itemTable.getText(eventRowIndex, 2)));
-			 					
-			 // Save item id
-			 setItemId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
-			 
-			 // fire controller edit button event
+			itemDTO.setId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
+			itemDTO.setName(itemTable.getText(eventRowIndex, 1));
+			itemDTO.setPrice(Integer.parseInt(itemTable.getText(eventRowIndex, 2)));
+
+			// Save item id
+			setItemId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
+
+			// fire controller edit button event
 			controllerEditBtn.fireEvent(new ClickEvent() {});
-			
+
 		}
 	}
 
