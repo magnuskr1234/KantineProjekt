@@ -26,6 +26,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 
 	private PreparedStatement savePersonStmt = null;
 	private PreparedStatement updatePersonStmt = null;
+	private PreparedStatement getPersonStmt = null;
 	private PreparedStatement getPersonsStmt = null;
 	private PreparedStatement getSizeStmt = null;
 	private PreparedStatement deletePersonStmt = null;
@@ -43,7 +44,11 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 			updatePersonStmt = connection.prepareStatement( 
 					"UPDATE customers set saldo = ?  WHERE id = ?" );
 
-			// create query that get all persons in kartotek
+			// Create query that get 1 person 
+			getPersonStmt = connection.prepareStatement(
+					"SELECT * FROM customers where name = ? AND password = ?");
+			
+			// create query that get all persons from table "persons"
 			getPersonsStmt = connection.prepareStatement( 
 					"SELECT * FROM customers ORDER BY name "); 
 
@@ -162,5 +167,40 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 		} catch (SQLException e) {
 			throw new DALException(" \"deletePerson\" fejlede");
 		} 
+	}
+
+	@Override
+	public PersonDTO getPerson(String username, String password) throws Exception {
+		ResultSet resultSet = null;
+		PersonDTO personDTO = null;
+		
+		try{
+		getPersonStmt.setString(1, username);
+		getPersonStmt.setString(2, password);
+		
+		resultSet = getPersonStmt.executeQuery();
+		
+		while (resultSet.next()){
+			personDTO = new PersonDTO();
+			
+			personDTO.setId(resultSet.getInt("id"));
+			personDTO.setName(resultSet.getString("name"));
+			personDTO.setPassword(resultSet.getString("password"));
+			personDTO.setAdminStatus(resultSet.getInt("admin"));
+			personDTO.setSaldo(resultSet.getDouble("saldo"));
+		}
+		// The catch which is used if either the statement or connection is failing
+				} catch (SQLException e) {
+					e.printStackTrace();
+				// A finally try catch which closes the result set and it can't then close the db connection
+				} finally {
+					try {
+						resultSet.close();
+					} catch (SQLException ex) {
+						ex.printStackTrace();
+						close();
+					}
+				}
+		return personDTO;
 	}
 	}

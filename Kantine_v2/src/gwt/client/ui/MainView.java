@@ -29,6 +29,7 @@ public class MainView extends Composite{
 			loginView = new LoginView();
 			contentPanel.add(loginView);
 
+			
 			userView = new UserView();
 			contentPanel.add(userView);
 

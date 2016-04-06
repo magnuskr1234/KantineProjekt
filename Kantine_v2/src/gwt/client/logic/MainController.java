@@ -110,7 +110,7 @@ public class MainController {
 			if (event.getSource() == loginView.getBtnOk())
 
 				
-			personServiceCall.getPersons((new AsyncCallback<List<PersonDTO>>() {
+			personServiceCall.getPerson(loginView.getUserId(), loginView.getUserPw(), new AsyncCallback<PersonDTO>() {
 
 				@Override
 				public void onFailure(Throwable caught) {
@@ -118,12 +118,7 @@ public class MainController {
 				}
 
 				@Override
-				public void onSuccess(List<PersonDTO> result) {
-					for (PersonDTO person : result) {
-
-						if (loginView.getUserId().equals(person.getName())
-								&& loginView.getUserPw().equals(person.getPassword())) {
-
+				public void onSuccess(PersonDTO person) {
 							if (person.getAdminStatus() == 1) {
 								adminController.setCurrentPerson(person);
 								loginView.resetError();
@@ -161,17 +156,17 @@ public class MainController {
 									}
 								});
 
-							}
+							
 						} else
 							loginView.setError();
 
-					}
+					
 					loginView.clearfields();
 				}
-			}));
-		}
+			});
+		
 	}
-
+	}
 	// Logout handler
 	private class LogoutHandler implements ClickHandler {
 

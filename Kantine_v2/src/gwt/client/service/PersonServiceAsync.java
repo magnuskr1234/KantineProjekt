@@ -11,6 +11,8 @@ public interface PersonServiceAsync {
 	void savePerson(PersonDTO p, AsyncCallback<Void> callback);
 
 	void updatePerson(double saldo, int id, AsyncCallback<Void> callback);
+	
+	void getPerson(String username, String password, AsyncCallback<PersonDTO> callback);
 
 	void getPersons(AsyncCallback<List<PersonDTO>> callback);
 
