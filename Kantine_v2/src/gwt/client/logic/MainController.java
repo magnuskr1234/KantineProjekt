@@ -26,6 +26,11 @@ import gwt.client.ui.user.UserView;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 
+/**
+ * The main controller handles the login process
+ * @author magnusrasmussen
+ *
+ */
 public class MainController {
 
 	// References for views

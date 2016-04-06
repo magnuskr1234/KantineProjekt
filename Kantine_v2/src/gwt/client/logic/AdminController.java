@@ -14,7 +14,6 @@ import gwt.client.ui.admin.AdminMenuView;
 import gwt.client.ui.admin.AdminView;
 import gwt.client.ui.admin.CreateItemView;
 import gwt.client.ui.admin.CreateUserView;
-import gwt.client.ui.admin.DeleteItemView;
 import gwt.client.ui.admin.EditItemView;
 import gwt.client.ui.admin.EditPersonView;
 import gwt.client.ui.admin.ShowItemListView;
@@ -24,7 +23,11 @@ import gwt.client.ui.user.UserMenuView;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 
-
+/**
+ * The admin controller handles the admin views and logic.
+ * @author magnusrasmussen
+ *
+ */
 public class AdminController {
 	
 	private AdminView adminView;
@@ -35,8 +38,6 @@ public class AdminController {
 	private CreateUserView createUserView;
 	private CreateItemView createItemView;
 	private StatisticView statisticView;
-
-	private DeleteItemView deleteItemView;
 
 	private EditItemView editItemView;
 	private EditPersonView editPersonView;
@@ -70,7 +71,6 @@ public class AdminController {
 		
 		createItemView = adminView.getcreateItem();
 		createUserView = adminView.getcreateUser();
-		deleteItemView = adminView.getdeleteItem();
 		editItemView = adminView.geteditItem();
 		editPersonView = adminView.geteditPerson();
 		
@@ -186,7 +186,7 @@ public class AdminController {
 		public void onClick(ClickEvent event) {		
 			if(event.getSource() == editPersonView.getBtnConfirm()){	
 
-				//personDTO = editPersonView.getpersonDTO();
+				
 				
 				if (editPersonView.validate(showUserListView)){
 
@@ -201,7 +201,7 @@ public class AdminController {
 						public void onSuccess(Void result) {
 							Window.alert("Saldo opdateret!");	
 							adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
-							adminView.showUserList();
+							adminView.changeWidget(showUserListView);
 						}				
 
 					}); 
@@ -266,11 +266,10 @@ public class AdminController {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			// replace personDAO call with an RPC
+			
 			if (event.getSource() == createItemView.getcreateItemBtn())
 				
-				//Start
-				
+		
 				itemDAO.getItems((new AsyncCallback<List<ItemDTO>>() {
 					@Override
 					public void onFailure(Throwable caught) {
@@ -333,6 +332,7 @@ public class AdminController {
 			int personId = showUserListView.getPersonId();
 
 			if (event.getSource() == showUserListView.getControllerDeleteBtn())
+				if(Window.confirm("Er du sikker på at du vil slette brugeren?"))
 				personServiceCall.deletePerson(personId, new AsyncCallback<Void>() {
 					@Override
 					public void onFailure(Throwable caught) {
@@ -372,6 +372,7 @@ public class AdminController {
 			int itemId = showItemListView.getItemId();
 
 			if (event.getSource() == showItemListView.getControllerDeleteBtn())
+				if(Window.confirm("Er du sikker på at du vil slette varen?"))
 				itemDAO.deleteItem(itemId, new AsyncCallback<Void>() {
 					@Override
 					public void onFailure(Throwable caught) {

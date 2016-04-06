@@ -25,6 +25,11 @@ import gwt.client.service.PersonServiceAsync;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 
+/**
+ * The user controller handles the different user views and logic. 
+ * @author magnusrasmussen
+ *
+ */
 public class UserController {
 	
 	// References for views
@@ -116,7 +121,7 @@ public class UserController {
 			}
 			// Confirm purchase button 
 			if(event.getSource() == basketView.getBuyBtn()){
-				
+				if(Window.confirm("Er du sikker på at du vil købe?"))
 				if(basketView.getBasketTable().getRowCount() > 3){
 					
 				for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {

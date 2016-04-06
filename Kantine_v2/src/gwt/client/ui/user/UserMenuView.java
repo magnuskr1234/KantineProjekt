@@ -16,6 +16,11 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.shared.ItemDTO;
 
+/** 
+ * This view contains all the elements for the user menu. 
+ * @author magnusrasmussen
+ *
+ */
 public class UserMenuView extends Composite {
 
 	private static UserMenuViewUiBinder uiBinder = GWT.create(UserMenuViewUiBinder.class);
@@ -144,9 +149,6 @@ public class UserMenuView extends Composite {
 			itemDTO.setId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 			itemDTO.setName(itemTable.getText(eventRowIndex, 1));
 			itemDTO.setPrice(Double.parseDouble(itemTable.getText(eventRowIndex, 2))); 
-			
-			
-		
 		
 			
 			if(saldoCheck()){

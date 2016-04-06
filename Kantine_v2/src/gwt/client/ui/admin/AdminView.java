@@ -7,6 +7,11 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * This view contains all contentviews for admin
+ * @author magnusrasmussen
+ *
+ */
 public class AdminView extends Composite {
 
 	private static AdminViewUiBinder uiBinder = GWT.create(AdminViewUiBinder.class);
@@ -16,7 +21,6 @@ public class AdminView extends Composite {
 	private AdminMenuView adminMenu;
 	private CreateItemView createItem;
 	private CreateUserView createUser;	
-	private DeleteItemView deleteItem;
 	private EditItemView editItem;
 	private EditPersonView editPerson;
 	private ShowUserListView showUserList;
@@ -28,42 +32,43 @@ public class AdminView extends Composite {
 	interface AdminViewUiBinder extends UiBinder<Widget, AdminView> {
 	}
 
+	// Contructor
 	public AdminView() {
 		initWidget(uiBinder.createAndBindUi(this));
+		
 		//Make content view
 				adminMenu = new AdminMenuView();
 				createItem = new CreateItemView();
-				createUser = new CreateUserView();		
-				deleteItem = new DeleteItemView();
+				createUser = new CreateUserView();	
 				editItem = new EditItemView();
 				editPerson = new EditPersonView();
 				showUserList = new ShowUserListView();
 				showItemList = new ShowItemListView();
 				statistic = new StatisticView();
 				
-				// Header & Login 
+				// Header
 				adminHeaderView = new AdminHeaderView();
 				
-				//add contentviews to decklayout panel
+				//Add contentviews to decklayout panel
 				contentPanel.add(adminMenu);
 				contentPanel.add(createItem);
-				contentPanel.add(createUser);	
-				contentPanel.add(deleteItem);
+				contentPanel.add(createUser);
 				contentPanel.add(editItem);
 				contentPanel.add(editPerson);
 				contentPanel.add(showUserList);
 				contentPanel.add(showItemList);
 				contentPanel.add(statistic);
 				
-				// Add Header & login 
+				// Add Header to headerpanel decklayoutpanel
 				headerPanel.add(adminHeaderView);		
 				
+				//Initially show admin menu and adminheader
 				contentPanel.showWidget(adminMenu);
 				headerPanel.showWidget(adminHeaderView);
 		
 	}
 	
-	// Get view
+	// Get views for admin functions. 
 		public AdminMenuView getadminMenu() {
 			return adminMenu;
 		}
@@ -74,10 +79,6 @@ public class AdminView extends Composite {
 
 		public CreateUserView getcreateUser(){
 			return createUser;
-		}
-
-		public DeleteItemView getdeleteItem(){
-			return deleteItem;
 		}
 
 		public EditItemView geteditItem(){
@@ -99,17 +100,19 @@ public class AdminView extends Composite {
 			return statistic;
 		}
 		
+		// Headers
+		public AdminHeaderView getadminHeaderView(){
+			return adminHeaderView;
+		}
+		
 		// Show content widget
 		public void changeWidget(Widget w){
 			contentPanel.showWidget(w);
 		}
 		
-		// Headers
-		public AdminHeaderView getadminHeaderView(){
-			return adminHeaderView;
-		}
+	
 
-		// Show Create Item
+	/*	// Show Create Item
 		public void showCreateItem(){
 			changeWidget(createItem);
 		}
@@ -148,6 +151,7 @@ public class AdminView extends Composite {
 		public void showAdminMenu(){
 			changeWidget(adminMenu);
 		}
+		*/
 
 		//Show admin Header
 		public void showAdminHeader(){

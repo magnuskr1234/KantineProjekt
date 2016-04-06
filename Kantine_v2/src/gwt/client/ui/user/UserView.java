@@ -11,7 +11,11 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.shared.ItemDTO;
 
-
+/** 
+ * This view contains all views for the user. 
+ * @author magnusrasmussen
+ *
+ */
 public class UserView extends Composite {
 
 	private static UserViewUiBinder uiBinder = GWT.create(UserViewUiBinder.class);
@@ -24,12 +28,13 @@ public class UserView extends Composite {
 	private BasketView basketView;
 	private UserHistoryView userHistoryView;
 
-	//Header
+	//Header view
 	private UserHeaderView userHeaderView;
 	
 	interface UserViewUiBinder extends UiBinder<Widget, UserView> {
 	}
 
+	// Contructor
 	public UserView() {
 		initWidget(uiBinder.createAndBindUi(this));
 

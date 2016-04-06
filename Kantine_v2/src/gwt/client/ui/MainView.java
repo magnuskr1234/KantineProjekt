@@ -43,8 +43,7 @@ public class MainView extends Composite{
 		}
 
 		/**
-		 * This method is used to change the mainView. In other words show another card
-		 * in the deck of cards.
+		 * This method is used to change the mainView
 		 * @param panel
 		 */
 		public void changeView(Widget panel) {
@@ -52,8 +51,7 @@ public class MainView extends Composite{
 		}
 
 		/**
-		 * The next three methods is simple getters for the three main panels
-		 * They are required to change the main panel 
+		 * Getters to change mainpanel. 
 		 * @return
 		 */
 		public LoginView getLoginView() {
