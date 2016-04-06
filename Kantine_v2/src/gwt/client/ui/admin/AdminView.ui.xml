@@ -5,8 +5,7 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-	<!-- <div class = "block-bg"></div>-->
-		<g:DockLayoutPanel unit="EM" width="100%" height="100%" styleName="background">
+			<g:DockLayoutPanel unit="EM" width="100%" height="100%" styleName="background">
 			<g:north size="5.0">
 				<g:DeckLayoutPanel ui:field="headerPanel" width="100%" styleName="header" height="65px"/>
 			</g:north>

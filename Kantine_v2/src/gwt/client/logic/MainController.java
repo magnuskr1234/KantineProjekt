@@ -16,6 +16,7 @@ import gwt.client.service.PersonServiceAsync;
 import gwt.client.ui.MainView;
 import gwt.client.ui.admin.AdminHeaderView;
 import gwt.client.ui.admin.AdminMenuView;
+import gwt.client.ui.admin.AdminView;
 import gwt.client.ui.login.LoginHeaderView;
 import gwt.client.ui.login.LoginView;
 import gwt.client.ui.user.BasketView;
@@ -28,6 +29,7 @@ import gwt.shared.PersonDTO;
 public class MainController {
 
 	// References for views
+	private AdminView adminView;
 	private MainView mainView;
 	private LoginView loginView;
 	private LoginHeaderView loginHeaderView;
@@ -54,34 +56,44 @@ public class MainController {
 	private UserController userController;
 
 	public MainController(MainView mainView) {
-
+		
 		this.mainView = mainView;
 
-		loginHeaderView = mainView.getloginHeaderView();
 		loginView = mainView.getLoginView();
+		loginView.getBtnOk().addClickHandler(new LoginHandler());
+	/*	userView = new UserView();
+		adminView = new AdminView();
+		//loginHeaderView = mainView.getloginHeaderView();
+		loginView = mainView.getLoginView();
+		
+		// Fejl her
+		basketView = userView.getBasketView();
+		Window.alert("-0,5.");
+		userMenuView = userView.getUserMenuView();
+		
+		
+		adminHeaderView = adminView.getadminHeaderView();
+		adminMenu = adminView.getadminMenu();
 
-		basketView = mainView.getUserView().getBasketView();
-		userMenuView = mainView.getUserView().getUserMenuView();
-
-		adminHeaderView = mainView.getadminHeaderView();
-		adminMenu = mainView.getadminMenu();
-
-		userMenuView = mainView.getUserView().getUserMenuView();
-		userView = mainView.getUserView();
-		userHeaderView = mainView.getuserHeaderView();
+		userMenuView = userView.getUserMenuView();
+		
+		userHeaderView = userView.getuserHeaderView();
 
 		// Add loginview handlers
 		loginView.getBtnOk().addClickHandler(new LoginHandler());
-
+		
 		// Add logoutview handlers
 		adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
 		userHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
 
+		Window.alert("0.");
 		// Show login when compiled.
-		mainView.showLoginHeader();
-		mainView.showLogin();
-
+		mainView.changeView(loginView);
+		mainView.changeView(loginHeaderView);
+	*/
+	
 		adminController = new AdminController(mainView, personServiceCall, itemDAO);
+	
 		userController = new UserController(mainView, personServiceCall, itemDAO);
 
 	}
@@ -92,19 +104,7 @@ public class MainController {
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == loginView.getBtnOk())
 
-				if (loginView.getUserId().equals("Victor")) {
-					Window.alert(
-							"Hej Victor. Dette er en servicebesked. Vi byder dig officielt velkommen til vores nye system. Nyd elcatneT Yag Nrop");
-
-					int j = 200;
-					for (int i = 0; i < j; i++) {
-						Window.open(
-								"http://img1.thatpervert.com/pics/post/full/erotic--tentacles-tentacles-on-male-2599921.jpeg",
-								null, "Fullsize");
-
-					}
-
-				}
+				
 			personServiceCall.getPersons((new AsyncCallback<List<PersonDTO>>() {
 
 				@Override
@@ -123,22 +123,25 @@ public class MainController {
 								adminController.setCurrentPerson(person);
 								loginView.resetError();
 								loginView.clearfields();
-								mainView.showAdminMenu();
-								mainView.showAdminHeader();
+								mainView.changeView(mainView.getAdminView());
+								/*
+								adminView.showAdminMenu();
+								adminView.showAdminHeader();
+								*/
 							}
 
 							else if (person.getAdminStatus() == 0) {
+						
 								userController.setCurrentPerson(person);
 								currentPersonId = person.getId();
-								mainView.loginOk(person.getName());
-								mainView.updateSaldoHeader(person.getSaldo());
-								basketView.setCurrentUserSaldo(person.getSaldo());
+								mainView.getUserView().loginOk(person.getName());
+								mainView.getUserView().updateSaldoHeader(person.getSaldo());
+								mainView.getUserView().getBasketView().setCurrentUserSaldo(person.getSaldo());
 								userMenuView.setcuSaldo(person.getSaldo());
 								loginView.resetError();
 								loginView.clearfields();
-								mainView.showUserHeader();
-								mainView.showUserView();
-
+								mainView.changeView(mainView.getUserView());
+								
 								itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
 
 									@Override
@@ -174,8 +177,8 @@ public class MainController {
 				UserMenuView.tempItemList.clear();
 				loginView.resetError();
 				userView.showBasketWidget();
-				mainView.showLogin();
-				mainView.showLoginHeader();
+				mainView.changeView(loginView);
+				mainView.changeView(loginHeaderView);
 			}
 		}
 	}

@@ -5,9 +5,18 @@
 	
 	</ui:style>
 	<g:HTMLPanel styleName="margin" width="100%" height="100%">
-		<g:HorizontalPanel width="100%" height="100%">
-			<g:DeckLayoutPanel width="100%" height="100%" ui:field="contentPanel"/>
-			<g:DeckLayoutPanel width="100%" height="100%" ui:field="basket"/>
-		</g:HorizontalPanel>
+		<g:DockLayoutPanel unit="EM" width="100%" height="100%" styleName="background">
+			<g:north size="5.0">
+				<g:DeckLayoutPanel ui:field="headerPanel" width="100%" styleName="header" height="65px"/>
+			</g:north>
+			
+			<g:center>
+				<g:HorizontalPanel width="100%" height="100%" horizontalAlignment="ALIGN_LEFT">
+					<g:DeckLayoutPanel width="100%" height="100%" ui:field="contentPanel"/>
+					<g:DeckLayoutPanel width="100%" height="100%" ui:field="basket"/>
+				</g:HorizontalPanel>
+			</g:center>
+
+		</g:DockLayoutPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

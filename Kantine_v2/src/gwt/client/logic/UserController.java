@@ -30,6 +30,7 @@ public class UserController {
 	// References for views
 	private MainView mainView;
 	
+	
 	private BasketView basketView;
 	
 	private UserHistoryView userHistoryView;
@@ -52,20 +53,25 @@ public class UserController {
 	
 	public UserController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemDAO){
 		// Instantiate pagecontroller
+		
 		this.mainView = mainView;
+		this.userView = mainView.getUserView();
 		this.itemDAO = itemDAO;
 		this.personServiceCall = personServiceCall;
 		
+		
+		
 		// Referncer til subview for user
-		basketView = mainView.getUserView().getBasketView();
-		userHeaderView = mainView.getuserHeaderView();
-		userHistoryView = mainView.getUserView().getUserHistoryView();
-		userMenuView = mainView.getUserView().getUserMenuView();
-		userView = mainView.getUserView();
+		basketView = userView.getBasketView();
+		userHeaderView = userView.getuserHeaderView();
+		userHistoryView = userView.getUserHistoryView();
+		userMenuView = userView.getUserMenuView();
+	//	userView = mainView.getUserView();
 		
 		// Add userHeader handlers
 		userHeaderView.getBtnHistory().addClickHandler(new HistoryHandler());
 		userHeaderView.getBtnMainMenu().addClickHandler(new UserReturnToMenuHandler());
+		userHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
 		
 		//Basketview buttons
 		basketView.getCancelBtn().addClickHandler(new BuyHandler());
@@ -82,6 +88,15 @@ public class UserController {
 		this.currentPersonId = currentPerson.getId();
 	}
 	
+	// Logout handler
+	private class LogoutHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+		mainView.changeView(mainView.getLoginView());
+		}
+	}
+	
 	private class BuyHandler implements ClickHandler {
 
 		@Override
@@ -96,7 +111,7 @@ public class UserController {
 				basketView.emptyTable();
 				
 				// change widget
-				mainView.changeWidget(basketView);
+				userView.changeWidget(basketView);
 
 			}
 			// Confirm purchase button 
@@ -136,8 +151,8 @@ public class UserController {
 						Window.alert("Tak for købet");
 						UserMenuView.tempItemList.clear();
 						basketView.setCurrentUserSaldo(basketView.getNewSaldo());
-						mainView.updateSaldoHeader(basketView.getNewSaldo());
-						mainView.showUserHeader();
+						userView.updateSaldoHeader(basketView.getNewSaldo());
+						userView.showUserHeader();
 						userView.showBasketWidget();
 					}				
 
@@ -184,7 +199,7 @@ public class UserController {
 
 					@Override
 					public void onSuccess(List<ItemDTO> result) {
-						mainView.getUserView().showMenuView(result);
+						userView.showMenuView(result);
 					}
 				});
 
@@ -199,7 +214,7 @@ public class UserController {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == userHeaderView.getBtnHistory()) {
-				mainView.getUserView().showHistoryView();
+				userView.showHistoryView();
 
 				itemDAO.getHistoryList(currentPersonId, new AsyncCallback<List<ItemDTO>>() {
 
@@ -214,7 +229,7 @@ public class UserController {
 					}
 				});
 
-				mainView.getUserView().showHistoryView();
+				userView.showHistoryView();
 			}
 		}
 	}

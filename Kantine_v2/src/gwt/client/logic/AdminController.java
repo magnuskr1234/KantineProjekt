@@ -11,6 +11,7 @@ import gwt.client.service.PersonServiceAsync;
 import gwt.client.ui.MainView;
 import gwt.client.ui.admin.AdminHeaderView;
 import gwt.client.ui.admin.AdminMenuView;
+import gwt.client.ui.admin.AdminView;
 import gwt.client.ui.admin.CreateItemView;
 import gwt.client.ui.admin.CreateUserView;
 import gwt.client.ui.admin.DeleteItemView;
@@ -19,12 +20,14 @@ import gwt.client.ui.admin.EditPersonView;
 import gwt.client.ui.admin.ShowItemListView;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
+import gwt.client.ui.user.UserMenuView;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 
 
 public class AdminController {
 	
+	private AdminView adminView;
 	private MainView mainView;
 	private AdminMenuView adminMenu;
 	private AdminHeaderView adminHeaderView;
@@ -56,24 +59,25 @@ public class AdminController {
 	public PersonDTO currentPeron;
 	
 	public AdminController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemDAO){
-
+		
 		this.mainView = mainView;
+		this.adminView = mainView.getAdminView();
 		this.itemDAO = itemDAO;
 		this.personServiceCall = personServiceCall;
 		
-		adminHeaderView = mainView.getadminHeaderView();
-		adminMenu = mainView.getadminMenu();
+		adminHeaderView = adminView.getadminHeaderView();
+		adminMenu = adminView.getadminMenu();
 		
-		createItemView = mainView.getcreateItem();
-		createUserView = mainView.getcreateUser();
-		deleteItemView = mainView.getdeleteItem();
-		editItemView = mainView.geteditItem();
-		editPersonView = mainView.geteditPerson();
+		createItemView = adminView.getcreateItem();
+		createUserView = adminView.getcreateUser();
+		deleteItemView = adminView.getdeleteItem();
+		editItemView = adminView.geteditItem();
+		editPersonView = adminView.geteditPerson();
 		
 		
-		showUserListView = mainView.getshowUserList();
-		showItemListView = mainView.getshowItemList();
-		statistic = mainView.getstatistic();
+		showUserListView = adminView.getshowUserList();
+		showItemListView = adminView.getshowItemList();
+		statistic = adminView.getstatistic();
 		
 		
 		
@@ -87,6 +91,7 @@ public class AdminController {
 		
 		// Add adminHeaderView Handlers
 		adminHeaderView.getBtnMainMenu().addClickHandler(new ReturnMainViewHandler());
+	 	adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
 		
 		// Add createUserView handler
 		createUserView.getCreateUserBtn().addClickHandler(new CreateUserHandler());
@@ -121,6 +126,14 @@ public class AdminController {
 	public void setCurrentPerson(PersonDTO currentPerson){
 		this.currentPeron = currentPerson;
 		this.currentPersonId = currentPerson.getId();
+	}
+	// Logout handler
+	private class LogoutHandler implements ClickHandler {
+
+		@Override
+		public void onClick(ClickEvent event) {
+		mainView.changeView(mainView.getLoginView());
+		}
 	}
 	
 	private class UpdateItemPriceHandler implements ClickHandler {
@@ -160,7 +173,7 @@ public class AdminController {
 			
 			// Edit item price button
 			if(event.getSource() == showItemListView.getControllerEditBtn()){
-				mainView.changeWidget(editItemView);
+				adminView.changeWidget(editItemView);
 
 			}
 		}
@@ -188,7 +201,7 @@ public class AdminController {
 						public void onSuccess(Void result) {
 							Window.alert("Saldo opdateret!");	
 							adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
-							mainView.showUserList();
+							adminView.showUserList();
 						}				
 
 					}); 
@@ -196,10 +209,10 @@ public class AdminController {
 			}
 			if(event.getSource() == editPersonView.getBtnCancel()){
 				editPersonView.clearFields();
-				mainView.changeWidget(showUserListView);
+				adminView.changeWidget(showUserListView);
 			}
 			if(event.getSource() == showUserListView.getControllerEditBtn()){
-				mainView.changeWidget(editPersonView);
+				adminView.changeWidget(editPersonView);
 			}
 		}
 	}
@@ -210,7 +223,7 @@ public class AdminController {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == adminMenu.getBtnCreateUser()) {
-				mainView.changeWidget(createUserView);
+				adminView.changeWidget(createUserView);
 			}
 
 			if (event.getSource() == createUserView.getCreateUserBtn())
@@ -296,7 +309,7 @@ public class AdminController {
 			if (event.getSource() == adminHeaderView.getBtnMainMenu()) {
 				createItemView.clearFields();
 				createUserView.clearFields();
-				mainView.changeWidget(adminMenu);
+				adminView.changeWidget(adminMenu);
 			}
 		}
 	}
@@ -307,7 +320,7 @@ public class AdminController {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == adminMenu.getBtnCreateItem()) {
-				mainView.changeWidget(createItemView);
+				adminView.changeWidget(createItemView);
 			}
 		}
 	}
@@ -348,7 +361,7 @@ public class AdminController {
 				});
 
 			}
-			mainView.changeWidget(showUserListView);
+			adminView.changeWidget(showUserListView);
 		}
 	}
 
@@ -389,7 +402,7 @@ public class AdminController {
 				});
 
 			}
-			mainView.changeWidget(showItemListView);
+			adminView.changeWidget(showItemListView);
 		}
 	}
 
@@ -427,7 +440,7 @@ public class AdminController {
 						statistic.setTotEarn();
 					}
 				});
-				mainView.changeWidget(statistic);
+				adminView.changeWidget(statistic);
 			}
 		}
 	}
