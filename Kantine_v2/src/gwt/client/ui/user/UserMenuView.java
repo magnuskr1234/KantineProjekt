@@ -42,8 +42,6 @@ public class UserMenuView extends Composite {
 
 	private static double cuSaldo;
 	
-
-	
 	// List to hold item objects 
 	public static List<ItemDTO> tempItemList  = new ArrayList<ItemDTO>();
 
@@ -96,7 +94,7 @@ public class UserMenuView extends Composite {
 	}
 	
 	//Flextable gets populated with rows and values. 
-	public void pop(List<ItemDTO> pList) {
+	public void populateUserMenu(List<ItemDTO> pList) {
 		// remove table data
 		itemTable.removeAllRows();
 		
@@ -121,8 +119,7 @@ public class UserMenuView extends Composite {
 			itemTable.setText(i + 1, 2, "" + pList.get(i).getPrice());
 		}
 
-		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
-		// hver række.
+		// Buttons for adding item to basket, is added to each row. 
 		for (int i = 0; i < pList.size(); i++) {
 			Button addToBasketBtn = new Button("Tilføj");
 			addToBasketBtn.getElement().setId("editBtn");
@@ -135,9 +132,9 @@ public class UserMenuView extends Composite {
 
 	// Handler til at håndtere et tryk på knappen "tilføj"
 	private class AddToBasketHandler implements ClickHandler {
+		
 		@Override
-		public void onClick(ClickEvent event) {
-			
+		public void onClick(ClickEvent event) {	
 			
 			boolean addItem = true;
 			itemDTO = new ItemDTO();
@@ -145,23 +142,21 @@ public class UserMenuView extends Composite {
 			
 			// get rowindex where event happened
 			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
-			// populate personDTO
+			
+			// populate itemDTO
 			itemDTO.setId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 			itemDTO.setName(itemTable.getText(eventRowIndex, 1));
 			itemDTO.setPrice(Double.parseDouble(itemTable.getText(eventRowIndex, 2))); 
 		
-			
+			//check if user have sufficient funds. 
 			if(saldoCheck()){
 			// save item id
 			setItemId( Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 
-			for (ItemDTO itemname : tempItemList)
-			{	
-				if(itemname.getName().equals(itemDTO.getName()))
-				{
+			for (ItemDTO itemname : tempItemList){	
+				if(itemname.getName().equals(itemDTO.getName())){
 					addItem = false;
 					itemname.setCount(itemname.getCount()+1);
-
 				}
 			}
 
@@ -169,11 +164,7 @@ public class UserMenuView extends Composite {
 				tempItemList.add(itemDTO);
 			}
 			
-			
-			basketView.pop(tempItemList);
-			
-			
-
+			basketView.populateBasket(tempItemList);
 			addToBasketBtn.fireEvent(new ClickEvent() {
 			});
 			}
@@ -181,18 +172,16 @@ public class UserMenuView extends Composite {
 		}
 	}
 	
+	// Saldo check
 	public boolean saldoCheck(){
 	
 		if(cuSaldo >= itemDTO.getPrice()){
+			//Update current saldo
 			setcuSaldo(cuSaldo - itemDTO.getPrice());
 			return true;
 		}else{
 			Window.alert("Ikke nok penge");
 		}return false;
-	
-		
-		
-		
 	}
 
 	public void deleteFromList(int i){

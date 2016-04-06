@@ -121,9 +121,10 @@ public class UserController {
 			}
 			// Confirm purchase button 
 			if(event.getSource() == basketView.getBuyBtn()){
-				if(Window.confirm("Er du sikker på at du vil købe?"))
+				
+				//Check if basket is empty 
 				if(basketView.getBasketTable().getRowCount() > 3){
-					
+					if(Window.confirm("Er du sikker på at du vil købe?"))
 				for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {
 					for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {						
 						// Save to history 
@@ -174,11 +175,10 @@ public class UserController {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			//basketView.validateSaldo();
-			if(event.getSource() == userMenuView.getAddToBasketBtn() ){	
-				
+			
+			if(event.getSource() == userMenuView.getAddToBasketBtn())
 				userView.showBasketWidget();
-			}
+			
 			
 			if( event.getSource() == basketView.getControllerDeleteBtn()){
 				basketView.deleteEventRow();
@@ -230,7 +230,7 @@ public class UserController {
 
 					@Override
 					public void onSuccess(List<ItemDTO> result) {
-						userHistoryView.pop(result);
+						userHistoryView.populateUserHistory(result);
 					}
 				});
 

@@ -116,6 +116,8 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 	}
 
 	
+	// Get all persons from database
+	@Override
 	public List<PersonDTO> getPersons() throws Exception {
 		List< PersonDTO > results = null;
 		ResultSet resultSet = null;
@@ -169,6 +171,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 		} 
 	}
 
+	// Get currentperson from database. Checks if user exists
 	@Override
 	public PersonDTO getPerson(String username, String password) throws Exception {
 		ResultSet resultSet = null;

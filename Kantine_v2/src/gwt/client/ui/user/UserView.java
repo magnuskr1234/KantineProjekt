@@ -57,7 +57,7 @@ public class UserView extends Composite {
 		// Initially show menu view
 		contentPanel.showWidget(userMenuView);
 		headerPanel.showWidget(userHeaderView);
-		basketView.pop(UserMenuView.tempItemList);
+		basketView.populateBasket(UserMenuView.tempItemList);
 		basket.showWidget(basketView);
 		
 		
@@ -75,12 +75,12 @@ public class UserView extends Composite {
 	}
 
 	public void showMenuView(List<ItemDTO> pList){
-		userMenuView.pop(pList);
+		userMenuView.populateUserMenu(pList);
 		contentPanel.showWidget(userMenuView);
 	}
 
 	public void showBasketWidget(){
-		basketView.pop(UserMenuView.tempItemList);
+		basketView.populateBasket(UserMenuView.tempItemList);
 		basket.showWidget(basketView);
 	}
 	//Show user header

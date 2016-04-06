@@ -10,6 +10,11 @@ import gwt.shared.ItemDTO;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.FlexTable;
 
+/**
+ * View for showing users purchase history
+ * @author magnusrasmussen
+ *
+ */
 public class UserHistoryView extends Composite {
 
 	private static UserHistoryViewUiBinder uiBinder = GWT.create(UserHistoryViewUiBinder.class);
@@ -18,13 +23,14 @@ public class UserHistoryView extends Composite {
 	interface UserHistoryViewUiBinder extends UiBinder<Widget, UserHistoryView> {
 	}
 
+	// contructor
 	public UserHistoryView() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 
 	// Populate flextable with history for current user
-	public void pop(List<ItemDTO> pList) {
+	public void populateUserHistory(List<ItemDTO> pList) {
 		// remove table data
 		historyTable.removeAllRows();
 
@@ -32,7 +38,6 @@ public class UserHistoryView extends Composite {
 		historyTable.getFlexCellFormatter().setWidth(0, 0, "50px");
 		historyTable.getFlexCellFormatter().setWidth(0, 1, "25px");
 		historyTable.getFlexCellFormatter().setWidth(0, 2, "50px");
-
 
 		// style table
 		historyTable.addStyleName("FlexTable");
@@ -44,8 +49,5 @@ public class UserHistoryView extends Composite {
 			historyTable.setText(i + 1, 1, "" +pList.get(i).getPrice());
 			historyTable.setText(i + 1, 2, "" + pList.get(i).getDate());
 		}
-
 	}
-
-
 }

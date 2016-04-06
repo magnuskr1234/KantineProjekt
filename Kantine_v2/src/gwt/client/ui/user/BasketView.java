@@ -9,7 +9,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import gwt.shared.ItemDTO;
@@ -31,14 +30,10 @@ public class BasketView extends Composite {
 	// Buttons for events
 	private Button controllerDeleteBtn;
 
-	private UserMenuView um;
 	// Handlers
-
 	private DeleteHandler deleteHandler;
 
 	// row where event happened
-	private int eventRowIndex;
-
 	private int eventRowIndexDelete;
 
 	private double currentSaldo;
@@ -50,19 +45,17 @@ public class BasketView extends Composite {
 
 	// reference to DTO
 	ItemDTO itemDTO;
-	// private ItemDTO itemDTO;
+	
 
 	public BasketView() {
 		initWidget(uiBinder.createAndBindUi(this));
-		um = new UserMenuView();
-		// row event handlers
+	
 		itemDTO = new ItemDTO();
 		deleteHandler = new DeleteHandler();
 
-		// buttons for controller event handling
+		// Button for controller event handling
 		controllerDeleteBtn = new Button();
 
-		// itemDTO = new ItemDTO();
 	}
 
 	public Button getCancelBtn() {
@@ -88,14 +81,8 @@ public class BasketView extends Composite {
 
 	public void emptyTable() {
 		UserMenuView.tempItemList.clear();
-		pop(UserMenuView.tempItemList);
+		populateBasket(UserMenuView.tempItemList);
 
-	}
-
-	// update data in row where edit-event happened
-	public void updateRow(PersonDTO personDTO) {
-		basketTable.setText(eventRowIndex, 1, personDTO.getName());
-		basketTable.setText(eventRowIndex, 2, "" + personDTO.getPassword());
 	}
 
 	public void setCurrentUserSaldo(double saldo) {
@@ -124,7 +111,7 @@ public class BasketView extends Composite {
 		sum = 0;
 	}
 
-	public void pop(List<ItemDTO> um) {
+	public void populateBasket(List<ItemDTO> um) {
 
 		// remove table data
 		basketTable.removeAllRows();
@@ -191,8 +178,6 @@ public class BasketView extends Composite {
 			controllerDeleteBtn.fireEvent(new ClickEvent() {
 
 			});
-
-			Window.alert("Vare fjernet fra kurv");
 		}
 
 	}

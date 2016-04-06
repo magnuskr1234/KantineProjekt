@@ -45,8 +45,6 @@ public class AdminController {
 	private ShowUserListView showUserListView;
 	private ShowItemListView showItemListView;
 
-	private StatisticView statistic;
-
 	// Service classes for async callbacks to server
 	private ItemServiceAsync itemDAO;
 	private PersonServiceAsync personServiceCall;
@@ -77,7 +75,7 @@ public class AdminController {
 		
 		showUserListView = adminView.getshowUserList();
 		showItemListView = adminView.getshowItemList();
-		statistic = adminView.getstatistic();
+		statisticView = adminView.getstatistic();
 		
 		
 		
@@ -413,7 +411,7 @@ public class AdminController {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == adminMenu.getBtnStatistic()) {
-				statistic.clearStatSum();
+				statisticView.clearStatSum();
 				itemDAO.getMostSoldItems(new AsyncCallback<List<ItemDTO>>() {
 
 					@Override
@@ -424,7 +422,7 @@ public class AdminController {
 
 					@Override
 					public void onSuccess(List<ItemDTO> mostSoldList) {
-						statistic.populateMostSoldTable(mostSoldList);
+						statisticView.populateMostSoldTable(mostSoldList);
 					}
 				});
 				itemDAO.getStatList(new AsyncCallback<List<ItemDTO>>() {
@@ -437,11 +435,11 @@ public class AdminController {
 
 					@Override
 					public void onSuccess(List<ItemDTO> result) {
-						statistic.pop(result);
-						statistic.setTotEarn();
+						statisticView.pop(result);
+						statisticView.setTotEarn();
 					}
 				});
-				adminView.changeWidget(statistic);
+				adminView.changeWidget(statisticView);
 			}
 		}
 	}

@@ -34,13 +34,13 @@ import gwt.shared.PersonDTO;
 public class MainController {
 
 	// References for views
-	private AdminView adminView;
+	//private AdminView adminView;
 	private MainView mainView;
 	private LoginView loginView;
 	private LoginHeaderView loginHeaderView;
 	private UserMenuView userMenuView;
-	private BasketView basketView;
-	private AdminMenuView adminMenu;
+	//private BasketView basketView;
+	//private AdminMenuView adminMenu;
 	private UserView userView;
 	private UserHeaderView userHeaderView;
 
@@ -65,6 +65,8 @@ public class MainController {
 		this.mainView = mainView;
 
 		loginView = mainView.getLoginView();
+		
+		//Add clickhandler for login button
 		loginView.getBtnOk().addClickHandler(new LoginHandler());
 	/*	userView = new UserView();
 		adminView = new AdminView();

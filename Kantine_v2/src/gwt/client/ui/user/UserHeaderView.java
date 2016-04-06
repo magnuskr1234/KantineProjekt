@@ -24,9 +24,12 @@ public class UserHeaderView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
+	// Set saldo in header
 	public void setSaldo(double saldo){
 		saldoLabel.setText("Saldo: " + saldo + " Kr.");
 	}
+	
+	// Set username in header
 	public void setUser(String user) {
 		userNameLabel.setText("Velkommen "+ user);
 	}

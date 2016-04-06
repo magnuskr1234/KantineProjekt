@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * UiBinder til login
+ * UiBinder for login
  * @author magnusrasmussen
  *
  */
@@ -54,7 +54,7 @@ public class LoginView extends Composite {
 	}
 
 
-	// getters for textfields and buttons
+	// Getters for textfields and buttons
 	public String getUserId() {
 		return txtUid.getText();
 	}
