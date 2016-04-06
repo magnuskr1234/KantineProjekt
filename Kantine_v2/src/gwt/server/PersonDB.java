@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 
@@ -175,7 +176,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 	@Override
 	public PersonDTO getPerson(String username, String password) throws Exception {
 		ResultSet resultSet = null;
-		PersonDTO personDTO = null;
+		PersonDTO person = null;
 		
 		try{
 		getPersonStmt.setString(1, username);
@@ -184,13 +185,13 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 		resultSet = getPersonStmt.executeQuery();
 		
 		while (resultSet.next()){
-			personDTO = new PersonDTO();
+			person = new PersonDTO();
 			
-			personDTO.setId(resultSet.getInt("id"));
-			personDTO.setName(resultSet.getString("name"));
-			personDTO.setPassword(resultSet.getString("password"));
-			personDTO.setAdminStatus(resultSet.getInt("admin"));
-			personDTO.setSaldo(resultSet.getDouble("saldo"));
+			person.setId(resultSet.getInt("id"));
+			person.setName(resultSet.getString("name"));
+			person.setPassword(resultSet.getString("password"));
+			person.setAdminStatus(resultSet.getInt("admin"));
+			person.setSaldo(resultSet.getDouble("saldo"));
 		}
 		// The catch which is used if either the statement or connection is failing
 				} catch (SQLException e) {
@@ -204,6 +205,6 @@ public class PersonDB extends RemoteServiceServlet implements PersonService  {
 						close();
 					}
 				}
-		return personDTO;
+		return person;
 	}
 	}

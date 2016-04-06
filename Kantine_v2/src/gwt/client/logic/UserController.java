@@ -58,13 +58,10 @@ public class UserController {
 	
 	public UserController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemDAO){
 		// Instantiate pagecontroller
-		
 		this.mainView = mainView;
 		this.userView = mainView.getUserView();
 		this.itemDAO = itemDAO;
 		this.personServiceCall = personServiceCall;
-		
-		
 		
 		// Referncer til subview for user
 		basketView = userView.getBasketView();

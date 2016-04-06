@@ -121,7 +121,11 @@ public class MainController {
 
 				@Override
 				public void onSuccess(PersonDTO person) {
-							if (person.getAdminStatus() == 1) {
+					
+					if(person == null){
+						mainView.getLoginView().setError();
+					}
+					else if (person.getAdminStatus() == 1) {
 								adminController.setCurrentPerson(person);
 								loginView.resetError();
 								loginView.clearfields();
@@ -144,6 +148,7 @@ public class MainController {
 								loginView.clearfields();
 								mainView.changeView(mainView.getUserView());
 								
+								// Make RPC call to get all items.
 								itemDAO.getItems(new AsyncCallback<List<ItemDTO>>() {
 
 									@Override
@@ -153,36 +158,20 @@ public class MainController {
 
 									@Override
 									public void onSuccess(List<ItemDTO> result) {
+										//Populate user menu with items from database
 										mainView.getUserView().showMenuView(result);
 
 									}
 								});
 
 							
-						} else
-							loginView.setError();
-
-					
+						}					
 					loginView.clearfields();
 				}
 			});
 		
 	}
 	}
-	// Logout handler
-	private class LogoutHandler implements ClickHandler {
 
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == adminHeaderView.getBtnLogout()
-					|| event.getSource() == userHeaderView.getBtnLogout()) {
-				UserMenuView.tempItemList.clear();
-				loginView.resetError();
-				userView.showBasketWidget();
-				mainView.changeView(loginView);
-				mainView.changeView(loginHeaderView);
-			}
-		}
-	}
 
 }

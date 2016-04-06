@@ -1,12 +1,7 @@
 package gwt.client;
 
 
-import gwt.client.logic.UserController;
 import gwt.client.ui.MainView;
-import gwt.client.ui.admin.AdminView;
-import gwt.client.ui.login.LoginView;
-import gwt.client.ui.user.UserView;
-import gwt.client.logic.AdminController;
 import gwt.client.logic.MainController;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -20,8 +15,6 @@ public class Kantine_v2 implements EntryPoint {
 	public void onModuleLoad() {
 		// Instantiate pagecontroller
 		MainView mainView = new MainView();
-
-		
 		
 		// Add to rootpanel 
 		RootLayoutPanel.get().add(mainView);
