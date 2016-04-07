@@ -79,7 +79,8 @@ public class MainController {
 							adminController.setCurrentPerson(person);
 							loginView.resetError();
 							loginView.clearfields();
-							mainView.changeView(mainView.getAdminView());
+							mainView.changeView(mainView.getAdminView().getadminMenu());
+							
 							/*
 								adminView.showAdminMenu();
 								adminView.showAdminHeader();

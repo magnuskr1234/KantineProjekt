@@ -17,7 +17,7 @@ import gwt.shared.PersonDTO;
 import gwt.shared.DALException;
 
 
-public class PersonDB extends RemoteServiceServlet implements PersonService  {
+public class PersonDB extends RemoteServiceServlet implements PersonService {
 
 	private static final String URL = "jdbc:mysql://52.58.62.183:3306/kantinen";
 	private static final String USERNAME = "dummy";

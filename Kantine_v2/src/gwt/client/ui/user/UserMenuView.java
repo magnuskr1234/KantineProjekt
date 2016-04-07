@@ -85,6 +85,8 @@ public class UserMenuView extends Composite {
 		addToBasketBtn = new Button();
 	}
 	
+	
+	
 	public static void setcuSaldo(double s) {
 		cuSaldo = s;
 	}

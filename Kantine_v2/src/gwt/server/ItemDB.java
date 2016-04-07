@@ -11,11 +11,13 @@ import java.util.List;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import gwt.client.service.ItemService;
+import gwt.client.service.PersonService;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.shared.ItemDTO;
+import gwt.shared.PersonDTO;
 import gwt.shared.DALException;
 
-public class ItemDB extends RemoteServiceServlet implements ItemService {
+public class ItemDB extends RemoteServiceServlet implements ItemService, PersonService {
 
 	private static final String URL = "jdbc:mysql://52.58.62.183:3306/kantinen";
 	private static final String USERNAME = "dummy";
@@ -34,11 +36,21 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 	private PreparedStatement showMostSoldItemsStmt = null;
 
 	ShowUserListView su;
+	
+	private ItemBla itemBla;
 
 	public ItemDB() throws Exception {
 		try {
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			// create query that add an item to database
+			
+			itemBla = new ItemBla(this);
+			
+			
+			
+			
+			
+			
 			saveItemStmt = connection.prepareStatement("INSERT INTO items ( title, price ) VALUES ( ?, ? )");
 
 			// create query that updates an item
@@ -59,22 +71,32 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 			
 			showStatListStmt = connection.prepareStatement("SELECT customers.name, history.item_name, history.item_price, history.date_ordered FROM history LEFT JOIN customers ON customers.id=history.customer_id ORDER BY history.date_ordered DESC ");
 
-			showMostSoldItemsStmt = connection.prepareCall("SELECT item_name, count(*) AS total from history GROUP BY item_name ORDER BY total DESC");
+			showMostSoldItemsStmt = connection.prepareStatement("SELECT item_name, count(*) AS total from history GROUP BY item_name ORDER BY total DESC");
 		} catch (SQLException sqlException) {
 			throw new DALException("Kan ikke oprette forbindelse til database");
 		}
 
 	}
+	
+	public Connection getConnection() {
+		return connection;
+	}
 
 	/**
 	 * Method used to close the database connection
 	 */
-	private static void close() {
+	public void close() {
 		try {
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<ItemDTO> getMostSoldItemsTest() throws Exception {
+		List<ItemDTO> items = itemBla.getMostSoldItems();
+		
+		return items;
 	}
 	
 	public List<ItemDTO> getMostSoldItems() throws Exception {
@@ -229,5 +251,35 @@ public class ItemDB extends RemoteServiceServlet implements ItemService {
 		} catch (SQLException e) {
 			throw new DALException(" \"deletePerson\" fejlede");
 		}
+	}
+
+	@Override
+	public void savePerson(PersonDTO p) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updatePerson(double saldo, int id) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public PersonDTO getPerson(String username, String password) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PersonDTO> getPersons() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deletePerson(int id) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 }
