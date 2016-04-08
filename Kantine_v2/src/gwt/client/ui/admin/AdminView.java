@@ -115,4 +115,8 @@ public class AdminView extends Composite {
 	public void showAdminHeader(){
 		headerPanel.showWidget(adminHeaderView);
 	}
+	
+	public void showAdminMenu(){
+		contentPanel.showWidget(adminMenu);
+	}
 }

@@ -8,7 +8,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>PersonServiceServlet</servlet-name>
-    <servlet-class>gwt.server.PersonDB</servlet-class>
+    <servlet-class>gwt.server.ConnectionDB</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -18,7 +18,7 @@
   
     <servlet>
     <servlet-name>ItemServiceServlet</servlet-name>
-    <servlet-class>gwt.server.ItemDB</servlet-class>
+    <servlet-class>gwt.server.ConnectionDB</servlet-class>
   </servlet>
   
   <servlet-mapping>

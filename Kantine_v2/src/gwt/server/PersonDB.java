@@ -17,25 +17,23 @@ import gwt.shared.PersonDTO;
 import gwt.shared.DALException;
 
 
-public class PersonDB extends RemoteServiceServlet implements PersonService {
-
-	private static final String URL = "jdbc:mysql://52.58.62.183:3306/kantinen";
-	private static final String USERNAME = "dummy";
-	private static final String PASSWORD = "gruppe3";
-
-	private static Connection connection = null; // manages connection
-
+public class PersonDB {
+	
+	Connection connection;
+	
+	ConnectionDB connectionDB;
 	private PreparedStatement savePersonStmt = null;
 	private PreparedStatement updatePersonStmt = null;
 	private PreparedStatement getPersonStmt = null;
 	private PreparedStatement getPersonsStmt = null;
 	private PreparedStatement deletePersonStmt = null;
 
-	public PersonDB() throws Exception {
+	public PersonDB(ConnectionDB connectionDB) throws Exception {
 		try 
 		{
-			connection = 
-					DriverManager.getConnection( URL, USERNAME, PASSWORD );
+			this.connectionDB = connectionDB;
+			connection = connectionDB.getConnection();
+			
 			// create query that add a person to kartotek
 			savePersonStmt = 
 					connection.prepareStatement( "INSERT INTO customers ( name, password, admin, saldo ) VALUES ( ?, ?, ?, ? )" );
@@ -64,19 +62,9 @@ public class PersonDB extends RemoteServiceServlet implements PersonService {
 		}
 		
 	}
-	
-	/**
-	 * Method used to close the database connection
-	 */
-	private static void close() {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-}
 
-	@Override
+
+
 	public void savePerson(PersonDTO p) throws Exception {
 		// simulate server error
 		// throw new RuntimeException(" \"savePerson\" fejlede");
@@ -93,7 +81,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService {
 		} 
 	}
 
-	@Override
+
 	public void updatePerson(double saldo, int id) throws Exception {
 		
 		try {		
@@ -113,7 +101,6 @@ public class PersonDB extends RemoteServiceServlet implements PersonService {
 
 	
 	// Get all persons from database
-	@Override
 	public List<PersonDTO> getPersons() throws Exception {
 		List< PersonDTO > results = null;
 		ResultSet resultSet = null;
@@ -146,13 +133,13 @@ public class PersonDB extends RemoteServiceServlet implements PersonService {
 			catch ( SQLException sqlException )
 			{
 				sqlException.printStackTrace();         
-				close();
+				connectionDB.close();
 			} 
 		}
 		return results; 
 	}
 
-	@Override
+
 	public void deletePerson(int id) throws Exception {
 		
 		try {
@@ -165,7 +152,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService {
 	}
 
 	// Get currentperson from database. Checks if user exists
-	@Override
+
 	public PersonDTO getPerson(String username, String password) throws Exception {
 		ResultSet resultSet = null;
 		PersonDTO person = null;
@@ -194,7 +181,7 @@ public class PersonDB extends RemoteServiceServlet implements PersonService {
 						resultSet.close();
 					} catch (SQLException ex) {
 						ex.printStackTrace();
-						close();
+						connectionDB.close();
 					}
 				}
 		return person;
