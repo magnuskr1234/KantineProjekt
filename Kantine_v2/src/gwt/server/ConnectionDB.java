@@ -69,7 +69,7 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 
 	@Override
 	public List<ItemDTO> getHistoryList(int i) throws Exception {
-		List<ItemDTO> items = itemDB.getMostSoldItems();
+		List<ItemDTO> items = itemDB.getHistoryList(i);
 		return items;
 	}
 
