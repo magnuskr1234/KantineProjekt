@@ -27,5 +27,5 @@ public interface ItemService extends RemoteService {
 	public  List<ItemDTO> getStatList() throws Exception;
 	public  List<ItemDTO> getMostSoldItems() throws Exception;
 	public void deleteItem(int id) throws Exception;
-	public void saveItemToHistory (int c, String name, double price) throws Exception;
+	public void saveItemToHistory (int c, String name, double price, double currentSaldo) throws Exception;
 }

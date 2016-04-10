@@ -22,5 +22,5 @@ public interface ItemServiceAsync {
 
 	void deleteItem(int index, AsyncCallback<Void> callback);
 	
-	void saveItemToHistory(int c, String name, double price, AsyncCallback<Void> callback);
+	void saveItemToHistory(int c, String name, double price, double currentSaldo, AsyncCallback<Void> callback);
 }

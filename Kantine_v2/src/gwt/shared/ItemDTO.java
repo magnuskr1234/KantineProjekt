@@ -12,6 +12,7 @@ public class ItemDTO implements Serializable {
 	private Date date;
 	private String user;
 	private int timesSold;
+	private double saldo;
 	
 	public ItemDTO(){
 		
@@ -37,10 +38,11 @@ public class ItemDTO implements Serializable {
 		
 	}
 	
-	public ItemDTO(String name, double price, Date date ){
+	public ItemDTO(String name, double price, Date date, double saldo ){
 		this.name = name;
 		this.price = price;
 		this.date = date;
+		this.saldo = saldo;
 	}
 	
 	public ItemDTO(String user, String name, double price, Date date ){
@@ -94,6 +96,16 @@ public class ItemDTO implements Serializable {
 	public void setPrice (double price)
 	{
 		this.price = price;
+	}
+	
+	public  double getSaldo()
+	{
+		return saldo;
+	}
+	
+	public void setSaldo (double saldo)
+	{
+		this.saldo = saldo;
 	}
 
 	public int getCount() {

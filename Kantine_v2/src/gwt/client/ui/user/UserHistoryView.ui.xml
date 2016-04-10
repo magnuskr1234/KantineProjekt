@@ -10,6 +10,7 @@
 				<g:Label text="Navn" styleName="blackText_Bold"/>
 				<g:Label text="Pris" styleName="blackText_Bold"/>
 				<g:Label text="Dato" styleName="blackText_Bold"/>
+				<g:Label text="Saldo" styleName="blackText_Bold"/>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>
 		<g:HorizontalPanel width="600px" horizontalAlignment="ALIGN_CENTER">

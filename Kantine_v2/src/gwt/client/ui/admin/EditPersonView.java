@@ -22,9 +22,10 @@ public class EditPersonView extends Composite {
 	@UiField Button btnConfirm;
 	@UiField Button btnCancel;
 	
-	PersonDTO pDTO = new PersonDTO();
+	PersonDTO pDTO;
 	double newSaldo;
 	int saldoUserId;
+	double getSaldo;
 	
 	interface EditPersonViewUiBinder extends UiBinder<Widget, EditPersonView> {
 	}
@@ -33,6 +34,7 @@ public class EditPersonView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		txtSaldo.getElement().setPropertyString("placeholder", "Indtast beløb");
+		
 		
 	}
 	
@@ -73,16 +75,22 @@ public class EditPersonView extends Composite {
 		txtSaldo.setText("");
 	}
 	
+	
+	
+	public double getSaldo(){
+		return getSaldo;		
+	}
+	
 	 public boolean validate(ShowUserListView su) {
 		    // check if all fields are valid
 		 if (FieldVerifier.isValidSaldo(txtSaldo.getText())){
 			
-			 
-		    double getsaldo;
+			 getSaldo = Double.parseDouble(txtSaldo.getText());
+		    
 		      txtSaldo.setStyleName("textBox");
-		      getsaldo = Double.parseDouble(txtSaldo.getText());
+		      
 		       
-		       newSaldo = getsaldo += ShowUserListView.saldoUpdate;
+		       newSaldo = getSaldo + ShowUserListView.saldoUpdate;
 		       
 		       saldoUserId = su.getPersonId();
 		      txtSaldo.setText("");

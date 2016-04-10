@@ -116,7 +116,7 @@ public class UserController {
 							for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {	
 								
 								// Save to history 
-								itemServiceCall.saveItemToHistory(currentPersonId, UserMenuView.tempItemList.get(i).getName(), UserMenuView.tempItemList.get(i).getPrice(),
+								itemServiceCall.saveItemToHistory(currentPersonId, UserMenuView.tempItemList.get(i).getName(), UserMenuView.tempItemList.get(i).getPrice(), basketView.getNewSaldo(), 
 										new AsyncCallback<Void>() {
 
 									@Override

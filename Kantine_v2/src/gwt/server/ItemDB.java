@@ -41,13 +41,13 @@ public class ItemDB {
 		deleteItemStmt = connection.prepareStatement("DELETE FROM items WHERE id =  ? ");
 
 		saveItemToHistoryStmt = connection
-				.prepareStatement("INSERT INTO history (customer_id, item_name, item_price) VALUES (?, ?, ?)");
+				.prepareStatement("INSERT INTO history (customer_id, item_name, item_price, customer_current_saldo) VALUES (?, ?, ?, ?)");
 
 		showStatListStmt = connection.prepareStatement(
 				"SELECT customers.name, history.item_name, history.item_price, history.date_ordered FROM history LEFT JOIN customers ON customers.id=history.customer_id ORDER BY history.date_ordered DESC ");
 
 		showHistoryListStmt = connection.prepareStatement(
-				"SELECT item_name, item_price, date_ordered FROM history WHERE customer_id = ? ORDER BY history.date_ordered DESC");
+				"SELECT item_name, item_price, date_ordered, customer_current_saldo FROM history WHERE customer_id = ? ORDER BY history.date_ordered DESC");
 
 		// create query that get all items in database
 		getItemsStmt = connection.prepareStatement("SELECT * FROM items ORDER BY title ");
@@ -118,7 +118,7 @@ public class ItemDB {
 
 			while (resultSet.next()) {
 				results.add(new ItemDTO(resultSet.getString("item_name"), resultSet.getDouble("item_price"),
-						resultSet.getDate("date_ordered")));
+						resultSet.getDate("date_ordered"), resultSet.getDouble("customer_current_saldo")));
 			}
 		} catch (SQLException sqlException) {
 			throw new DALException(" \"getItems\" fejlede");
@@ -158,11 +158,12 @@ public class ItemDB {
 		return results;
 	}
 
-	public void saveItemToHistory(int c, String name, double price) throws Exception {
+	public void saveItemToHistory(int c, String name, double price, double currentSaldo) throws Exception {
 		try {
 			saveItemToHistoryStmt.setInt(1, c);
 			saveItemToHistoryStmt.setString(2, name);
 			saveItemToHistoryStmt.setDouble(3, price);
+			saveItemToHistoryStmt.setDouble(4, currentSaldo);
 
 			saveItemToHistoryStmt.executeUpdate();
 		} catch (SQLException e) {

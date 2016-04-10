@@ -74,8 +74,8 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 	}
 
 	@Override
-	public void saveItemToHistory(int c, String name, double price) throws Exception {
-		itemDB.saveItemToHistory(c, name, price);
+	public void saveItemToHistory(int c, String name, double price, double currentSaldo) throws Exception {
+		itemDB.saveItemToHistory(c, name, price, currentSaldo);
 	}
 
 	@Override

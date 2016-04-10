@@ -19,6 +19,7 @@ import gwt.client.ui.admin.EditPersonView;
 import gwt.client.ui.admin.ShowItemListView;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
+import gwt.client.ui.user.UserMenuView;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 
@@ -183,6 +184,19 @@ public class AdminController {
 							Window.alert("Saldo opdateret!");	
 							adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
 							adminView.changeWidget(showUserListView);
+							itemServiceCall.saveItemToHistory(editPersonView.getSaldoUserId(), "Tilføjet til Saldo", editPersonView.getSaldo(), editPersonView.getNewSaldo(), 
+									new AsyncCallback<Void>() {
+
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert("Serverfejl" + caught.getMessage());
+								}
+
+								@Override
+								public void onSuccess(Void result) {
+								}
+
+							});
 						}				
 
 					}); 
