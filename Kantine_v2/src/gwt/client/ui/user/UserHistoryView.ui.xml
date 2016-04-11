@@ -7,10 +7,10 @@
 	<g:HTMLPanel>
 		<g:VerticalPanel width="600px" height="" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
 			<g:HorizontalPanel horizontalAlignment="ALIGN_LEFT" width="550px" height="100%" styleName="whiteBackground" verticalAlignment="ALIGN_MIDDLE" spacing="5">
-				<g:Label text="Navn" styleName="blackText_Bold"/>
-				<g:Label text="Pris" styleName="blackText_Bold"/>
 				<g:Label text="Dato" styleName="blackText_Bold"/>
-				<g:Label text="Saldo" styleName="blackText_Bold"/>
+				<g:Label text="Navn" styleName="blackText_Bold"/>
+				<g:Label text="Beløb" styleName="blackText_Bold"/>	
+				<g:Label text="Konto Balance" styleName="blackText_Bold"/>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>
 		<g:HorizontalPanel width="600px" horizontalAlignment="ALIGN_CENTER">
