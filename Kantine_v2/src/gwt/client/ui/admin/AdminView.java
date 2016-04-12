@@ -23,7 +23,7 @@ public class AdminView extends Composite {
 	private CreateItemView createItem;
 	private CreateUserView createUser;	
 	private EditItemView editItem;
-	private EditPersonView editPerson;
+	private EditUserView editPerson;
 	private ShowUserListView showUserList;
 	private ShowItemListView showItemList;
 	private StatisticView statistic;
@@ -42,7 +42,7 @@ public class AdminView extends Composite {
 		createItem = new CreateItemView();
 		createUser = new CreateUserView();	
 		editItem = new EditItemView();
-		editPerson = new EditPersonView();
+		editPerson = new EditUserView();
 		showUserList = new ShowUserListView();
 		showItemList = new ShowItemListView();
 		statistic = new StatisticView();
@@ -90,7 +90,7 @@ public class AdminView extends Composite {
 	public EditItemView geteditItem(){
 		return editItem;
 	}
-	public EditPersonView geteditPerson(){
+	public EditUserView geteditPerson(){
 		return editPerson;
 	}
 

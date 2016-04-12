@@ -15,7 +15,7 @@ import gwt.client.ui.admin.AdminView;
 import gwt.client.ui.admin.CreateItemView;
 import gwt.client.ui.admin.CreateUserView;
 import gwt.client.ui.admin.EditItemView;
-import gwt.client.ui.admin.EditPersonView;
+import gwt.client.ui.admin.EditUserView;
 import gwt.client.ui.admin.ShowItemListView;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
@@ -40,7 +40,7 @@ public class AdminController {
 	private StatisticView statisticView;
 
 	private EditItemView editItemView;
-	private EditPersonView editPersonView;
+	private EditUserView editUserView;
 
 	private ShowUserListView showUserListView;
 	private ShowItemListView showItemListView;
@@ -69,7 +69,7 @@ public class AdminController {
 		createItemView = adminView.getcreateItem();
 		createUserView = adminView.getcreateUser();
 		editItemView = adminView.geteditItem();
-		editPersonView = adminView.geteditPerson();
+		editUserView = adminView.geteditPerson();
 		showUserListView = adminView.getshowUserList();
 		showItemListView = adminView.getshowItemList();
 		statisticView = adminView.getstatistic();
@@ -89,8 +89,8 @@ public class AdminController {
 		createUserView.getCreateUserBtn().addClickHandler(new CreateUserHandler());
 
 		// Add update saldo handler
-		editPersonView.getBtnCancel().addClickHandler(new UpdateSaldoHandler());
-		editPersonView.getBtnConfirm().addClickHandler(new UpdateSaldoHandler());
+		editUserView.getBtnCancel().addClickHandler(new UpdateSaldoHandler());
+		editUserView.getBtnConfirm().addClickHandler(new UpdateSaldoHandler());
 
 		// Add createItemView handler
 		createItemView.getcreateItemBtn().addClickHandler(new CreateItemHandler());
@@ -168,11 +168,11 @@ public class AdminController {
 
 		@Override
 		public void onClick(ClickEvent event) {		
-			if(event.getSource() == editPersonView.getBtnConfirm()){	
+			if(event.getSource() == editUserView.getBtnConfirm()){	
 			
-				if (editPersonView.validate(showUserListView)){
+				if (editUserView.validate(showUserListView)){
 
-					personServiceCall.updatePerson(editPersonView.getNewSaldo(), editPersonView.getSaldoUserId(), new AsyncCallback<Void>(){
+					personServiceCall.updatePerson(editUserView.getNewSaldo(), editUserView.getSaldoUserId(), new AsyncCallback<Void>(){
 
 						@Override
 						public void onFailure(Throwable caught) {
@@ -184,7 +184,7 @@ public class AdminController {
 							Window.alert("Saldo opdateret!");	
 							adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
 							adminView.changeWidget(showUserListView);
-							itemServiceCall.saveItemToHistory(editPersonView.getSaldoUserId(), "Tilføjet til Saldo", editPersonView.getSaldo(), editPersonView.getNewSaldo(), 
+							itemServiceCall.saveItemToHistory(editUserView.getSaldoUserId(), "Tilføjet til Saldo", editUserView.getSaldo(), editUserView.getNewSaldo(), 
 									new AsyncCallback<Void>() {
 
 								@Override
@@ -202,12 +202,12 @@ public class AdminController {
 					}); 
 				}
 			}
-			if(event.getSource() == editPersonView.getBtnCancel()){
-				editPersonView.clearFields();
+			if(event.getSource() == editUserView.getBtnCancel()){
+				editUserView.clearFields();
 				adminView.changeWidget(showUserListView);
 			}
 			if(event.getSource() == showUserListView.getControllerEditBtn()){
-				adminView.changeWidget(editPersonView);
+				adminView.changeWidget(editUserView);
 			}
 		}
 	}

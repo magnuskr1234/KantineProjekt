@@ -14,7 +14,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 
-public class EditPersonView extends Composite {
+public class EditUserView extends Composite {
 
 	private static EditPersonViewUiBinder uiBinder = GWT.create(EditPersonViewUiBinder.class);
 	
@@ -27,10 +27,10 @@ public class EditPersonView extends Composite {
 	int saldoUserId;
 	double getSaldo;
 	
-	interface EditPersonViewUiBinder extends UiBinder<Widget, EditPersonView> {
+	interface EditPersonViewUiBinder extends UiBinder<Widget, EditUserView> {
 	}
 
-	public EditPersonView() {
+	public EditUserView() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		txtSaldo.getElement().setPropertyString("placeholder", "Indtast beløb");
