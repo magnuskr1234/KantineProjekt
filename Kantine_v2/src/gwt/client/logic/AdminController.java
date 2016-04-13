@@ -5,9 +5,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-
 import gwt.client.service.ItemServiceAsync;
-import gwt.client.service.PersonServiceAsync;
+import gwt.client.service.PersonServiceAsync;	
 import gwt.client.ui.MainView;
 import gwt.client.ui.admin.AdminHeaderView;
 import gwt.client.ui.admin.AdminMenuView;
@@ -19,7 +18,6 @@ import gwt.client.ui.admin.EditUserView;
 import gwt.client.ui.admin.ShowItemListView;
 import gwt.client.ui.admin.ShowUserListView;
 import gwt.client.ui.admin.StatisticView;
-import gwt.client.ui.user.UserMenuView;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 
