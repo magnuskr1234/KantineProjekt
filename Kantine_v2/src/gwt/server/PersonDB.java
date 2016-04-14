@@ -48,7 +48,7 @@ public class PersonDB {
 			
 			// create query that get all persons from table "persons"
 			getPersonsStmt = connection.prepareStatement( 
-					"SELECT * FROM customers ORDER BY name "); 
+					"SELECT * FROM customers ORDER BY email "); 
 
 			// create query that deletes a person in kartotek
 			deletePersonStmt = connection.prepareStatement( 
@@ -114,7 +114,7 @@ public class PersonDB {
 			{
 				results.add( new PersonDTO(
 						resultSet.getInt("id"),
-						resultSet.getString( "name" ),
+						resultSet.getString( "email" ),
 						resultSet.getString( "password" ),
 						resultSet.getInt( "admin" ),
 						resultSet.getDouble("saldo")));
@@ -167,7 +167,7 @@ public class PersonDB {
 			person = new PersonDTO();
 			
 			person.setId(resultSet.getInt("id"));
-			person.setName(resultSet.getString("name"));
+			person.setName(resultSet.getString("email"));
 			person.setPassword(resultSet.getString("password"));
 			person.setAdminStatus(resultSet.getInt("admin"));
 			person.setSaldo(resultSet.getDouble("saldo"));
