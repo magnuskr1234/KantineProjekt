@@ -22,7 +22,6 @@ public class ItemDB {
 	PreparedStatement saveItemStmt;
 	PreparedStatement saveItemToHistoryStmt;
 	PreparedStatement updateItemStmt;
-	PreparedStatement getSizeStmt;
 	PreparedStatement deleteItemStmt;
 
 	public ItemDB(ConnectionDB connectionDB) throws SQLException {
@@ -33,9 +32,6 @@ public class ItemDB {
 
 		// create query that updates an item
 		updateItemStmt = connection.prepareStatement("UPDATE items SET price = ?  WHERE id = ?");
-
-		// create query that gets size of database
-		getSizeStmt = connection.prepareStatement("SELECT COUNT(*) FROM items ");
 
 		// create query that deletes an item in database
 		deleteItemStmt = connection.prepareStatement("DELETE FROM items WHERE id =  ? ");
@@ -53,7 +49,7 @@ public class ItemDB {
 		getItemsStmt = connection.prepareStatement("SELECT * FROM items ORDER BY title ");
 
 		showMostSoldItemsStmt = connection.prepareStatement(
-				"SELECT item_name, count(*) AS total from history GROUP BY item_name ORDER BY total DESC");
+				"SELECT item_name, COUNT(*) AS total from history GROUP BY item_name ORDER BY total DESC");
 	}
 
 	public List<ItemDTO> getMostSoldItems() throws Exception {

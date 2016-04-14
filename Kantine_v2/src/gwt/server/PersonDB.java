@@ -36,7 +36,7 @@ public class PersonDB {
 			
 			// create query that add a person to kartotek
 			savePersonStmt = 
-					connection.prepareStatement( "INSERT INTO customers ( name, password, admin, saldo ) VALUES ( ?, ?, ?, ? )" );
+					connection.prepareStatement( "INSERT INTO customers ( email, password, admin, saldo ) VALUES ( ?, ?, ?, ? )" );
 
 			// create query that updates a person
 			updatePersonStmt = connection.prepareStatement( 
@@ -44,7 +44,7 @@ public class PersonDB {
 
 			// Create query that get 1 person 
 			getPersonStmt = connection.prepareStatement(
-					"SELECT * FROM customers where name = ? AND password = ?");
+					"SELECT * FROM customers where email = ? AND password = ?");
 			
 			// create query that get all persons from table "persons"
 			getPersonsStmt = connection.prepareStatement( 
