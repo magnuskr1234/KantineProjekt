@@ -40,16 +40,14 @@ public class ItemDB {
 				.prepareStatement("INSERT INTO history (customer_id, item_name, item_price, customer_current_saldo) VALUES (?, ?, ?, ?)");
 
 		showStatListStmt = connection.prepareStatement(
-				"SELECT customers.name, history.item_name, history.item_price, history.date_ordered"
+				"SELECT customers.email, history.item_name, history.item_price, history.date_ordered"
 				+ " FROM history"
 				+ " LEFT JOIN customers"
 				+ " ON customers.id=history.customer_id"
 				+ " ORDER BY history.date_ordered DESC ");
 
 		showHistoryListStmt = connection.prepareStatement(
-				"SELECT item_name, item_price, date_ordered, customer_current_saldo"
-				+ " FROM history WHERE customer_id = ?"
-				+ " ORDER BY history.date_ordered DESC");
+				"SELECT item_name, item_price, date_ordered, customer_current_saldo FROM history WHERE customer_id = ? ORDER BY history.date_ordered DESC");
 
 		// create query that get all items in database
 		getItemsStmt = connection.prepareStatement("SELECT * FROM items ORDER BY title ");
@@ -74,7 +72,7 @@ public class ItemDB {
 				count++;
 			}
 		} catch (SQLException sqlException) {
-			throw new DALException(" \"getItems\" fejlede");
+			throw new DALException(" \"showMostSoldItems\" fejlede");
 		} finally {
 			try {
 				resultSet.close();
@@ -125,7 +123,7 @@ public class ItemDB {
 						resultSet.getDate("date_ordered"), resultSet.getDouble("customer_current_saldo")));
 			}
 		} catch (SQLException sqlException) {
-			throw new DALException(" \"getItems\" fejlede");
+			throw new DALException(" \"getHistoryList\" fejlede");
 		} finally {
 			try {
 				resultSet.close();
@@ -146,11 +144,11 @@ public class ItemDB {
 			results = new ArrayList<ItemDTO>();
 
 			while (resultSet.next()) {
-				results.add(new ItemDTO(resultSet.getString("name"), resultSet.getString("item_name"),
+				results.add(new ItemDTO(resultSet.getString("email"), resultSet.getString("item_name"),
 						resultSet.getDouble("item_price"), resultSet.getDate("date_ordered")));
 			}
 		} catch (SQLException sqlException) {
-			throw new DALException(" \"getItems\" fejlede");
+			throw new DALException(" \"getStatList\" fejlede");
 		} finally {
 			try {
 				resultSet.close();
