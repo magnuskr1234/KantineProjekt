@@ -80,6 +80,7 @@ public class MainController {
 							loginView.resetError();
 							loginView.clearfields();
 							mainView.changeView(mainView.getAdminView());
+							mainView.getAdminView().changeWidget(mainView.getAdminView().getadminMenu());
 						
 						} else if (person.getAdminStatus() == 0) {
 
@@ -92,6 +93,7 @@ public class MainController {
 							loginView.resetError();
 							loginView.clearfields();
 							mainView.changeView(mainView.getUserView());
+							mainView.getUserView().changeWidget(mainView.getUserView().getUserMenuView());
 
 							// Make RPC call to get all items.
 							itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
