@@ -4,7 +4,7 @@
 	<ui:style>
 	
 	</ui:style>
-	<g:HTMLPanel>
+	<g:HTMLPanel height="100%">
 		<g:VerticalPanel width="100%" height="30%" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_TOP">
 			<g:HorizontalPanel width="80%" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE" styleName="whiteBackground" height="85%">
 				<g:Label text="Total earnings" ui:field="totearn" styleName="blackText" width="100%"/>
@@ -19,9 +19,9 @@
 				<g:Label text="Dato" styleName="blackText_Bold" horizontalAlignment="ALIGN_CENTER" width="100px"/>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>
-		<g:HorizontalPanel width="100%" height="100%" horizontalAlignment="ALIGN_CENTER">
-			<g:ScrollPanel height="577px">
-			<g:FlexTable ui:field="statTable" width="80%" height="100%" styleName="whiteBackground" cellSpacing="10"/>
+		<g:HorizontalPanel width="100%" height="70%" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_TOP">
+		<g:ScrollPanel height="100%" width="100%">
+			<g:FlexTable ui:field="statTable" width="80%" height="80%" styleName="whiteBackground" cellSpacing="10"/>
 		</g:ScrollPanel>
 		</g:HorizontalPanel>
 	</g:HTMLPanel>

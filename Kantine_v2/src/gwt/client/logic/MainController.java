@@ -80,13 +80,7 @@ public class MainController {
 							loginView.resetError();
 							loginView.clearfields();
 							mainView.changeView(mainView.getAdminView());
-							//mainView.getAdminView().showAdminHeader();
-							//mainView.getAdminView().showAdminMenu();
-							
-							/*
-								adminView.showAdminMenu();
-								adminView.showAdminHeader();
-							 */
+						
 						} else if (person.getAdminStatus() == 0) {
 
 							userController.setCurrentPerson(person);
