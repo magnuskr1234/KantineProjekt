@@ -9,7 +9,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import gwt.client.service.ItemService;
 import gwt.client.service.PersonService;
-import gwt.client.ui.admin.ShowUserListView;
 import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 import gwt.shared.DALException;
@@ -21,8 +20,6 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 	private static final String PASSWORD = "gruppe3";
 
 	private static Connection connection = null; // manages connection
-
-	ShowUserListView su;
 
 	private ItemDB itemDB;
 	private PersonDB personDB;

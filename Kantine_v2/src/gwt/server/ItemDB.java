@@ -40,16 +40,24 @@ public class ItemDB {
 				.prepareStatement("INSERT INTO history (customer_id, item_name, item_price, customer_current_saldo) VALUES (?, ?, ?, ?)");
 
 		showStatListStmt = connection.prepareStatement(
-				"SELECT customers.name, history.item_name, history.item_price, history.date_ordered FROM history LEFT JOIN customers ON customers.id=history.customer_id ORDER BY history.date_ordered DESC ");
+				"SELECT customers.name, history.item_name, history.item_price, history.date_ordered"
+				+ " FROM history"
+				+ " LEFT JOIN customers"
+				+ " ON customers.id=history.customer_id"
+				+ " ORDER BY history.date_ordered DESC ");
 
 		showHistoryListStmt = connection.prepareStatement(
-				"SELECT item_name, item_price, date_ordered, customer_current_saldo FROM history WHERE customer_id = ? ORDER BY history.date_ordered DESC");
+				"SELECT item_name, item_price, date_ordered, customer_current_saldo"
+				+ " FROM history WHERE customer_id = ?"
+				+ " ORDER BY history.date_ordered DESC");
 
 		// create query that get all items in database
 		getItemsStmt = connection.prepareStatement("SELECT * FROM items ORDER BY title ");
 
 		showMostSoldItemsStmt = connection.prepareStatement(
-				"SELECT item_name, COUNT(*) AS total from history GROUP BY item_name ORDER BY total DESC");
+				"SELECT item_name, COUNT(*) AS total FROM history"
+				+ " GROUP BY item_name"
+				+ " ORDER BY total DESC");
 	}
 
 	public List<ItemDTO> getMostSoldItems() throws Exception {
