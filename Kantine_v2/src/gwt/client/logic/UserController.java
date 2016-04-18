@@ -10,6 +10,7 @@ import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import gwt.client.service.ItemServiceAsync;
@@ -19,7 +20,8 @@ import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 
 /**
- * The user controller handles the different user views and logic. 
+ * The user controller handles the different user views and logic.
+ * 
  * @author magnusrasmussen
  *
  */
@@ -45,8 +47,10 @@ public class UserController {
 
 	public int currentPersonId;
 	public PersonDTO currentPerson;
+	public double balanceSaldo;
+	public Timer timer;
 
-	public UserController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemServiceCall){
+	public UserController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemServiceCall) {
 		// Instantiate pagecontroller
 		this.mainView = mainView;
 		this.userView = mainView.getUserView();
@@ -64,7 +68,7 @@ public class UserController {
 		userHeaderView.getBtnMainMenu().addClickHandler(new UserReturnToMenuHandler());
 		userHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
 
-		//Basketview buttons
+		// Basketview buttons
 		basketView.getCancelBtn().addClickHandler(new BuyHandler());
 		basketView.getControllerDeleteBtn().addClickHandler(new UpdateBasketHandler());
 		basketView.getBuyBtn().addClickHandler(new BuyHandler());
@@ -74,7 +78,7 @@ public class UserController {
 
 	}
 
-	public void setCurrentPerson(PersonDTO currentPerson){
+	public void setCurrentPerson(PersonDTO currentPerson) {
 		this.currentPerson = currentPerson;
 		this.currentPersonId = currentPerson.getId();
 	}
@@ -93,7 +97,7 @@ public class UserController {
 		@Override
 		public void onClick(ClickEvent event) {
 			// Cancel purchase button click
-			if(event.getSource() == basketView.getCancelBtn()){
+			if (event.getSource() == basketView.getCancelBtn()) {
 
 				// Update saldofields
 				UserMenuView.setcuSaldo(UserMenuView.getcuSaldo() + basketView.getSum());
@@ -106,77 +110,85 @@ public class UserController {
 
 			}
 
-			// Confirm purchase button 
-			if(event.getSource() == basketView.getBuyBtn()){
+			// Confirm purchase button
+			if (event.getSource() == basketView.getBuyBtn()) {
 
-				//Check if basket is empty 
-				if(basketView.getBasketTable().getRowCount() > 3){
-					if(Window.confirm("Er du sikker på at du vil købe?"))
-						for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {
-							for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {	
-								
-								// Save to history 
-								itemServiceCall.saveItemToHistory(currentPersonId, UserMenuView.tempItemList.get(i).getName(), UserMenuView.tempItemList.get(i).getPrice(), (basketView.getNewSaldo()+(UserMenuView.tempItemList.get(i).getPrice()*(UserMenuView.tempItemList.get(i).getCount()-j))), 
-										new AsyncCallback<Void>() {
+				// Check if basket is empty
+				if (basketView.getBasketTable().getRowCount() > 3) {
+					if (Window.confirm("Er du sikker på at du vil købe?"))
+						balanceSaldo = 0;
+					balanceSaldo = basketView.getNewSaldo() + basketView.getSum();
 
-									@Override
-									public void onFailure(Throwable caught) {
-										Window.alert("Serverfejl" + caught.getMessage());
-									}
+					for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {
+						for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {
 
-									@Override
-									public void onSuccess(Void result) {
-									}
+							// Save to history
 
-								});
-							} 
+							balanceSaldo -= UserMenuView.tempItemList.get(i).getPrice();
+
+							itemServiceCall.saveItemToHistory(currentPersonId,
+									UserMenuView.tempItemList.get(i).getName(),
+									UserMenuView.tempItemList.get(i).getPrice(), balanceSaldo,
+									new AsyncCallback<Void>() {
+
+										@Override
+										public void onFailure(Throwable caught) {
+											Window.alert("Serverfejl" + caught.getMessage());
+										}
+
+										@Override
+										public void onSuccess(Void result) {
+
+										}
+
+									});
 						}
+					}
 
 					// Update saldo for person after purchase
-					personServiceCall.updatePerson(basketView.getNewSaldo(), currentPersonId, new AsyncCallback<Void>(){
+					personServiceCall.updatePerson(basketView.getNewSaldo(), currentPersonId,
+							new AsyncCallback<Void>() {
 
-						@Override
-						public void onFailure(Throwable caught) {
-							Window.alert("Serverfejl :" + caught.getMessage());						
-						}
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert("Serverfejl :" + caught.getMessage());
+								}
 
-						@Override
-						public void onSuccess(Void result) {
-							Window.alert("Tak for købet");
-							UserMenuView.tempItemList.clear();
-							basketView.setCurrentUserSaldo(basketView.getNewSaldo());
-							userView.updateSaldoHeader(basketView.getNewSaldo());
-							userView.showUserHeader();
-							userView.showBasketWidget();
-						}				
+								@Override
+								public void onSuccess(Void result) {
+									Window.alert("Tak for købet");
+									UserMenuView.tempItemList.clear();
+									basketView.setCurrentUserSaldo(basketView.getNewSaldo());
+									userView.updateSaldoHeader(basketView.getNewSaldo());
+									userView.showUserHeader();
+									userView.showBasketWidget();
+								}
 
-					}); 
-				} else{
+							});
+				} else {
 					Window.alert("Tilføj først noget til kurven!");
 				}
 			}
 		}
 	}
 
-
 	private class UpdateBasketHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
 
-			//If add button
-			if(event.getSource() == userMenuView.getAddToBasketBtn())
+			// If add button
+			if (event.getSource() == userMenuView.getAddToBasketBtn())
 				userView.showBasketWidget();
 
 			// If delete button
-			if( event.getSource() == basketView.getControllerDeleteBtn()){
+			if (event.getSource() == basketView.getControllerDeleteBtn()) {
 				basketView.deleteEventRow();
 				userView.showBasketWidget();
 			}
 
 		}
 	}
-
 
 	// Back to menu handler
 	private class UserReturnToMenuHandler implements ClickHandler {

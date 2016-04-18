@@ -137,14 +137,19 @@ public class FieldVerifier {
 	      // try to convert to a number
 	    	numberConvert = Double.parseDouble(number);
 	    } catch (NumberFormatException e) {
-	      // invalid number
+	      Window.alert("Navnet må ikke indholde tal");
 	      return false;
 	    }
 	    
 	    if(numberConvert < 1)
+	    {
+	    	Window.alert("Må ikke være under nul");
 	    	return false;
+	    }
 	    else
+	    {
 			return true;
+	    }
 		
 
 	}
