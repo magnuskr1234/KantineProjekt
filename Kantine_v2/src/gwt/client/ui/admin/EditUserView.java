@@ -96,12 +96,11 @@ public class EditUserView extends Composite {
 		      txtSaldo.setText("");
 		      return true;
 		 }
-		 
-		 if(!FieldVerifier.isValidSaldo(txtSaldo.getText()))
-			 txtSaldo.setStyleName("textBox-invalidEntry");
+		 else{
 			 return false;
-		      
-	 	} 
+		 }
+		 
+	 }
 	  
 }
 
