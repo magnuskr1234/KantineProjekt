@@ -40,7 +40,7 @@ public class CreateItemView extends Composite {
 
 	public boolean validate(List<ItemDTO> list) {
 		// check if all fields are valid
-		if (FieldVerifier.isItemAlreadyThere(list, txtName.getText()) && FieldVerifier.isValidSaldo(txtPrice.getText())) {
+		if (FieldVerifier.isValidName(txtName.getText()) && FieldVerifier.isItemAlreadyThere(list, txtName.getText()) && FieldVerifier.isValidSaldo(txtPrice.getText())) {
 
 			txtName.setStyleName("textBox");
 			txtPrice.setStyleName("textBox");
