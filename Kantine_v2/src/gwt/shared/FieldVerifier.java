@@ -41,8 +41,13 @@ public class FieldVerifier {
 	 */
 
 	public static boolean isValidName(String name) {
-		if (name.length() < 3) {
-			Window.alert("Brugernavnet skal mindst bestå af 3 tegn");
+		if (name.length() < 2) {
+			Window.alert("Brugernavnet skal mindst bestå af 2 tegn");
+			return false;
+		}
+		
+		if (name.matches("[0-9]+")){
+			Window.alert("Må ikke kun indeholde tal");
 			return false;
 		}
 
