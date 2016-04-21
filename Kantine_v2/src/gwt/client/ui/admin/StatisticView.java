@@ -5,7 +5,6 @@ import java.util.List;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
@@ -19,6 +18,7 @@ public class StatisticView extends Composite {
 	@UiField FlexTable statTable;
 	@UiField Label totearn;
 	@UiField FlexTable mostSoldTable;
+	
 	double sum;
 
 	interface StatisticViewUiBinder extends UiBinder<Widget, StatisticView> {
@@ -73,12 +73,6 @@ public class StatisticView extends Composite {
 		statTable.getFlexCellFormatter().setWidth(0, 1, "50px");
 		statTable.getFlexCellFormatter().setWidth(0, 2, "50px");
 		statTable.getFlexCellFormatter().setWidth(0, 3, "50px");	
-
-//		// set headers in flextable
-//		statTable.setText(0, 0, "Bruger");
-//		statTable.setText(0, 1, "Vare");
-//		statTable.setText(0, 2, "Pris");
-//		statTable.setText(0, 3, "Dato");
 
 		// style table
 		statTable.addStyleName("FlexTable");

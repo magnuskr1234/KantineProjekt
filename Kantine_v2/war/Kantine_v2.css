@@ -88,6 +88,9 @@ border-width: 1px;
 }
 .contentpanel {
 
+   
+    background-color: blue; 
+    background-size: 30%;
 }
 .btn {
   -webkit-box-shadow: 0px 1px 3px #666666;

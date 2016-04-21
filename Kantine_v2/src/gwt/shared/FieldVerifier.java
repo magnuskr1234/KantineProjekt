@@ -3,7 +3,6 @@ package gwt.shared;
 import java.util.List;
 
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * <p>

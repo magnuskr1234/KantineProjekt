@@ -7,12 +7,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.shared.PersonDTO;
 import gwt.shared.FieldVerifier;
-import gwt.client.ui.admin.*;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Label;
 
 public class EditUserView extends Composite {
 
@@ -40,7 +37,7 @@ public class EditUserView extends Composite {
 	
 	  public void setpersonDTO (PersonDTO pDTO) {
 		    this.pDTO =  pDTO;
-		    // update text boxes
+		   
 		   
 		   
 		  }
@@ -49,6 +46,7 @@ public class EditUserView extends Composite {
 		  public PersonDTO getpersonDTO() {
 		    return pDTO;
 		  }
+		  
 	public TextBox getTxtSaldo() {
 		return txtSaldo;
 	}

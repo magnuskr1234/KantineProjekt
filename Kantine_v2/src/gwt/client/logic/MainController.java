@@ -36,7 +36,7 @@ public class MainController {
 	private PersonDTO personDTO;
 	private ItemDTO itemDTO;
 
-	public int currentPersonId;
+	//public int currentPersonId;
 	public PersonDTO currentPerson;
 
 	private AdminController adminController;
@@ -85,7 +85,7 @@ public class MainController {
 						} else if (person.getAdminStatus() == 0) {
 
 							userController.setCurrentPerson(person);
-							currentPersonId = person.getId();
+							//currentPersonId = person.getId();
 							mainView.getUserView().loginOk(person.getName());
 							mainView.getUserView().updateSaldoHeader(person.getSaldo());
 							mainView.getUserView().getBasketView().setCurrentUserSaldo(person.getSaldo());

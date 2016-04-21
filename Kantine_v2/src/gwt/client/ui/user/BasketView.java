@@ -12,7 +12,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import gwt.shared.ItemDTO;
-import gwt.shared.PersonDTO;
 
 public class BasketView extends Composite {
 
@@ -143,7 +142,6 @@ public class BasketView extends Composite {
 			basketTable.setText(i + 1, 2, Double.toString((um.get(i).getPrice() * um.get(i).getCount())));
 			setSum(um.get(i).getPrice() * um.get(i).getCount());
 
-			// sum += Double.parseDouble(basketTable.getText(i, 2));
 			basketTable.setText(um.size() + 1, 0, "I alt: ");
 			basketTable.setText(um.size() + 1, 2, "" + getSum());
 			basketTable.setText(um.size() + 2, 0, "Saldo efter køb: ");
@@ -159,7 +157,6 @@ public class BasketView extends Composite {
 		}
 
 		setNewSaldo(currentSaldo - sum);
-		//setCurrentUserSaldo(newSaldo);
 	}
 	
 	// Handler for delete item from basket
@@ -168,6 +165,7 @@ public class BasketView extends Composite {
 
 			clearSum();
 			eventRowIndexDelete = 0;
+			
 			// save event row index
 			eventRowIndexDelete = basketTable.getCellForEvent(event).getRowIndex() - 1;
 		

@@ -7,7 +7,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.shared.FieldVerifier;
 import gwt.shared.ItemDTO;
-import gwt.shared.PersonDTO;
 
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.TextBox;
@@ -34,7 +33,7 @@ public class EditItemView extends Composite {
 	public EditItemView() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		txtPrice.getElement().setPropertyString("placeholder", "Indtast pris");
+		txtPrice.getElement().setPropertyString("placeholder", "Indtast ny pris");
 		
 	}
 	

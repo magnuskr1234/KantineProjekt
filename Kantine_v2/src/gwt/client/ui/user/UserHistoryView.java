@@ -9,8 +9,6 @@ import com.google.gwt.user.client.ui.Widget;
 import gwt.shared.ItemDTO;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
 
 /**
  * View for showing users purchase history
