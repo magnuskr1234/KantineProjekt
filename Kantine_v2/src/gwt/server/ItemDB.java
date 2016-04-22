@@ -44,6 +44,7 @@ public class ItemDB {
 				+ " FROM history"
 				+ " LEFT JOIN customers"
 				+ " ON customers.id=history.customer_id"
+				+ " WHERE history.item_name NOT LIKE '%saldo%'"
 				+ " ORDER BY history.date_ordered DESC ");
 
 		showHistoryListStmt = connection.prepareStatement(
