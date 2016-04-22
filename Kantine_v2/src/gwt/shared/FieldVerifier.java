@@ -2,6 +2,8 @@ package gwt.shared;
 
 import java.util.List;
 
+import com.google.gwt.regexp.shared.MatchResult;
+import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.Window;
 
 /**
@@ -38,10 +40,12 @@ public class FieldVerifier {
 	 *            the name to validate
 	 * @return true if valid, false if invalid
 	 */
+	
+	 
 
 	public static boolean isValidName(String name) {
 		if (name.length() < 2) {
-			Window.alert("Brugernavnet skal mindst bestå af 2 tegn");
+			Window.alert("Produktnavnet skal mindst bestå af 2 tegn");
 			return false;
 		}
 		
@@ -84,14 +88,18 @@ public class FieldVerifier {
 	}
 
 	public static boolean isValidPassword(String password) {
+
+		char[] specialCh = { '!', '@', ']', '#', '$', '%', '^', '&', '*' };
+		boolean hasSpecialChar = false;
+
 		if (password == null) {
 			Window.alert("Du mangler at indtaste et kodeord");
 			return false;
+		} else if (!password.matches(".*\\d.*")) {
+			Window.alert("Koden skal bestå at mindst et tal");
+			return false;
 		} else if (password.length() < 6) {
 			Window.alert("Koden skal mindst bestå af 6 tegn");
-			return false;
-		} else if (password.matches("[A-Za-z0-9 ]*")) {
-			Window.alert("Koden skal mindst indholde mindst et special tegn");
 			return false;
 		} else if (password.equals(password.toLowerCase())) {
 			Window.alert("Koden skal bestå af mindst et stort bogstav");
@@ -99,10 +107,21 @@ public class FieldVerifier {
 		} else if (password.equals(password.toUpperCase())) {
 			Window.alert("Koden skal bestå af mindst et lille bogstav");
 			return false;
-		}
+		} else {
+			for (int i = 0; i < password.length(); i++) {
+				for (Character c : specialCh) {
+					if (password.charAt(i) == c)
+						hasSpecialChar = true;
+				}
+			}
 
-		else {
-			return true;
+			if (hasSpecialChar) {
+				return true;
+			} else {
+				Window.alert("Koden skal bestå at mindst et special tegn");
+				return false;
+			}
+
 		}
 
 	}
@@ -141,13 +160,42 @@ public class FieldVerifier {
 	      // try to convert to a number
 	    	numberConvert = Double.parseDouble(number);
 	    } catch (NumberFormatException e) {
-	      Window.alert("Navnet må ikke indholde tal");
+	      Window.alert("Saldo må ikke indholde tal");
 	      return false;
 	    }
 	    
-	    if(numberConvert < 1)
+	    if(numberConvert < 0)
 	    {
 	    	Window.alert("Må ikke være under nul");
+	    	return false;
+	    }
+	    else
+	    {
+			return true;
+	    }
+		
+
+	}
+	
+	public static boolean isValidPrice(String number) {
+		double numberConvert;
+		// check if saldo field is empty (not allowed)
+		if (number.isEmpty()) {
+			return false;
+		} 
+		
+		   // check if age field contains a number
+	    try {
+	      // try to convert to a number
+	    	numberConvert = Double.parseDouble(number);
+	    } catch (NumberFormatException e) {
+	      Window.alert("Prisen må kun indeholde tal");
+	      return false;
+	    }
+	    
+	    if(numberConvert < 0)
+	    {
+	    	Window.alert("Prisen må ikke være under nul");
 	    	return false;
 	    }
 	    else

@@ -69,20 +69,6 @@ public class CreateUserView extends Composite {
 		}
 		
 		return false;
-/*
-		// update fields error state
-		if (!FieldVerifier.isValidName(txtName.getText())) 
-			txtName.setStyleName("textBox-invalidEntry");
-		else
-			txtName.setStyleName("textBox");
-		if (!FieldVerifier.isValidSaldo(txtSaldo.getText())) 
-			txtSaldo.setStyleName("textBox-invalidEntry");
-		else
-			txtSaldo.setStyleName("textBox");
-
-		return false;
-		
-		*/
 	}
 
 	public void clearFields(){

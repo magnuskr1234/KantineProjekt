@@ -40,7 +40,7 @@ public class CreateItemView extends Composite {
 
 	public boolean validate(List<ItemDTO> list) {
 		// check if all fields are valid
-		if (FieldVerifier.isValidName(txtName.getText()) && FieldVerifier.isItemAlreadyThere(list, txtName.getText()) && FieldVerifier.isValidSaldo(txtPrice.getText())) {
+		if (FieldVerifier.isValidName(txtName.getText()) && FieldVerifier.isItemAlreadyThere(list, txtName.getText()) && FieldVerifier.isValidPrice(txtPrice.getText())) {
 
 			txtName.setStyleName("textBox");
 			txtPrice.setStyleName("textBox");
@@ -55,18 +55,11 @@ public class CreateItemView extends Composite {
 
 			return true;
 		}
+		else{
+			return false;
+		}
 
-		// update fields error state
-		if (!FieldVerifier.isValidName(txtName.getText())) 
-			txtName.setStyleName("textBox-invalidEntry");
-		else
-			txtName.setStyleName("textBox");
-		if (!FieldVerifier.isValidSaldo(txtPrice.getText())) 
-			txtPrice.setStyleName("textBox-invalidEntry");
-		else
-			txtPrice.setStyleName("textBox");
-
-		return false;
+		
 	}
 
 	// Clear fields
