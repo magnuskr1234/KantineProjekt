@@ -47,7 +47,9 @@ public class UserController {
 
 	public int currentPersonId;
 	public PersonDTO currentPerson;
-	public double balanceSaldo;
+	public double balanceSaldo = 0;
+	public double timesBrought = 0;
+	public double priceToPay = 0;
 	public Timer timer;
 
 	public UserController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemServiceCall) {
@@ -75,6 +77,8 @@ public class UserController {
 
 		// basket update
 		userMenuView.getAddToBasketBtn().addClickHandler(new UpdateBasketHandler());
+		
+
 
 	}
 
@@ -116,15 +120,24 @@ public class UserController {
 				// Check if basket is empty
 				if (basketView.getBasketTable().getRowCount() > 3) {
 					if (Window.confirm("Er du sikker på at du vil købe?"))
-						balanceSaldo = 0;
+					balanceSaldo = 0;
+					timesBrought = 0;
+					priceToPay = 0;
 					balanceSaldo = basketView.getNewSaldo() + basketView.getSum();
 
 					for (int i = 0; i < UserMenuView.tempItemList.size(); i++) {
 						for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {
 
 							// Save to history
+							
+							timesBrought = UserMenuView.tempItemList.get(i).getCount(); 
+							
+							
+							priceToPay = UserMenuView.tempItemList.get(i).getPrice();
+							
+							Window.alert(""+timesBrought + " " + priceToPay);
 
-							balanceSaldo -= UserMenuView.tempItemList.get(i).getPrice();
+							balanceSaldo -= priceToPay;
 
 							itemServiceCall.saveItemToHistory(currentPersonId,
 									UserMenuView.tempItemList.get(i).getName(),
@@ -138,10 +151,16 @@ public class UserController {
 
 										@Override
 										public void onSuccess(Void result) {
+											
 
 										}
 
 									});
+							
+							for (int k = 0; k < 100000000; k++){
+							}// For at få RPC til at vente
+							
+//							Window.confirm("Vel du fortsætte?");
 						}
 					}
 
