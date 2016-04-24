@@ -129,16 +129,11 @@ public class UserController {
 						for (int j = 0; j < UserMenuView.tempItemList.get(i).getCount(); j++) {
 
 							// Save to history
-							
 							timesBrought = UserMenuView.tempItemList.get(i).getCount(); 
-							
-							
 							priceToPay = UserMenuView.tempItemList.get(i).getPrice();
-							
-							Window.alert(""+timesBrought + " " + priceToPay);
-
 							balanceSaldo -= priceToPay;
 
+							// RPC call
 							itemServiceCall.saveItemToHistory(currentPersonId,
 									UserMenuView.tempItemList.get(i).getName(),
 									UserMenuView.tempItemList.get(i).getPrice(), balanceSaldo,
@@ -151,16 +146,12 @@ public class UserController {
 
 										@Override
 										public void onSuccess(Void result) {
+											int meaninglessCounterJustHereForSlowingDownOutUltraFastRPCCalls = 0;
+											meaninglessCounterJustHereForSlowingDownOutUltraFastRPCCalls++;
 											
-
 										}
 
 									});
-							
-							for (int k = 0; k < 100000000; k++){
-							}// For at få RPC til at vente
-							
-//							Window.confirm("Vel du fortsætte?");
 						}
 					}
 
@@ -176,11 +167,11 @@ public class UserController {
 								@Override
 								public void onSuccess(Void result) {
 									Window.alert("Tak for købet");
-									UserMenuView.tempItemList.clear();
-									basketView.setCurrentUserSaldo(basketView.getNewSaldo());
-									userView.updateSaldoHeader(basketView.getNewSaldo());
-									userView.showUserHeader();
-									userView.showBasketWidget();
+									UserMenuView.tempItemList.clear(); // Clear basket arraylist
+									basketView.setCurrentUserSaldo(basketView.getNewSaldo()); // set new saldo
+									userView.updateSaldoHeader(basketView.getNewSaldo()); // Update saldo in header
+									userView.showUserHeader(); //Update header with new saldo
+									userView.showBasketWidget(); // Show cleared basket
 								}
 
 							});
