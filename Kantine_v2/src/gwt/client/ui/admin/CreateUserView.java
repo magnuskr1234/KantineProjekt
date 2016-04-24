@@ -57,6 +57,7 @@ public class CreateUserView extends Composite {
 			pDTO.setName(txtName.getText());
 			pDTO.setPassword(txtPassword.getText());
 			pDTO.setSaldo(Double.parseDouble(txtSaldo.getText()));
+			
 			// 1 = true and 0 = false
 			pDTO.setAdminStatus((radioAdmin.getValue()) ? 1 : 0);
 
