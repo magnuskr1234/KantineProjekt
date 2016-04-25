@@ -62,7 +62,7 @@ public class MainController {
 		@Override
 		public void onClick(ClickEvent event) {
 			if (event.getSource() == loginView.getBtnOk())
-				personServiceCall.getPerson(loginView.getUserId(), loginView.getUserPw(), new AsyncCallback<PersonDTO>() {
+				personServiceCall.getPerson(loginView.getUserId().toLowerCase(), loginView.getUserPw(), new AsyncCallback<PersonDTO>() {
 
 					@Override
 					public void onFailure(Throwable caught) {

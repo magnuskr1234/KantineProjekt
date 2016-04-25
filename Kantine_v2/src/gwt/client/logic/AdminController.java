@@ -231,7 +231,7 @@ public class AdminController {
 
 						if (createUserView.validate(result)){
 
-							personServiceCall.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName(),
+							personServiceCall.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName().toLowerCase(),
 									createUserView.getCurrentPerson().getPassword(),
 									createUserView.getCurrentPerson().getAdminStatus(),
 									createUserView.getCurrentPerson().getSaldo()), new AsyncCallback<Void>() {
