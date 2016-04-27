@@ -126,6 +126,9 @@ public class UserMenuView extends Composite {
 			Button addToBasketBtn = new Button("Tilføj");
 			addToBasketBtn.getElement().setId("editBtn");
 			itemTable.setWidget(i + 1, 3, addToBasketBtn);
+			
+			//Style buttons
+			addToBasketBtn.setStylePrimaryName("topNavBtn");
 
 			// add edit and delete buttons to row
 			addToBasketBtn.addClickHandler(addToBasketHandler);
