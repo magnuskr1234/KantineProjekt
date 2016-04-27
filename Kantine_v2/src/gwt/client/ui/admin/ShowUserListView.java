@@ -113,9 +113,9 @@ public class ShowUserListView extends Composite {
 		headerTable.getFlexCellFormatter().setWidth(0, 1, "110px");
 		headerTable.getFlexCellFormatter().setWidth(0, 2, "110px");
 		headerTable.getFlexCellFormatter().setWidth(0, 3, "50px");
-		headerTable.getFlexCellFormatter().setWidth(0, 4, "90px");
-		headerTable.getFlexCellFormatter().setWidth(0, 5, "50px");
-		headerTable.getFlexCellFormatter().setWidth(0, 6, "50px");
+		headerTable.getFlexCellFormatter().setWidth(0, 4, "50px");
+		headerTable.getFlexCellFormatter().setWidth(0, 5, "70px");
+		headerTable.getFlexCellFormatter().setWidth(0, 6, "70px");
 		
 		//Header
 		headerTable.setText(0, 0, "Id");
@@ -132,9 +132,9 @@ public class ShowUserListView extends Composite {
 		userTable.getFlexCellFormatter().setWidth(0, 1, "110px");
 		userTable.getFlexCellFormatter().setWidth(0, 2, "110px");
 		userTable.getFlexCellFormatter().setWidth(0, 3, "50px");
-		userTable.getFlexCellFormatter().setWidth(0, 4, "90px");
-		userTable.getFlexCellFormatter().setWidth(0, 5, "50px");
-		userTable.getFlexCellFormatter().setWidth(0, 6, "50px");
+		userTable.getFlexCellFormatter().setWidth(0, 4, "50px");
+		userTable.getFlexCellFormatter().setWidth(0, 5, "70px");
+		userTable.getFlexCellFormatter().setWidth(0, 6, "70px");
 
 		// style table
 		userTable.addStyleName("FlexTable");
@@ -164,6 +164,10 @@ public class ShowUserListView extends Composite {
 			Button delete = new Button("Slet bruger");
 			delete.getElement().setId("deleteButton");
 			userTable.setWidget(i + 1, 6, delete);
+			
+			//Style buttons
+			edit.setStylePrimaryName("topNavBtn");
+			delete.setStylePrimaryName("topNavBtn");
 
 			// add edit and delete buttons to row
 			edit.addClickHandler(editHandler);
