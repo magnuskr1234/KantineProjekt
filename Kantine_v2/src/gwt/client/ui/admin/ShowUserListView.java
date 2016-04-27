@@ -26,6 +26,7 @@ public class ShowUserListView extends Composite {
 
 	@UiField
 	public FlexTable userTable;
+	@UiField FlexTable headerTable;
 
 	interface ShowUserListUiBinder extends UiBinder<Widget, ShowUserListView> {
 	}
@@ -107,6 +108,22 @@ public class ShowUserListView extends Composite {
 	 */
 
 	public void populateUserList(List<PersonDTO> pList) {
+		// adjust column widths
+		headerTable.getFlexCellFormatter().setWidth(0, 0, "50px");
+		headerTable.getFlexCellFormatter().setWidth(0, 1, "110px");
+		headerTable.getFlexCellFormatter().setWidth(0, 2, "110px");
+		headerTable.getFlexCellFormatter().setWidth(0, 3, "50px");
+		headerTable.getFlexCellFormatter().setWidth(0, 4, "90px");
+		headerTable.getFlexCellFormatter().setWidth(0, 5, "50px");
+		headerTable.getFlexCellFormatter().setWidth(0, 6, "50px");
+		
+		//Header
+		headerTable.setText(0, 0, "Id");
+		headerTable.setText(0, 1, "Brugernavn");
+		headerTable.setText(0, 2, "Adgangskode");
+		headerTable.setText(0, 3, "Saldo");
+		headerTable.setText(0, 4, "Admin");
+		
 		// remove table data
 		userTable.removeAllRows();
 
@@ -121,7 +138,6 @@ public class ShowUserListView extends Composite {
 
 		// style table
 		userTable.addStyleName("FlexTable");
-		userTable.getRowFormatter().addStyleName(0, "FlexTable-Header");
 
 		for (int i = 0; i < pList.size(); i++) {
 			userTable.setText(i + 1, 0, "" + pList.get(i).getId());

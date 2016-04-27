@@ -150,10 +150,12 @@ border-width: 1px;
 	background-color: #159588;
 }
 .background {
-		background-color: #f9f9f9;
-		color: #3b3b3b;
-		font-size: 16px;
-		font-family: Myriad Pro, Arial;
+	
+	font-size: 16px;
+	font-family: Myriad Pro, Arial;
+	 background-image: linear-gradient(to bottom, #009688, #009688 50%, white 50%, white);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .blackText {
 	color: #3b3b3b;
