@@ -39,10 +39,14 @@ h1 {
 	color: black;
 	width: 400px;
 	table-layout: fixed; 
+	font-family: Myriad Pro, Arial;
+	
 }
 
 .FlexTable-Header {
-	font-weight: bold;
+	color: black;
+	font-size: 18px;
+	font-family: Myriad Pro, Arial;
 }
 
 .margin {

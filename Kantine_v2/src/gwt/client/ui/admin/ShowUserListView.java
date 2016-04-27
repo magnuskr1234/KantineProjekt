@@ -100,6 +100,7 @@ public class ShowUserListView extends Composite {
 	public void updateRow(PersonDTO personDTO) {
 		userTable.setText(eventRowIndex, 1, personDTO.getName());
 		userTable.setText(eventRowIndex, 2, "" + personDTO.getSaldo()); 
+	
 	}
 	/**
 	 * Flextable bliver tilføjet rækker samt værdier.
@@ -138,6 +139,7 @@ public class ShowUserListView extends Composite {
 
 		// style table
 		userTable.addStyleName("FlexTable");
+		userTable.setStylePrimaryName("FlexTable");
 
 		for (int i = 0; i < pList.size(); i++) {
 			userTable.setText(i + 1, 0, "" + pList.get(i).getId());
