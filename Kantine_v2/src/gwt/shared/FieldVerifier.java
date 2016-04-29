@@ -7,61 +7,42 @@ import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.Window;
 
 /**
- * <p>
- * FieldVerifier validates that the name the user enters is valid.
- * </p>
- * <p>
- * This class is in the <code>shared</code> package because we use it in both
- * the client code and on the server. On the client, we verify that the name is
- * valid before sending an RPC request so the user doesn't have to wait for a
- * network round trip to get feedback. On the server, we verify that the name is
- * correct to ensure that the input is correct regardless of where the RPC
- * originates.
- * </p>
- * <p>
- * When creating a class that is used on both the client and the server, be sure
- * that all code is translatable and does not use native JavaScript. Code that
- * is not translatable (such as code that interacts with a database or the file
- * system) cannot be compiled into client-side JavaScript. Code that uses native
- * JavaScript (such as Widgets) cannot be run on the server.
- * </p>
+ * Fieldverifier for validating user input
+ * 
  */
 public class FieldVerifier {
 
-	/**
-	 * Verifies that the specified name is valid for our service.
-	 * 
-	 * In this example, we only require that the name is at least four
-	 * characters. In your application, you can use more complex checks to
-	 * ensure that usernames, passwords, email addresses, URLs, and other fields
-	 * have the proper syntax.
-	 * 
-	 * @param name
-	 *            the name to validate
-	 * @return true if valid, false if invalid
-	 */
-	
-	 
 
+	/**
+	 * Validate name 
+	 * @param name
+	 * @return
+	 */
 	public static boolean isValidName(String name) {
+		//Validate lenght 
 		if (name.length() < 2) {
-			Window.alert("Produktnavnet skal mindst bestå af 2 tegn");
+			Window.alert("Skal mindst bestå af 2 tegn");
 			return false;
 		}
 		
+		// Validate if name only consist of numbers
 		if (name.matches("[0-9]+")){
 			Window.alert("Må ikke kun indeholde tal");
 			return false;
 		}
 
 		else {
-
 			return true;
 		}
 	}
 
+	/**
+	 * Validate email 
+	 * @param email
+	 * @return
+	 */
 	public static boolean isValidEmail(String email) {
-
+		// Validate if email is valid. 
 		if (!email.contains("@") && (email.length() < 3)) {
 			Window.alert("Indtast venligst en emailadresse");
 			return false;
@@ -87,11 +68,17 @@ public class FieldVerifier {
 
 	}
 
+	/**
+	 * Validate password. A password, must contain special characters, and ateleast 1 number. 
+	 * @param password
+	 * @return
+	 */
 	public static boolean isValidPassword(String password) {
 
 		char[] specialCh = { '!', '@', ']', '#', '$', '%', '^', '&', '*' };
 		boolean hasSpecialChar = false;
 
+		
 		if (password == null) {
 			Window.alert("Du mangler at indtaste et kodeord");
 			return false;
@@ -126,6 +113,12 @@ public class FieldVerifier {
 
 	}
 
+	/**
+	 * Checks if user already exists. 
+	 * @param result
+	 * @param name
+	 * @return
+	 */
 	public static boolean isUserAlreadyThere(List<PersonDTO> result, String name) {
 
 		for (PersonDTO person : result) {
@@ -137,17 +130,13 @@ public class FieldVerifier {
 		return true;
 	}
 
-	public static boolean isItemAlreadyThere(List<ItemDTO> result, String name) {
 
-		for (ItemDTO item : result) {
-			if ((name.equals(item.getName()))) {
-				Window.alert(item.getName() + " findes allerede i systemet");
-				return false;
-			}
-		}
-		return true;
-	}
-
+	/**
+	 * Checks if saldo is valid. 
+	 * @param number
+	 * @return
+	 */
+	
 	public static boolean isValidSaldo(String number) {
 		double numberConvert;
 		// check if saldo field is empty (not allowed)
@@ -177,6 +166,11 @@ public class FieldVerifier {
 
 	}
 	
+	/**
+	 * Checks if price is valid. 
+	 * @param number
+	 * @return
+	 */
 	public static boolean isValidPrice(String number) {
 		double numberConvert;
 		// check if saldo field is empty (not allowed)
@@ -202,7 +196,6 @@ public class FieldVerifier {
 	    {
 			return true;
 	    }
-		
 
 	}
 

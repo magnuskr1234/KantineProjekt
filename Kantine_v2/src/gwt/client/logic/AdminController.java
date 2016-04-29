@@ -1,4 +1,5 @@
 package gwt.client.logic;
+
 import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -6,7 +7,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import gwt.client.service.ItemServiceAsync;
-import gwt.client.service.PersonServiceAsync;	
+import gwt.client.service.PersonServiceAsync;
 import gwt.client.ui.MainView;
 import gwt.client.ui.admin.AdminHeaderView;
 import gwt.client.ui.admin.AdminMenuView;
@@ -23,6 +24,7 @@ import gwt.shared.PersonDTO;
 
 /**
  * The admin controller handles the admin views and logic.
+ * 
  * @author magnusrasmussen
  *
  */
@@ -47,7 +49,6 @@ public class AdminController {
 	private ItemServiceAsync itemServiceCall;
 	private PersonServiceAsync personServiceCall;
 
-
 	// reference to data transfer object
 	private PersonDTO personDTO;
 	private ItemDTO itemDTO;
@@ -55,7 +56,7 @@ public class AdminController {
 	public int currentPersonId;
 	public PersonDTO currentPeron;
 
-	public AdminController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemServiceCall){
+	public AdminController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemServiceCall) {
 
 		this.mainView = mainView;
 		this.adminView = mainView.getAdminView();
@@ -78,7 +79,7 @@ public class AdminController {
 		adminMenu.getBtnShowUsers().addClickHandler(new ShowUserListHandler());
 		adminMenu.getBtnShowItems().addClickHandler(new ShowItemListHandler());
 		adminMenu.getBtnStatistic().addClickHandler(new StatisticsHandler());
-		
+
 		// Add adminHeaderView Handlers
 		adminHeaderView.getBtnMainMenu().addClickHandler(new ReturnMainViewHandler());
 		adminHeaderView.getBtnLogout().addClickHandler(new LogoutHandler());
@@ -93,25 +94,25 @@ public class AdminController {
 		// Add createItemView handler
 		createItemView.getcreateItemBtn().addClickHandler(new CreateItemHandler());
 
-		//Add user options handler
+		// Add user options handler
 		showUserListView.getControllerDeleteBtn().addClickHandler(new ShowUserListHandler());
 		showUserListView.getControllerEditBtn().addClickHandler(new UpdateSaldoHandler());
 
 		// Add item options handler
 		showItemListView.getControllerDeleteBtn().addClickHandler(new ShowItemListHandler());
 
-		//Edit item price handler
+		// Edit item price handler
 		editItemView.getBtnCancel().addClickHandler(new UpdateItemPriceHandler());
 		editItemView.getBtnConfirm().addClickHandler(new UpdateItemPriceHandler());
 		showItemListView.getControllerEditBtn().addClickHandler(new UpdateItemPriceHandler());
 	}
 
 	// Set current person
-	public void setCurrentPerson(PersonDTO currentPerson){
+	public void setCurrentPerson(PersonDTO currentPerson) {
 		this.currentPeron = currentPerson;
 		this.currentPersonId = currentPerson.getId();
 	}
-	
+
 	// Logout handler
 	private class LogoutHandler implements ClickHandler {
 
@@ -138,301 +139,305 @@ public class AdminController {
 
 					itemServiceCall.updateItem(editItemView.getNewPrice(), editItemView.getPriceItemId(), new AsyncCallback<Void>(){
 
-						@Override
-						public void onFailure(Throwable caught) {
-							Window.alert("Serverfejl :" + caught.getMessage());						
-						}
-
-						@Override
-						public void onSuccess(Void result) {
-							Window.alert("Pris opdateret!");	
-							adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
-						}				
-
-					}); 
-				}
-			}
-
-			// Edit item price button
-			if(event.getSource() == showItemListView.getControllerEditBtn()){
-				adminView.changeWidget(editItemView);
-
-			}
+		@Override
+		public void onFailure(Throwable caught) {
+			Window.alert("Serverfejl :" + caught.getMessage());
 		}
-	}
-
-
-	private class UpdateSaldoHandler implements ClickHandler {
 
 		@Override
-		public void onClick(ClickEvent event) {		
-			if(event.getSource() == editUserView.getBtnConfirm()){	
-			
-				if (editUserView.validate(showUserListView)){
+		public void onSuccess(Void result) {
+			Window.alert("Pris opdateret!");
+			adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {
+			});
+		}
 
-					personServiceCall.updatePerson(editUserView.getNewSaldo(), editUserView.getSaldoUserId(), new AsyncCallback<Void>(){
+	});
+}}
 
-						@Override
-						public void onFailure(Throwable caught) {
-							Window.alert("Serverfejl :" + caught.getMessage());						
-						}
+// Edit item price button
+if(event.getSource()==showItemListView.getControllerEditBtn()){adminView.changeWidget(editItemView);
 
-						@Override
-						public void onSuccess(Void result) {
-							Window.alert("Saldo opdateret!");	
-							adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {});
-							adminView.changeWidget(showUserListView);
-							itemServiceCall.saveItemToHistory(editUserView.getSaldoUserId(), "Tilføjet til Saldo", editUserView.getSaldo(), editUserView.getNewSaldo(), 
-									new AsyncCallback<Void>() {
+}}}
 
-								@Override
-								public void onFailure(Throwable caught) {
-									Window.alert("Serverfejl" + caught.getMessage());
-								}
+private class UpdateSaldoHandler implements ClickHandler {
 
-								@Override
-								public void onSuccess(Void result) {
-								}
+	@Override
+	public void onClick(ClickEvent event) {
+		if (event.getSource() == editUserView.getBtnConfirm()) {
 
-							});
-						}				
+			if (editUserView.validate(showUserListView)) {
 
-					}); 
-				}
-			}
-			if(event.getSource() == editUserView.getBtnCancel()){
-				editUserView.clearFields();
-				adminView.changeWidget(showUserListView);
-			}
-			if(event.getSource() == showUserListView.getControllerEditBtn()){
-				adminView.changeWidget(editUserView);
+				personServiceCall.updatePerson(editUserView.getNewSaldo(), editUserView.getSaldoUserId(),
+						new AsyncCallback<Void>() {
+
+							@Override
+							public void onFailure(Throwable caught) {
+								Window.alert("Serverfejl :" + caught.getMessage());
+							}
+
+							@Override
+							public void onSuccess(Void result) {
+								Window.alert("Saldo opdateret!");
+								adminMenu.getBtnShowUsers().fireEvent(new ClickEvent() {
+								});
+								adminView.changeWidget(showUserListView);
+								itemServiceCall.saveItemToHistory(editUserView.getSaldoUserId(), "Tilføjet til Saldo",
+										editUserView.getSaldo(), editUserView.getNewSaldo(), new AsyncCallback<Void>() {
+
+											@Override
+											public void onFailure(Throwable caught) {
+												Window.alert("Serverfejl" + caught.getMessage());
+											}
+
+											@Override
+											public void onSuccess(Void result) {
+											}
+
+										});
+							}
+
+						});
 			}
 		}
-	}
-
-
-	private class CreateUserHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == adminMenu.getBtnCreateUser()) {
-				adminView.changeWidget(createUserView);
-			}
-
-			if (event.getSource() == createUserView.getCreateUserBtn())
-				personServiceCall.getPersons((new AsyncCallback<List<PersonDTO>>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-					}
-
-					@Override
-					public void onSuccess(List<PersonDTO> result) {
-
-						if (createUserView.validate(result)){
-
-							personServiceCall.savePerson(new PersonDTO(createUserView.getCurrentPerson().getName().toLowerCase(),
-									createUserView.getCurrentPerson().getPassword(),
-									createUserView.getCurrentPerson().getAdminStatus(),
-									createUserView.getCurrentPerson().getSaldo()), new AsyncCallback<Void>() {
-
-								@Override
-								public void onFailure(Throwable caught) {
-									Window.alert("Serverfejl :" + caught.getMessage());
-								}
-
-								@Override
-								public void onSuccess(Void result) {
-									Window.alert("Person gemt");
-								}
-
-							});
-						}
-
-					}
-				}));
-		}
-	}
-
-
-	private class CreateItemHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == createItemView.getcreateItemBtn())
-
-
-				itemServiceCall.getItems((new AsyncCallback<List<ItemDTO>>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-					}
-
-					@Override
-					public void onSuccess(List<ItemDTO> result) {
-						if (createItemView.validate(result)) {
-							itemServiceCall.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(),
-									createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
-
-								@Override
-								public void onFailure(Throwable caught) {
-									Window.alert("Serverfejl :" + caught.getMessage());
-								}
-
-								@Override
-								public void onSuccess(Void result) {
-									Window.alert("Varen blev oprettet");
-								}
-
-							});
-
-						}	
-					}
-				}));
-		}
-	}
-	// Return to menu handler
-	private class ReturnMainViewHandler implements ClickHandler {
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == adminHeaderView.getBtnMainMenu()) {
-				createItemView.clearFields();
-				createUserView.clearFields();
-				adminView.changeWidget(adminMenu);
-			}
-		}
-	}
-
-	// Create item handler
-	private class CreateItemViewHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == adminMenu.getBtnCreateItem()) {
-				adminView.changeWidget(createItemView);
-			}
-		}
-	}
-
-	// Show user list handler
-	private class ShowUserListHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			int personId = showUserListView.getPersonId();
-
-			if (event.getSource() == showUserListView.getControllerDeleteBtn())
-				if(Window.confirm("Er du sikker på at du vil slette brugeren?"))
-					personServiceCall.deletePerson(personId, new AsyncCallback<Void>() {
-						@Override
-						public void onFailure(Throwable caught) {
-							Window.alert("Serverfejl :" + caught.getMessage());
-						}
-
-						@Override
-						public void onSuccess(Void result) {
-							showUserListView.deleteEventRow();
-							Window.alert("Person slettet");
-
-						}
-					});
-
-			if (event.getSource() == adminMenu.getBtnShowUsers()) {
-				personServiceCall.getPersons(new AsyncCallback<List<PersonDTO>>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-					}
-
-					@Override
-					public void onSuccess(List<PersonDTO> result) {
-						showUserListView.populateUserList(result);
-					}
-				});
-
-			}
+		if (event.getSource() == editUserView.getBtnCancel()) {
+			editUserView.clearFields();
 			adminView.changeWidget(showUserListView);
 		}
-	}
-
-	private class ShowItemListHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			int itemId = showItemListView.getItemId();
-
-			if (event.getSource() == showItemListView.getControllerDeleteBtn())
-				if(Window.confirm("Er du sikker på at du vil slette varen?"))
-					itemServiceCall.deleteItem(itemId, new AsyncCallback<Void>() {
-						@Override
-						public void onFailure(Throwable caught) {
-							Window.alert("Serverfejl :" + caught.getMessage());
-						}
-
-						@Override
-						public void onSuccess(Void result) {
-
-							adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {});
-							Window.alert("Varen blev slettet");
-
-
-						}
-					});
-
-			if (event.getSource() == adminMenu.getBtnShowItems()) {
-				itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-					}
-
-					@Override
-					public void onSuccess(List<ItemDTO> result) {
-						showItemListView.populateItemList(result);
-					}
-				});
-
-			}
-			adminView.changeWidget(showItemListView);
-		}
-	}
-
-	// Show statistics handler
-	private class StatisticsHandler implements ClickHandler {
-
-		@Override
-		public void onClick(ClickEvent event) {
-			if (event.getSource() == adminMenu.getBtnStatistic()) {
-				statisticView.clearStatSum();
-				itemServiceCall.getMostSoldItems(new AsyncCallback<List<ItemDTO>>() {
-
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl" + caught.getMessage());
-
-					}
-
-					@Override
-					public void onSuccess(List<ItemDTO> mostSoldList) {
-						statisticView.populateMostSoldTable(mostSoldList);
-					}
-				});
-				itemServiceCall.getStatList(new AsyncCallback<List<ItemDTO>>() {
-
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl" + caught.getMessage());
-
-					}
-
-					@Override
-					public void onSuccess(List<ItemDTO> result) {
-						statisticView.pop(result);
-						statisticView.setTotEarn();
-					}
-				});
-				adminView.changeWidget(statisticView);
-			}
+		if (event.getSource() == showUserListView.getControllerEditBtn()) {
+			adminView.changeWidget(editUserView);
 		}
 	}
 }
+
+private class CreateUserHandler implements ClickHandler {
+
+	@Override
+	public void onClick(ClickEvent event) {
+		if (event.getSource() == adminMenu.getBtnCreateUser()) {
+			adminView.changeWidget(createUserView);
+		}
+
+		if (event.getSource() == createUserView.getCreateUserBtn())
+			personServiceCall.getPersons((new AsyncCallback<List<PersonDTO>>() {
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("Serverfejl :" + caught.getMessage());
+				}
+
+				@Override
+				public void onSuccess(List<PersonDTO> result) {
+
+					if (createUserView.validate(result)) {
+
+						personServiceCall
+								.savePerson(
+										new PersonDTO(createUserView.getCurrentPerson().getName().toLowerCase(),
+												createUserView.getCurrentPerson().getPassword(),
+												createUserView.getCurrentPerson().getAdminStatus(),
+												createUserView.getCurrentPerson().getSaldo()),
+										new AsyncCallback<Void>() {
+
+											@Override
+											public void onFailure(Throwable caught) {
+												Window.alert("Serverfejl :" + caught.getMessage());
+											}
+
+											@Override
+											public void onSuccess(Void result) {
+												Window.alert("Person gemt");
+											}
+
+										});
+					}
+
+				}
+			}));
+	}
+}
+
+private class CreateItemHandler implements ClickHandler {
+
+	@Override
+		public void onClick(ClickEvent event) {
+			if (event.getSource() == createItemView.getcreateItemBtn()){
+				
+				if (createItemView.validate()){
+				itemServiceCall.getItem(createItemView.getCurrentItem().getName(), createItemView.getCurrentItem().getPrice(), new AsyncCallback<ItemDTO>(){
+
+										@Override
+										public void onFailure(Throwable caught) {
+											Window.alert("Serverfejl :" + caught.getMessage());
+										}
+
+										@Override
+										public void onSuccess(ItemDTO item) {
+											itemServiceCall.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(),
+													createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
+
+												@Override
+												public void onFailure(Throwable caught) {
+													Window.alert("Serverfejl :" + caught.getMessage());
+												}
+
+												@Override
+												public void onSuccess(Void result) {
+													Window.alert("Varen blev oprettet");
+												}
+											
+											});
+										
+										}
+				});
+			}
+			}
+	}
+	
+}
+	
+
+	
+
+// Return to menu handler
+private class ReturnMainViewHandler implements ClickHandler {
+	@Override
+	public void onClick(ClickEvent event) {
+		if (event.getSource() == adminHeaderView.getBtnMainMenu()) {
+			createItemView.clearFields();
+			createUserView.clearFields();
+			adminView.changeWidget(adminMenu);
+		}
+	}
+}
+
+// Create item handler
+private class CreateItemViewHandler implements ClickHandler {
+
+	@Override
+	public void onClick(ClickEvent event) {
+		if (event.getSource() == adminMenu.getBtnCreateItem()) {
+			adminView.changeWidget(createItemView);
+		}
+	}
+}
+
+// Show user list handler
+private class ShowUserListHandler implements ClickHandler {
+
+	@Override
+	public void onClick(ClickEvent event) {
+		int personId = showUserListView.getPersonId();
+
+		if (event.getSource() == showUserListView.getControllerDeleteBtn())
+			if (Window.confirm("Er du sikker på at du vil slette brugeren?"))
+				personServiceCall.deletePerson(personId, new AsyncCallback<Void>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+						showUserListView.deleteEventRow();
+						Window.alert("Person slettet");
+
+					}
+				});
+
+		if (event.getSource() == adminMenu.getBtnShowUsers()) {
+			personServiceCall.getPersons(new AsyncCallback<List<PersonDTO>>() {
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("Serverfejl :" + caught.getMessage());
+				}
+
+				@Override
+				public void onSuccess(List<PersonDTO> result) {
+					showUserListView.populateUserList(result);
+				}
+			});
+
+		}
+		adminView.changeWidget(showUserListView);
+	}
+}
+
+private class ShowItemListHandler implements ClickHandler {
+
+	@Override
+	public void onClick(ClickEvent event) {
+		int itemId = showItemListView.getItemId();
+
+		if (event.getSource() == showItemListView.getControllerDeleteBtn())
+			if (Window.confirm("Er du sikker på at du vil slette varen?"))
+				itemServiceCall.deleteItem(itemId, new AsyncCallback<Void>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Serverfejl :" + caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+
+						adminMenu.getBtnShowItems().fireEvent(new ClickEvent() {
+						});
+						Window.alert("Varen blev slettet");
+
+					}
+				});
+
+		if (event.getSource() == adminMenu.getBtnShowItems()) {
+			itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("Serverfejl :" + caught.getMessage());
+				}
+
+				@Override
+				public void onSuccess(List<ItemDTO> result) {
+					showItemListView.populateItemList(result);
+				}
+			});
+
+		}
+		adminView.changeWidget(showItemListView);
+	}
+}
+
+// Show statistics handler
+private class StatisticsHandler implements ClickHandler {
+
+	@Override
+	public void onClick(ClickEvent event) {
+		if (event.getSource() == adminMenu.getBtnStatistic()) {
+			statisticView.clearStatSum();
+			itemServiceCall.getMostSoldItems(new AsyncCallback<List<ItemDTO>>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("Serverfejl" + caught.getMessage());
+
+				}
+
+				@Override
+				public void onSuccess(List<ItemDTO> mostSoldList) {
+					statisticView.populateMostSoldTable(mostSoldList);
+				}
+			});
+			itemServiceCall.getStatList(new AsyncCallback<List<ItemDTO>>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("Serverfejl" + caught.getMessage());
+
+				}
+
+				@Override
+				public void onSuccess(List<ItemDTO> result) {
+					statisticView.pop(result);
+					statisticView.setTotEarn();
+				}
+			});
+			adminView.changeWidget(statisticView);
+		}
+	}
+}}

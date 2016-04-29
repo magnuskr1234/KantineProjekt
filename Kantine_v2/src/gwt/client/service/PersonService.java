@@ -13,7 +13,7 @@ import gwt.shared.PersonDTO;
 
 @RemoteServiceRelativePath("personservice")
 public interface PersonService extends RemoteService {
-	public PersonDTO getPerson(String username, String password) throws Exception;
+	
 	
 	//void setPerson(PersonDTO pDTO) throws Exception;
 	//  PersonDTO getPerson() throws Exception;
@@ -24,9 +24,7 @@ public interface PersonService extends RemoteService {
 	
 	public void savePerson(PersonDTO p) throws Exception;
 	public void updatePerson(double saldo, int id) throws Exception;
-	
-	
-	
 	public  List<PersonDTO> getPersons() throws Exception;
 	public void deletePerson(int id) throws Exception; 
+	public PersonDTO getPerson(String username, String password) throws Exception;
 }

@@ -90,6 +90,13 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 		List<ItemDTO> items = itemDB.getItems();
 		return items;
 	}
+	
+	@Override
+	public ItemDTO getItem(String name, double price) throws Exception {
+		ItemDTO item = itemDB.getItem(name, price);
+		return item;
+		
+	}
 
 	@Override
 	public void deleteItem(int id) throws Exception {

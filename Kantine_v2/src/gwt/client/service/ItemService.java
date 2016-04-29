@@ -6,6 +6,7 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import gwt.shared.ItemDTO;
+import gwt.shared.PersonDTO;
 
 
 
@@ -19,7 +20,7 @@ public interface ItemService extends RemoteService {
 	// user defined exceptions from the server side to the client side
 	// otherwise only generic server exceptions will be send back
 	// in the onFailure call back method
-	
+	public ItemDTO getItem(String name, double price) throws Exception;
 	public void saveItem(ItemDTO p) throws Exception;
 	public void updateItem(double price, int id) throws Exception;
 	public  List<ItemDTO> getItems() throws Exception;

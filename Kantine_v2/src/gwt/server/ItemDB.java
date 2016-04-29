@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 
 import gwt.shared.DALException;
 import gwt.shared.ItemDTO;
+import gwt.shared.PersonDTO;
 
 public class ItemDB {
 
@@ -23,6 +24,7 @@ public class ItemDB {
 	PreparedStatement saveItemToHistoryStmt;
 	PreparedStatement updateItemStmt;
 	PreparedStatement deleteItemStmt;
+	PreparedStatement getItemStmt;
 
 	public ItemDB(ConnectionDB connectionDB) throws SQLException {
 		this.connectionDB = connectionDB;
@@ -57,6 +59,10 @@ public class ItemDB {
 				"SELECT item_name, COUNT(*) AS total FROM history"
 				+ " GROUP BY item_name"
 				+ " ORDER BY total DESC");
+		
+		// Create query that get 1 person 
+		getItemStmt = connection.prepareStatement(
+				"SELECT * FROM items where title = ? AND price = ?");
 	}
 
 	public List<ItemDTO> getMostSoldItems() throws Exception {
@@ -207,6 +213,38 @@ public class ItemDB {
 			throw new DALException(" \"updateItem\" fejlede");
 		}
 
+	}
+	
+	public ItemDTO getItem(String name, double price) throws Exception {
+		ResultSet resultSet = null;
+		ItemDTO item = null;
+		
+		try{
+		getItemStmt.setString(1, name);
+		getItemStmt.setDouble(2, price);
+		
+		resultSet = getItemStmt.executeQuery();
+		
+		while (resultSet.next()){
+			item = new ItemDTO();
+			
+			item.setId(resultSet.getInt("title"));
+			item.setPrice(resultSet.getDouble("price"));
+
+		}
+		// The catch which is used if either the statement or connection is failing
+				} catch (SQLException e) {
+					e.printStackTrace();
+				// A finally try catch which closes the result set and it can't then close the db connection
+				} finally {
+					try {
+						resultSet.close();
+					} catch (SQLException ex) {
+						ex.printStackTrace();
+						connectionDB.close();
+					}
+				}
+		return item;
 	}
 
 }

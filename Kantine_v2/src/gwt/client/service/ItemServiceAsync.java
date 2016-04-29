@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import gwt.shared.ItemDTO;
+import gwt.shared.PersonDTO;
 
 public interface ItemServiceAsync {
 
@@ -23,4 +24,6 @@ public interface ItemServiceAsync {
 	void deleteItem(int index, AsyncCallback<Void> callback);
 	
 	void saveItemToHistory(int c, String name, double price, double currentSaldo, AsyncCallback<Void> callback);
+	
+	void getItem(String name, double saldo, AsyncCallback<ItemDTO> callback);
 }

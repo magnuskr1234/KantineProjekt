@@ -2,7 +2,7 @@ package gwt.shared;
 
 import java.io.Serializable;
 /**
- * PersonDTO klassen definerer de bruger vi har i kantinen og indeholder id, navn samt kodeord til disse. 
+ * PersonDTO defines the Person Data Trasnfer Object. 
  * @author magnusrasmussen
  *
  */
@@ -16,16 +16,32 @@ public class PersonDTO implements Serializable {
 	private int admin; 
 	private double saldo;
 	
-	// default constructor - must be defined
+	/**
+	 *  Default constructor - must be defined
+	 */
 	public PersonDTO() {		
 	}
 	
+	/**
+	 * Contructor for showing person list
+	 * @param id
+	 * @param name
+	 * @param saldo
+	 */
 	public PersonDTO(int id, String name, double saldo){
 		super();
 		this.id = id;
 		this.name = name;
 		this.saldo = saldo;
 	}
+	
+	/**
+	 * Contructor used to log in an user. 
+	 * @param name
+	 * @param password
+	 * @param admin
+	 * @param saldo
+	 */
 	public PersonDTO(String name, String password, int admin, double saldo) {
 		super();
 		
@@ -35,6 +51,14 @@ public class PersonDTO implements Serializable {
 		this.saldo = saldo;
 	}
 	
+	/**
+	 * Constructor used for creating a new user.
+	 * @param id
+	 * @param name
+	 * @param password
+	 * @param admin
+	 * @param saldo
+	 */
 	public PersonDTO(int id, String name, String password, int admin, double saldo) {
 		super();
 		this.id = id;
@@ -83,8 +107,4 @@ public class PersonDTO implements Serializable {
 		this.saldo = saldo;
 	}
 
-  @Override
-  public String toString() {
-    return "PersonDTO [id=" + id + ", name=" + name + ", password=" + password + "]";
-  }
 }

@@ -3,6 +3,11 @@ package gwt.shared;
 import java.io.Serializable;
 import java.sql.Date;
 
+/**
+ * Item Data Transfer Object. Specifies the atributes for an item. 
+ * @author magnusrasmussen
+ *
+ */
 public class ItemDTO implements Serializable {
 	
 	private String name;
@@ -14,16 +19,32 @@ public class ItemDTO implements Serializable {
 	private int timesSold;
 	private double saldo;
 	
+	/**
+	 * Empty constructor. 
+	 */
 	public ItemDTO(){
 		
 	}
+	
+	/**
+	 * Contructor for showing item list. 
+	 * @param id
+	 * @param name
+	 * @param price
+	 */
 	public ItemDTO(int id, String name, double price) 
 	{
 		this.id = id;
 		this.name = name;
 		this.price = price;
-	
+
 	}
+	
+	/**
+	 * Constructor used for adding a new item. 
+	 * @param name
+	 * @param price
+	 */
 	public ItemDTO(String name, double price) 
 	{
 		this.name = name;
@@ -31,6 +52,11 @@ public class ItemDTO implements Serializable {
 		
 	}
 	
+	/**
+	 * Constructor used for showing most sold items.
+	 * @param name
+	 * @param timesSold
+	 */
 	public ItemDTO(String name, int timesSold) 
 	{
 		this.name = name;
@@ -38,6 +64,13 @@ public class ItemDTO implements Serializable {
 		
 	}
 	
+	/**
+	 * Constructor used for showing history list for user. 
+	 * @param name
+	 * @param price
+	 * @param date
+	 * @param saldo
+	 */
 	public ItemDTO(String name, double price, Date date, double saldo ){
 		this.name = name;
 		this.price = price;
@@ -45,6 +78,13 @@ public class ItemDTO implements Serializable {
 		this.saldo = saldo;
 	}
 	
+	/**
+	 * Constructor used for statistics
+	 * @param user
+	 * @param name
+	 * @param price
+	 * @param date
+	 */
 	public ItemDTO(String user, String name, double price, Date date ){
 		this.user = user;
 		this.name = name;
