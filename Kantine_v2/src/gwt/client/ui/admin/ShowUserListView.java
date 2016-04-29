@@ -109,6 +109,10 @@ public class ShowUserListView extends Composite {
 	 */
 
 	public void populateUserList(List<PersonDTO> pList) {
+		
+		// remove table data
+		userTable.removeAllRows();
+		
 		// adjust column widths
 		headerTable.getFlexCellFormatter().setWidth(0, 0, "50px");
 		headerTable.getFlexCellFormatter().setWidth(0, 1, "110px");
@@ -124,9 +128,6 @@ public class ShowUserListView extends Composite {
 		headerTable.setText(0, 2, "Adgangskode");
 		headerTable.setText(0, 3, "Saldo");
 		headerTable.setText(0, 4, "Admin");
-		
-		// remove table data
-		userTable.removeAllRows();
 
 		// adjust column widths
 		userTable.getFlexCellFormatter().setWidth(0, 0, "50px");
@@ -167,9 +168,9 @@ public class ShowUserListView extends Composite {
 			delete.getElement().setId("deleteButton");
 			userTable.setWidget(i + 1, 6, delete);
 			
-			//Style buttons
-			edit.setStylePrimaryName("topNavBtn");
-			delete.setStylePrimaryName("topNavBtn");
+//			//Style buttons
+//			edit.setStylePrimaryName("topNavBtn");
+//			delete.setStylePrimaryName("topNavBtn");
 
 			// add edit and delete buttons to row
 			edit.addClickHandler(editHandler);

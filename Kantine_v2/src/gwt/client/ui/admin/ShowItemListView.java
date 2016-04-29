@@ -19,6 +19,7 @@ public class ShowItemListView extends Composite {
 
 	@UiField
 	public FlexTable itemTable;
+	@UiField FlexTable headerTable;
 
 	interface ShowItemListViewUiBinder extends UiBinder<Widget, ShowItemListView> {
 	}
@@ -90,8 +91,21 @@ public class ShowItemListView extends Composite {
 	 * @throws Exception
 	 */
 	public void populateItemList(List<ItemDTO> pList) {
+		
 		// remove table data
 		itemTable.removeAllRows();
+		
+		// adjust column widths
+		headerTable.getFlexCellFormatter().setWidth(0, 0, "110px");
+		headerTable.getFlexCellFormatter().setWidth(0, 1, "110px");
+		headerTable.getFlexCellFormatter().setWidth(0, 2, "110px");
+		headerTable.getFlexCellFormatter().setWidth(0, 3, "100px");
+		headerTable.getFlexCellFormatter().setWidth(0, 4, "110px");
+		
+		//Header
+		headerTable.setText(0, 0, "Id");
+		headerTable.setText(0, 1, "Navn");
+		headerTable.setText(0, 2, "Pris");
 
 		// adjust column widths
 		itemTable.getFlexCellFormatter().setWidth(0, 0, "110px");
@@ -99,15 +113,12 @@ public class ShowItemListView extends Composite {
 		itemTable.getFlexCellFormatter().setWidth(0, 2, "110px");
 		itemTable.getFlexCellFormatter().setWidth(0, 3, "110px");
 		itemTable.getFlexCellFormatter().setWidth(0, 4, "110px");
-
-		// set headers in flextable
-		itemTable.setText(0, 0, "Id");
-		itemTable.setText(0, 1, "Navn");
-		itemTable.setText(0, 2, "Pris");
+	
 
 		// style table
 		itemTable.addStyleName("FlexTable");
-		itemTable.getRowFormatter().addStyleName(0, "FlexTable-Header");
+		itemTable.setStylePrimaryName("FlexTable");
+	
 
 		for (int i = 0; i < pList.size(); i++) {
 			itemTable.setText(i + 1, 0, "" + pList.get(i).getId());
