@@ -122,7 +122,7 @@ public class ShowUserListView extends Composite {
 		headerTable.getFlexCellFormatter().setWidth(0, 5, "70px");
 		headerTable.getFlexCellFormatter().setWidth(0, 6, "70px");
 		
-		//Header
+		// Header
 		headerTable.setText(0, 0, "Id");
 		headerTable.setText(0, 1, "Brugernavn");
 		headerTable.setText(0, 2, "Adgangskode");

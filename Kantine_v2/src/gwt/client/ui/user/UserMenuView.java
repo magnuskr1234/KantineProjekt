@@ -25,6 +25,7 @@ public class UserMenuView extends Composite {
 
 	private static UserMenuViewUiBinder uiBinder = GWT.create(UserMenuViewUiBinder.class);
 	@UiField FlexTable itemTable;
+	@UiField FlexTable headerTable;
 
 	interface UserMenuViewUiBinder extends UiBinder<Widget, UserMenuView> {
 	}
@@ -97,6 +98,7 @@ public class UserMenuView extends Composite {
 	
 	//Flextable gets populated with rows and values. 
 	public void populateUserMenu(List<ItemDTO> pList) {
+		
 		// remove table data
 		itemTable.removeAllRows();
 		
@@ -106,11 +108,17 @@ public class UserMenuView extends Composite {
 		itemTable.getFlexCellFormatter().setWidth(0, 2, "25px");
 		itemTable.getFlexCellFormatter().setWidth(0, 3, "100px");
 
-		// set headers in flextable
-		itemTable.setText(0, 0, "Id");
-		itemTable.setText(0, 1, "Navn");
-		itemTable.setText(0, 2, "Pris");
+		// Header
+		headerTable.setText(0, 0, "Id");
+		headerTable.setText(0, 1, "Navn");
+		headerTable.setText(0, 2, "Pris");
 
+		// adjust column widths
+		headerTable.getFlexCellFormatter().setWidth(0, 0, "25px");
+		headerTable.getFlexCellFormatter().setWidth(0, 1, "200px");
+		headerTable.getFlexCellFormatter().setWidth(0, 2, "25px");
+		headerTable.getFlexCellFormatter().setWidth(0, 3, "100px");
+		
 		// style table
 		itemTable.addStyleName("FlexTable");
 		itemTable.getRowFormatter().addStyleName(0, "FlexTable-Header");
