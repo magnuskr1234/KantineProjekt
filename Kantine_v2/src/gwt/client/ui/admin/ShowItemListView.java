@@ -94,7 +94,6 @@ public class ShowItemListView extends Composite {
 	/**
 	 * Flextable is populated whit data 
 	 * 
-	 * @throws Exception
 	 */
 	public void populateItemList(List<ItemDTO> pList) {
 		

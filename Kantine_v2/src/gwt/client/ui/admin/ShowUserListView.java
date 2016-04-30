@@ -100,7 +100,6 @@ public class ShowUserListView extends Composite {
 	/**
 	 * Flextable bliver tilføjet rækker samt værdier.
 	 * 
-	 * @throws Exception
 	 */
 	public void populateUserList(List<PersonDTO> pList) {
 		
