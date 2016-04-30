@@ -15,7 +15,7 @@ import gwt.shared.DALException;
  *
  */
 public class PersonDB {
-	
+
 	Connection connection;
 	ConnectionDB connectionDB;
 	private PreparedStatement savePersonStmt = null;
@@ -34,7 +34,7 @@ public class PersonDB {
 		{
 			this.connectionDB = connectionDB;
 			connection = connectionDB.getConnection();
-			
+
 			// create query that add a person to kartotek
 			savePersonStmt = 
 					connection.prepareStatement( "INSERT INTO customers ( email, password, admin, saldo ) VALUES ( ?, ?, ?, ? )" );
@@ -46,7 +46,7 @@ public class PersonDB {
 			// Create query that get 1 person 
 			getPersonStmt = connection.prepareStatement(
 					"SELECT * FROM customers where email = ? AND password = ?");
-			
+
 			// create query that get all persons from table "persons"
 			getPersonsStmt = connection.prepareStatement( 
 					"SELECT * FROM customers ORDER BY email "); 
@@ -61,7 +61,7 @@ public class PersonDB {
 		{
 			throw new DALException("Kan ikke oprette forbindelse til database");
 		}
-		
+
 	}
 
 
@@ -93,23 +93,23 @@ public class PersonDB {
 	 * @throws Exception
 	 */
 	public void updatePerson(double saldo, int id) throws Exception {
-		
+
 		try {		
 			updatePersonStmt.setDouble(1, saldo);
 			updatePersonStmt.setInt(2, id);
-			
+
 
 			updatePersonStmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DALException(" \"updatePerson\" fejlede");
 		} 
 	}
-	
+
 	public void test(){
 		System.out.println("test");
 	}
 
-	
+
 	/**
 	 * Get all person from database
 	 * @return
@@ -118,7 +118,7 @@ public class PersonDB {
 	public List<PersonDTO> getPersons() throws Exception {
 		List< PersonDTO > results = null;
 		ResultSet resultSet = null;
-		
+
 		try 
 		{
 			resultSet = getPersonsStmt.executeQuery(); 
@@ -159,10 +159,10 @@ public class PersonDB {
 	 * @throws Exception
 	 */
 	public void deletePerson(int id) throws Exception {
-		
+
 		try {
 			deletePersonStmt.setInt(1, id);
-		
+
 			deletePersonStmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DALException(" \"deletePerson\" fejlede");
@@ -180,34 +180,34 @@ public class PersonDB {
 	public PersonDTO getPerson(String username, String password) throws Exception {
 		ResultSet resultSet = null;
 		PersonDTO person = null;
-		
+
 		try{
-		getPersonStmt.setString(1, username);
-		getPersonStmt.setString(2, password);
-		
-		resultSet = getPersonStmt.executeQuery();
-		
-		while (resultSet.next()){
-			person = new PersonDTO();
-			
-			person.setId(resultSet.getInt("id"));
-			person.setName(resultSet.getString("email"));
-			person.setPassword(resultSet.getString("password"));
-			person.setAdminStatus(resultSet.getInt("admin"));
-			person.setSaldo(resultSet.getDouble("saldo"));
+			getPersonStmt.setString(1, username);
+			getPersonStmt.setString(2, password);
+
+			resultSet = getPersonStmt.executeQuery();
+
+			while (resultSet.next()){
+				person = new PersonDTO();
+
+				person.setId(resultSet.getInt("id"));
+				person.setName(resultSet.getString("email"));
+				person.setPassword(resultSet.getString("password"));
+				person.setAdminStatus(resultSet.getInt("admin"));
+				person.setSaldo(resultSet.getDouble("saldo"));
+			}
+			// The catch which is used if either the statement or connection is failing
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// A finally try catch which closes the result set and it can't then close the db connection
+		} finally {
+			try {
+				resultSet.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+				connectionDB.close();
+			}
 		}
-		// The catch which is used if either the statement or connection is failing
-				} catch (SQLException e) {
-					e.printStackTrace();
-				// A finally try catch which closes the result set and it can't then close the db connection
-				} finally {
-					try {
-						resultSet.close();
-					} catch (SQLException ex) {
-						ex.printStackTrace();
-						connectionDB.close();
-					}
-				}
 		return person;
 	}
-	}
+}

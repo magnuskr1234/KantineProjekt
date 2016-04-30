@@ -288,7 +288,7 @@ public class AdminController {
 			// If button source is create item
 			if (event.getSource() == createItemView.getcreateItemBtn()){
 
-				if (createItemView.validate()){
+			if (createItemView.validate()){
 					itemServiceCall.getItem(createItemView.getCurrentItem().getName(), createItemView.getCurrentItem().getPrice(), new AsyncCallback<ItemDTO>(){
 
 						@Override
@@ -298,6 +298,11 @@ public class AdminController {
 
 						@Override
 						public void onSuccess(ItemDTO item) {
+							//Check if user is null
+							if(item.getName() == null){
+								Window.alert("Findes allerede");
+							} else {
+								//mainView.getLoginView().setError();
 							itemServiceCall.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(),
 									createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
 
@@ -312,6 +317,7 @@ public class AdminController {
 								}
 
 							});
+							}
 
 						}
 					});

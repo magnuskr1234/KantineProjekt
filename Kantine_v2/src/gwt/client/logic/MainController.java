@@ -85,6 +85,7 @@ public class MainController {
 							// Check admin status for user
 						} else if (person.getAdminStatus() == 1) {
 							adminController.setCurrentPerson(person);
+							loginView.resetError();
 							mainView.changeView(mainView.getAdminView());
 							mainView.getAdminView().changeWidget(mainView.getAdminView().getadminMenu());
 						
@@ -93,7 +94,8 @@ public class MainController {
 							mainView.getUserView().loginOk(person.getName());
 							mainView.getUserView().updateSaldoHeader(person.getSaldo());
 							mainView.getUserView().getBasketView().setCurrentUserSaldo(person.getSaldo());
-							userMenuView.setcuSaldo(person.getSaldo());
+							UserMenuView.setcuSaldo(person.getSaldo());
+							loginView.resetError();
 							mainView.changeView(mainView.getUserView());
 							mainView.getUserView().changeWidget(mainView.getUserView().getUserMenuView());
 
@@ -114,7 +116,7 @@ public class MainController {
 						}	
 						//Clear login fields
 						loginView.clearfields();
-						loginView.resetError();
+			
 					}
 				});
 		}

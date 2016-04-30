@@ -18,15 +18,15 @@ public class ItemDB {
 
 	Connection connection;
 	ConnectionDB connectionDB;
-	PreparedStatement showMostSoldItemsStmt;
-	PreparedStatement getItemsStmt;
-	PreparedStatement showHistoryListStmt;
-	PreparedStatement showStatListStmt;
-	PreparedStatement saveItemStmt;
-	PreparedStatement saveItemToHistoryStmt;
-	PreparedStatement updateItemStmt;
-	PreparedStatement deleteItemStmt;
-	PreparedStatement getItemStmt;
+	private PreparedStatement showMostSoldItemsStmt;
+	private PreparedStatement getItemsStmt;
+	private PreparedStatement showHistoryListStmt;
+	private PreparedStatement showStatListStmt;
+	private PreparedStatement saveItemStmt;
+	private PreparedStatement saveItemToHistoryStmt;
+	private PreparedStatement updateItemStmt;
+	private PreparedStatement deleteItemStmt;
+	private PreparedStatement getItemStmt;
 
 	public ItemDB(ConnectionDB connectionDB) throws SQLException {
 		this.connectionDB = connectionDB;
@@ -48,11 +48,11 @@ public class ItemDB {
 		// Creates query that gets neccesary info for showing statistics. 
 		showStatListStmt = connection.prepareStatement(
 				"SELECT customers.email, history.item_name, history.item_price, history.date_ordered"
-				+ " FROM history"
-				+ " LEFT JOIN customers"
-				+ " ON customers.id=history.customer_id"
-				+ " WHERE history.item_name NOT LIKE '%saldo%'"
-				+ " ORDER BY history.date_ordered DESC ");
+						+ " FROM history"
+						+ " LEFT JOIN customers"
+						+ " ON customers.id=history.customer_id"
+						+ " WHERE history.item_name NOT LIKE '%saldo%'"
+						+ " ORDER BY history.date_ordered DESC ");
 
 		// Creates query that shows an users history
 		showHistoryListStmt = connection.prepareStatement(
@@ -64,12 +64,12 @@ public class ItemDB {
 		// Creates query that gets most sold items. 
 		showMostSoldItemsStmt = connection.prepareStatement(
 				"SELECT item_name, COUNT(*) AS total FROM history"
-				+ " GROUP BY item_name"
-				+ " ORDER BY total DESC");
-		
-		// Create query that get 1 person 
+						+ " GROUP BY item_name"
+						+ " ORDER BY total DESC");
+
+		// Create query that get 1 item 
 		getItemStmt = connection.prepareStatement(
-				"SELECT * FROM items where title = ? AND price = ?");
+				"SELECT * FROM items where title = ? and price = ?");
 	}
 
 	/**
@@ -266,7 +266,7 @@ public class ItemDB {
 		}
 
 	}
-	
+
 	/**
 	 * Checks if item exists in database. 
 	 * @param name
@@ -277,32 +277,32 @@ public class ItemDB {
 	public ItemDTO getItem(String name, double price) throws Exception {
 		ResultSet resultSet = null;
 		ItemDTO item = null;
-		
-		try{
-		getItemStmt.setString(1, name);
-		getItemStmt.setDouble(2, price);
-		
-		resultSet = getItemStmt.executeQuery();
-		
-		while (resultSet.next()){
-			item = new ItemDTO();
-			
-			item.setId(resultSet.getInt("title"));
-			item.setPrice(resultSet.getDouble("price"));
 
+		try{
+			getItemStmt.setString(1, name);
+			getItemStmt.setDouble(2, price);
+
+			resultSet = getItemStmt.executeQuery();
+
+			while (resultSet.next()){
+				item = new ItemDTO();
+
+				item.setName(resultSet.getString("title"));
+				item.setPrice(resultSet.getDouble("price"));
+
+			}
+			// The catch which is used if either the statement or connection is failing
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// A finally try catch which closes the result set and it can't then close the db connection
+		} finally {
+			try {
+				resultSet.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+				connectionDB.close();
+			}
 		}
-		// The catch which is used if either the statement or connection is failing
-				} catch (SQLException e) {
-					e.printStackTrace();
-				// A finally try catch which closes the result set and it can't then close the db connection
-				} finally {
-					try {
-						resultSet.close();
-					} catch (SQLException ex) {
-						ex.printStackTrace();
-						connectionDB.close();
-					}
-				}
 		return item;
 	}
 
