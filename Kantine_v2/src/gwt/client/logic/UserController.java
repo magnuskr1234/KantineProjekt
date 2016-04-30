@@ -10,7 +10,6 @@ import gwt.client.ui.user.UserMenuView;
 import gwt.client.ui.user.UserView;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import gwt.client.service.ItemServiceAsync;
@@ -21,7 +20,6 @@ import gwt.shared.PersonDTO;
 
 /**
  * The user controller handles the different user views and logic.
- * 
  * @author magnusrasmussen
  *
  */
@@ -41,16 +39,12 @@ public class UserController {
 	private ItemServiceAsync itemServiceCall;
 	private PersonServiceAsync personServiceCall;
 
-	// reference to data transfer object
-	private PersonDTO personDTO;
-	private ItemDTO itemDTO;
-
 	public int currentPersonId;
 	public PersonDTO currentPerson;
+	
 	public double balanceSaldo = 0;
 	public double timesBrought = 0;
 	public double priceToPay = 0;
-	public Timer timer;
 
 	public UserController(MainView mainView, PersonServiceAsync personServiceCall, ItemServiceAsync itemServiceCall) {
 		// Instantiate pagecontroller
@@ -77,9 +71,6 @@ public class UserController {
 
 		// basket update
 		userMenuView.getAddToBasketBtn().addClickHandler(new UpdateBasketHandler());
-		
-
-
 	}
 
 	public void setCurrentPerson(PersonDTO currentPerson) {
@@ -87,7 +78,11 @@ public class UserController {
 		this.currentPersonId = currentPerson.getId();
 	}
 
-	// Logout handler
+	/**
+	 *  Logout handler
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class LogoutHandler implements ClickHandler {
 
 		@Override
@@ -95,7 +90,12 @@ public class UserController {
 			mainView.changeView(mainView.getLoginView());
 		}
 	}
-
+	
+	/**
+	 * Clickhandler for buy
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class BuyHandler implements ClickHandler {
 
 		@Override
@@ -133,7 +133,7 @@ public class UserController {
 							priceToPay = UserMenuView.tempItemList.get(i).getPrice();
 							balanceSaldo -= priceToPay;
 
-							// RPC call
+							// Save item to history RPC call
 							itemServiceCall.saveItemToHistory(currentPersonId,
 									UserMenuView.tempItemList.get(i).getName(),
 									UserMenuView.tempItemList.get(i).getPrice(), balanceSaldo,
@@ -148,6 +148,7 @@ public class UserController {
 										public void onSuccess(Void result) {
 											if (2>1){
 												int count = 0+1;
+												count +=1;
 											
 											} 
 												
@@ -184,6 +185,11 @@ public class UserController {
 		}
 	}
 
+	/**
+	 * Clickhandler for adding items to basket
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class UpdateBasketHandler implements ClickHandler {
 
 		@Override
@@ -202,12 +208,15 @@ public class UserController {
 		}
 	}
 
-	// Back to menu handler
+	/**
+	 * Clickhandler for returning to menu
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class UserReturnToMenuHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			if (event.getSource() == userHeaderView.getBtnMainMenu()) {
 
 				itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
 					@Override
@@ -222,15 +231,17 @@ public class UserController {
 				});
 
 			}
-		}
 	}
 
-	// Show user history handler
+	/**
+	 * Clickhandler for showing history 
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class HistoryHandler implements ClickHandler {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			if (event.getSource() == userHeaderView.getBtnHistory()) {
 				userView.changeWidget(userHistoryView);
 
 				itemServiceCall.getHistoryList(currentPersonId, new AsyncCallback<List<ItemDTO>>() {
@@ -249,6 +260,5 @@ public class UserController {
 				// Show updated history view
 				userView.changeWidget(userHistoryView);
 			}
-		}
 	}
 }

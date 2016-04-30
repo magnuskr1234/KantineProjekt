@@ -13,6 +13,12 @@ import gwt.shared.ItemDTO;
 import gwt.shared.PersonDTO;
 import gwt.shared.DALException;
 
+/**
+ * Connection for database. Used only for connection. 
+ * @author magnusrasmussen
+ *
+ */
+@SuppressWarnings("serial")
 public class ConnectionDB extends RemoteServiceServlet implements ItemService, PersonService {
 
 	private static final String URL = "jdbc:mysql://52.58.62.183:3306/kantinen";
@@ -24,11 +30,15 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 	private ItemDB itemDB;
 	private PersonDB personDB;
 
+	/**
+	 * Constructor for establishing connection. 
+	 * @throws Exception
+	 */
 	public ConnectionDB() throws Exception {
 		try {
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			// create query that add an item to database
-
+			
+			// Create instance databases. 
 			itemDB = new ItemDB(this);
 			personDB = new PersonDB(this);
 		} catch (SQLException sqlException) {
@@ -51,7 +61,9 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Methods used for items. 
+	 */
 	@Override
 	public List<ItemDTO> getMostSoldItems() throws Exception {
 		List<ItemDTO> items = itemDB.getMostSoldItems();
@@ -103,6 +115,9 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 		itemDB.deleteItem(id);
 	}
 
+	/**
+	 * Methods used for persons. 
+	 */
 	@Override
 	public void savePerson(PersonDTO p) throws Exception {
 		personDB.savePerson(p);

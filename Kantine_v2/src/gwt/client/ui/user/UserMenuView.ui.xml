@@ -9,7 +9,7 @@
 			<g:FlexTable ui:field="headerTable" styleName="whiteBackground" width="80%" height="100%" />
 		</g:VerticalPanel>
 
-		<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_CENTER" height="85%" verticalAlignment="ALIGN_TOP" >
+		<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_CENTER" height="80%" verticalAlignment="ALIGN_TOP" >
 		<g:ScrollPanel height="100%" width="80%" styleName="whiteBackground"  >
 			<g:FlexTable ui:field="itemTable" styleName="whiteBackground" width="100%" />
 		

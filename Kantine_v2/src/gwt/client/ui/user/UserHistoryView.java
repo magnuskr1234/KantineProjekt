@@ -29,7 +29,7 @@ public class UserHistoryView extends Composite {
 	}
 
 	// Populate flextable with history for current user
-	public void populateUserHistory(List<ItemDTO> pList) {
+	public void populateUserHistory(List<ItemDTO> dataList) {
 		// remove table data
 		historyTable.removeAllRows();
 
@@ -43,17 +43,17 @@ public class UserHistoryView extends Composite {
 		historyTable.addStyleName("FlexTable");
 		historyTable.getRowFormatter().addStyleName(0, "FlexTable-Header");
 
-
-		for (int i = 0; i < pList.size(); i++) {
-			historyTable.setText(i + 1, 0, "" + pList.get(i).getDate());
-			historyTable.setText(i + 1, 1, pList.get(i).getName());
-			if (pList.get(i).getName().equals("Tilføjet til Saldo")){
-				historyTable.setText(i + 1, 2, "" +(pList.get(i).getPrice()));
+		// Loop to add data to flextable 
+		for (int i = 0; i < dataList.size(); i++) {
+			historyTable.setText(i + 1, 0, "" + dataList.get(i).getDate());
+			historyTable.setText(i + 1, 1, dataList.get(i).getName());
+			if (dataList.get(i).getName().equals("Tilføjet til Saldo")){
+				historyTable.setText(i + 1, 2, "" +(dataList.get(i).getPrice()));
 			}else{
-				historyTable.setText(i + 1, 2, "" +(-(pList.get(i).getPrice())));
+				historyTable.setText(i + 1, 2, "" +(-(dataList.get(i).getPrice())));
 			}			
 			
-			historyTable.setText(i + 1, 3, "" + pList.get(i).getSaldo());
+			historyTable.setText(i + 1, 3, "" + dataList.get(i).getSaldo());
 		}
 	}
 }

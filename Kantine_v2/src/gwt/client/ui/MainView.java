@@ -8,7 +8,11 @@ import gwt.client.ui.admin.AdminView;
 import gwt.client.ui.login.LoginView;
 import gwt.client.ui.user.UserView;
 
-
+/**
+ * Mainview is the container for all the other views. 
+ * @author magnusrasmussen
+ *
+ */
 public class MainView extends Composite{
 	
 		// The main panel in this class

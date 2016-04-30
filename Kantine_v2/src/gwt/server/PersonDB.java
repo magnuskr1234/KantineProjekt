@@ -1,26 +1,22 @@
 package gwt.server;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
-
-import gwt.client.service.PersonService;
 import gwt.shared.PersonDTO;
 import gwt.shared.DALException;
 
-
+/**
+ * Class used to make SQL statements to database. Contains all statements used for users. 
+ * @author magnusrasmussen
+ *
+ */
 public class PersonDB {
 	
 	Connection connection;
-	
 	ConnectionDB connectionDB;
 	private PreparedStatement savePersonStmt = null;
 	private PreparedStatement updatePersonStmt = null;
@@ -28,6 +24,11 @@ public class PersonDB {
 	private PreparedStatement getPersonsStmt = null;
 	private PreparedStatement deletePersonStmt = null;
 
+	/**
+	 * Contains SQL statements. 
+	 * @param connectionDB
+	 * @throws Exception
+	 */
 	public PersonDB(ConnectionDB connectionDB) throws Exception {
 		try 
 		{
@@ -64,7 +65,11 @@ public class PersonDB {
 	}
 
 
-
+	/**
+	 * Creates a new user in database
+	 * @param p
+	 * @throws Exception
+	 */
 	public void savePerson(PersonDTO p) throws Exception {
 		// simulate server error
 		// throw new RuntimeException(" \"savePerson\" fejlede");
@@ -81,7 +86,12 @@ public class PersonDB {
 		} 
 	}
 
-
+	/**
+	 * Updates a person
+	 * @param saldo
+	 * @param id
+	 * @throws Exception
+	 */
 	public void updatePerson(double saldo, int id) throws Exception {
 		
 		try {		
@@ -100,7 +110,11 @@ public class PersonDB {
 	}
 
 	
-	// Get all persons from database
+	/**
+	 * Get all person from database
+	 * @return
+	 * @throws Exception
+	 */
 	public List<PersonDTO> getPersons() throws Exception {
 		List< PersonDTO > results = null;
 		ResultSet resultSet = null;
@@ -139,7 +153,11 @@ public class PersonDB {
 		return results; 
 	}
 
-
+	/**
+	 * Deletes a person from database
+	 * @param id
+	 * @throws Exception
+	 */
 	public void deletePerson(int id) throws Exception {
 		
 		try {
@@ -151,7 +169,13 @@ public class PersonDB {
 		} 
 	}
 
-	// Get currentperson from database. Checks if user exists
+	/**
+	 *  Get currentperson from database. Checks if user exists
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws Exception
+	 */
 
 	public PersonDTO getPerson(String username, String password) throws Exception {
 		ResultSet resultSet = null;

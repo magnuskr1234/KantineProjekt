@@ -6,15 +6,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
-
 import gwt.shared.DALException;
 import gwt.shared.ItemDTO;
-import gwt.shared.PersonDTO;
 
+/**
+ * Class used to make SQL statements to database. Contains all statements used for items. 
+ * @author magnusrasmussen
+ *
+ */
 public class ItemDB {
 
 	Connection connection;
-
 	ConnectionDB connectionDB;
 	PreparedStatement showMostSoldItemsStmt;
 	PreparedStatement getItemsStmt;
@@ -30,6 +32,7 @@ public class ItemDB {
 		this.connectionDB = connectionDB;
 		connection = connectionDB.getConnection();
 
+		// Create query that saves an item
 		saveItemStmt = connection.prepareStatement("INSERT INTO items ( title, price ) VALUES ( ?, ? )");
 
 		// create query that updates an item
@@ -38,9 +41,11 @@ public class ItemDB {
 		// create query that deletes an item in database
 		deleteItemStmt = connection.prepareStatement("DELETE FROM items WHERE id =  ? ");
 
+		// creates query that saves bought items to history list. 
 		saveItemToHistoryStmt = connection
 				.prepareStatement("INSERT INTO history (customer_id, item_name, item_price, customer_current_saldo) VALUES (?, ?, ?, ?)");
 
+		// Creates query that gets neccesary info for showing statistics. 
 		showStatListStmt = connection.prepareStatement(
 				"SELECT customers.email, history.item_name, history.item_price, history.date_ordered"
 				+ " FROM history"
@@ -49,12 +54,14 @@ public class ItemDB {
 				+ " WHERE history.item_name NOT LIKE '%saldo%'"
 				+ " ORDER BY history.date_ordered DESC ");
 
+		// Creates query that shows an users history
 		showHistoryListStmt = connection.prepareStatement(
 				"SELECT item_name, item_price, date_ordered, customer_current_saldo FROM history WHERE customer_id = ? ORDER BY history.date_ordered DESC");
 
 		// create query that get all items in database
 		getItemsStmt = connection.prepareStatement("SELECT * FROM items ORDER BY title ");
 
+		// Creates query that gets most sold items. 
 		showMostSoldItemsStmt = connection.prepareStatement(
 				"SELECT item_name, COUNT(*) AS total FROM history"
 				+ " GROUP BY item_name"
@@ -65,6 +72,11 @@ public class ItemDB {
 				"SELECT * FROM items where title = ? AND price = ?");
 	}
 
+	/**
+	 * Gets most sold items
+	 * @return
+	 * @throws Exception
+	 */
 	public List<ItemDTO> getMostSoldItems() throws Exception {
 		List<ItemDTO> results = null;
 		ResultSet resultSet = null;
@@ -91,6 +103,11 @@ public class ItemDB {
 		return results;
 	}
 
+	/**
+	 * Get all items from database
+	 * @return
+	 * @throws Exception
+	 */
 	public List<ItemDTO> getItems() throws Exception {
 		List<ItemDTO> results = null;
 		ResultSet resultSet = null;
@@ -116,6 +133,12 @@ public class ItemDB {
 		return results;
 	}
 
+	/**
+	 * Gets an users history items
+	 * @param i
+	 * @return
+	 * @throws Exception
+	 */
 	public List<ItemDTO> getHistoryList(int i) throws Exception {
 		List<ItemDTO> results = null;
 		ResultSet resultSet = null;
@@ -142,6 +165,11 @@ public class ItemDB {
 		return results;
 	}
 
+	/**
+	 * Gets the info for showing the statistics list. 
+	 * @return
+	 * @throws Exception
+	 */
 	public List<ItemDTO> getStatList() throws Exception {
 		List<ItemDTO> results = null;
 		ResultSet resultSet = null;
@@ -167,6 +195,14 @@ public class ItemDB {
 		return results;
 	}
 
+	/**
+	 * Save an item to the history 
+	 * @param c
+	 * @param name
+	 * @param price
+	 * @param currentSaldo
+	 * @throws Exception
+	 */
 	public void saveItemToHistory(int c, String name, double price, double currentSaldo) throws Exception {
 		try {
 			saveItemToHistoryStmt.setInt(1, c);
@@ -180,6 +216,11 @@ public class ItemDB {
 		}
 	}
 
+	/**
+	 * Saves an item to the database. 
+	 * @param p
+	 * @throws Exception
+	 */
 	public void saveItem(ItemDTO p) throws Exception {
 
 		try {
@@ -192,6 +233,11 @@ public class ItemDB {
 		}
 	}
 
+	/**
+	 * Deletes an item
+	 * @param id
+	 * @throws Exception
+	 */
 	public void deleteItem(int id) throws Exception {
 
 		try {
@@ -203,6 +249,12 @@ public class ItemDB {
 		}
 	}
 
+	/**
+	 * Updates an item with new info. 
+	 * @param price
+	 * @param id
+	 * @throws Exception
+	 */
 	public void updateItem(double price, int id) throws Exception {
 		try {
 			updateItemStmt.setDouble(1, price);
@@ -215,6 +267,13 @@ public class ItemDB {
 
 	}
 	
+	/**
+	 * Checks if item exists in database. 
+	 * @param name
+	 * @param price
+	 * @return
+	 * @throws Exception
+	 */
 	public ItemDTO getItem(String name, double price) throws Exception {
 		ResultSet resultSet = null;
 		ItemDTO item = null;

@@ -7,6 +7,11 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 
+/**
+ * This view contains the admin menu 
+ * @author magnusrasmussen
+ *
+ */
 public class AdminMenuView extends Composite {
 
 	private static adminMenuUiBinder uiBinder = GWT.create(adminMenuUiBinder.class);
@@ -23,6 +28,7 @@ public class AdminMenuView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
+	// getters for buttons 
 	public Button getBtnCreateUser() {
 		return createUser;
 	}

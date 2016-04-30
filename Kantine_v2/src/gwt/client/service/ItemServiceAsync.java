@@ -1,11 +1,8 @@
 package gwt.client.service;
 
 import java.util.List;
-
 import com.google.gwt.user.client.rpc.AsyncCallback;
-
 import gwt.shared.ItemDTO;
-import gwt.shared.PersonDTO;
 
 public interface ItemServiceAsync {
 

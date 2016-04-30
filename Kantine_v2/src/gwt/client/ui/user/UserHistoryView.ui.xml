@@ -13,7 +13,7 @@
 				<g:Label text="Konto Balance" styleName="blackText_Bold" width="50px"/>
 			</g:HorizontalPanel>
 		</g:VerticalPanel>
-		<g:HorizontalPanel width="600px" horizontalAlignment="ALIGN_CENTER">
+		<g:HorizontalPanel width="600px" horizontalAlignment="ALIGN_CENTER" height="80%">
 			<g:ScrollPanel height="467px" width="550px" styleName="whiteBackground">
 			<g:FlexTable ui:field="historyTable" width="100%" height="100%" cellSpacing="5" styleName="whiteBackground"/>
 		</g:ScrollPanel>

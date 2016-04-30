@@ -46,8 +46,8 @@ public class UserMenuView extends Composite {
 	// List to hold item objects 
 	public static List<ItemDTO> tempItemList  = new ArrayList<ItemDTO>();
 
-
-	public Button getAddToBasketBtn() {
+	// Getter and setters
+	public Button getAddToBasketBtn() {   
 		return addToBasketBtn;
 	}
 	
@@ -70,23 +70,6 @@ public class UserMenuView extends Composite {
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
-
-	// Handlers
-	private AddToBasketHandler addToBasketHandler;
-	private ItemDTO itemDTO;
-
-
-
-	public UserMenuView() {
-		initWidget(uiBinder.createAndBindUi(this));
-		
-		addToBasketHandler = new AddToBasketHandler();
-
-		// buttons for controller event handling
-		addToBasketBtn = new Button();
-	}
-	
-	
 	
 	public static void setcuSaldo(double s) {
 		cuSaldo = s;
@@ -94,6 +77,23 @@ public class UserMenuView extends Composite {
 	
 	public static double getcuSaldo(){
 		return cuSaldo;
+	}
+
+	// Handlers
+	private AddToBasketHandler addToBasketHandler;
+	private ItemDTO itemDTO;
+
+
+	/**
+	 * Constructor 
+	 */
+	public UserMenuView() {
+		initWidget(uiBinder.createAndBindUi(this));
+		
+		addToBasketHandler = new AddToBasketHandler();
+
+		// buttons for controller event handling
+		addToBasketBtn = new Button();
 	}
 	
 	//Flextable gets populated with rows and values. 
@@ -123,6 +123,7 @@ public class UserMenuView extends Composite {
 		itemTable.addStyleName("FlexTable");
 		itemTable.getRowFormatter().addStyleName(0, "FlexTable-Header");
 
+		// Data is added to flextable
 		for (int i = 0; i < pList.size(); i++) {
 			itemTable.setText(i + 1, 0, "" + pList.get(i).getId());
 			itemTable.setText(i + 1, 1, pList.get(i).getName());
@@ -135,15 +136,16 @@ public class UserMenuView extends Composite {
 			addToBasketBtn.getElement().setId("editBtn");
 			itemTable.setWidget(i + 1, 3, addToBasketBtn);
 			
-//			//Style buttons
-//			addToBasketBtn.setStylePrimaryName("topNavBtn");
-
-			// add edit and delete buttons to row
+			// add clickhandler
 			addToBasketBtn.addClickHandler(addToBasketHandler);
 		}
 	}
 
-	// Handler til at håndtere et tryk på knappen "tilføj"
+	/**
+	 *  CLickhandler to handle add to basket button. 
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class AddToBasketHandler implements ClickHandler {
 		
 		@Override
@@ -195,9 +197,5 @@ public class UserMenuView extends Composite {
 		}else{
 			Window.alert("Ikke nok penge");
 		}return false;
-	}
-
-	public void deleteFromList(int i){
-		tempItemList.remove(i);
 	}
 }

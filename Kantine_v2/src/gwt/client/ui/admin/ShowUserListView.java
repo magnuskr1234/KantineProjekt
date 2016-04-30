@@ -14,9 +14,7 @@ import gwt.shared.PersonDTO;
 import java.util.List;
 
 /**
- * Flextable bliver oprettet her og der bliver lavet en liste af alle brugere i
- * systemet fra databasen.
- * 
+ * This class contains the view to show all users 
  * @author magnusrasmussen
  *
  */
@@ -43,22 +41,6 @@ public class ShowUserListView extends Composite {
 	public int personId;
 	public static double saldoUpdate;
 
-	public static double getSaldoUpdate(){
-		return saldoUpdate;
-	}
-
-	public int getPersonId() {
-		return personId;
-	}
-
-	public void setPersonId(int personId) {
-		this.personId = personId;
-	}
-
-	/*public void setSaldo(double saldo){
-		this.saldoUpdate = saldo;
-	}*/
-
 	// Handlers
 	private EditHandler editHandler;
 	private DeleteHandler deleteHandler;
@@ -79,6 +61,19 @@ public class ShowUserListView extends Composite {
 		personDTO = new PersonDTO();
 	}
 
+	// getters and setters
+	public static double getSaldoUpdate(){
+		return saldoUpdate;
+	}
+
+	public int getPersonId() {
+		return personId;
+	}
+
+	public void setPersonId(int personId) {
+		this.personId = personId;
+	}
+	
 	public Button getControllerEditBtn() {
 		return controllerEditBtn;
 	}
@@ -107,7 +102,6 @@ public class ShowUserListView extends Composite {
 	 * 
 	 * @throws Exception
 	 */
-
 	public void populateUserList(List<PersonDTO> pList) {
 		
 		// remove table data
@@ -142,6 +136,7 @@ public class ShowUserListView extends Composite {
 		userTable.addStyleName("FlexTable");
 		userTable.setStylePrimaryName("FlexTable");
 
+		// For loop to add data to flextable
 		for (int i = 0; i < pList.size(); i++) {
 			userTable.setText(i + 1, 0, "" + pList.get(i).getId());
 			userTable.setText(i + 1, 1, pList.get(i).getName());
@@ -157,8 +152,7 @@ public class ShowUserListView extends Composite {
 			userTable.setText(i + 1, 4, AdminStatus); 
 		}
 
-		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
-		// hver række.pList.size()
+		// buttons are added to each row
 		for (int i = 0; i < pList.size(); i++) {
 			Button edit = new Button("Tank saldo op");
 			edit.getElement().setId("editButton");
@@ -168,18 +162,17 @@ public class ShowUserListView extends Composite {
 			delete.getElement().setId("deleteButton");
 			userTable.setWidget(i + 1, 6, delete);
 			
-//			//Style buttons
-//			edit.setStylePrimaryName("topNavBtn");
-//			delete.setStylePrimaryName("topNavBtn");
-
-			// add edit and delete buttons to row
 			edit.addClickHandler(editHandler);
 			delete.addClickHandler(deleteHandler);
 		}
 
 	}
 
-	// Handler for deleting a user
+	/**
+	 *  Handler for deleting a user
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class DeleteHandler implements ClickHandler {
 		@Override
 		public void onClick(ClickEvent event) {
@@ -196,7 +189,11 @@ public class ShowUserListView extends Composite {
 		}
 	}
 
-	// Handler for saldo update
+	/**
+	 *  Handler for saldo update
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class EditHandler implements ClickHandler {
 		@Override
 		public void onClick(ClickEvent event) {

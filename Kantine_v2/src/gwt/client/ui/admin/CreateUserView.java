@@ -16,6 +16,11 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.CheckBox;
 
+/**
+ * This class contains the create user view. 
+ * @author magnusrasmussen
+ *
+ */
 public class CreateUserView extends Composite {
 
 	private static CreateUserUiBinder uiBinder = GWT.create(CreateUserUiBinder.class);
@@ -25,6 +30,7 @@ public class CreateUserView extends Composite {
 	@UiField TextBox txtSaldo;
 	@UiField CheckBox radioAdmin;
 
+	// reference to personDTO 
 	public PersonDTO pDTO;
 
 	interface CreateUserUiBinder extends UiBinder<Widget, CreateUserView> {
@@ -41,6 +47,7 @@ public class CreateUserView extends Composite {
 		
 	}
 
+	// Get button
 	public Button getCreateUserBtn(){
 		return createUserBtn;
 	}
@@ -72,6 +79,7 @@ public class CreateUserView extends Composite {
 		return false;
 	}
 
+	// Clear fields
 	public void clearFields(){
 		txtName.setText("");
 		txtPassword.setText("");

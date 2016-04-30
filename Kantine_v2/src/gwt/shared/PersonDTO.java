@@ -23,7 +23,7 @@ public class PersonDTO implements Serializable {
 	}
 	
 	/**
-	 * Contructor for showing person list
+	 * Contructor used to log in and set currentuser. 
 	 * @param id
 	 * @param name
 	 * @param saldo
@@ -36,7 +36,7 @@ public class PersonDTO implements Serializable {
 	}
 	
 	/**
-	 * Contructor used to log in an user. 
+	 * Constructor used for creating a new user 
 	 * @param name
 	 * @param password
 	 * @param admin
@@ -52,7 +52,7 @@ public class PersonDTO implements Serializable {
 	}
 	
 	/**
-	 * Constructor used for creating a new user.
+	* Contructor used to show user list. 
 	 * @param id
 	 * @param name
 	 * @param password

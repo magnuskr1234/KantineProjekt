@@ -1,9 +1,6 @@
 package gwt.shared;
 
 import java.util.List;
-
-import com.google.gwt.regexp.shared.MatchResult;
-import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.Window;
 
 /**

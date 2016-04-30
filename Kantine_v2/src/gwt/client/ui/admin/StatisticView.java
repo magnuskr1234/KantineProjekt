@@ -63,7 +63,7 @@ public class StatisticView extends Composite {
 	}
 	
 	// Populate flextable with history for current user
-	public void pop(List<ItemDTO> pList) {
+	public void populateHistory(List<ItemDTO> pList) {
 		
 		// remove table data
 		statTable.removeAllRows();

@@ -13,6 +13,11 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 import gwt.shared.ItemDTO;
 
+/**
+ * This class conatins the view to show the itemlist
+ * @author magnusrasmussen
+ *
+ */
 public class ShowItemListView extends Composite {
 
 	private static ShowItemListViewUiBinder uiBinder = GWT.create(ShowItemListViewUiBinder.class);
@@ -34,15 +39,6 @@ public class ShowItemListView extends Composite {
 	// id of person where event happened
 	public int itemId;
 
-
-	public int getItemId() {
-		return itemId;
-	}
-
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
-	}
-
 	// Handlers
 	private EditHandler editHandler;
 	private DeleteHandler deleteHandler;
@@ -62,6 +58,16 @@ public class ShowItemListView extends Composite {
 		itemDTO = new ItemDTO();
 	}
 
+
+	// getter and setter
+	public int getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
+	}
+	
 	public Button getControllerEditBtn() {
 		return controllerEditBtn;
 	}
@@ -86,7 +92,7 @@ public class ShowItemListView extends Composite {
 	}
 	
 	/**
-	 * Flextable bliver tilføjet rækker samt værdier.
+	 * Flextable is populated whit data 
 	 * 
 	 * @throws Exception
 	 */
@@ -113,21 +119,19 @@ public class ShowItemListView extends Composite {
 		itemTable.getFlexCellFormatter().setWidth(0, 2, "110px");
 		itemTable.getFlexCellFormatter().setWidth(0, 3, "110px");
 		itemTable.getFlexCellFormatter().setWidth(0, 4, "110px");
-	
 
 		// style table
 		itemTable.addStyleName("FlexTable");
 		itemTable.setStylePrimaryName("FlexTable");
 	
-
+		// data is added 
 		for (int i = 0; i < pList.size(); i++) {
 			itemTable.setText(i + 1, 0, "" + pList.get(i).getId());
 			itemTable.setText(i + 1, 1, pList.get(i).getName());
 			itemTable.setText(i + 1, 2, "" + pList.get(i).getPrice());
 		}
 
-		// Knapper til at slette bruger og opdatere saldo blive tilføjet til
-		// hver række.
+		// Buttons is added to each row
 		for (int i = 0; i < pList.size(); i++) {
 
 			Button edit = new Button("Opdater pris");
@@ -144,7 +148,11 @@ public class ShowItemListView extends Composite {
 		}
 	}
 
-	// Handler til at håndtere et tryk på knappen "Slet bruger"
+	/**
+	 * Handler to control button click to delete item 
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class DeleteHandler implements ClickHandler {
 		@Override
 		public void onClick(ClickEvent event) {
@@ -161,7 +169,11 @@ public class ShowItemListView extends Composite {
 		}
 	}
 
-	// Handler til at håndtere et tryk på knappen "Opdater pris"
+	/**
+	 * Handler to control edit event 
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class EditHandler implements ClickHandler {
 		@Override
 		public void onClick(ClickEvent event) {

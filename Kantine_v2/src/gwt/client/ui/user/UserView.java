@@ -34,7 +34,9 @@ public class UserView extends Composite {
 	interface UserViewUiBinder extends UiBinder<Widget, UserView> {
 	}
 
-	// Contructor
+	/**
+	 * Contructor for userview
+	 */
 	public UserView() {
 		initWidget(uiBinder.createAndBindUi(this));
 
@@ -62,8 +64,8 @@ public class UserView extends Composite {
 	}
 
 	// Show content widget
-	public void changeWidget(Widget w){
-		contentPanel.showWidget(w);
+	public void changeWidget(Widget panel){
+		contentPanel.showWidget(panel);
 	}
 
 	// Show user menu and populate with data

@@ -27,21 +27,23 @@ public class MainController {
 	// References for views
 	private MainView mainView;
 	private LoginView loginView;
+	private UserMenuView userMenuView;
 
 	// Service classes for async callbacks to server
 	private PersonServiceAsync personServiceCall = GWT.create(PersonService.class);
 	private ItemServiceAsync itemServiceCall = GWT.create(ItemService.class);
 
-	// reference to data transfer object
-	private PersonDTO personDTO;
-	private ItemDTO itemDTO;
-
 	//public int currentPersonId;
 	public PersonDTO currentPerson;
 
+	// Reference for controllers
 	private AdminController adminController;
 	private UserController userController;
 
+	/**
+	 * Contructor for maincontroller. 
+	 * @param mainView
+	 */
 	public MainController(MainView mainView) {
 		//Instantiate pagecontroller
 		this.mainView = mainView;
@@ -52,16 +54,20 @@ public class MainController {
 		//Add clickhandler for login button
 		loginView.getBtnOk().addClickHandler(new LoginHandler());
 
+		// Create controllers 
 		adminController = new AdminController(mainView, personServiceCall, itemServiceCall);	
 		userController = new UserController(mainView, personServiceCall, itemServiceCall);
 
 	}
 
-	// Login handler
+	/**
+	 * Clickhandler for login. 
+	 * @author magnusrasmussen
+	 *
+	 */
 	private class LoginHandler implements ClickHandler {
 		@Override
 		public void onClick(ClickEvent event) {
-			if (event.getSource() == loginView.getBtnOk())
 				personServiceCall.getPerson(loginView.getUserId().toLowerCase(), loginView.getUserPw(), new AsyncCallback<PersonDTO>() {
 
 					@Override
@@ -71,27 +77,23 @@ public class MainController {
 
 					@Override
 					public void onSuccess(PersonDTO person) {
-
+						
+						//Check if user is null
 						if(person == null){
 							mainView.getLoginView().setError();
-
+							
+							// Check admin status for user
 						} else if (person.getAdminStatus() == 1) {
 							adminController.setCurrentPerson(person);
-							loginView.resetError();
-							loginView.clearfields();
 							mainView.changeView(mainView.getAdminView());
 							mainView.getAdminView().changeWidget(mainView.getAdminView().getadminMenu());
 						
 						} else if (person.getAdminStatus() == 0) {
-
 							userController.setCurrentPerson(person);
-							//currentPersonId = person.getId();
 							mainView.getUserView().loginOk(person.getName());
 							mainView.getUserView().updateSaldoHeader(person.getSaldo());
 							mainView.getUserView().getBasketView().setCurrentUserSaldo(person.getSaldo());
-							UserMenuView.setcuSaldo(person.getSaldo());
-							loginView.resetError();
-							loginView.clearfields();
+							userMenuView.setcuSaldo(person.getSaldo());
 							mainView.changeView(mainView.getUserView());
 							mainView.getUserView().changeWidget(mainView.getUserView().getUserMenuView());
 
@@ -112,6 +114,7 @@ public class MainController {
 						}	
 						//Clear login fields
 						loginView.clearfields();
+						loginView.resetError();
 					}
 				});
 		}

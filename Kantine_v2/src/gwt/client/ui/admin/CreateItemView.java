@@ -1,7 +1,5 @@
 package gwt.client.ui.admin;
 
-import java.util.List;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -13,6 +11,11 @@ import com.google.gwt.user.client.ui.Widget;
 import gwt.shared.FieldVerifier;
 import gwt.shared.ItemDTO;
 
+/**
+ * This view contains the view to create items
+ * @author magnusrasmussen
+ *
+ */
 public class CreateItemView extends Composite {
 
 	private static CreateItemViewUiBinder uiBinder = GWT.create(CreateItemViewUiBinder.class);
@@ -34,10 +37,7 @@ public class CreateItemView extends Composite {
 		txtPrice.getElement().setPropertyString("placeholder", "Indtast pris");
 	}
 
-	public Button getcreateItemBtn(){
-		return createItemBtn;
-	}
-
+	// validate entered data 
 	public boolean validate() {
 		// check if all fields are valid
 		if (FieldVerifier.isValidName(txtName.getText()) && FieldVerifier.isValidPrice(txtPrice.getText())) {
@@ -66,6 +66,11 @@ public class CreateItemView extends Composite {
 	public void clearFields(){
 		txtName.setText("");
 		txtPrice.setText("");
+	}
+	
+	// Getters
+	public Button getcreateItemBtn(){
+		return createItemBtn;
 	}
 	
 	// return data entered 

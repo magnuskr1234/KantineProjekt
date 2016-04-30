@@ -8,6 +8,11 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Button;
 
+/**
+ * this view conatins the admin header
+ * @author magnusrasmussen
+ *
+ */
 public class AdminHeaderView extends Composite {
 
 	private static AdminHeaderViewUiBinder uiBinder = GWT.create(AdminHeaderViewUiBinder.class);
@@ -23,6 +28,7 @@ public class AdminHeaderView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
+	// getters for buttons
 	public Button getBtnMainMenu() {
 		return btnMainMenu;
 	}

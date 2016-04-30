@@ -4,22 +4,15 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-
 import gwt.shared.ItemDTO;
-import gwt.shared.PersonDTO;
 
-
-
-
-
+/**
+ * Methods used for RPC. 
+ * @author magnusrasmussen
+ *
+ */
 @RemoteServiceRelativePath("itemservice")
 public interface ItemService extends RemoteService {
-	//void setPerson(PersonDTO pDTO) throws Exception;
-	//  PersonDTO getPerson() throws Exception;
-	// note: announcing exception makes it possible to communicate 
-	// user defined exceptions from the server side to the client side
-	// otherwise only generic server exceptions will be send back
-	// in the onFailure call back method
 	public ItemDTO getItem(String name, double price) throws Exception;
 	public void saveItem(ItemDTO p) throws Exception;
 	public void updateItem(double price, int id) throws Exception;

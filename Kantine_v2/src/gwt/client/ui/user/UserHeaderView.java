@@ -8,6 +8,11 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 
+/**
+ * View to show the userheader
+ * @author magnusrasmussen
+ *
+ */
 public class UserHeaderView extends Composite {
 
 	private static UserHeaderViewUiBinder uiBinder = GWT.create(UserHeaderViewUiBinder.class);
@@ -33,6 +38,8 @@ public class UserHeaderView extends Composite {
 	public void setUser(String user) {
 		userNameLabel.setText("Velkommen "+ user);
 	}
+	
+	// Getters for buttons 
 	public Button getBtnMainMenu() {
 		return btnMainMenu;
 	}

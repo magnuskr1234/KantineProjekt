@@ -8,6 +8,7 @@ import java.sql.Date;
  * @author magnusrasmussen
  *
  */
+@SuppressWarnings("serial")
 public class ItemDTO implements Serializable {
 	
 	private String name;

@@ -70,8 +70,8 @@ public class AdminView extends Composite {
 	}
 
 	// Change content widget
-	public void changeWidget(Widget w){
-		contentPanel.showWidget(w);
+	public void changeWidget(Widget panel){
+		contentPanel.showWidget(panel);
 	}
 	
 	// Get views for admin functions. 
