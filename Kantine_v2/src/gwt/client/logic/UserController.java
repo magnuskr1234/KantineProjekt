@@ -41,7 +41,7 @@ public class UserController {
 
 	public int currentPersonId;
 	public PersonDTO currentPerson;
-	
+
 	public double balanceSaldo = 0;
 	public double timesBrought = 0;
 	public double priceToPay = 0;
@@ -90,7 +90,7 @@ public class UserController {
 			mainView.changeView(mainView.getLoginView());
 		}
 	}
-	
+
 	/**
 	 * Clickhandler for buy
 	 * @author magnusrasmussen
@@ -120,7 +120,7 @@ public class UserController {
 				// Check if basket is empty
 				if (basketView.getBasketTable().getRowCount() > 3) {
 					if (Window.confirm("Er du sikker på at du vil købe?"))
-					balanceSaldo = 0;
+						balanceSaldo = 0;
 					timesBrought = 0;
 					priceToPay = 0;
 					balanceSaldo = basketView.getNewSaldo() + basketView.getSum();
@@ -139,22 +139,16 @@ public class UserController {
 									UserMenuView.tempItemList.get(i).getPrice(), balanceSaldo,
 									new AsyncCallback<Void>() {
 
-										@Override
-										public void onFailure(Throwable caught) {
-											Window.alert("Serverfejl" + caught.getMessage());
-										}
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert("Serverfejl" + caught.getMessage());
+								}
 
-										@Override
-										public void onSuccess(Void result) {
-											if (2>1){
-												int count = 0+1;
-												count +=1;
-											
-											} 
-												
-										}
+								@Override
+								public void onSuccess(Void result) {
+								}
 
-									});
+							});
 						}
 					}
 
@@ -162,22 +156,22 @@ public class UserController {
 					personServiceCall.updatePerson(basketView.getNewSaldo(), currentPersonId,
 							new AsyncCallback<Void>() {
 
-								@Override
-								public void onFailure(Throwable caught) {
-									Window.alert("Serverfejl :" + caught.getMessage());
-								}
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert("Serverfejl :" + caught.getMessage());
+						}
 
-								@Override
-								public void onSuccess(Void result) {
-									Window.alert("Tak for købet");
-									UserMenuView.tempItemList.clear(); // Clear basket arraylist
-									basketView.setCurrentUserSaldo(basketView.getNewSaldo()); // set new saldo
-									userView.updateSaldoHeader(basketView.getNewSaldo()); // Update saldo in header
-									userView.showUserHeader(); //Update header with new saldo
-									userView.showBasketWidget(); // Show cleared basket
-								}
+						@Override
+						public void onSuccess(Void result) {
+							Window.alert("Tak for købet");
+							UserMenuView.tempItemList.clear(); // Clear basket arraylist
+							basketView.setCurrentUserSaldo(basketView.getNewSaldo()); // set new saldo
+							userView.updateSaldoHeader(basketView.getNewSaldo()); // Update saldo in header
+							userView.showUserHeader(); //Update header with new saldo
+							userView.showBasketWidget(); // Show cleared basket
+						}
 
-							});
+					});
 				} else {
 					Window.alert("Tilføj først noget til kurven!");
 				}
@@ -218,19 +212,19 @@ public class UserController {
 		@Override
 		public void onClick(ClickEvent event) {
 
-				itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-					}
+			itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("Serverfejl :" + caught.getMessage());
+				}
 
-					@Override
-					public void onSuccess(List<ItemDTO> result) {
-						userView.showMenuView(result);
-					}
-				});
+				@Override
+				public void onSuccess(List<ItemDTO> result) {
+					userView.showMenuView(result);
+				}
+			});
 
-			}
+		}
 	}
 
 	/**
@@ -242,23 +236,23 @@ public class UserController {
 
 		@Override
 		public void onClick(ClickEvent event) {
-				userView.changeWidget(userHistoryView);
+			userView.changeWidget(userHistoryView);
 
-				itemServiceCall.getHistoryList(currentPersonId, new AsyncCallback<List<ItemDTO>>() {
+			itemServiceCall.getHistoryList(currentPersonId, new AsyncCallback<List<ItemDTO>>() {
 
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl" + caught.getMessage());
-					}
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("Serverfejl" + caught.getMessage());
+				}
 
-					@Override
-					public void onSuccess(List<ItemDTO> result) {
-						userHistoryView.populateUserHistory(result);
-					}
-				});
+				@Override
+				public void onSuccess(List<ItemDTO> result) {
+					userHistoryView.populateUserHistory(result);
+				}
+			});
 
-				// Show updated history view
-				userView.changeWidget(userHistoryView);
-			}
+			// Show updated history view
+			userView.changeWidget(userHistoryView);
+		}
 	}
 }
