@@ -6,14 +6,14 @@
 	</ui:style>
 	<g:HTMLPanel height="100%" width="100%">
 		<g:SplitLayoutPanel width="80%" height="90%" styleName="whiteBackground">
-		<g:south size="100.0">
-			<g:HorizontalPanel verticalAlignment="ALIGN_TOP" horizontalAlignment="ALIGN_CENTER" spacing="10">
-				<g:Button styleName="topNavBtn" ui:field="buyBtn" width="75px" height="40px">Køb</g:Button>
-				<g:Button styleName="topNavBtn" ui:field="cancelBtn" width="75px" height="40px">Annuler</g:Button>
+		<g:south size="48.0">
+			<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" horizontalAlignment="ALIGN_CENTER" width="100%">
+				<g:Button styleName="topNavBtn" ui:field="buyBtn" width="256px" height="50px">Køb</g:Button>
+				<g:Button styleName="topNavBtn" ui:field="cancelBtn" width="256px" height="50px">Annuler</g:Button>
 			</g:HorizontalPanel>
 		</g:south>
 		<g:center>
-			<g:VerticalPanel height="100%" width="100%" verticalAlignment="ALIGN_BOTTOM" horizontalAlignment="ALIGN_LEFT" spacing="10">
+			<g:VerticalPanel height="100%" width="100%" verticalAlignment="ALIGN_TOP" horizontalAlignment="ALIGN_LEFT" spacing="10">
 				<g:VerticalPanel height="100%"  horizontalAlignment="ALIGN_LEFT" width="100%" verticalAlignment="ALIGN_TOP">
 			<g:ScrollPanel height="100%">
 				<g:FlexTable ui:field="basketTable" width="100%" />

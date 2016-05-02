@@ -11,7 +11,7 @@
 
 		<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_CENTER" height="80%" verticalAlignment="ALIGN_TOP" >
 		<g:ScrollPanel height="100%" width="80%" styleName="whiteBackground"  >
-			<g:FlexTable ui:field="itemTable" styleName="whiteBackground" width="100%" />
+			<g:FlexTable ui:field="itemTable" styleName="blackText" width="100%" />
 		
 		</g:ScrollPanel>
 		</g:VerticalPanel>
