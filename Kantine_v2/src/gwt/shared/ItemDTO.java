@@ -28,6 +28,19 @@ public class ItemDTO implements Serializable {
 	}
 	
 	/**
+	 * Constructor for editing price
+	 * @param id
+	 * @param name
+	 */
+	public ItemDTO( int id, String name) 
+	{
+		this.id = id;
+		this.name = name;
+		
+		
+	}
+	
+	/**
 	 * Contructor for showing item list. 
 	 * @param id
 	 * @param name
