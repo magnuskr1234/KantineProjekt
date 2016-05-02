@@ -300,9 +300,8 @@ public class AdminController {
 						public void onSuccess(ItemDTO item) {
 							//Check if user is null
 							if(item != null){
-								Window.alert("Findes allerede");
+								Window.alert("Varen findes allerede");
 							} else {
-								Window.alert("kevin2");
 								itemServiceCall.saveItem(new ItemDTO(createItemView.getCurrentItem().getName(),
 										createItemView.getCurrentItem().getPrice()), new AsyncCallback<Void>() {
 
