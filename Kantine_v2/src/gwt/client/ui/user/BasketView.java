@@ -1,5 +1,6 @@
 package gwt.client.ui.user;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -45,6 +46,10 @@ public class BasketView extends Composite {
 	private double newSaldo;
 
 	private double sum;
+	
+	private double totalPrice;
+	
+	private BigDecimal rounded;
 	
 	// reference to DTO
 	ItemDTO itemDTO;
@@ -129,6 +134,7 @@ public class BasketView extends Composite {
 		basketTable.removeAllRows();
 		clearSum();
 		
+		
 		// adjust column widths
 		basketTable.getFlexCellFormatter().setWidth(0, 0, "50px");
 		basketTable.getFlexCellFormatter().setWidth(0, 1, "50px");
@@ -150,8 +156,11 @@ public class BasketView extends Composite {
 		for (int i = 0; i < selectedItems.size(); i++) {
 			basketTable.setText(i + 1, 0, selectedItems.get(i).getName());
 			basketTable.setText(i + 1, 1, Integer.toString(selectedItems.get(i).getCount()));
-			basketTable.setText(i + 1, 2, Double.toString((selectedItems.get(i).getPrice() * selectedItems.get(i).getCount())));
-			setSum(selectedItems.get(i).getPrice() * selectedItems.get(i).getCount());
+			rounded = new BigDecimal(selectedItems.get(i).getPrice() * selectedItems.get(i).getCount());
+			rounded = rounded.setScale(2, BigDecimal.ROUND_HALF_UP);
+			totalPrice = rounded.doubleValue();	
+			basketTable.setText(i + 1, 2, Double.toString(totalPrice));
+			setSum(totalPrice);
 
 			basketTable.setText(selectedItems.size() + 1, 0, "I alt: ");
 			basketTable.setText(selectedItems.size() + 1, 2, "" + getSum());
