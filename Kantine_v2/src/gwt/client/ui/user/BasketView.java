@@ -16,7 +16,7 @@ import gwt.shared.ItemDTO;
 /**
  * Basketview contains the basket to show what the user has added to the basket, and shows buttons for buying the items and cancel 
  * @author magnusrasmussen
- *
+ *z
  */
 public class BasketView extends Composite {
 
