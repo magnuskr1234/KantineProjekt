@@ -69,7 +69,7 @@ public class ItemDB {
 
 		// Create query that get 1 item 
 		getItemStmt = connection.prepareStatement(
-				"SELECT * FROM items where title = ? and price = ?");
+				"SELECT * FROM items where title = ?");
 	}
 
 	/**
@@ -274,13 +274,12 @@ public class ItemDB {
 	 * @return
 	 * @throws Exception
 	 */
-	public ItemDTO getItem(String name, double price) throws Exception {
+	public ItemDTO getItem(String name) throws Exception {
 		ResultSet resultSet = null;
 		ItemDTO item = null;
 
 		try{
 			getItemStmt.setString(1, name);
-			getItemStmt.setDouble(2, price);
 
 			resultSet = getItemStmt.executeQuery();
 
@@ -288,7 +287,6 @@ public class ItemDB {
 				item = new ItemDTO();
 
 				item.setName(resultSet.getString("title"));
-				item.setPrice(resultSet.getDouble("price"));
 
 			}
 			// The catch which is used if either the statement or connection is failing

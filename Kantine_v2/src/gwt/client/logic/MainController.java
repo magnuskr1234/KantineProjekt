@@ -27,7 +27,6 @@ public class MainController {
 	// References for views
 	private MainView mainView;
 	private LoginView loginView;
-	private UserMenuView userMenuView;
 
 	// Service classes for async callbacks to server
 	private PersonServiceAsync personServiceCall = GWT.create(PersonService.class);

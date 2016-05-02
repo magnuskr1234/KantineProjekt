@@ -104,8 +104,8 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 	}
 	
 	@Override
-	public ItemDTO getItem(String name, double price) throws Exception {
-		ItemDTO item = itemDB.getItem(name, price);
+	public ItemDTO getItem(String name) throws Exception {
+		ItemDTO item = itemDB.getItem(name);
 		return item;
 		
 	}

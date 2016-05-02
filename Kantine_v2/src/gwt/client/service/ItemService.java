@@ -13,7 +13,7 @@ import gwt.shared.ItemDTO;
  */
 @RemoteServiceRelativePath("itemservice")
 public interface ItemService extends RemoteService {
-	public ItemDTO getItem(String name, double price) throws Exception;
+	public ItemDTO getItem(String name) throws Exception;
 	public void saveItem(ItemDTO p) throws Exception;
 	public void updateItem(double price, int id) throws Exception;
 	public  List<ItemDTO> getItems() throws Exception;

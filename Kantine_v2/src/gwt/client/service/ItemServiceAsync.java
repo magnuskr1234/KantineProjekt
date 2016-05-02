@@ -22,5 +22,5 @@ public interface ItemServiceAsync {
 	
 	void saveItemToHistory(int c, String name, double price, double currentSaldo, AsyncCallback<Void> callback);
 	
-	void getItem(String name, double saldo, AsyncCallback<ItemDTO> callback);
+	void getItem(String name, AsyncCallback<ItemDTO> callback);
 }
