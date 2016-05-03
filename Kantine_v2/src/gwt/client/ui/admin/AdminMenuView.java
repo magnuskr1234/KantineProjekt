@@ -9,7 +9,6 @@ import com.google.gwt.user.client.ui.Button;
 
 /**
  * This view contains the admin menu 
- * @author magnusrasmussen
  *
  */
 public class AdminMenuView extends Composite {
@@ -27,12 +26,12 @@ public class AdminMenuView extends Composite {
 	public AdminMenuView() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-	
+
 	// getters for buttons 
 	public Button getBtnCreateUser() {
 		return createUser;
 	}
-	
+
 	public Button getBtnCreateItem() {
 		return createItem;
 	}
@@ -48,7 +47,7 @@ public class AdminMenuView extends Composite {
 	public Button getBtnShowUsers() {
 		return showUsers;
 	}
-	
+
 	public Button getBtnShowItems() {
 		return showItems;
 	}

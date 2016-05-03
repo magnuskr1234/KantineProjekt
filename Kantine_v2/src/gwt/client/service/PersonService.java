@@ -6,8 +6,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import gwt.shared.PersonDTO;
 
 /**
- * Methods used for RPC call. 
- * @author magnusrasmussen
+ * Methods used for item RPC call. 
  *
  */
 @RemoteServiceRelativePath("personservice")

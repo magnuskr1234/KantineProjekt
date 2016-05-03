@@ -4,6 +4,10 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import gwt.shared.PersonDTO;
 
+/**
+ * Async interface for person RPC. 
+ *
+ */
 public interface PersonServiceAsync {
 	
 	void getPerson(String username, String password, AsyncCallback<PersonDTO> callback);

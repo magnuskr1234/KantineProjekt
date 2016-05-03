@@ -9,7 +9,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * This view contains all contentviews for admin
- * @author magnusrasmussen
  *
  */
 public class AdminView extends Composite {

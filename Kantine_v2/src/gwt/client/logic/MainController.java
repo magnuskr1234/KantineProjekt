@@ -19,7 +19,6 @@ import gwt.shared.PersonDTO;
 
 /**
  * The main controller handles the login process
- * @author magnusrasmussen
  *
  */
 public class MainController {
@@ -61,63 +60,62 @@ public class MainController {
 
 	/**
 	 * Clickhandler for login. 
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class LoginHandler implements ClickHandler {
 		@Override
 		public void onClick(ClickEvent event) {
-				personServiceCall.getPerson(loginView.getUserId().toLowerCase(), loginView.getUserPw(), new AsyncCallback<PersonDTO>() {
+			personServiceCall.getPerson(loginView.getUserId().toLowerCase(), loginView.getUserPw(), new AsyncCallback<PersonDTO>() {
 
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Serverfejl :" + caught.getMessage());
-					}
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("Serverfejl :" + caught.getMessage());
+				}
 
-					@Override
-					public void onSuccess(PersonDTO person) {
-						
-						//Check if user is null
-						if(person == null){
-							mainView.getLoginView().setError();
-							
-							// Check admin status for user
-						} else if (person.getAdminStatus() == 1) {
-							adminController.setCurrentPerson(person);
-							loginView.resetError();
-							mainView.changeView(mainView.getAdminView());
-							mainView.getAdminView().changeWidget(mainView.getAdminView().getadminMenu());
-						
-						} else if (person.getAdminStatus() == 0) {
-							userController.setCurrentPerson(person);
-							mainView.getUserView().loginOk(person.getName());
-							mainView.getUserView().updateSaldoHeader(person.getSaldo());
-							mainView.getUserView().getBasketView().setCurrentUserSaldo(person.getSaldo());
-							UserMenuView.setcuSaldo(person.getSaldo());
-							loginView.resetError();
-							mainView.changeView(mainView.getUserView());
-							mainView.getUserView().changeWidget(mainView.getUserView().getUserMenuView());
+				@Override
+				public void onSuccess(PersonDTO person) {
 
-							// Make RPC call to get all items.
-							itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
+					//Check if user is null
+					if(person == null){
+						mainView.getLoginView().setError();
 
-								@Override
-								public void onFailure(Throwable caught) {
-									Window.alert("Serverfejl :" + caught.getMessage());
-								}
+						// Check admin status for user
+					} else if (person.getAdminStatus() == 1) {
+						adminController.setCurrentPerson(person);
+						loginView.resetError();
+						mainView.changeView(mainView.getAdminView());
+						mainView.getAdminView().changeWidget(mainView.getAdminView().getadminMenu());
 
-								@Override
-								public void onSuccess(List<ItemDTO> result) {
-									//Populate user menu with items from database
-									mainView.getUserView().showMenuView(result);
-								}
-							});
-						}	
-						//Clear login fields
-						loginView.clearfields();
-			
-					}
-				});
+					} else if (person.getAdminStatus() == 0) {
+						userController.setCurrentPerson(person);
+						mainView.getUserView().loginOk(person.getName());
+						mainView.getUserView().updateSaldoHeader(person.getSaldo());
+						mainView.getUserView().getBasketView().setCurrentUserSaldo(person.getSaldo());
+						UserMenuView.setcuSaldo(person.getSaldo());
+						loginView.resetError();
+						mainView.changeView(mainView.getUserView());
+						mainView.getUserView().changeWidget(mainView.getUserView().getUserMenuView());
+
+						// Make RPC call to get all items.
+						itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
+
+							@Override
+							public void onFailure(Throwable caught) {
+								Window.alert("Serverfejl :" + caught.getMessage());
+							}
+
+							@Override
+							public void onSuccess(List<ItemDTO> result) {
+								//Populate user menu with items from database
+								mainView.getUserView().showMenuView(result);
+							}
+						});
+					}	
+					//Clear login fields
+					loginView.clearfields();
+
+				}
+			});
 		}
 	}
 }

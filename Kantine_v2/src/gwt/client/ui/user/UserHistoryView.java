@@ -12,7 +12,6 @@ import com.google.gwt.user.client.ui.FlexTable;
 
 /**
  * View for showing users purchase history
- * @author magnusrasmussen
  *
  */
 public class UserHistoryView extends Composite {
@@ -52,7 +51,7 @@ public class UserHistoryView extends Composite {
 			}else{
 				historyTable.setText(i + 1, 2, "" +(-(dataList.get(i).getPrice())));
 			}			
-			
+
 			historyTable.setText(i + 1, 3, "" + dataList.get(i).getSaldo());
 		}
 	}

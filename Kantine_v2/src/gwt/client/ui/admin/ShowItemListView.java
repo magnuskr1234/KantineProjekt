@@ -15,7 +15,6 @@ import gwt.shared.ItemDTO;
 
 /**
  * This class conatins the view to show the itemlist
- * @author magnusrasmussen
  *
  */
 public class ShowItemListView extends Composite {
@@ -67,7 +66,7 @@ public class ShowItemListView extends Composite {
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
-	
+
 	public Button getControllerEditBtn() {
 		return controllerEditBtn;
 	}
@@ -90,23 +89,23 @@ public class ShowItemListView extends Composite {
 		itemTable.setText(eventRowIndex, 1, itemDTO.getName());
 		itemTable.setText(eventRowIndex, 2, "" + itemDTO.getPrice()); 
 	}
-	
+
 	/**
-	 * Flextable is populated whit data 
+	 * Flextable is populated wtih data 
 	 * 
 	 */
 	public void populateItemList(List<ItemDTO> pList) {
-		
+
 		// remove table data
 		itemTable.removeAllRows();
-		
+
 		// adjust column widths
 		headerTable.getFlexCellFormatter().setWidth(0, 0, "110px");
 		headerTable.getFlexCellFormatter().setWidth(0, 1, "110px");
 		headerTable.getFlexCellFormatter().setWidth(0, 2, "110px");
 		headerTable.getFlexCellFormatter().setWidth(0, 3, "100px");
 		headerTable.getFlexCellFormatter().setWidth(0, 4, "110px");
-		
+
 		//Header
 		headerTable.setText(0, 0, "Id");
 		headerTable.setText(0, 1, "Navn");
@@ -122,7 +121,7 @@ public class ShowItemListView extends Composite {
 		// style table
 		itemTable.addStyleName("FlexTable");
 		itemTable.setStylePrimaryName("FlexTable");
-	
+
 		// data is added 
 		for (int i = 0; i < pList.size(); i++) {
 			itemTable.setText(i + 1, 0, "" + pList.get(i).getId());
@@ -149,7 +148,6 @@ public class ShowItemListView extends Composite {
 
 	/**
 	 * Handler to control button click to delete item 
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class DeleteHandler implements ClickHandler {
@@ -170,7 +168,6 @@ public class ShowItemListView extends Composite {
 
 	/**
 	 * Handler to control edit event 
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class EditHandler implements ClickHandler {
@@ -181,7 +178,7 @@ public class ShowItemListView extends Composite {
 			// populate itemDTO
 			itemDTO.setId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 			itemDTO.setName(itemTable.getText(eventRowIndex, 1));
-		//	itemDTO.setPrice(Integer.parseInt(itemTable.getText(eventRowIndex, 2)));
+			//	itemDTO.setPrice(Integer.parseInt(itemTable.getText(eventRowIndex, 2)));
 
 			// Save item id
 			setItemId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));

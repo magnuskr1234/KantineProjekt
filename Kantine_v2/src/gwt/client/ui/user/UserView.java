@@ -13,7 +13,6 @@ import gwt.shared.ItemDTO;
 
 /** 
  * This view contains all views for the user. 
- * @author magnusrasmussen
  *
  */
 public class UserView extends Composite {
@@ -30,7 +29,7 @@ public class UserView extends Composite {
 
 	//Header view
 	private UserHeaderView userHeaderView;
-	
+
 	interface UserViewUiBinder extends UiBinder<Widget, UserView> {
 	}
 
@@ -44,7 +43,7 @@ public class UserView extends Composite {
 		userMenuView = new UserMenuView();
 		basketView = new BasketView();
 		userHistoryView = new UserHistoryView();
-		
+
 		//User header 
 		userHeaderView = new UserHeaderView();
 
@@ -55,7 +54,7 @@ public class UserView extends Composite {
 
 		//Header 
 		headerPanel.add(userHeaderView);
-		
+
 		// Initially show menu view
 		contentPanel.showWidget(userMenuView);
 		headerPanel.showWidget(userHeaderView);
@@ -79,11 +78,11 @@ public class UserView extends Composite {
 		basketView.populateBasket(UserMenuView.tempItemList);
 		basket.showWidget(basketView);
 	}
-	
+
 	//Show user header
-		public void showUserHeader(){
-			headerPanel.showWidget(userHeaderView);
-		}
+	public void showUserHeader(){
+		headerPanel.showWidget(userHeaderView);
+	}
 
 	// Get views
 	public UserMenuView getUserMenuView(){
@@ -97,16 +96,16 @@ public class UserView extends Composite {
 	public UserHistoryView getUserHistoryView(){
 		return userHistoryView;
 	}
-	
+
 	public UserHeaderView getuserHeaderView(){
 		return userHeaderView;
 	}
-	
+
 	// Login ok
 	public void loginOk(String user) {
 		userHeaderView.setUser(user);
 	}
-	
+
 	// Set saldo for header
 	public void updateSaldoHeader(double saldo){
 		userHeaderView.setSaldo(saldo);

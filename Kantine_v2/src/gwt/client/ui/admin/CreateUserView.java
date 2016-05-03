@@ -17,8 +17,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.CheckBox;
 
 /**
- * This class contains the create user view. 
- * @author magnusrasmussen
+ * This class contains the create user view.
  *
  */
 public class CreateUserView extends Composite {
@@ -40,18 +39,18 @@ public class CreateUserView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		// make new DTO object
 		this.pDTO = new PersonDTO();
-		
+
 		txtName.getElement().setPropertyString("placeholder", "Indtast email");
 		txtPassword.getElement().setPropertyString("placeholder", "Indtast adgangskode");
 		txtSaldo.getElement().setPropertyString("placeholder", "Indtast saldo");
-		
+
 	}
 
 	// Get button
 	public Button getCreateUserBtn(){
 		return createUserBtn;
 	}
-	
+
 	// Validate data from textboxes
 	public boolean validate(List<PersonDTO>list) {
 		// check if all fields are valid
@@ -59,12 +58,12 @@ public class CreateUserView extends Composite {
 
 			txtName.setStyleName("textBox");
 			txtSaldo.setStyleName("textBox");
-			
+
 			// update DTO object
 			pDTO.setName(txtName.getText());
 			pDTO.setPassword(txtPassword.getText());
 			pDTO.setSaldo(Double.parseDouble(txtSaldo.getText()));
-			
+
 			// 1 = true and 0 = false
 			pDTO.setAdminStatus((radioAdmin.getValue()) ? 1 : 0);
 
@@ -72,10 +71,10 @@ public class CreateUserView extends Composite {
 			txtName.setText("");
 			txtPassword.setText("");
 			txtSaldo.setText("");
-			
+
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -86,7 +85,7 @@ public class CreateUserView extends Composite {
 		txtSaldo.setText("");
 		radioAdmin.setValue(false);
 	}
-	
+
 	// Return data entered 
 	public PersonDTO getCurrentPerson() {
 		return pDTO;

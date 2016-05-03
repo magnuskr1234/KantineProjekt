@@ -12,13 +12,17 @@ import com.google.gwt.user.client.ui.Widget;
 import gwt.shared.ItemDTO;
 import com.google.gwt.user.client.ui.Label;
 
+/**
+ * View for showing statistics
+ *
+ */
 public class StatisticView extends Composite {
 
 	private static StatisticViewUiBinder uiBinder = GWT.create(StatisticViewUiBinder.class);
 	@UiField FlexTable statTable;
 	@UiField Label totearn;
 	@UiField FlexTable mostSoldTable;
-	
+
 	double sum;
 
 	interface StatisticViewUiBinder extends UiBinder<Widget, StatisticView> {
@@ -26,19 +30,20 @@ public class StatisticView extends Composite {
 
 	public StatisticView() {
 		initWidget(uiBinder.createAndBindUi(this));
-		
+
 	}
-	
+
 	public void setTotEarn(){
 		totearn.setText("Total omsætning: " + sum + " kr." );
 	}
-	
+
 	public void clearStatSum(){
 		sum = 0;
 	}
-	
+
+	// Populate top three and total revenue. 
 	public void populateMostSoldTable(List<ItemDTO> mostSoldList){
-		
+
 		// remove table data
 		mostSoldTable.removeAllRows();
 
@@ -61,10 +66,10 @@ public class StatisticView extends Composite {
 		}
 
 	}
-	
-	// Populate flextable with history for current user
+
+	// Populate flextable with statistics
 	public void populateHistory(List<ItemDTO> pList) {
-		
+
 		// remove table data
 		statTable.removeAllRows();
 
@@ -80,7 +85,7 @@ public class StatisticView extends Composite {
 
 
 		for (int i = 0; i < pList.size(); i++) {
-			
+
 			if (pList.get(i).getUser() != null && !pList.get(i).getUser().isEmpty()){
 				statTable.setText(i + 1, 0, pList.get(i).getUser());
 			}else{

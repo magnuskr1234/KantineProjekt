@@ -4,6 +4,10 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import gwt.shared.ItemDTO;
 
+/**
+ * Async interface for item RPC
+ *
+ */
 public interface ItemServiceAsync {
 
 	void saveItem(ItemDTO p, AsyncCallback<Void> callback);

@@ -13,7 +13,6 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Button;
 /**
  * This class contains the view to edit an item price
- * @author magnusrasmussen
  *
  */
 public class EditItemView extends Composite {

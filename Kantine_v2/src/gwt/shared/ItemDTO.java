@@ -5,12 +5,11 @@ import java.sql.Date;
 
 /**
  * Item Data Transfer Object. Specifies the atributes for an item. 
- * @author magnusrasmussen
  *
  */
 @SuppressWarnings("serial")
 public class ItemDTO implements Serializable {
-	
+
 	private String name;
 	private double price;
 	private int count = 1;
@@ -19,14 +18,14 @@ public class ItemDTO implements Serializable {
 	private String user;
 	private int timesSold;
 	private double saldo;
-	
+
 	/**
 	 * Empty constructor. 
 	 */
 	public ItemDTO(){
-		
+
 	}
-	
+
 	/**
 	 * Constructor for editing price
 	 * @param id
@@ -36,10 +35,10 @@ public class ItemDTO implements Serializable {
 	{
 		this.id = id;
 		this.name = name;
-		
-		
+
+
 	}
-	
+
 	/**
 	 * Contructor for showing item list. 
 	 * @param id
@@ -53,7 +52,7 @@ public class ItemDTO implements Serializable {
 		this.price = price;
 
 	}
-	
+
 	/**
 	 * Constructor used for adding a new item. 
 	 * @param name
@@ -63,9 +62,9 @@ public class ItemDTO implements Serializable {
 	{
 		this.name = name;
 		this.price = price;
-		
+
 	}
-	
+
 	/**
 	 * Constructor used for showing most sold items.
 	 * @param name
@@ -75,9 +74,9 @@ public class ItemDTO implements Serializable {
 	{
 		this.name = name;
 		this.timesSold = timesSold;
-		
+
 	}
-	
+
 	/**
 	 * Constructor used for showing history list for user. 
 	 * @param name
@@ -91,7 +90,7 @@ public class ItemDTO implements Serializable {
 		this.date = date;
 		this.saldo = saldo;
 	}
-	
+
 	/**
 	 * Constructor used for statistics
 	 * @param user
@@ -105,58 +104,58 @@ public class ItemDTO implements Serializable {
 		this.price = price;
 		this.date = date;
 	}
-	
+
 	public String getUser(){
 		return user;
 	}
-	
+
 	public void setUser(String user){
 		this.user = user;
 	}
-	
+
 
 	public Date getDate(){
 		return date;
 	}
-	
+
 	public void setDate(Date date){
 		this.date = date;
 	}
-	
+
 	public int getId() {
-		
+
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getName()
 	{
 		return name;
 	}
-	
+
 	public void setName(String name)
 	{
 		this.name = name;
 	}
-	
+
 	public  double getPrice()
 	{
 		return price;
 	}
-	
+
 	public void setPrice (double price)
 	{
 		this.price = price;
 	}
-	
+
 	public  double getSaldo()
 	{
 		return saldo;
 	}
-	
+
 	public void setSaldo (double saldo)
 	{
 		this.saldo = saldo;
@@ -169,11 +168,11 @@ public class ItemDTO implements Serializable {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
+
 	public void setTimesSold(int timesSold){
 		this.timesSold = timesSold;
 	}
-	
+
 	public int getTimesSold(){
 		return timesSold;
 	}

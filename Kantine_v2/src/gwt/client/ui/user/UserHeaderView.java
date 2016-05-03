@@ -10,7 +10,6 @@ import com.google.gwt.user.client.ui.Label;
 
 /**
  * View to show the userheader
- * @author magnusrasmussen
  *
  */
 public class UserHeaderView extends Composite {
@@ -33,21 +32,21 @@ public class UserHeaderView extends Composite {
 	public void setSaldo(double saldo){
 		saldoLabel.setText("Saldo: " + saldo + " Kr.");
 	}
-	
+
 	// Set username in header
 	public void setUser(String user) {
 		userNameLabel.setText("Velkommen "+ user);
 	}
-	
+
 	// Getters for buttons 
 	public Button getBtnMainMenu() {
 		return btnMainMenu;
 	}
-	
+
 	public Button getBtnLogout(){
 		return btnLogout;
 	}
-	
+
 	public Button getBtnHistory(){
 		return btnHistory;
 	}

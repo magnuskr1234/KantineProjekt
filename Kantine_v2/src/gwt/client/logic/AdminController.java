@@ -24,8 +24,6 @@ import gwt.shared.PersonDTO;
 
 /**
  * The admin controller handles the admin views and logic.
- * 
- * @author magnusrasmussen
  *
  */
 public class AdminController {
@@ -125,7 +123,6 @@ public class AdminController {
 
 	/**
 	 * Clickhandler for to handle price update for an item
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class UpdateItemPriceHandler implements ClickHandler {
@@ -168,7 +165,6 @@ public class AdminController {
 
 	/**
 	 * Clickhandler for updating a user saldo. 
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class UpdateSaldoHandler implements ClickHandler {
@@ -229,7 +225,6 @@ public class AdminController {
 
 	/**
 	 * Clickhandler for creating a user
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class CreateUserHandler implements ClickHandler {
@@ -278,7 +273,6 @@ public class AdminController {
 
 	/**
 	 * Clickhandler for creating items
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class CreateItemHandler implements ClickHandler {
@@ -327,7 +321,6 @@ public class AdminController {
 	}
 	/**
 	 * CLickhandler for returning to mainmenu. 
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class ReturnMainViewHandler implements ClickHandler {
@@ -341,8 +334,6 @@ public class AdminController {
 
 	/**
 	 * Clickhandler to show vire for creating new item
-	 * @author magnusrasmussen
-	 *
 	 */
 	private class CreateItemViewHandler implements ClickHandler {
 
@@ -354,8 +345,6 @@ public class AdminController {
 
 	/**
 	 * Clickhandler for showing userlist. 
-	 * @author magnusrasmussen
-	 *
 	 */
 	private class ShowUserListHandler implements ClickHandler {
 
@@ -401,7 +390,6 @@ public class AdminController {
 
 	/**
 	 * Clickhandler for showing itemlist 
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class ShowItemListHandler implements ClickHandler {
@@ -449,7 +437,6 @@ public class AdminController {
 
 	/**
 	 * Clickhandler for statistics
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class StatisticsHandler implements ClickHandler {

@@ -10,7 +10,6 @@ import com.google.gwt.user.client.ui.Button;
 
 /**
  * this view conatins the admin header
- * @author magnusrasmussen
  *
  */
 public class AdminHeaderView extends Composite {
@@ -19,7 +18,7 @@ public class AdminHeaderView extends Composite {
 	@UiField Label userNameLabel;
 	@UiField Button btnMainMenu;
 	@UiField Button btnLogout;
-	
+
 
 	interface AdminHeaderViewUiBinder extends UiBinder<Widget, AdminHeaderView> {
 	}
@@ -32,7 +31,7 @@ public class AdminHeaderView extends Composite {
 	public Button getBtnMainMenu() {
 		return btnMainMenu;
 	}
-	
+
 	public Button getBtnLogout(){
 		return btnLogout;
 	}

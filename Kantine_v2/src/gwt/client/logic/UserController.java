@@ -20,7 +20,6 @@ import gwt.shared.PersonDTO;
 
 /**
  * The user controller handles the different user views and logic.
- * @author magnusrasmussen
  *
  */
 public class UserController {
@@ -80,7 +79,6 @@ public class UserController {
 
 	/**
 	 *  Logout handler
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class LogoutHandler implements ClickHandler {
@@ -93,7 +91,6 @@ public class UserController {
 
 	/**
 	 * Clickhandler for buy
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class BuyHandler implements ClickHandler {
@@ -181,7 +178,6 @@ public class UserController {
 
 	/**
 	 * Clickhandler for adding items to basket
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class UpdateBasketHandler implements ClickHandler {
@@ -204,7 +200,6 @@ public class UserController {
 
 	/**
 	 * Clickhandler for returning to menu
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class UserReturnToMenuHandler implements ClickHandler {
@@ -229,7 +224,6 @@ public class UserController {
 
 	/**
 	 * Clickhandler for showing history 
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class HistoryHandler implements ClickHandler {

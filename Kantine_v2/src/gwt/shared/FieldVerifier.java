@@ -21,7 +21,7 @@ public class FieldVerifier {
 			Window.alert("Skal mindst bestå af 2 tegn");
 			return false;
 		}
-		
+
 		// Validate if name only consist of numbers
 		if (name.matches("[0-9]+")){
 			Window.alert("Må ikke kun indeholde tal");
@@ -75,7 +75,7 @@ public class FieldVerifier {
 		char[] specialCh = { '!', '@', ']', '#', '$', '%', '^', '&', '*' };
 		boolean hasSpecialChar = false;
 
-		
+
 		if (password == null) {
 			Window.alert("Du mangler at indtaste et kodeord");
 			return false;
@@ -133,36 +133,36 @@ public class FieldVerifier {
 	 * @param number
 	 * @return
 	 */
-	
+
 	public static boolean isValidSaldo(String number) {
 		double numberConvert;
 		// check if saldo field is empty (not allowed)
 		if (number.isEmpty()) {
 			return false;
 		} 
-		
-		   // check if age field contains a number
-	    try {
-	      // try to convert to a number
-	    	numberConvert = Double.parseDouble(number);
-	    } catch (NumberFormatException e) {
-	      Window.alert("Saldo må ikke indholde tal");
-	      return false;
-	    }
-	    
-	    if(numberConvert < 0)
-	    {
-	    	Window.alert("Må ikke være under nul");
-	    	return false;
-	    }
-	    else
-	    {
+
+		// check if age field contains a number
+		try {
+			// try to convert to a number
+			numberConvert = Double.parseDouble(number);
+		} catch (NumberFormatException e) {
+			Window.alert("Saldo må ikke indholde tal");
+			return false;
+		}
+
+		if(numberConvert < 0)
+		{
+			Window.alert("Må ikke være under nul");
+			return false;
+		}
+		else
+		{
 			return true;
-	    }
-		
+		}
+
 
 	}
-	
+
 	/**
 	 * Checks if price is valid. 
 	 * @param number
@@ -174,25 +174,25 @@ public class FieldVerifier {
 		if (number.isEmpty()) {
 			return false;
 		} 
-		
-		   // check if age field contains a number
-	    try {
-	      // try to convert to a number
-	    	numberConvert = Double.parseDouble(number);
-	    } catch (NumberFormatException e) {
-	      Window.alert("Prisen må kun indeholde tal");
-	      return false;
-	    }
-	    
-	    if(numberConvert < 0)
-	    {
-	    	Window.alert("Prisen må ikke være under nul");
-	    	return false;
-	    }
-	    else
-	    {
+
+		// check if age field contains a number
+		try {
+			// try to convert to a number
+			numberConvert = Double.parseDouble(number);
+		} catch (NumberFormatException e) {
+			Window.alert("Prisen må kun indeholde tal");
+			return false;
+		}
+
+		if(numberConvert < 0)
+		{
+			Window.alert("Prisen må ikke være under nul");
+			return false;
+		}
+		else
+		{
 			return true;
-	    }
+		}
 
 	}
 

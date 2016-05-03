@@ -13,7 +13,6 @@ import com.google.gwt.user.client.ui.Button;
 
 /**
  * This class contains the view to update an users saldo 
- * @author magnusrasmussen
  *
  */
 public class EditUserView extends Composite {
@@ -71,7 +70,7 @@ public class EditUserView extends Composite {
 	public int getSaldoUserId(){
 		return saldoUserId;
 	}
-	
+
 	public double getSaldo(){
 		return getSaldo;		
 	}
@@ -88,7 +87,7 @@ public class EditUserView extends Composite {
 			getSaldo = Double.parseDouble(txtSaldo.getText());
 
 			txtSaldo.setStyleName("textBox");
-			
+
 			newSaldo = getSaldo + ShowUserListView.saldoUpdate;
 
 			saldoUserId = su.getPersonId();

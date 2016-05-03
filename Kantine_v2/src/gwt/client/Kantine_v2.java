@@ -14,11 +14,11 @@ public class Kantine_v2 implements EntryPoint {
 	public void onModuleLoad() {
 		// Instantiate pagecontroller
 		MainView mainView = new MainView();
-		
+
 		// Add to rootpanel 
 		RootLayoutPanel.get().add(mainView);
-		
+
 		new MainController(mainView);
 	}
-		
+
 }

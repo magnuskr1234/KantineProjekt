@@ -11,7 +11,6 @@ import gwt.shared.DALException;
 
 /**
  * Class used to make SQL statements to database. Contains all statements used for users. 
- * @author magnusrasmussen
  *
  */
 public class PersonDB {

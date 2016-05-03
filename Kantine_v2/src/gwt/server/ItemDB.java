@@ -11,7 +11,6 @@ import gwt.shared.ItemDTO;
 
 /**
  * Class used to make SQL statements to database. Contains all statements used for items. 
- * @author magnusrasmussen
  *
  */
 public class ItemDB {
@@ -28,6 +27,11 @@ public class ItemDB {
 	private PreparedStatement deleteItemStmt;
 	private PreparedStatement getItemStmt;
 
+	/**
+	 * Contructor for ItemDB
+	 * @param connectionDB
+	 * @throws SQLException
+	 */
 	public ItemDB(ConnectionDB connectionDB) throws SQLException {
 		this.connectionDB = connectionDB;
 		connection = connectionDB.getConnection();

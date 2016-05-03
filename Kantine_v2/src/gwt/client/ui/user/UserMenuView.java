@@ -18,7 +18,6 @@ import gwt.shared.ItemDTO;
 
 /** 
  * This view contains all the elements for the user menu. 
- * @author magnusrasmussen
  *
  */
 public class UserMenuView extends Composite {
@@ -33,7 +32,7 @@ public class UserMenuView extends Composite {
 	// Buttons for events
 	private Button addToBasketBtn;
 	private BasketView basketView;
-	
+
 	// row where event happened
 	private int eventRowIndex;
 
@@ -41,8 +40,9 @@ public class UserMenuView extends Composite {
 	public int itemId;
 	public String name;
 
+	// Used for storing current saldo
 	private static double cuSaldo;
-	
+
 	// List to hold item objects 
 	public static List<ItemDTO> tempItemList  = new ArrayList<ItemDTO>();
 
@@ -50,19 +50,19 @@ public class UserMenuView extends Composite {
 	public Button getAddToBasketBtn() {   
 		return addToBasketBtn;
 	}
-	
+
 	public Button getControllerEditBtn() {
 		return addToBasketBtn;
 	}
-	
+
 	public String getName(){
 		return name;
 	}
-	
+
 	public void setName(String name){
 		this.name = name;
 	}
-	
+
 	public int getItemId() {
 		return itemId;
 	}
@@ -70,11 +70,11 @@ public class UserMenuView extends Composite {
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
-	
+
 	public static void setcuSaldo(double s) {
 		cuSaldo = s;
 	}
-	
+
 	public static double getcuSaldo(){
 		return cuSaldo;
 	}
@@ -89,19 +89,19 @@ public class UserMenuView extends Composite {
 	 */
 	public UserMenuView() {
 		initWidget(uiBinder.createAndBindUi(this));
-		
+
 		addToBasketHandler = new AddToBasketHandler();
 
 		// buttons for controller event handling
 		addToBasketBtn = new Button();
 	}
-	
+
 	//Flextable gets populated with rows and values. 
 	public void populateUserMenu(List<ItemDTO> pList) {
-		
+
 		// remove table data
 		itemTable.removeAllRows();
-		
+
 		// adjust column widths
 		itemTable.getFlexCellFormatter().setWidth(0, 0, "25px");
 		itemTable.getFlexCellFormatter().setWidth(0, 1, "200px");
@@ -118,7 +118,7 @@ public class UserMenuView extends Composite {
 		headerTable.getFlexCellFormatter().setWidth(0, 1, "200px");
 		headerTable.getFlexCellFormatter().setWidth(0, 2, "25px");
 		headerTable.getFlexCellFormatter().setWidth(0, 3, "100px");
-		
+
 		// style table
 		itemTable.addStyleName("FlexTable");
 		itemTable.getRowFormatter().addStyleName(0, "FlexTable-Header");
@@ -135,7 +135,7 @@ public class UserMenuView extends Composite {
 			Button addToBasketBtn = new Button("Tilføj");
 			addToBasketBtn.getElement().setId("editBtn");
 			itemTable.setWidget(i + 1, 3, addToBasketBtn);
-			
+
 			// add clickhandler
 			addToBasketBtn.addClickHandler(addToBasketHandler);
 		}
@@ -143,53 +143,52 @@ public class UserMenuView extends Composite {
 
 	/**
 	 *  CLickhandler to handle add to basket button. 
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class AddToBasketHandler implements ClickHandler {
-		
+
 		@Override
 		public void onClick(ClickEvent event) {	
-			
+
 			boolean addItem = true;
 			itemDTO = new ItemDTO();
 			basketView = new BasketView();
-			
+
 			// get rowindex where event happened
 			eventRowIndex = itemTable.getCellForEvent(event).getRowIndex();
-			
+
 			// populate itemDTO
 			itemDTO.setId(Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 			itemDTO.setName(itemTable.getText(eventRowIndex, 1));
 			itemDTO.setPrice(Double.parseDouble(itemTable.getText(eventRowIndex, 2))); 
-		
+
 			//check if user have sufficient funds. 
 			if(saldoCheck()){
-			// save item id
-			setItemId( Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
+				// save item id
+				setItemId( Integer.parseInt(itemTable.getText(eventRowIndex, 0)));
 
-			for (ItemDTO itemname : tempItemList){	
-				if(itemname.getName().equals(itemDTO.getName())){
-					addItem = false;
-					itemname.setCount(itemname.getCount()+1);
+				for (ItemDTO itemname : tempItemList){	
+					if(itemname.getName().equals(itemDTO.getName())){
+						addItem = false;
+						itemname.setCount(itemname.getCount()+1);
+					}
 				}
+
+				if (addItem){
+					tempItemList.add(itemDTO);
+				}
+
+				basketView.populateBasket(tempItemList);
+				addToBasketBtn.fireEvent(new ClickEvent() {
+				});
 			}
 
-			if (addItem){
-				tempItemList.add(itemDTO);
-			}
-			
-			basketView.populateBasket(tempItemList);
-			addToBasketBtn.fireEvent(new ClickEvent() {
-			});
-			}
-		
 		}
 	}
-	
+
 	// Saldo check
 	public boolean saldoCheck(){
-	
+
 		if(cuSaldo >= itemDTO.getPrice()){
 			//Update current saldo
 			setcuSaldo(cuSaldo - itemDTO.getPrice());

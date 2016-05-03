@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * This class contains the view to show all users 
- * @author magnusrasmussen
  *
  */
 public class ShowUserListView extends Composite {
@@ -73,7 +72,7 @@ public class ShowUserListView extends Composite {
 	public void setPersonId(int personId) {
 		this.personId = personId;
 	}
-	
+
 	public Button getControllerEditBtn() {
 		return controllerEditBtn;
 	}
@@ -95,17 +94,17 @@ public class ShowUserListView extends Composite {
 	public void updateRow(PersonDTO personDTO) {
 		userTable.setText(eventRowIndex, 1, personDTO.getName());
 		userTable.setText(eventRowIndex, 2, "" + personDTO.getSaldo()); 
-	
+
 	}
 	/**
-	 * Flextable bliver tilføjet rækker samt værdier.
+	 * Flextable is populated with rows and colums and data. 
 	 * 
 	 */
 	public void populateUserList(List<PersonDTO> pList) {
-		
+
 		// remove table data
 		userTable.removeAllRows();
-		
+
 		// adjust column widths
 		headerTable.getFlexCellFormatter().setWidth(0, 0, "50px");
 		headerTable.getFlexCellFormatter().setWidth(0, 1, "110px");
@@ -114,7 +113,7 @@ public class ShowUserListView extends Composite {
 		headerTable.getFlexCellFormatter().setWidth(0, 4, "50px");
 		headerTable.getFlexCellFormatter().setWidth(0, 5, "70px");
 		headerTable.getFlexCellFormatter().setWidth(0, 6, "70px");
-		
+
 		// Header
 		headerTable.setText(0, 0, "Id");
 		headerTable.setText(0, 1, "Brugernavn");
@@ -160,7 +159,7 @@ public class ShowUserListView extends Composite {
 			Button delete = new Button("Slet bruger");
 			delete.getElement().setId("deleteButton");
 			userTable.setWidget(i + 1, 6, delete);
-			
+
 			edit.addClickHandler(editHandler);
 			delete.addClickHandler(deleteHandler);
 		}
@@ -169,7 +168,6 @@ public class ShowUserListView extends Composite {
 
 	/**
 	 *  Handler for deleting a user
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class DeleteHandler implements ClickHandler {
@@ -190,7 +188,6 @@ public class ShowUserListView extends Composite {
 
 	/**
 	 *  Handler for saldo update
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class EditHandler implements ClickHandler {

@@ -7,8 +7,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import gwt.shared.ItemDTO;
 
 /**
- * Methods used for RPC. 
- * @author magnusrasmussen
+ * Methods used for item RPC. 
  *
  */
 @RemoteServiceRelativePath("itemservice")

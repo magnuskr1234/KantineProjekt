@@ -16,8 +16,7 @@ import gwt.shared.ItemDTO;
 
 /**
  * Basketview contains the basket to show what the user has added to the basket, and shows buttons for buying the items and cancel 
- * @author magnusrasmussen
- *z
+ *
  */
 public class BasketView extends Composite {
 
@@ -46,20 +45,20 @@ public class BasketView extends Composite {
 	private double newSaldo;
 
 	private double sum;
-	
+
 	private double totalPrice;
-	
+
 	private BigDecimal rounded;
-	
+
 	// reference to DTO
 	ItemDTO itemDTO;
-	
+
 	/**
 	 * Constructor for basketview
 	 */
 	public BasketView() {
 		initWidget(uiBinder.createAndBindUi(this));
-	
+
 		itemDTO = new ItemDTO();
 		deleteHandler = new DeleteHandler();
 
@@ -79,7 +78,7 @@ public class BasketView extends Composite {
 	public Button getBuyBtn() {
 		return buyBtn;
 	}
-	
+
 	public FlexTable getBasketTable(){
 		return basketTable;
 	}
@@ -95,8 +94,8 @@ public class BasketView extends Composite {
 	public void setCurrentUserSaldo(double saldo) {
 		this.currentSaldo = saldo;
 	}
-	
-	
+
+
 	public void setNewSaldo(double newSaldo){
 		this.newSaldo = newSaldo;
 	}
@@ -133,14 +132,14 @@ public class BasketView extends Composite {
 		// remove table data
 		basketTable.removeAllRows();
 		clearSum();
-		
-		
+
+
 		// adjust column widths
 		basketTable.getFlexCellFormatter().setWidth(0, 0, "50px");
 		basketTable.getFlexCellFormatter().setWidth(0, 1, "50px");
 		basketTable.getFlexCellFormatter().setWidth(0, 2, "25px");
 		basketTable.getFlexCellFormatter().setWidth(0, 3, "50px");
-		
+
 		// set headers in flextable
 		basketTable.setText(0, 0, "Vare");
 		basketTable.setText(0, 1, "Antal");
@@ -170,39 +169,38 @@ public class BasketView extends Composite {
 			Button controllerDeleteBtn = new Button("Fjern");
 			controllerDeleteBtn.getElement().setId("deleteButton");
 			basketTable.setWidget(i + 1, 3, controllerDeleteBtn);
-			
+
 			// add delete buttons to row
 			controllerDeleteBtn.addClickHandler(deleteHandler);
 		}
 
 		setNewSaldo(currentSaldo - sum);
 	}
-	
+
 	/**
 	 *  Handler for delete item from basket
-	 * @author magnusrasmussen
 	 *
 	 */
 	private class DeleteHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 			// Clear sum
 			clearSum();
-			
+
 			// Evntrowindex 
 			eventRowIndexDelete = 0;
-			
+
 			// save event row index
 			eventRowIndexDelete = basketTable.getCellForEvent(event).getRowIndex() - 1;
-		
+
 			// Set updated sum
 			setSum(-UserMenuView.tempItemList.get(eventRowIndexDelete).getPrice());
-			
+
 			// remove from list
 			UserMenuView.tempItemList.remove(eventRowIndexDelete);
-			
+
 			// Set current saldo
 			UserMenuView.setcuSaldo(UserMenuView.getcuSaldo() + Double.parseDouble(basketTable.getText(eventRowIndexDelete+1, 2)));
-			
+
 			// Fireevent for user controller 
 			controllerDeleteBtn.fireEvent(new ClickEvent() {
 

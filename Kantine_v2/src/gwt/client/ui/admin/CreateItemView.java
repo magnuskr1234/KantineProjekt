@@ -13,7 +13,6 @@ import gwt.shared.ItemDTO;
 
 /**
  * This view contains the view to create items
- * @author magnusrasmussen
  *
  */
 public class CreateItemView extends Composite {
@@ -32,7 +31,7 @@ public class CreateItemView extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 
 		this.iDTO = new ItemDTO();
-		
+
 		txtName.getElement().setPropertyString("placeholder", "Indtast produktnavn");
 		txtPrice.getElement().setPropertyString("placeholder", "Indtast pris");
 	}
@@ -44,7 +43,7 @@ public class CreateItemView extends Composite {
 
 			txtName.setStyleName("textBox");
 			txtPrice.setStyleName("textBox");
-			
+
 			// update DTO object			
 			iDTO.setName(txtName.getText());
 			iDTO.setPrice(Double.parseDouble(txtPrice.getText()));
@@ -59,7 +58,7 @@ public class CreateItemView extends Composite {
 			return false;
 		}
 
-		
+
 	}
 
 	// Clear fields
@@ -67,12 +66,12 @@ public class CreateItemView extends Composite {
 		txtName.setText("");
 		txtPrice.setText("");
 	}
-	
+
 	// Getters
 	public Button getcreateItemBtn(){
 		return createItemBtn;
 	}
-	
+
 	// return data entered 
 	public ItemDTO getCurrentItem() {
 		return iDTO;

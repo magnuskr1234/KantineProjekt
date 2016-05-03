@@ -15,7 +15,6 @@ import gwt.shared.DALException;
 
 /**
  * Connection for database. Used only for connection. 
- * @author magnusrasmussen
  *
  */
 @SuppressWarnings("serial")
@@ -37,7 +36,7 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 	public ConnectionDB() throws Exception {
 		try {
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			
+
 			// Create instance databases. 
 			itemDB = new ItemDB(this);
 			personDB = new PersonDB(this);
@@ -102,12 +101,12 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 		List<ItemDTO> items = itemDB.getItems();
 		return items;
 	}
-	
+
 	@Override
 	public ItemDTO getItem(String name) throws Exception {
 		ItemDTO item = itemDB.getItem(name);
 		return item;
-		
+
 	}
 
 	@Override
@@ -134,7 +133,7 @@ public class ConnectionDB extends RemoteServiceServlet implements ItemService, P
 	public PersonDTO getPerson(String username, String password) throws Exception {
 		PersonDTO person = personDB.getPerson(username, password);
 		return person;
-		
+
 	}
 
 	@Override

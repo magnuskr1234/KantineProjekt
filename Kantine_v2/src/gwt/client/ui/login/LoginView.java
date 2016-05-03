@@ -11,7 +11,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * UiBinder for login
- * @author magnusrasmussen
  *
  */
 public class LoginView extends Composite {
