@@ -81,20 +81,20 @@ public class MainController {
 
 						// Check admin status for user
 					} else if (person.getAdminStatus() == 1) {
-						adminController.setCurrentPerson(person);
-						loginView.resetError();
-						mainView.changeView(mainView.getAdminView());
-						mainView.getAdminView().changeWidget(mainView.getAdminView().getadminMenu());
+						adminController.setCurrentPerson(person); // set current person
+						loginView.resetError(); // reset possible errors
+						mainView.changeView(mainView.getAdminView()); // change view to admin view
+						mainView.getAdminView().changeWidget(mainView.getAdminView().getadminMenu()); // change widget to admin menu
 
 					} else if (person.getAdminStatus() == 0) {
-						userController.setCurrentPerson(person);
-						mainView.getUserView().loginOk(person.getName());
-						mainView.getUserView().updateSaldoHeader(person.getSaldo());
-						mainView.getUserView().getBasketView().setCurrentUserSaldo(person.getSaldo());
-						UserMenuView.setcuSaldo(person.getSaldo());
-						loginView.resetError();
-						mainView.changeView(mainView.getUserView());
-						mainView.getUserView().changeWidget(mainView.getUserView().getUserMenuView());
+						userController.setCurrentPerson(person); // Set current person
+						mainView.getUserView().loginOk(person.getName()); // set user header with name
+						mainView.getUserView().updateSaldoHeader(person.getSaldo()); // set saldoheader
+						mainView.getUserView().getBasketView().setCurrentUserSaldo(person.getSaldo()); // set user saldo
+						UserMenuView.setcuSaldo(person.getSaldo()); // set current user saldo
+						loginView.resetError(); // reset possible errors
+						mainView.changeView(mainView.getUserView()); // chnge view to userview
+						mainView.getUserView().changeWidget(mainView.getUserView().getUserMenuView()); // change widget ti user menu 
 
 						// Make RPC call to get all items.
 						itemServiceCall.getItems(new AsyncCallback<List<ItemDTO>>() {
@@ -107,7 +107,7 @@ public class MainController {
 							@Override
 							public void onSuccess(List<ItemDTO> result) {
 								//Populate user menu with items from database
-								mainView.getUserView().showMenuView(result);
+								mainView.getUserView().showMenuView(result); // Show updatet menu 
 							}
 						});
 					}	
